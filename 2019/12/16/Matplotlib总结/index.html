@@ -14,6 +14,7 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -21,16 +22,16 @@
   var CONFIG = {
     hostname: new URL('http://monteyang.github.io').hostname,
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Muse',
     version: '7.7.0',
     exturl: false,
-    sidebar: {"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
+    fancybox: true,
+    mediumzoom: true,
+    lazyload: true,
     pangu: false,
     comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
     algolia: {
@@ -265,16 +266,16 @@
 
 <hr>
 <h2 id="2-常用统计图"><a href="#2-常用统计图" class="headerlink" title="2. 常用统计图"></a>2. 常用统计图</h2><h3 id="2-1-折线图"><a href="#2-1-折线图" class="headerlink" title="2.1 折线图"></a>2.1 <strong>折线图</strong></h3><blockquote>
-<p>以折线表示统计量的增减变化。<br>特点：反映事物的变化情况。<br><img src="https://img-blog.csdnimg.cn/2019010513092169.png" alt="折线图"></p>
+<p>以折线表示统计量的增减变化。<br>特点：反映事物的变化情况。<br><img data-src="https://img-blog.csdnimg.cn/2019010513092169.png" alt="折线图"></p>
 </blockquote>
 <h3 id="2-2-直方图"><a href="#2-2-直方图" class="headerlink" title="2.2 直方图"></a>2.2 <strong>直方图</strong></h3><blockquote>
-<p>由一系列高度不等的纵向条纹或线段表示<strong>数据分布的情况</strong>。  一般用横轴表示数据范围，纵轴表示分布情况。<br>特点：绘制 <strong>连续</strong> 的数据，展示一组或者多组数据的分布状况。<br><img src="https://img-blog.csdnimg.cn/20190105131003368.png" alt="在这里插入图片描述"></p>
+<p>由一系列高度不等的纵向条纹或线段表示<strong>数据分布的情况</strong>。  一般用横轴表示数据范围，纵轴表示分布情况。<br>特点：绘制 <strong>连续</strong> 的数据，展示一组或者多组数据的分布状况。<br><img data-src="https://img-blog.csdnimg.cn/20190105131003368.png" alt="在这里插入图片描述"></p>
 </blockquote>
 <h3 id="2-3-条形图"><a href="#2-3-条形图" class="headerlink" title="2.3 条形图"></a>2.3 <strong>条形图</strong></h3><blockquote>
-<p>排列<strong>在工作表的列或行中的数据可以绘制到条形图中</strong>。<br>特点：绘制 <strong>离散</strong> 的数据，能够看出各个标签对应的数据大小，比较数据之间的差别。<br><img src="https://img-blog.csdnimg.cn/20190105131158885.png" alt="在这里插入图片描述"></p>
+<p>排列<strong>在工作表的列或行中的数据可以绘制到条形图中</strong>。<br>特点：绘制 <strong>离散</strong> 的数据，能够看出各个标签对应的数据大小，比较数据之间的差别。<br><img data-src="https://img-blog.csdnimg.cn/20190105131158885.png" alt="在这里插入图片描述"></p>
 </blockquote>
 <h3 id="2-4-散点图"><a href="#2-4-散点图" class="headerlink" title="2.4 散点图"></a>2.4 <strong>散点图</strong></h3><blockquote>
-<p>用两组数据构成多个坐标点，考察坐标点的分布,判断两变量 之间是否存在某种关联或总结坐标点的分布模式。<br>特点：判断变量之间是否存在数量关联趋势，显示数据的分布规律。<br><img src="https://img-blog.csdnimg.cn/20190105131546443.png" alt="在这里插入图片描述"></p>
+<p>用两组数据构成多个坐标点，考察坐标点的分布,判断两变量 之间是否存在某种关联或总结坐标点的分布模式。<br>特点：判断变量之间是否存在数量关联趋势，显示数据的分布规律。<br><img data-src="https://img-blog.csdnimg.cn/20190105131546443.png" alt="在这里插入图片描述"></p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制折线图，x为横坐标，y为纵坐标。</span></span><br><span class="line">plt.plot(x, y)</span><br><span class="line"><span class="comment"># 绘制直方图，x为需要被分组的量，bins为组数。</span></span><br><span class="line">plt.hist(x, bins)</span><br><span class="line"><span class="comment"># 绘制条形图，x为序列，height为序列的“高度”。</span></span><br><span class="line">plt.bar(x, height)</span><br><span class="line"><span class="comment"># 绘制散点图，(x,y)为点的坐标。</span></span><br><span class="line">plt.scatter(x, y)</span><br></pre></td></tr></table></figure>
 
@@ -437,7 +438,7 @@
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
   </div>
 
         
@@ -455,6 +456,11 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -463,11 +469,68 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/pisces.js"></script>
+<script src="/js/schemes/muse.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
 
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
 
 
 
@@ -487,11 +550,13 @@
 
 
 
+    <div id="pjax">
   
 
   
 
   
 
+    </div>
 </body>
 </html>
