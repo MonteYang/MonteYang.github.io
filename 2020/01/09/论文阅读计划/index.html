@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://monteyang.github.io').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"right","width":300,"display":"always","padding":18,"offset":12,"onmobile":true},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: true,
+    lazyload: true,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Neural Network  AlexNet  VGGNet  ResNet  InceptionNet  DenseNet  SENet  Mesh  MeshNet  MeshCNN  Voxel  3D ShapeNet  VoxNet  OctNet  FPNN  O-CNN  Point Cloud  PointNet  PointNet++  KC-Net  PointSIFT  P">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Paper Reading Plan">
+<meta property="og:url" content="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E8%AE%A1%E5%88%92/index.html">
+<meta property="og:site_name" content="MaonanYang&#39;s Blog">
+<meta property="og:description" content="Neural Network  AlexNet  VGGNet  ResNet  InceptionNet  DenseNet  SENet  Mesh  MeshNet  MeshCNN  Voxel  3D ShapeNet  VoxNet  OctNet  FPNN  O-CNN  Point Cloud  PointNet  PointNet++  KC-Net  PointSIFT  P">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-01-09T03:02:40.000Z">
+<meta property="article:modified_time" content="2020-01-09T03:12:50.031Z">
+<meta property="article:author" content="Maonan Yang">
+<meta property="article:tag" content="paper reading plan">
+<meta property="article:tag" content="论文阅读">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E8%AE%A1%E5%88%92/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Paper Reading Plan | MaonanYang's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MaonanYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">❤MY</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/MonteYang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E8%AE%A1%E5%88%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Maonan Yang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MaonanYang's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Paper Reading Plan
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-09 11:02:40 / 修改时间：11:12:50" itemprop="dateCreated datePublished" datetime="2020-01-09T11:02:40+08:00">2020-01-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Neural-Network"><a href="#Neural-Network" class="headerlink" title="Neural Network"></a>Neural Network</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> AlexNet</li>
+<li><input checked="" disabled="" type="checkbox"> VGGNet</li>
+<li><input checked="" disabled="" type="checkbox"> ResNet</li>
+<li><input checked="" disabled="" type="checkbox"> InceptionNet</li>
+<li><input disabled="" type="checkbox"> DenseNet</li>
+<li><input disabled="" type="checkbox"> SENet</li>
+</ul>
+<h2 id="Mesh"><a href="#Mesh" class="headerlink" title="Mesh"></a>Mesh</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> MeshNet</li>
+<li><input disabled="" type="checkbox"> MeshCNN</li>
+</ul>
+<h2 id="Voxel"><a href="#Voxel" class="headerlink" title="Voxel"></a>Voxel</h2><ul>
+<li><input disabled="" type="checkbox"> 3D ShapeNet</li>
+<li><input disabled="" type="checkbox"> VoxNet</li>
+<li><input disabled="" type="checkbox"> OctNet</li>
+<li><input disabled="" type="checkbox"> FPNN</li>
+<li><input disabled="" type="checkbox"> O-CNN</li>
+</ul>
+<h2 id="Point-Cloud"><a href="#Point-Cloud" class="headerlink" title="Point Cloud"></a>Point Cloud</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> PointNet</li>
+<li><input checked="" disabled="" type="checkbox"> PointNet++</li>
+<li><input checked="" disabled="" type="checkbox"> KC-Net</li>
+<li><input disabled="" type="checkbox"> PointSIFT</li>
+<li><input disabled="" type="checkbox"> Point-Voxel</li>
+<li><input disabled="" type="checkbox"> PointGrid</li>
+</ul>
+<h2 id="SDF"><a href="#SDF" class="headerlink" title="SDF"></a>SDF</h2><ul>
+<li><input disabled="" type="checkbox"> DeepSDF</li>
+</ul>
+<h2 id="Reinfocement-Learning"><a href="#Reinfocement-Learning" class="headerlink" title="Reinfocement Learning"></a>Reinfocement Learning</h2><ul>
+<li><input disabled="" type="checkbox"> DDPG</li>
+<li><input disabled="" type="checkbox"> MADDPG</li>
+</ul>
+<h2 id="CNN-basic"><a href="#CNN-basic" class="headerlink" title="CNN-basic"></a>CNN-basic</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> Tricks-of-CNN</li>
+</ul>
+<h2 id="Image-Segmentation"><a href="#Image-Segmentation" class="headerlink" title="Image Segmentation"></a>Image Segmentation</h2><ul>
+<li><input disabled="" type="checkbox"> FCN</li>
+<li><input disabled="" type="checkbox"> U-Net</li>
+<li><input disabled="" type="checkbox"> SegNet</li>
+<li><input disabled="" type="checkbox"> DeepLab系列</li>
+<li><input disabled="" type="checkbox"> Fully Convolutional DenseNet</li>
+<li><input disabled="" type="checkbox"> E-Net</li>
+<li><input disabled="" type="checkbox"> Link-Net</li>
+<li><input disabled="" type="checkbox"> Mask R-CNN</li>
+<li><input disabled="" type="checkbox"> PSPNet</li>
+<li><input disabled="" type="checkbox"> RefineNet</li>
+<li><input disabled="" type="checkbox"> HR-Net</li>
+<li><input disabled="" type="checkbox"> Ciss-Net</li>
+</ul>
+<!-- ---
+
+- PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation-CVPR2017-论文链接-tensorflow代码-pytorch代码
+- PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space-NIPS2017-论文链接-tensorflow代码-pytorch代码
+- Escape from Cells: Deep Kd-Networks for the Recognition of 3D Point Cloud Models-ICCV2017-论文链接-pytorch代码
+- KCNet: Mining Point Cloud Local Structures by Kernel Correlation and Graph Pooling-CVPR2018-论文链接-caffe代码-pytorch代码
+- Pointwise Convolutional Neural Networks-CVPR2018-论文链接-tensorflow代码
+- SO-Net: Self-Organizing Network for Point Cloud Analysis-CVPR2018-论文链接-pytorch代码
+- Recurrent Slice Networks for 3D Segmentation of Point Clouds-CVPR2018-论文链接-pytorch代码
+- SPLATNet: Sparse Lattice Networks for Point Cloud Processing-CVPR2018-l论文链接-caffe代码-pytorch代码
+- Large-scale Point Cloud Semantic Segmentation with Superpoint Graphs-CVPR2018-论文链接-pytorch代码
+- Dynamic Graph CNN for Learning on Point Cloud-arxiv2018-论文链接-代码链接
+- Local Spectral Graph Convolution for Point Set Feature Learning-ECCV2018-论文链接-tensorflow代码
+- SpiderCNN: Deep Learning on Point Sets with Parameterized Convolutional Filters-ECCV2018-论文链接-tensorflow代码
+- Point Convolutional Neural Networks by Extension Operators-SIGGRAPH 2018-论文链接-tensorflow代码
+- PointCNN: Convolution On X-Transformed Points-NeurIPS 2018-论文链接-tensorflow代码-mxnet代码-pytorch代码
+- PointSIFT: A SIFT-like Network Module for 3D Point Cloud Semantic Segmentation-arxiv2018-论文链接-tensorflow代码-pytorch代码
+- PointConv: Deep Convolutional Networks on 3D Point Clouds-arxiv2018-论文链接
+- Adversarial Autoencoders for Generating 3D Point Clouds-arxiv2018-论文链接
+- Modeling Local Geometric Structure of 3D Point Clouds using Geo-CNN-论文链接
+- Supervised Fitting of Geometric Primitives to 3D Point Clouds-CVPR2019-l论文链接-tensorflow代码
+- Multi-view Point Cloud Registration with Adaptive Convergence Threshold and its Application on 3D Model Retrieval-论文链接
+- Iterative Transformer Network for 3D Point Cloud-arxiv2018-论文链接
+- DeepMapping: Unsupervised Map Estimation From Multiple Point Clouds-arxiv2018-论文链接
+- CAPNet: Continuous Approximation Projection For 3D Point Cloud Reconstruction Using 2D Supervision-论文链接-AAAI2019-代码链接
+- Increasing the Capability of Neural Networks for Surface Reconstruction from Noisy Point Clouds-arxiv2018-论文链接
+- Topology-Aware Surface Reconstruction for Point Clouds-arxiv2018-论文链接
+- Nesti-Net: Normal Estimation for Unstructured 3D Point Clouds using Convolutional Neural Networks-arxiv2018-论文链接
+- Inferring Point Clouds from Single Monocular Images by Depth Intermediation-arxiv2018-论文链接
+- Learning Saliency Maps for Adversarial Point-Cloud Generation-arxiv2019-论文链接
+- A Graph-CNN for 3D Point Cloud Classification- ICASSP 2018-论文链接-tensorflow代码
+- GSPN: Generative Shape Proposal Network for 3D Instance Segmentation in Point Cloud-arxiv2018-论文链接
+- PointRCNN: 3D Object Proposal Generation and Detection from Point Cloud-arxiv2018-论文链接
+- Deep RBFNet: Point Cloud Feature Learning using Radial Basis Functions-arxiv2018-论文链接
+- IPOD: Intensive Point-based Object Detector for Point Cloud-arxiv2018-论文链接
+- PointPillars: Fast Encoders for Object Detection from Point Clouds-arxiv2018-论文链接
+- 3D Point Cloud Learning for Large-scale Environment Analysis and Place Recognition-arxiv2018-论文链接
+- 3D Point Cloud Denoising via Bipartite Graph Approximation and Reweighted Graph Laplacian-arxiv2018-论文链接
+- Casualty Detection from 3D Point Cloud Data for Autonomous Ground Mobile Rescue Robots-SSRR)2018-论文链接
+- Deflecting 3D Adversarial Point Clouds Through Outlier-Guided Removal-arxiv2018-论文链接
+- Machine learning enables polymer cloud-point engineering via inverse design-arxiv2018-论文链接
+- 3D Convolution on RGB-D Point Clouds for Accurate Model-free Object Pose Estimation-arxiv2018-论文链接
+- Feature Preserving and Uniformity-controllable Point Cloud Simplification on Graph-arxiv2018-论文链接
+- GeoNet: Deep Geodesic Networks for Point Cloud Analysis-CVPR2019-论文链接
+- POINTCLEANNET: Learning to Denoise and Remove Outliers from Dense Point Clouds-arxiv2018-论文链接-pytorch代码
+- Generic Primitive Detection in Point Clouds Using Novel Minimal Quadric Fits-T-PAMI2019-论文链接
+- Fast 3D Line Segment Detection From Unorganized Point Cloud-arxiv2019-论文链接
+- Extending Adversarial Attacks and Defenses to Deep 3D Point Cloud Classifiers-arxiv2019-论文链接-tensorflow代码
+- Skeletonisation Algorithms for Unorganised Point Clouds with Theoretical Guarantees-arxiv2019-论文链接
+- Automatic normal orientation in point clouds of building interiors-arxiv2019-论文链接
+- Fitting 3D Shapes from Partial and Noisy Point Clouds with Evolutionary Computing-arxiv2019-论文链接
+- Context Prediction for Unsupervised Deep Learning on Point Clouds-arxiv2019-论文链接
+- Dense 3D Point Cloud Reconstruction Using a Deep Pyramid Network-WACV 2019-论文链接
+- Points2Pix: 3D Point-Cloud to Image Translation using conditional Generative Adversarial Networks-arxiv2019-l论文链接
+- NeuralSampler: Euclidean Point Cloud Auto-Encoder and Sampler-arxiv2019-l论文链接
+- Embedded Delaunay triangulations for point clouds of surfaces in-arxiv2019-l论文链接
+- 3D point cloud registration with shape constraint-ICIP 2017-论文链接
+- Occupancy-map-based rate distortion optimization for video-based point cloud compression-arxiv2019-论文链接
+- 3D Graph Embedding Learning with a Structure-aware Loss Function for Point Cloud Semantic Instance Segmentation-arxiv2019-论文链接
+- PIXOR: Real-time 3D Object Detection from Point Clouds- CVPR2018-论文链接-pytorch代码
+- Multi-view Incremental Segmentation of 3D Point Clouds for Mobile Robots-arxiv2019-论文链接
+- Point cloud denoising based on tensor Tucker decomposition-CVPR2019-l论文链接
+- Associatively Segmenting Instances and Semantics in Point Clouds-CVPR2019-论文链接
+- Zero-shot Learning of 3D Point Cloud Objects-MVA2019-论文链接
+- Octree guided CNN with Spherical Kernels for 3D Point Clouds-arxiv2019-论文链接
+- Real-time Multiple People Hand Localization in 4D Point Clouds-arxiv2019-论文链接
+- Variational Graph Methods for Efficient Point Cloud Sparsification-arxiv2019-代码链接
+- HoloCast: Graph Signal Processing for Graceful Point Cloud Delivery-arxiv2019-论文链接
+- Fast Registration for cross-source point clouds by using weak regional affinity and pixel-wise refinement-ICME 2019-论文链接
+- PointNetLK: Robust & Efficient Point Cloud Registration using PointNet-arxiv2019-论文链接
+- Neural Style Transfer for Point Clouds-arxiv2019-论文链接
+- OREOS: Oriented Recognition of 3D Point Clouds in Outdoor Scenarios-arxiv2019-论文链接
+- Learning Convolutional Transforms for Lossy Point Cloud Geometry Compression-arxiv2019-论文链接
+- Monocular 3D Object Detection with Pseudo-LiDAR Point Cloud-论文链接-arxiv2019
+- FVNet: 3D Front-View Proposal Generation for Real-Time Object Detection from Point Clouds-论文链接-arxiv2019
+- Unpaired Point Cloud Completion on Real Scans using Adversarial Training-论文链接-arxiv2019
+- USIP: Unsupervised Stable Interest Point Detection from 3D Point Clouds-论文链接-arxiv2019-代码链接
+- MortonNet: Self-Supervised Learning of Local Features in 3D Point Clouds-论文链接-arxiv2019
+- Discrete Rotation Equivariance for Point Cloud Recognition-论文链接-ICRA 2019-代码链接
+- JSIS3D: Joint Semantic-Instance Segmentation of 3D Point Clouds with Multi-Task Pointwise Networks and Multi-Value Conditional Random Fields-论文链接-CVPR 2019(oral)-代码链接
+- DeepPoint3D: Learning Discriminative Local Descriptors using Deep Metric Learning on 3D Point Clouds-论文链接-arxiv2019
+- A Dataset for Semantic Segmentation of Point Cloud Sequences-论文链接-arxiv2019
+- Point Cloud Oversegmentation with Graph-Structured Deep Metric Learning-论文链接-CVPR2019
+- Generalizing discrete convolutions for unstructured point clouds-论文链接-arxiv2019
+- 3D Point Cloud Denoising via Deep Neural Network based Local Surface Estimation-论文链接-arxiv2019
+- Complexer-YOLO: Real-Time 3D Object Detection and Tracking on Semantic Point Clouds-论文链接-arxiv2019
+- Total Denoising: Unsupervised Learning of 3D Point Cloud Cleaning-论文链接-arxiv2019
+- 3D Object Recognition with Ensemble Learning — A Study of Point Cloud-Based Deep Learning Models-论文链接-arxiv2019
+- Deep Hough Voting for 3D Object Detection in Point Clouds-论文链接-arxiv2019
+- 2D3D-MatchNet: Learning to Match Keypoints Across 2D Image and 3D Point Cloud-论文链接-arxiv2019
+- PCAN: 3D Attention Map Learning Using Contextual Information for Point Cloud Based Retrieval-论文链接-CVPR2019
+- Graph-based Inpainting for 3D Dynamic Point Clouds-论文链接-arxiv2019
+- 3D Dynamic Point Cloud Denoising via Spatio-temporal Graph Modeling-论文链接-arxiv2019
+- RL-GAN-Net: A Reinforcement Learning Agent Controlled GAN Network for Real-Time Point Cloud Shape Completion-论文链接-cvpr2019-代码链接
+- Unsupervised Feature Learning for Point Cloud by Contrasting and Clustering With Graph Convolutional Neural Network-论文链接-arxiv2019
+- Loop-Closure Detection Based on 3D Point Cloud Learning for Self-Driving Industry Vehicles-论文链接-arxiv2019
+- Oriented Point Sampling for Plane Detection in Unorganized Point Clouds-论文链接-ICRA2019
+- Deep Closest Point: Learning Representations for Point Cloud Registration-论文链接-arxiv2019
+- Deep AutoEncoder-based Lossy Geometry Compression for Point Clouds-论文链接-arxiv2019
+- DeepICP: An End-to-End Deep Neural Network for 3D Point Cloud Registration-论文链接-arxiv2019
+- Deep Unsupervised Learning of 3D Point Clouds via Graph Topology Inference and Filtering-论文链接-arxiv2019
+- Cooper: Cooperative Perception for Connected Autonomous Vehicles based on 3D Point Clouds-论文链接 -ICDCS 2019
+- 3D Point Cloud Generative Adversarial Network Based on Tree Structured Graph Convolutions-论文链接-arxiv2019
+- SAWNet: A Spatially Aware Deep Neural Network for 3D Point Cloud Processing-论文链接-arxiv2019
+- A Two-stage Classification Method for High-dimensional Data and Point Clouds-论文链接-arxiv2019
+- GAPNet: Graph Attention based Point Neural Network for Exploiting Local Feature of Point Cloud-论文链接-arxiv2019
+- RIU-Net: Embarrassingly simple semantic segmentation of 3D LiDAR point cloud-论文链接-arxiv2019
+- Domain Adaptation for Vehicle Detection from Bird’s Eye View LiDAR Point Cloud Data-论文链接-Under review for IEEE SMC 2019
+- Robust Point Cloud Based Reconstruction of Large-Scale Outdoor Scenes-论文链接-CVPR2019
+- Efficient Curvature Estimation for Oriented Point Clouds-论文链接-arxiv2019
+- Leveraging binding-site structure for drug discovery with point-cloud methods-论文链接-arxiv2019
+- NPTC-net: Narrow-Band Parallel Transport Convolutional Neural Network on Point Clouds-论文链接-arxiv2019
+- Partial Computing Offloading Assisted Cloud Point Registration in Multi-robot SLAM-论文链接-arxiv2019
+- Point Clouds Learning with Attention-based Graph Convolution Networks-论文链接-arxiv2019
+- Learning Object Bounding Boxes for 3D Instance Segmentation on Point Clouds-论文链接-arxiv2019
+- Direct structural analysis of domains defined by point clouds-论文链接-arxiv2019
+- Learning Shape Representation on Sparse Point Clouds for Volumetric Image Segmentation-论文链接-MICCAI 2019 -->
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/paper-reading-plan/" rel="tag"># paper reading plan</a>
+              <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag"># 论文阅读</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/08/LeetCode-31-%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/" rel="prev" title="LeetCode-31-下一个排列">
+      <i class="fa fa-chevron-left"></i> LeetCode-31-下一个排列
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Neural-Network"><span class="nav-text">Neural Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mesh"><span class="nav-text">Mesh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Voxel"><span class="nav-text">Voxel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Point-Cloud"><span class="nav-text">Point Cloud</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDF"><span class="nav-text">SDF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reinfocement-Learning"><span class="nav-text">Reinfocement Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CNN-basic"><span class="nav-text">CNN-basic</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Image-Segmentation"><span class="nav-text">Image Segmentation</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Maonan Yang"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Maonan Yang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MonteYang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MonteYang" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:59786677@qq.com" title="E-Mail → mailto:59786677@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://monteyang.github.io/" title="https:&#x2F;&#x2F;monteyang.github.io">博客主页</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maonan Yang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
