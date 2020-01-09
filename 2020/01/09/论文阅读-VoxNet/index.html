@@ -47,16 +47,23 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="MaonanYang&#39;s Blog">
-<meta property="og:url" content="http://monteyang.github.io/categories/Python/index.html">
+  <meta name="description" content="文章信息 标题: VoxNet: A 3D Convolutional Neural Network for Real-Time Object Recognition 关键词: voxel, 3D deep learning 会议: IROS 源码: official √ 我的复现: by PyTorch    Note1. Plroblem针对Voxel的3d物体识别&#x2F;分类 2. Method将">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读-VoxNet">
+<meta property="og:url" content="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-VoxNet/index.html">
 <meta property="og:site_name" content="MaonanYang&#39;s Blog">
+<meta property="og:description" content="文章信息 标题: VoxNet: A 3D Convolutional Neural Network for Real-Time Object Recognition 关键词: voxel, 3D deep learning 会议: IROS 源码: official √ 我的复现: by PyTorch    Note1. Plroblem针对Voxel的3d物体识别&#x2F;分类 2. Method将">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://monteyang.github.io/images/3-VoxNet-Network.png">
+<meta property="article:published_time" content="2020-01-09T06:38:39.000Z">
+<meta property="article:modified_time" content="2020-01-09T06:48:10.129Z">
 <meta property="article:author" content="Maonan Yang">
-<meta property="article:tag" content="3D Deep learning">
+<meta property="article:tag" content="论文阅读">
+<meta property="article:tag" content="Voxel">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://monteyang.github.io/images/3-VoxNet-Network.png">
 
-<link rel="canonical" href="http://monteyang.github.io/categories/Python/">
+<link rel="canonical" href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-VoxNet/">
 
 
 <script id="page-configurations">
@@ -64,11 +71,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>分类: Python | MaonanYang's Blog</title>
+  <title>论文阅读-VoxNet | MaonanYang's Blog</title>
   
 
 
@@ -180,130 +187,121 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">Python
-          <small>分类</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-VoxNet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Maonan Yang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MaonanYang's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          论文阅读-VoxNet
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-09 14:38:39 / 修改时间：14:48:10" itemprop="dateCreated datePublished" datetime="2020-01-09T14:38:39+08:00">2020-01-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-16T21:45:38+08:00"
-              content="2019-12-16">
-          12-16
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/16/Python-slot-%E6%96%B9%E6%B3%95/" itemprop="url">
-            <span itemprop="name">Python-__slot__方法</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-16T21:43:51+08:00"
-              content="2019-12-16">
-          12-16
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/16/Python-%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%86/" itemprop="url">
-            <span itemprop="name">Python-可迭代对象和迭代器的区分</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-16T17:38:52+08:00"
-              content="2019-12-16">
-          12-16
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/16/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3/" itemprop="url">
-            <span itemprop="name">Python-axis的理解</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-16T17:37:03+08:00"
-              content="2019-12-16">
-          12-16
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/16/Python-numpy%E5%92%8Clist%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/" itemprop="url">
-            <span itemprop="name">Python-numpy和list中的浅拷贝和深拷贝</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-12-16T17:28:00+08:00"
-              content="2019-12-16">
-          12-16
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/12/16/Matplotlib%E6%80%BB%E7%BB%93/" itemprop="url">
-            <span itemprop="name">Matplotlib总结</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
+        <h2 id="文章信息"><a href="#文章信息" class="headerlink" title="文章信息"></a>文章信息</h2><ul>
+<li>标题: VoxNet: A 3D Convolutional Neural Network for Real-Time Object Recognition</li>
+<li>关键词: voxel, 3D deep learning</li>
+<li>会议: IROS</li>
+<li>源码: official √<ul>
+<li><a href="https://github.com/MonteYang/VoxNet.pytorch" target="_blank" rel="noopener">我的复现: by PyTorch</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><h3 id="1-Plroblem"><a href="#1-Plroblem" class="headerlink" title="1. Plroblem"></a>1. Plroblem</h3><p>针对Voxel的3d物体识别/分类</p>
+<h3 id="2-Method"><a href="#2-Method" class="headerlink" title="2. Method"></a>2. Method</h3><p>将在视频领域取得一定效果的3D CNN用于Voxel的特征提取</p>
+<h4 id="Network-Structure"><a href="#Network-Structure" class="headerlink" title="Network Structure"></a>Network Structure</h4><p><img data-src="/images/3-VoxNet-Network.png" alt="" title="VoxNet-Network"></p>
+<h3 id="3-Experiment"><a href="#3-Experiment" class="headerlink" title="3. Experiment"></a>3. Experiment</h3><h4 id="3-1-Dataset"><a href="#3-1-Dataset" class="headerlink" title="3.1 Dataset"></a>3.1 Dataset</h4><p>3种数据集:</p>
+<ul>
+<li>LiDAR data - Sydney Urban Objects</li>
+<li>CAD data - ModelNet</li>
+<li>RGBD data - NYUv2</li>
+</ul>
+<h4 id="3-2-Implemention"><a href="#3-2-Implemention" class="headerlink" title="3.2 Implemention"></a>3.2 Implemention</h4><p>TODO:</p>
+<h3 id="4-Advantages"><a href="#4-Advantages" class="headerlink" title="4. Advantages"></a>4. Advantages</h3><ul>
+<li>表现性能超过了之前的 ShapeNet</li>
+<li>参数比 ShapeNet 少一些  <blockquote>
+<p>ShapeNet is a relatively large architecture, with over 12.4 million parameters, while VoxNet has less than 1 million.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="5-Disadvantages"><a href="#5-Disadvantages" class="headerlink" title="5. Disadvantages"></a>5. Disadvantages</h3><ul>
+<li>计算性能受Voxel的分辨率限制: 当Voxel分辨率过高时,内存占用过高</li>
+</ul>
 
     </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag"># 论文阅读</a>
+              <a href="/tags/Voxel/" rel="tag"># Voxel</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Ciss-Net/" rel="prev" title="论文阅读-Ciss-Net">
+      <i class="fa fa-chevron-left"></i> 论文阅读-Ciss-Net
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -354,6 +352,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文章信息"><span class="nav-text">文章信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-text">Note</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Plroblem"><span class="nav-text">1. Plroblem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Method"><span class="nav-text">2. Method</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Network-Structure"><span class="nav-text">Network Structure</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Experiment"><span class="nav-text">3. Experiment</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Dataset"><span class="nav-text">3.1 Dataset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Implemention"><span class="nav-text">3.2 Implemention</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Advantages"><span class="nav-text">4. Advantages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Disadvantages"><span class="nav-text">5. Disadvantages</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

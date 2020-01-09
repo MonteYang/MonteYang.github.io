@@ -144,7 +144,7 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">11</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -154,7 +154,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">44</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">46</span></a>
 
   </li>
   </ul>
@@ -181,6 +181,209 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-VoxNet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Maonan Yang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MaonanYang's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-VoxNet/" class="post-title-link" itemprop="url">论文阅读-VoxNet</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-09 14:38:39 / 修改时间：14:48:10" itemprop="dateCreated datePublished" datetime="2020-01-09T14:38:39+08:00">2020-01-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="文章信息"><a href="#文章信息" class="headerlink" title="文章信息"></a>文章信息</h2><ul>
+<li>标题: VoxNet: A 3D Convolutional Neural Network for Real-Time Object Recognition</li>
+<li>关键词: voxel, 3D deep learning</li>
+<li>会议: IROS</li>
+<li>源码: official √<ul>
+<li><a href="https://github.com/MonteYang/VoxNet.pytorch" target="_blank" rel="noopener">我的复现: by PyTorch</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><h3 id="1-Plroblem"><a href="#1-Plroblem" class="headerlink" title="1. Plroblem"></a>1. Plroblem</h3><p>针对Voxel的3d物体识别/分类</p>
+<h3 id="2-Method"><a href="#2-Method" class="headerlink" title="2. Method"></a>2. Method</h3><p>将在视频领域取得一定效果的3D CNN用于Voxel的特征提取</p>
+<h4 id="Network-Structure"><a href="#Network-Structure" class="headerlink" title="Network Structure"></a>Network Structure</h4><p><img data-src="/images/3-VoxNet-Network.png" alt="" title="VoxNet-Network"></p>
+<h3 id="3-Experiment"><a href="#3-Experiment" class="headerlink" title="3. Experiment"></a>3. Experiment</h3><h4 id="3-1-Dataset"><a href="#3-1-Dataset" class="headerlink" title="3.1 Dataset"></a>3.1 Dataset</h4><p>3种数据集:</p>
+<ul>
+<li>LiDAR data - Sydney Urban Objects</li>
+<li>CAD data - ModelNet</li>
+<li>RGBD data - NYUv2</li>
+</ul>
+<h4 id="3-2-Implemention"><a href="#3-2-Implemention" class="headerlink" title="3.2 Implemention"></a>3.2 Implemention</h4><p>TODO:</p>
+<h3 id="4-Advantages"><a href="#4-Advantages" class="headerlink" title="4. Advantages"></a>4. Advantages</h3><ul>
+<li>表现性能超过了之前的 ShapeNet</li>
+<li>参数比 ShapeNet 少一些  <blockquote>
+<p>ShapeNet is a relatively large architecture, with over 12.4 million parameters, while VoxNet has less than 1 million.</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="5-Disadvantages"><a href="#5-Disadvantages" class="headerlink" title="5. Disadvantages"></a>5. Disadvantages</h3><ul>
+<li>计算性能受Voxel的分辨率限制: 当Voxel分辨率过高时,内存占用过高</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Ciss-Net/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Maonan Yang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MaonanYang's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Ciss-Net/" class="post-title-link" itemprop="url">论文阅读-Ciss-Net</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-09 14:28:22 / 修改时间：14:38:35" itemprop="dateCreated datePublished" datetime="2020-01-09T14:28:22+08:00">2020-01-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="文章信息"><a href="#文章信息" class="headerlink" title="文章信息"></a>文章信息</h2><ul>
+<li>标题: <a href="http://openaccess.thecvf.com/content_CVPR_2019/papers/Zhou_Context-Reinforced_Semantic_Segmentation_CVPR_2019_paper.pdf" target="_blank" rel="noopener">Context-Reinforced Semantic Segmentation(Ciss-Net)</a> </li>
+<li>关键词: reinforcement learning, image segmentation, context</li>
+<li>会议: CVPR 2019</li>
+<li>源码: √</li>
+</ul>
+<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><p>TODO</p>
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><h3 id="1-Plroblem"><a href="#1-Plroblem" class="headerlink" title="1. Plroblem"></a>1. Plroblem</h3><ul>
+<li>Context(上下文信息)在语义分割中至关重要, 挖掘图像中上下文信息</li>
+</ul>
+<h3 id="2-Method"><a href="#2-Method" class="headerlink" title="2. Method"></a>2. Method</h3><ul>
+<li>使用分割后的图片 p-maps 作为上下文信息的来源</li>
+<li>该项工作提出Context-Net -&gt; 更好的挖掘上下文信息</li>
+<li>将上下文信息的学习过程定义为马尔科夫决策问题(MDP), 使用强化学习方法进行优化</li>
+</ul>
+<h4 id="Network-Structure"><a href="#Network-Structure" class="headerlink" title="Network Structure"></a>Network Structure</h4><p><img data-src="/images/CissNet-Network.png" alt="Ciss_Net"></p>
+<ul>
+<li>Environment: <code>p-map</code></li>
+<li>Agent: <code>Context Net</code><ul>
+<li>State: ${Y_I}$</li>
+<li>Action: ${B_I}$</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-Experiment"><a href="#3-Experiment" class="headerlink" title="3. Experiment"></a>3. Experiment</h3><h4 id="3-1-Dataset"><a href="#3-1-Dataset" class="headerlink" title="3.1 Dataset"></a>3.1 Dataset</h4><ul>
+<li>ADE20K</li>
+<li>Cityscapes</li>
+<li>Pascal Context</li>
+</ul>
+<h4 id="3-2-Implemention"><a href="#3-2-Implemention" class="headerlink" title="3.2 Implemention"></a>3.2 Implemention</h4><p>TODO</p>
+<h4 id="3-3-Metric"><a href="#3-3-Metric" class="headerlink" title="3.3 Metric"></a>3.3 Metric</h4><h4 id="3-4-Ablation-Study"><a href="#3-4-Ablation-Study" class="headerlink" title="3.4 Ablation Study"></a>3.4 Ablation Study</h4><h4 id="3-5-Result"><a href="#3-5-Result" class="headerlink" title="3.5 Result"></a>3.5 Result</h4><!-- 
+### 4. Advantages (self-summary rather than the author's)
+
+### 5. Disadvantages (self-summary rather than the author's)
+-->
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -373,7 +576,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-01-09 11:02:40 / 修改时间：11:30:13" itemprop="dateCreated datePublished" datetime="2020-01-09T11:02:40+08:00">2020-01-09</time>
+              <time title="创建时间：2020-01-09 11:02:40 / 修改时间：14:31:27" itemprop="dateCreated datePublished" datetime="2020-01-09T11:02:40+08:00">2020-01-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -578,14 +781,12 @@ Templete
 
 ---分界线---
 
-| Name | keywords |
-| ---- | -------- |
-|      |          |
-
 ## 文章信息
+
 - 标题: 
+- 关键词: 
 - 会议: 
-- 源码: 
+- 源码: √
 
 ## 相关文章:
 > Related Work:
@@ -608,13 +809,11 @@ Templete
 
 #### 3.5 Result
 
-<!-- ### 4. Advantages (self-summary rather than the author's)
-- 将point的方法应用于Mesh的特征提取(空间提取, KC)
-
+<!-- 
+### 4. Advantages (self-summary rather than the author's)
 
 ### 5. Disadvantages (self-summary rather than the author's)
-- 空间特征提取 不仅考虑面的中心点, 可以加入中心点周围的三个点的信息, 可能会有所提升.
-- 当前面和周围三个面可能会有相似的特征.可否进行替换 -->
+-->
 
 
       
@@ -1202,186 +1401,6 @@ words = [&quot;word&quot;,&quot;good&quot;,&quot;best&quot;,&quot;word&quot;]
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2020/01/04/LeetCode-27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Maonan Yang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MaonanYang's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/04/LeetCode-27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" class="post-title-link" itemprop="url">LeetCode-27-移除元素</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-04 21:42:04" itemprop="dateCreated datePublished" datetime="2020-01-04T21:42:04+08:00">2020-01-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-08 10:18:35" itemprop="dateModified" datetime="2020-01-08T10:18:35+08:00">2020-01-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>给定一个数组 nums 和一个值 val，你需要<strong>原地</strong>移除所有数值等于 val 的元素，返回移除后数组的新长度。</p>
-<p>不要使用额外的数组空间，你必须在<strong>原地</strong>修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
-<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
-<p>示例 1:</p>
-<pre><code>给定 nums = [3,2,2,3], val = 3,
-
-函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。
-
-你不需要考虑数组中超出新长度后面的元素。</code></pre><p>示例 2:</p>
-<pre><code>给定 nums = [0,1,2,2,3,0,4,2], val = 2,
-
-函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。
-
-注意这五个元素可为任意顺序。
-
-你不需要考虑数组中超出新长度后面的元素。</code></pre><p>说明:</p>
-<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
-<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
-<p>你可以想象内部操作如下:</p>
-<pre><code>// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝
-int len = removeElement(nums, val);
-
-// 在函数里修改输入数组对于调用者是可见的。
-// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。
-for (int i = 0; i &lt; len; i++) {
-    print(nums[i]);
-}</code></pre><blockquote>
-<p>思路:<br>快慢指针</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeElement</span><span class="params">(self, nums: List[int], val: int)</span> -&gt; int:</span></span><br><span class="line">        j = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="comment"># 如果第i个元素等于目标值val, 跳过</span></span><br><span class="line">            <span class="keyword">if</span> nums[i] == val:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="comment"># 如果第i个元素不等于目标值val, 从头依次添加到原list中</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                nums[j] = nums[i]</span><br><span class="line">                j += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> j</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2020/01/04/LeetCode-25-k-%E4%B8%AA%E4%B8%80%E7%BB%84%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Maonan Yang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MaonanYang's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/04/LeetCode-25-k-%E4%B8%AA%E4%B8%80%E7%BB%84%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="post-title-link" itemprop="url">LeetCode-25-k-个一组翻转链表</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-04 21:42:03" itemprop="dateCreated datePublished" datetime="2020-01-04T21:42:03+08:00">2020-01-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-08 10:18:35" itemprop="dateModified" datetime="2020-01-08T10:18:35+08:00">2020-01-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>TODO</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1454,7 +1473,7 @@ for (int i = 0; i &lt; len; i++) {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1467,7 +1486,7 @@ for (int i = 0; i &lt; len; i++) {
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
