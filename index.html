@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
@@ -25,7 +25,7 @@
     scheme: 'Mist',
     version: '7.7.0',
     exturl: false,
-    sidebar: {"position":"right","width":300,"display":"always","padding":18,"offset":12,"onmobile":true},
+    sidebar: {"position":"right","width":300,"display":"post","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
@@ -144,17 +144,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">11</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">8</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">44</span></a>
 
   </li>
   </ul>
@@ -185,6 +185,169 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-MeshNet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Maonan Yang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MaonanYang's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-MeshNet/" class="post-title-link" itemprop="url">论文阅读-MeshNet</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-01-09 11:18:28 / 修改时间：14:26:11" itemprop="dateCreated datePublished" datetime="2020-01-09T11:18:28+08:00">2020-01-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="文章信息"><a href="#文章信息" class="headerlink" title="文章信息"></a>文章信息</h2><ul>
+<li>标题: (MeshNet) MeshNet: Mesh Neural Network for 3D Shape Representation</li>
+<li>关键词: Mesh, 3D shape classification/retrieval</li>
+<li>会议: AAAI 2018</li>
+<li>源码: √</li>
+</ul>
+<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><ul>
+<li>PoinNet</li>
+<li>KC-Net</li>
+</ul>
+<blockquote>
+<p>Related Work:</p>
+<ul>
+<li>Mesh Feature Extraction</li>
+<li>Deep Learning Methods for 3D Shape Representation<ul>
+<li>voxel-based</li>
+<li>view-based</li>
+<li>point-based</li>
+<li>fusion method</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><h3 id="1-Problem"><a href="#1-Problem" class="headerlink" title="1. Problem"></a>1. Problem</h3><ul>
+<li>直接对 Mesh 进行形状表示的学习</li>
+<li>应用于 3D shape classification/retrieval</li>
+</ul>
+<h3 id="2-Method"><a href="#2-Method" class="headerlink" title="2. Method"></a>2. Method</h3><ul>
+<li><p>将一个face视作一个单元</p>
+</li>
+<li><p>face的特征分为:</p>
+<ul>
+<li><strong>空间特征</strong></li>
+<li><strong>结构特征</strong></li>
+</ul>
+</li>
+<li><p>针对<strong>空间特征</strong>和<strong>结构特征</strong>分别提出:</p>
+<ul>
+<li>Spatial Descriptor<ul>
+<li>面的中心点作为输入</li>
+<li>采用与point cloud类似的处理方法</li>
+</ul>
+</li>
+<li>Structural Descriptor<ul>
+<li><strong>face rotate convolution</strong></li>
+<li><strong>face kernel correlation</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>整合空间特征和结构特征: 提出 Mesh Convolution</p>
+</li>
+</ul>
+<h4 id="Network-Structure"><a href="#Network-Structure" class="headerlink" title="Network Structure"></a>Network Structure</h4><p><img data-src="/images/MeshNet-Network.png" alt="MeshNet-Network"></p>
+<h3 id="3-Experiment"><a href="#3-Experiment" class="headerlink" title="3. Experiment"></a>3. Experiment</h3><h4 id="3-1-Dataset"><a href="#3-1-Dataset" class="headerlink" title="3.1 Dataset"></a>3.1 Dataset</h4><p>ModelNet40 </p>
+<ul>
+<li>for 3D classification/retrieval</li>
+<li>40类别</li>
+</ul>
+<h4 id="3-2-Implemention"><a href="#3-2-Implemention" class="headerlink" title="3.2 Implemention"></a>3.2 Implemention</h4><ul>
+<li>Mesh模型需先简化至<strong>不多于1024个面</strong>(以面为单位,类似PointNet中以点为单位)</li>
+<li>由于Mesh的面数不恒定, 随机选取填满1024个面 for batch training</li>
+<li>数据增强: 所有点按高斯分布进行随机平移: N(0, 0.01)</li>
+<li>for Classification:<ul>
+<li>global features 后添加 MLP(512, 256, 40): 40表示40个类别</li>
+<li>MLP的最后两层添加dropout层: drop概率为0.5</li>
+</ul>
+</li>
+<li>for Retrieval:<ul>
+<li>global features 直接计算 L2 距离</li>
+</ul>
+</li>
+<li>训练时的超参数: <ul>
+<li>SGD optimizer</li>
+<li>initial learning rate 0.01</li>
+<li>momentum 0.9</li>
+<li>weight decay 0.0005</li>
+<li>batch size 64.</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-3-Metric"><a href="#3-3-Metric" class="headerlink" title="3.3 Metric"></a>3.3 Metric</h4><ul>
+<li>Classification: Accuracy</li>
+<li>Retrieval: mAP</li>
+</ul>
+<h4 id="3-4-Ablation-Study"><a href="#3-4-Ablation-Study" class="headerlink" title="3.4 Ablation Study"></a>3.4 Ablation Study</h4><p>TODO:</p>
+<h4 id="3-5-Result"><a href="#3-5-Result" class="headerlink" title="3.5 Result"></a>3.5 Result</h4><p><img data-src="/images/MeshNet-exp-results.png" alt="实验结果" title="ModelNet实验结果"></p>
+<!-- ### 4. Advantages (self-summary rather than the author's)
+- 将point的方法应用于Mesh的特征提取(空间提取, KC)
+
+
+### 5. Disadvantages (self-summary rather than the author's)
+- 空间特征提取 不仅考虑面的中心点, 可以加入中心点周围的三个点的信息, 可能会有所提升.
+- 当前面和周围三个面可能会有相似的特征.可否进行替换 -->
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E8%AE%A1%E5%88%92/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -210,7 +373,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-01-09 11:02:40 / 修改时间：11:12:50" itemprop="dateCreated datePublished" datetime="2020-01-09T11:02:40+08:00">2020-01-09</time>
+              <time title="创建时间：2020-01-09 11:02:40 / 修改时间：11:30:13" itemprop="dateCreated datePublished" datetime="2020-01-09T11:02:40+08:00">2020-01-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -403,6 +566,56 @@
 - Learning Object Bounding Boxes for 3D Instance Segmentation on Point Clouds-论文链接-arxiv2019
 - Direct structural analysis of domains defined by point clouds-论文链接-arxiv2019
 - Learning Shape Representation on Sparse Point Clouds for Volumetric Image Segmentation-论文链接-MICCAI 2019 -->
+
+
+
+
+
+
+
+<!-- 
+Templete
+
+---分界线---
+
+| Name | keywords |
+| ---- | -------- |
+|      |          |
+
+## 文章信息
+- 标题: 
+- 会议: 
+- 源码: 
+
+## 相关文章:
+> Related Work:
+
+## Note
+
+### 1. Plroblem
+
+### 2. Method
+#### Network Structure
+
+### 3. Experiment
+#### 3.1 Dataset
+
+#### 3.2 Implemention
+
+#### 3.3 Metric
+
+#### 3.4 Ablation Study
+
+#### 3.5 Result
+
+<!-- ### 4. Advantages (self-summary rather than the author's)
+- 将point的方法应用于Mesh的特征提取(空间提取, KC)
+
+
+### 5. Disadvantages (self-summary rather than the author's)
+- 空间特征提取 不仅考虑面的中心点, 可以加入中心点周围的三个点的信息, 可能会有所提升.
+- 当前面和周围三个面可能会有相似的特征.可否进行替换 -->
+
 
       
     </div>
@@ -1169,92 +1382,6 @@ for (int i = 0; i &lt; len; i++) {
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2020/01/04/LeetCode-23-%E5%90%88%E5%B9%B6k%E4%B8%AA%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Maonan Yang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MaonanYang's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/04/LeetCode-23-%E5%90%88%E5%B9%B6k%E4%B8%AA%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8/" class="post-title-link" itemprop="url">LeetCode-23-合并k个排序链表</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-04 21:42:02" itemprop="dateCreated datePublished" datetime="2020-01-04T21:42:02+08:00">2020-01-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-08 10:18:35" itemprop="dateModified" datetime="2020-01-08T10:18:35+08:00">2020-01-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。</p>
-<p>示例:</p>
-<pre><code>输入:
-[
-1-&gt;4-&gt;5,
-1-&gt;3-&gt;4,
-2-&gt;6
-]
-输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</code></pre><blockquote>
-<p>思路:<br>先对所有链表结点中的value进行排序,然后根据排序后的value生成一个长链表.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mergeKLists</span><span class="params">(self, lists: List[ListNode])</span> -&gt; ListNode:</span></span><br><span class="line">        <span class="comment"># 特殊情况: lists为空</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> lists: <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">        <span class="comment"># 对所有val进行排序</span></span><br><span class="line">        val_all = []</span><br><span class="line">        <span class="keyword">for</span> node <span class="keyword">in</span> lists:</span><br><span class="line">            <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">                <span class="keyword">if</span> node:</span><br><span class="line">                    val_all.append(node.val)</span><br><span class="line">                    node = node.next</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        val_all = sorted(val_all)</span><br><span class="line">        <span class="comment"># 生成整个链表</span></span><br><span class="line">        head = ListNode(<span class="string">'#'</span>)</span><br><span class="line">        node = head</span><br><span class="line">        <span class="keyword">for</span> v <span class="keyword">in</span> val_all:</span><br><span class="line">            node.next = ListNode(v)</span><br><span class="line">            node = node.next</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> head.next</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1327,7 +1454,7 @@ for (int i = 0; i &lt; len; i++) {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1340,7 +1467,7 @@ for (int i = 0; i &lt; len; i++) {
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
