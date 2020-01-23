@@ -22,10 +22,10 @@
   var CONFIG = {
     hostname: new URL('http://monteyang.github.io').hostname,
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Pisces',
     version: '7.7.0',
     exturl: false,
-    sidebar: {"position":"left","width":300,"display":"always","padding":18,"offset":12,"onmobile":false},
+    sidebar: {"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},
     copycode: {"enable":true,"show_result":true,"style":"flat"},
     back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
@@ -56,11 +56,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://monteyang.github.io/images/PointNet-Network.png">
 <meta property="article:published_time" content="2020-01-09T06:56:01.000Z">
-<meta property="article:modified_time" content="2020-01-09T07:12:03.633Z">
+<meta property="article:modified_time" content="2020-01-21T13:28:57.774Z">
 <meta property="article:author" content="Monte Yang">
-<meta property="article:tag" content="reinforcement learning">
 <meta property="article:tag" content="论文阅读">
-<meta property="article:tag" content="image segmentation">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://monteyang.github.io/images/PointNet-Network.png">
 
@@ -162,7 +160,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">49</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">51</span></a>
 
   </li>
   </ul>
@@ -211,10 +209,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-01-09 14:56:01 / 修改时间：15:12:03" itemprop="dateCreated datePublished" datetime="2020-01-09T14:56:01+08:00">2020-01-09</time>
+              <time title="创建时间：2020-01-09 14:56:01" itemprop="dateCreated datePublished" datetime="2020-01-09T14:56:01+08:00">2020-01-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-21 21:28:57" itemprop="dateModified" datetime="2020-01-21T21:28:57+08:00">2020-01-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -247,26 +251,25 @@
 <h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><h3 id="1-Plroblem"><a href="#1-Plroblem" class="headerlink" title="1. Plroblem"></a>1. Plroblem</h3><ul>
 <li>直接对点云进行学习 =&gt; 实现分类/分割</li>
 </ul>
-<h3 id="2-Method"><a href="#2-Method" class="headerlink" title="2. Method"></a>2. Method</h3><ul>
-<li><p>点云三大特性:</p>
 <ul>
-<li>无序性: 所有点无次序</li>
-<li>点与点之间的关系: 点与neighbor之间存在局部的结构关系</li>
-<li>变换的不变性: 旋转/平移等不改变点云模型的整体类别和局部分割类别</li>
+<li>针对点云的深度学习算法需满足的特性:<ul>
+<li><strong>无序性</strong>: 所有点无次序</li>
+<li><strong>点与点之间的关系</strong>: 点与neighbor之间存在局部的结构关系</li>
+<li><strong>变换下的不变性</strong>: 旋转/平移等不改变点云模型的整体类别和局部分割类别</li>
 </ul>
 </li>
-<li><p>提取点云的全局/局部特征</p>
-<ul>
+</ul>
+<h3 id="2-Method"><a href="#2-Method" class="headerlink" title="2. Method"></a>2. Method</h3><ul>
+<li>提取点云的全局/局部特征<ul>
 <li>全局特征: 表示形状类别的特征</li>
 <li>局部特征: 每个点的特征</li>
 </ul>
 </li>
-<li><p>T-Net: 将所有点对齐到一个规范空间中</p>
-</li>
-<li><p>用对称函数 MaxPooling: 解决点云的无序性</p>
-</li>
-<li><p>对于Segmentation: 局部特征 + 全局特征 (Aggregation)</p>
-</li>
+</ul>
+<ul>
+<li>T-Net: 将所有点对齐到一个规范空间中</li>
+<li>用<strong>对称函数</strong> MaxPooling: 解决点云的无序性</li>
+<li>对于Segmentation: 局部特征 + 全局特征 (Aggregation)</li>
 </ul>
 <h4 id="Network-Structure"><a href="#Network-Structure" class="headerlink" title="Network Structure"></a>Network Structure</h4><p><img data-src="/images/PointNet-Network.png" alt="Network" title="PointNet"></p>
 <ul>
@@ -294,7 +297,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="4-Disadvantages-self-summary-rather-than-the-author’s"><a href="#4-Disadvantages-self-summary-rather-than-the-author’s" class="headerlink" title="4. Disadvantages (self-summary rather than the author’s)"></a>4. Disadvantages (self-summary rather than the author’s)</h3><p>未充分挖掘局部结构特征</p>
+<h3 id="4-Disadvantages"><a href="#4-Disadvantages" class="headerlink" title="4. Disadvantages"></a>4. Disadvantages</h3><p>未充分挖掘局部结构特征</p>
 
     </div>
 
@@ -321,9 +324,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/reinforcement-learning/" rel="tag"># reinforcement learning</a>
               <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag"># 论文阅读</a>
-              <a href="/tags/image-segmentation/" rel="tag"># image segmentation</a>
           </div>
 
         
@@ -398,7 +399,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PointNet-Deep-Learning-on-Point-Sets-for-3D-Classification-and-Segmentation"><span class="nav-text">PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-text">Note</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Plroblem"><span class="nav-text">1. Plroblem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Method"><span class="nav-text">2. Method</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Network-Structure"><span class="nav-text">Network Structure</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Experiment"><span class="nav-text">3. Experiment</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Dataset"><span class="nav-text">3.1 Dataset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Implemention"><span class="nav-text">3.2 Implemention</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Metric"><span class="nav-text">3.3 Metric</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Disadvantages-self-summary-rather-than-the-author’s"><span class="nav-text">4. Disadvantages (self-summary rather than the author’s)</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PointNet-Deep-Learning-on-Point-Sets-for-3D-Classification-and-Segmentation"><span class="nav-text">PointNet: Deep Learning on Point Sets for 3D Classification and Segmentation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-text">Note</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Plroblem"><span class="nav-text">1. Plroblem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Method"><span class="nav-text">2. Method</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Network-Structure"><span class="nav-text">Network Structure</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Experiment"><span class="nav-text">3. Experiment</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Dataset"><span class="nav-text">3.1 Dataset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Implemention"><span class="nav-text">3.2 Implemention</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Metric"><span class="nav-text">3.3 Metric</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Disadvantages"><span class="nav-text">4. Disadvantages</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -414,7 +415,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -484,7 +485,7 @@
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  <div class="theme-info">主题 – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.0
   </div>
 
         
@@ -502,6 +503,7 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
@@ -514,10 +516,67 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.getAttribute('pjax') !== null) {
+      element.setAttribute('pjax', '');
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
 
 
 
@@ -538,6 +597,7 @@
 
 
 
+    <div id="pjax">
   
 
   
@@ -554,5 +614,6 @@
       });
   </script>
 
+    </div>
 </body>
 </html>

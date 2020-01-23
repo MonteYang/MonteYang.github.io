@@ -47,20 +47,20 @@
   };
 </script>
 
-  <meta name="description" content="聚类方法涉及的两个问题 评价指标 外部指标: 聚类的结果具有某个参考模型作为人为基准进行比较 内部指标: 直接考察聚类结果而不参考任何模型   距离计算  TODO: …">
+  <meta name="description" content="题目给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 你可以假设数组中无重复元素。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ML-k-means">
-<meta property="og:url" content="http://monteyang.github.io/2019/12/16/ML-k-means/index.html">
+<meta property="og:title" content="LeetCode-35-搜索插入位置">
+<meta property="og:url" content="http://monteyang.github.io/2020/01/21/LeetCode-35-%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="MonteYang&#39;s Blog">
-<meta property="og:description" content="聚类方法涉及的两个问题 评价指标 外部指标: 聚类的结果具有某个参考模型作为人为基准进行比较 内部指标: 直接考察聚类结果而不参考任何模型   距离计算  TODO: …">
+<meta property="og:description" content="题目给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。 你可以假设数组中无重复元素。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-12-16T14:05:58.000Z">
-<meta property="article:modified_time" content="2020-01-08T02:18:35.299Z">
+<meta property="article:published_time" content="2020-01-21T07:33:32.000Z">
+<meta property="article:modified_time" content="2020-01-21T07:55:17.144Z">
 <meta property="article:author" content="Monte Yang">
-<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="LeetCode">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://monteyang.github.io/2019/12/16/ML-k-means/">
+<link rel="canonical" href="http://monteyang.github.io/2020/01/21/LeetCode-35-%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/">
 
 
 <script id="page-configurations">
@@ -72,7 +72,7 @@
   };
 </script>
 
-  <title>ML-k-means | MonteYang's Blog</title>
+  <title>LeetCode-35-搜索插入位置 | MonteYang's Blog</title>
   
 
 
@@ -185,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2019/12/16/ML-k-means/">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2020/01/21/LeetCode-35-%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -198,7 +198,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          ML-k-means
+          LeetCode-35-搜索插入位置
         </h1>
 
         <div class="post-meta">
@@ -207,24 +207,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-12-16 22:05:58" itemprop="dateCreated datePublished" datetime="2019-12-16T22:05:58+08:00">2019-12-16</time>
+              <time title="创建时间：2020-01-21 15:33:32 / 修改时间：15:55:17" itemprop="dateCreated datePublished" datetime="2020-01-21T15:33:32+08:00">2020-01-21</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-08 10:18:35" itemprop="dateModified" datetime="2020-01-08T10:18:35+08:00">2020-01-08</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
             </span>
@@ -240,15 +234,27 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="聚类方法涉及的两个问题"><a href="#聚类方法涉及的两个问题" class="headerlink" title="聚类方法涉及的两个问题"></a>聚类方法涉及的两个问题</h2><ul>
-<li>评价指标<ul>
-<li>外部指标: 聚类的结果具有某个参考模型作为人为基准进行比较</li>
-<li>内部指标: 直接考察聚类结果而不参考任何模型</li>
-</ul>
-</li>
-<li>距离计算</li>
-</ul>
-<p>TODO: …</p>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
+<p>你可以假设数组中无重复元素。</p>
+<a id="more"></a>
+
+
+<p>示例 1:</p>
+<pre><code>输入: [1,3,5,6], 5
+输出: 2</code></pre><p>示例 2:</p>
+<pre><code>输入: [1,3,5,6], 2
+输出: 1</code></pre><p>示例 3:</p>
+<pre><code>输入: [1,3,5,6], 7
+输出: 4</code></pre><p>示例 4:</p>
+<pre><code>输入: [1,3,5,6], 0
+输出: 0</code></pre><h1 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h1><blockquote>
+<p><strong>思路</strong></p>
+<ol>
+<li>扫一次, 若当前值小于 <code>target</code>, 则跳过; 若当前值大于等于 <code>target</code>, 则返回当前索引</li>
+<li>若所有元素都小于 <code>target</code>, 则返回<code>(最大索引+1)</code></li>
+</ol>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchInsert</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">for</span> i, num <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">            <span class="keyword">if</span> num &lt; target:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> i</span><br><span class="line">        <span class="keyword">return</span> len(nums)</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -264,7 +270,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://monteyang.github.io/2019/12/16/ML-k-means/" title="ML-k-means">http://monteyang.github.io/2019/12/16/ML-k-means/</a>
+    <a href="http://monteyang.github.io/2020/01/21/LeetCode-35-%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/" title="LeetCode-35-搜索插入位置">http://monteyang.github.io/2020/01/21/LeetCode-35-搜索插入位置/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -275,7 +281,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"># 机器学习</a>
+              <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           </div>
 
         
@@ -284,12 +290,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/12/16/Python-slot-%E6%96%B9%E6%B3%95/" rel="prev" title="Python-__slot__方法">
-      <i class="fa fa-chevron-left"></i> Python-__slot__方法
+    <a href="/2020/01/19/LeetCode-33-%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/" rel="prev" title="LeetCode-33-搜索旋转排序数组">
+      <i class="fa fa-chevron-left"></i> LeetCode-33-搜索旋转排序数组
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/12/17/LeetCode-1-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" rel="next" title="LeetCode-1-两数之和">
-      LeetCode-1-两数之和 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/01/21/LeetCode-36-%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E7%8B%AC/" rel="next" title="LeetCode-36-有效的数独">
+      LeetCode-36-有效的数独 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -350,7 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#聚类方法涉及的两个问题"><span class="nav-text">聚类方法涉及的两个问题</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解答"><span class="nav-text">解答</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -560,7 +566,7 @@ window.addEventListener('pjax:success', () => {
       quicklink({
         timeout: 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.github.io/2019/12/16/ML-k-means/',]
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.github.io/2020/01/21/LeetCode-35-%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/',]
       });
       });
   </script>
