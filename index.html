@@ -227,7 +227,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-09 02:27:44" itemprop="dateModified" datetime="2020-02-09T02:27:44+08:00">2020-02-09</time>
+                <time title="修改时间：2020-02-09 14:23:01" itemprop="dateModified" datetime="2020-02-09T14:23:01+08:00">2020-02-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -235,8 +235,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">强化学习</span>
+                  <a href="/categories/Reinforcement-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Reinforcement Learning</span>
                   </a>
                 </span>
             </span>
@@ -273,9 +273,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><p>强化学习是智能体(Agent)与环境(Environment)不断交互, 不断提高自己的决策能力的过程. </p>
-<p>环境(Environment)会给智能体(Agent)一个观测值(Observation)(<em>全观测时,状态state和observation等价)</em>, 智能体接收到环境给的观测值之后会做出一个动作(Action), 这个动作给予一个奖励(Reward), 以及给出一个新的观测值. 智能体根据环境给予的奖励值去更新自己的策略(Policy). </p>
-<p>强化学习的<strong>目的就是为了得到最优的策略</strong>. </p>
+          <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h1><p>强化学习是智能体（Agent）与环境（Environment）不断交互, 不断提高自己的决策能力的过程. </p>
+<ul>
+<li>面向智能体的学习——通过与环境进行交互<ul>
+<li>所学习的<strong>样本</strong>来自于<strong>与环境的交互</strong>。而非像传统机器学习的样本是现有的。</li>
+</ul>
+</li>
+<li>通过<strong>试错和优化</strong>进行学习——用试错后的<strong>奖励（或惩罚）</strong>来学习</li>
+</ul>
+<blockquote>
+<p><strong>总体过程</strong>：环境（Environment）会给智能体（Agent）一个观测值（Observation）（<em>全观测时,状态state和observation等价）</em>, 智能体接收到环境给的观测值之后会做出一个动作（Action）, 这个动作给予一个奖励（Reward）, 以及给出一个新的观测值. 智能体根据环境给予的奖励值去更新自己的策略（Policy）. </p>
+</blockquote>
+<p>强化学习的<strong>目的</strong> <em>就是为了得到最优的策略</em>. </p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/12/16/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/#more" rel="contents">
