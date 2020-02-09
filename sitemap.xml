@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://monteyang.github.io/about/index.html</loc>
+    
+    <lastmod>2020-02-09T04:24:57.044Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://monteyang.github.io/tags/index.html</loc>
     
     <lastmod>2020-02-09T03:30:30.576Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://monteyang.github.io/2019/12/16/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</loc>
     
     <lastmod>2020-02-08T18:27:44.699Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://monteyang.github.io/about/index.html</loc>
-    
-    <lastmod>2020-02-08T18:16:00.159Z</lastmod>
     
   </url>
   

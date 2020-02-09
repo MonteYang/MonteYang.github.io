@@ -38,7 +38,7 @@
     fancybox: true,
     mediumzoom: true,
     lazyload: true,
-    pangu: false,
+    pangu: true,
     comments: {"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},
     algolia: {
       appID: '',
@@ -1073,17 +1073,6 @@ Templete
   </div>
 
 
-  <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title">
-      <i class="fa fa-fw fa-link"></i>
-      Links
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <a href="https://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E8%AE%A1%E5%88%92/" title="https:&#x2F;&#x2F;monteyang.github.io&#x2F;2020&#x2F;01&#x2F;09&#x2F;论文阅读计划&#x2F;">Paper Reading Plan</a>
-        </li>
-    </ul>
-  </div>
 
       </div>
 
@@ -1097,7 +1086,10 @@ Templete
 
     <footer class="footer">
       <div class="footer-inner">
-        
+        <script
+  async
+  src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"
+></script>
 
 <div class="copyright">
   
@@ -1108,13 +1100,28 @@ Templete
   </span>
   <span class="author" itemprop="copyrightHolder">Monte Yang</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.7.0
-  </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        本站访客数：<span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        本站总访问量：<span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -1133,6 +1140,7 @@ Templete
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
