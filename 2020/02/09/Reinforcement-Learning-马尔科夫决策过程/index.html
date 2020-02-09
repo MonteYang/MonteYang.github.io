@@ -53,24 +53,26 @@
   };
 </script>
 
-  <meta name="description" content="MeshNet: Mesh Neural Network for 3D Shape Representation 关键词: Mesh, 3D shape classification&#x2F;retrieval 会议: AAAI 2018 源码: √">
+  <meta name="description" content="概述马尔可夫决策过程（Markov Decision Processes, MDPs）是对强化学习问题的数学描述。  要求环境是全观测的。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="论文阅读-MeshNet">
-<meta property="og:url" content="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-MeshNet/index.html">
+<meta property="og:title" content="Reinforcement-Learning-马尔可夫决策过程">
+<meta property="og:url" content="http://monteyang.github.io/2020/02/09/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/index.html">
 <meta property="og:site_name" content="MonteYang&#39;s Blog">
-<meta property="og:description" content="MeshNet: Mesh Neural Network for 3D Shape Representation 关键词: Mesh, 3D shape classification&#x2F;retrieval 会议: AAAI 2018 源码: √">
+<meta property="og:description" content="概述马尔可夫决策过程（Markov Decision Processes, MDPs）是对强化学习问题的数学描述。  要求环境是全观测的。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://monteyang.github.io/images/MeshNet-Network.png">
-<meta property="og:image" content="http://monteyang.github.io/images/MeshNet-exp-results.png">
-<meta property="article:published_time" content="2020-01-09T03:18:28.000Z">
-<meta property="article:modified_time" content="2020-02-08T17:03:34.312Z">
+<meta property="og:image" content="http://monteyang.github.io/2020/02/09/images/RL-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E4%BE%8B%E5%AD%90.png">
+<meta property="og:image" content="http://monteyang.github.io/2020/02/09/images/RL-MRPs%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B.png">
+<meta property="og:image" content="http://monteyang.github.io/2020/02/09/images/RL-MRP%E8%A7%A3%E8%B4%9D%E5%B0%94%E6%9B%BC.png">
+<meta property="og:image" content="http://monteyang.github.io/2020/02/09/images/RL-MDP%E7%AD%96%E7%95%A5%E5%88%86%E5%B8%83.png">
+<meta property="og:image" content="http://monteyang.github.io/2020/02/09/images/RL-%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%AD%96%E7%95%A5.png">
+<meta property="article:published_time" content="2020-02-09T15:09:10.356Z">
+<meta property="article:modified_time" content="2020-02-09T15:09:10.356Z">
 <meta property="article:author" content="Monte Yang">
-<meta property="article:tag" content="论文阅读">
-<meta property="article:tag" content="Mesh">
+<meta property="article:tag" content="Reinforcement Learning">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://monteyang.github.io/images/MeshNet-Network.png">
+<meta name="twitter:image" content="http://monteyang.github.io/2020/02/09/images/RL-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E4%BE%8B%E5%AD%90.png">
 
-<link rel="canonical" href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-MeshNet/">
+<link rel="canonical" href="http://monteyang.github.io/2020/02/09/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">
 
 
 <script id="page-configurations">
@@ -82,7 +84,7 @@
   };
 </script>
 
-  <title>论文阅读-MeshNet | MonteYang's Blog</title>
+  <title>Reinforcement-Learning-马尔可夫决策过程 | MonteYang's Blog</title>
   
 
 
@@ -205,7 +207,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-MeshNet/">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2020/02/09/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -218,7 +220,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          论文阅读-MeshNet
+          Reinforcement-Learning-马尔可夫决策过程
         </h1>
 
         <div class="post-meta">
@@ -228,35 +230,22 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-01-09 11:18:28" itemprop="dateCreated datePublished" datetime="2020-01-09T11:18:28+08:00">2020-01-09</time>
+              <time title="创建时间：2020-02-09 23:09:10" itemprop="dateCreated datePublished" datetime="2020-02-09T23:09:10+08:00">2020-02-09</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-09 01:03:34" itemprop="dateModified" datetime="2020-02-09T01:03:34+08:00">2020-02-09</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">论文阅读</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
+                  <a href="/categories/Reinforcement-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Reinforcement Learning</span>
                   </a>
                 </span>
             </span>
 
           
-            <span id="/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-MeshNet/" class="post-meta-item leancloud_visitors" data-flag-title="论文阅读-MeshNet" title="阅读次数">
+            <span id="/2020/02/09/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/" class="post-meta-item leancloud_visitors" data-flag-title="Reinforcement-Learning-马尔可夫决策过程" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -271,8 +260,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-MeshNet/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-MeshNet/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/02/09/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/02/09/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -287,101 +276,145 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="MeshNet-Mesh-Neural-Network-for-3D-Shape-Representation"><a href="#MeshNet-Mesh-Neural-Network-for-3D-Shape-Representation" class="headerlink" title="MeshNet: Mesh Neural Network for 3D Shape Representation"></a>MeshNet: Mesh Neural Network for 3D Shape Representation</h2><ul>
-<li>关键词: Mesh, 3D shape classification/retrieval</li>
-<li>会议: AAAI 2018</li>
-<li>源码: √</li>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>马尔可夫决策过程（Markov Decision Processes, MDPs）是对强化学习问题的数学描述。</p>
+<ul>
+<li>要求环境是<strong>全观测</strong>的。</li>
 </ul>
 <a id="more"></a>
 
-<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><ul>
-<li>PoinNet</li>
-<li>KC-Net</li>
+<h2 id="马尔可夫性"><a href="#马尔可夫性" class="headerlink" title="马尔可夫性"></a>马尔可夫性</h2><blockquote>
+<p>“只要知道现在，将来和过去是条件独立的，可以抛去过去所有的信息。”</p>
+</blockquote>
+<p>定义：如果在t时刻的状态$S_t$满足下式，则这个状态被称为<strong>马尔科夫状态</strong>，即该状态满足马尔科夫性</p>
+<p>$$ P[S_{t+1}|S_{t}] = P[S_{t+1}|S_1, …, S_t] $$</p>
+<p>注：</p>
+<ul>
+<li>状态$S_t$包含了所有历史相关信息，即之前的信息都可以在该状态上体现出来</li>
+<li>所以要求环境是全观测的，(如果是部分观测的话，状态信息有缺失)。</li>
+<li><strong>是否满足马尔可夫性与状态的定义息息相关</strong></li>
+</ul>
+<p>例子：</p>
+<ul>
+<li>下棋</li>
+<li>俄罗斯方块</li>
+</ul>
+<p>有了马尔可夫状态之后：</p>
+<ul>
+<li>定义状态转移矩阵</li>
+<li>忽略时间的影响</li>
+</ul>
+<hr>
+<h2 id="状态转移矩阵"><a href="#状态转移矩阵" class="headerlink" title="状态转移矩阵"></a>状态转移矩阵</h2><p>状态转移概率指从一个马尔可夫状态 s 跳转到后继状态 (successor<br>state) s′ 的概率。</p>
+<p>$$<br>\mathcal{P}<em>{ss^{‘}} = \mathbb{P}[S</em>{t+1}=s’|S_t=s]<br>$$</p>
+<p>若状态是<strong>离散</strong>的（有限个）：<br>所有的状态组成行，所有后继状态组成列，得到状态转移矩阵</p>
+<p>$$\mathcal{P} =<br>\begin{bmatrix}<br>\mathcal{P}<em>{11} &amp; … &amp; \mathcal{P}</em>{1n}\<br>… &amp;…&amp; …\<br>\mathcal{P}<em>{n1} &amp;…&amp; \mathcal{P}</em>{nn}<br>\end{bmatrix}$$</p>
+<ul>
+<li>$n$为状态个数 </li>
+<li>每行元素相加为1</li>
+</ul>
+<p>若状态是<strong>连续</strong>的，即无限个状态，适合用本节最上式的函数形式表示。</p>
+<ul>
+<li>此时，$\int_{s’}\mathcal{P}(s’|s)=1$</li>
+</ul>
+<hr>
+<h1 id="马尔可夫过程"><a href="#马尔可夫过程" class="headerlink" title="马尔可夫过程"></a>马尔可夫过程</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>一个马尔可夫过程 (Markov process, MP) 是一个无记忆的随机过程，即一些马尔可夫状态的序列。</p>
+<p>马尔可夫过程可由一个二元组来定义 $&lt;S,\mathcal{P}&gt;$</p>
+<ul>
+<li>$S$：代表状态集合</li>
+<li>$\mathcal{P}$：代表状态转移矩阵</li>
 </ul>
 <blockquote>
-<p>Related Work:</p>
-<ul>
-<li>Mesh Feature Extraction</li>
-<li>Deep Learning Methods for 3D Shape Representation<ul>
-<li>voxel-based</li>
-<li>view-based</li>
-<li>point-based</li>
-<li>fusion method</li>
-</ul>
-</li>
-</ul>
+<p>通常假设$\mathcal{P}$是存在且稳定的<br>当$\mathcal{P}$不稳定时，采用在线学习、快速学习等方法</p>
 </blockquote>
-<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><h3 id="1-Problem"><a href="#1-Problem" class="headerlink" title="1. Problem"></a>1. Problem</h3><ul>
-<li>直接对 Mesh 进行形状表示的学习</li>
-<li>应用于 3D shape classification/retrieval</li>
-</ul>
-<h3 id="2-Method"><a href="#2-Method" class="headerlink" title="2. Method"></a>2. Method</h3><ul>
-<li><p>将一个face视作一个单元</p>
-</li>
-<li><p>face的特征分为:</p>
+<h2 id="马尔可夫过程的例子"><a href="#马尔可夫过程的例子" class="headerlink" title="马尔可夫过程的例子"></a>马尔可夫过程的例子</h2><p><img data-src="../images/RL-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E4%BE%8B%E5%AD%90.png" alt="马尔可夫链"></p>
 <ul>
-<li><strong>空间特征</strong></li>
-<li><strong>结构特征</strong></li>
+<li>马尔可夫过程中的终止状态有2种：<ul>
+<li>时间终止</li>
+<li>状态终止</li>
 </ul>
 </li>
-<li><p>针对<strong>空间特征</strong>和<strong>结构特征</strong>分别提出:</p>
+</ul>
+<h2 id="片段（Episode）"><a href="#片段（Episode）" class="headerlink" title="片段（Episode）"></a>片段（Episode）</h2><p>定义： 强化学习中，从初始状态 $S_1$ 到终止状态 $S_T$ 的序列过程。</p>
+<p>$$S_1, S_2, …, S_T$$</p>
+<hr>
+<h1 id="马尔可夫奖励过程"><a href="#马尔可夫奖励过程" class="headerlink" title="马尔可夫奖励过程"></a>马尔可夫奖励过程</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>在马尔可夫过程的基础上，<strong>在转移关系中赋予不同的奖励值</strong>，即得到马尔可夫奖励过程。</p>
+<p>马尔可夫奖励 (Markov Reward Process, MRP) 过程由一个四元组组成 $⟨S, \mathcal{P}, \mathcal{R}, γ⟩$</p>
 <ul>
-<li>Spatial Descriptor<ul>
-<li>面的中心点作为输入</li>
-<li>采用与point cloud类似的处理方法</li>
+<li>S：状态集合</li>
+<li>$\mathcal{P}$：状态转移矩阵</li>
+<li>$\mathcal{R}$：奖励函数， $\mathcal{R}(s)$ 描述了在状态 s 的奖励，$\mathcal{R}(s) = E [\mathcal{R}_{t+1}|S_t = s]$</li>
+<li>$γ$：衰减因子</li>
 </ul>
-</li>
-<li>Structural Descriptor<ul>
-<li><strong>face rotate convolution</strong></li>
-<li><strong>face kernel correlation</strong></li>
+<h2 id="回报值"><a href="#回报值" class="headerlink" title="回报值"></a>回报值</h2><ul>
+<li>奖励值：对一个<strong>状态</strong>的评价</li>
+<li>回报值：对一个<strong>片段</strong>的评价</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>整合空间特征和结构特征: 提出 Mesh Convolution</p>
-</li>
-</ul>
-<h4 id="Network-Structure"><a href="#Network-Structure" class="headerlink" title="Network Structure"></a>Network Structure</h4><p><img data-src="/images/MeshNet-Network.png" alt="MeshNet-Network"></p>
-<h3 id="3-Experiment"><a href="#3-Experiment" class="headerlink" title="3. Experiment"></a>3. Experiment</h3><h4 id="3-1-Dataset"><a href="#3-1-Dataset" class="headerlink" title="3.1 Dataset"></a>3.1 Dataset</h4><p>ModelNet40 </p>
+<p>回报值（return $G_t$）是从时间t处开始的累积衰减奖励</p>
+<p>$$G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + …$$</p>
+<h2 id="MRPs中的值函数"><a href="#MRPs中的值函数" class="headerlink" title="MRPs中的值函数"></a>MRPs中的值函数</h2><blockquote>
+<p>为什么要值函数？<br>回报值是一个片段的结果，存在很大的样本偏差<br>回报值的角标是 t，值函数关注的是状态 s</p>
+</blockquote>
+<p>一个 MRP 的值函数如下定义<br>$$v(s) = \mathbb{E}[G_t|S_t = s]$$</p>
+<p>这里的值函数针对的是状态 s，所以称为<strong>状态值函数</strong>，又称 V 函数</p>
+<h2 id="MRPs中的贝尔曼方程（重点）"><a href="#MRPs中的贝尔曼方程（重点）" class="headerlink" title="MRPs中的贝尔曼方程（重点）"></a>MRPs中的贝尔曼方程（重点）</h2><p>$$\begin{aligned}</p>
+<p>v(s)&amp;=\mathbb{E}[G_t|S_t=s] \<br>    &amp;=\mathbb{E}[ R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + …|S_t=s] \<br>    &amp;=\mathbb{E}[ R_{t+1} + \gamma G_{t+1} | S_t=s ] \<br>    &amp;=\mathbb{E}[ R_{t+1} + \gamma v(S_{t+1}) | S_t=s ]</p>
+<p>\end{aligned}$$</p>
+<p>当前状态的值函数包括两部分：</p>
 <ul>
-<li>for 3D classification/retrieval</li>
-<li>40类别</li>
+<li>第一项：瞬时奖励 $R_{t+1}$</li>
+<li>第二项：后继状态 $S_{t+1}$ 的值函数乘衰减系数</li>
 </ul>
-<h4 id="3-2-Implemention"><a href="#3-2-Implemention" class="headerlink" title="3.2 Implemention"></a>3.2 Implemention</h4><ul>
-<li>Mesh模型需先简化至<strong>不多于1024个面</strong>(以面为单位,类似PointNet中以点为单位)</li>
-<li>由于Mesh的面数不恒定, 随机选取填满1024个面 for batch training</li>
-<li>数据增强: 所有点按高斯分布进行随机平移: N(0, 0.01)</li>
-<li>for Classification:<ul>
-<li>global features 后添加 MLP(512, 256, 40): 40表示40个类别</li>
-<li>MLP的最后两层添加dropout层: drop概率为0.5</li>
+<p>如果已知转移矩阵 $P$，那么<br>$$\begin{aligned}<br>v(s) &amp;= \mathbb{E} [R_{t+1} + γv(S_{t+1}) | S_t = s] \<br>    &amp;= \mathbb{E} [Rt+1jSt = s] + γ \mathbb{E}[v(S_{t+1})|S_t = s] \<br>    &amp;= \mathcal{R}(s) + γ ∑\mathcal{P}_{ss^′}v(s^′)<br>\end{aligned}<br>$$</p>
+<p>矩阵-向量形式为：</p>
+<p>$$v = \mathcal{R} + \gamma \mathcal{P} v$$</p>
+<p><img data-src="../images/RL-MRPs%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B.png" alt=""></p>
+<p>本质上是一个线性方程，可以直接解：</p>
+<p><img data-src="../images/RL-MRP%E8%A7%A3%E8%B4%9D%E5%B0%94%E6%9B%BC.png" alt=""></p>
+<p>直接求解只适用于小型MRPs：</p>
+<ul>
+<li>计算复杂度$O(n^3)$</li>
+<li>要求已知 $\mathcal{P}$</li>
+</ul>
+<hr>
+<h1 id="马尔可夫决策过程"><a href="#马尔可夫决策过程" class="headerlink" title="马尔可夫决策过程"></a>马尔可夫决策过程</h1><p>在 MRP 中引入决策即得到了马尔可夫决策过程（Markov Decision Processes, MDPs）</p>
+<h2 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h2><p>一个马尔可夫决策过程 (MDPs) 由一个五元组构成 $⟨S, \mathcal{A}, \mathcal{P}, \mathcal{R}, γ⟩$</p>
+<ul>
+<li><p>$\mathcal{A}$ ： 动作的集合</p>
+</li>
+<li><p>$\mathcal{P}$ ： 状态转移矩阵，<br>$$<br>\mathcal{P}<em>{ss^{‘}}^{a} = \mathbb{P}[ S</em>{t+1}=s’ | S_t=s, A_{t}=a]<br>$$</p>
+</li>
+<li><p>$\mathcal{R}(s,a)$：奖励函数， 表示在状态s做动作a的奖励。$\mathcal{R}(s) = E [\mathcal{R}_{t+1}|S_t = s]$</p>
+</li>
+</ul>
+<h2 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h2><p>在 MDPs 中，一个策略 (Policy)π 是在给定状态下的动作的概率分布</p>
+<p>$$<br>\pi(a | s) = \mathbb{P}[ A_t = a | S_t = s ]<br>$$</p>
+<p><img data-src="../images/RL-MDP%E7%AD%96%E7%95%A5%E5%88%86%E5%B8%83.png" alt=""></p>
+<ul>
+<li>策略是时间稳定的，只与s有关，与时间t无关</li>
+<li>是RL问题的终极目标</li>
+<li>如果分布是 one-hot 的，那么为确定性策略，否则为随机策略</li>
+</ul>
+<p><img data-src="../images/RL-%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%AD%96%E7%95%A5.png" alt=""></p>
+<h2 id="MDPs与MRPs之间的关系"><a href="#MDPs与MRPs之间的关系" class="headerlink" title="MDPs与MRPs之间的关系"></a>MDPs与MRPs之间的关系</h2><p>如果MDP问题给定策略$\pi$，则会退化成MRP问题。</p>
+<h2 id="MDPs中的值函数"><a href="#MDPs中的值函数" class="headerlink" title="MDPs中的值函数"></a>MDPs中的值函数</h2><ol>
+<li><p>状态值函数（V函数）</p>
+<ul>
+<li>定义：从状态s开始，使用策略$\pi$得到的期望回报值</li>
+</ul>
+<p>$$v_{\pi}(s) = \mathbb{E}_\pi[G_t|S_t = s]$$</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>状态动作值函数（Q函数）</p>
+<ul>
+<li><p>定义：MDPs 中的状态动作值函数是从状态 s 开始，执行动作 a， 然后使用策略 π 得到的期望回报值</p>
+<p>$$q_{\pi}(s, a) = \mathbb{E}_\pi[ G_t | S_t = s, A_t = a ]$$</p>
+</li>
 </ul>
 </li>
-<li>for Retrieval:<ul>
-<li>global features 直接计算 L2 距离</li>
-</ul>
-</li>
-<li>训练时的超参数: <ul>
-<li>SGD optimizer</li>
-<li>initial learning rate 0.01</li>
-<li>momentum 0.9</li>
-<li>weight decay 0.0005</li>
-<li>batch size 64.</li>
-</ul>
-</li>
-</ul>
-<h4 id="3-3-Metric"><a href="#3-3-Metric" class="headerlink" title="3.3 Metric"></a>3.3 Metric</h4><ul>
-<li>Classification: Accuracy</li>
-<li>Retrieval: mAP</li>
-</ul>
-<h4 id="3-4-Ablation-Study"><a href="#3-4-Ablation-Study" class="headerlink" title="3.4 Ablation Study"></a>3.4 Ablation Study</h4><p>TODO:</p>
-<h4 id="3-5-Result"><a href="#3-5-Result" class="headerlink" title="3.5 Result"></a>3.5 Result</h4><p><img data-src="/images/MeshNet-exp-results.png" alt="实验结果" title="ModelNet实验结果"></p>
-<!-- ### 4. Advantages 
-- 将point的方法应用于Mesh的特征提取(空间提取, KC)
-
-
-### 5. Disadvantages 
-- 空间特征提取 不仅考虑面的中心点, 可以加入中心点周围的三个点的信息, 可能会有所提升.
-- 当前面和周围三个面可能会有相似的特征.可否进行替换 -->
+</ol>
+<h2 id="贝尔曼期望方程"><a href="#贝尔曼期望方程" class="headerlink" title="贝尔曼期望方程"></a>贝尔曼期望方程</h2><p>和 MRP 相似， MDPs 中的值函数也能分解成<strong>瞬时奖励</strong>和<strong>后继状态的值函数</strong>两部分</p>
+<p>$$v_\pi(s)=\mathbb{E}<em>\pi[ R</em>{t+1} + \gamma v_\pi(S_{t+1}) | S_t=s ]$$<br>$$q_\pi(s,a)=\mathbb{E}<em>\pi[ R</em>{t+1} + \gamma q_\pi(S_{t+1}, A_{t+1}) | S_t=s, A_t=a]$$</p>
 
     </div>
 
@@ -417,7 +450,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-MeshNet/" title="论文阅读-MeshNet">http://monteyang.github.io/2020/01/09/论文阅读-MeshNet/</a>
+    <a href="http://monteyang.github.io/2020/02/09/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/" title="Reinforcement-Learning-马尔可夫决策过程">http://monteyang.github.io/2020/02/09/Reinforcement-Learning-马尔科夫决策过程/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -429,8 +462,7 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag"><i class="fa fa-tag"></i> 论文阅读</a>
-              <a href="/tags/Mesh/" rel="tag"><i class="fa fa-tag"></i> Mesh</a>
+              <a href="/tags/Reinforcement-Learning/" rel="tag"><i class="fa fa-tag"></i> Reinforcement Learning</a>
           </div>
 
         
@@ -439,13 +471,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E8%AE%A1%E5%88%92/" rel="prev" title="Paper Reading Plan">
-      <i class="fa fa-chevron-left"></i> Paper Reading Plan
+    <a href="/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-PointNet/" rel="prev" title="论文阅读-PointNet">
+      <i class="fa fa-chevron-left"></i> 论文阅读-PointNet
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Ciss-Net/" rel="next" title="论文阅读-Ciss-Net">
-      论文阅读-Ciss-Net <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -506,7 +535,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MeshNet-Mesh-Neural-Network-for-3D-Shape-Representation"><span class="nav-text">MeshNet: Mesh Neural Network for 3D Shape Representation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文章"><span class="nav-text">相关文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-text">Note</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Problem"><span class="nav-text">1. Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Method"><span class="nav-text">2. Method</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Network-Structure"><span class="nav-text">Network Structure</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Experiment"><span class="nav-text">3. Experiment</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Dataset"><span class="nav-text">3.1 Dataset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Implemention"><span class="nav-text">3.2 Implemention</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Metric"><span class="nav-text">3.3 Metric</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-Ablation-Study"><span class="nav-text">3.4 Ablation Study</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-Result"><span class="nav-text">3.5 Result</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#马尔可夫性"><span class="nav-text">马尔可夫性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态转移矩阵"><span class="nav-text">状态转移矩阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#马尔可夫过程"><span class="nav-text">马尔可夫过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#马尔可夫过程的例子"><span class="nav-text">马尔可夫过程的例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#片段（Episode）"><span class="nav-text">片段（Episode）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#马尔可夫奖励过程"><span class="nav-text">马尔可夫奖励过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-1"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回报值"><span class="nav-text">回报值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MRPs中的值函数"><span class="nav-text">MRPs中的值函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MRPs中的贝尔曼方程（重点）"><span class="nav-text">MRPs中的贝尔曼方程（重点）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#马尔可夫决策过程"><span class="nav-text">马尔可夫决策过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-2"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#策略"><span class="nav-text">策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDPs与MRPs之间的关系"><span class="nav-text">MDPs与MRPs之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDPs中的值函数"><span class="nav-text">MDPs中的值函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贝尔曼期望方程"><span class="nav-text">贝尔曼期望方程</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -652,7 +681,7 @@
       quicklink({
         timeout: 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-MeshNet/',]
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.github.io/2020/02/09/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/',]
       });
       });
   </script>
