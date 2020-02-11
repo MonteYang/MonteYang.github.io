@@ -53,32 +53,33 @@
   };
 </script>
 
-  <meta name="description" content="可迭代对象 Iterable：可以用 for 循环遍历的对象，包括：  集合数据类型，如 list、tuple、dict、set、str等； 生成器 generator，包括“( i for i in range(10) )”生成器和带yield的generator function。  迭代器 iterator可以被 next() 函数调用并不断返回下一个值的对象称为迭代器，包括：  生成器ge">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Python-可迭代对象和迭代器的区分">
-<meta property="og:url" content="http://monteyang.github.io/2019/12/16/Python-%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%86/index.html">
+  <meta name="description" content="❤MY">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MonteYang&#39;s Blog">
+<meta property="og:url" content="http://monteyang.github.io/page/5/index.html">
 <meta property="og:site_name" content="MonteYang&#39;s Blog">
-<meta property="og:description" content="可迭代对象 Iterable：可以用 for 循环遍历的对象，包括：  集合数据类型，如 list、tuple、dict、set、str等； 生成器 generator，包括“( i for i in range(10) )”生成器和带yield的generator function。  迭代器 iterator可以被 next() 函数调用并不断返回下一个值的对象称为迭代器，包括：  生成器ge">
+<meta property="og:description" content="❤MY">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-12-16T13:43:51.000Z">
-<meta property="article:modified_time" content="2020-01-08T02:18:35.299Z">
 <meta property="article:author" content="Monte Yang">
-<meta property="article:tag" content="Python">
+<meta property="article:tag" content="3D Deep learning">
+<meta property="article:tag" content=" Monte Yang">
+<meta property="article:tag" content=" 深度学习">
+<meta property="article:tag" content=" 算法">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://monteyang.github.io/2019/12/16/Python-%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%86/">
+<link rel="canonical" href="http://monteyang.github.io/page/5/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true
+    isHome: true,
+    isPost: false
   };
 </script>
 
-  <title>Python-可迭代对象和迭代器的区分 | MonteYang's Blog</title>
+  <title>MonteYang's Blog</title>
   
 
 
@@ -197,11 +198,11 @@
             
 
   <div class="posts-expand">
-      
+        
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2019/12/16/Python-%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%86/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2019/12/16/P%E9%97%AE%E9%A2%98%E3%80%81NP%E9%97%AE%E9%A2%98%E3%80%81NP%E5%AE%8C%E5%85%A8%E9%97%AE%E9%A2%98%E5%92%8CNP%E9%9A%BE%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -214,7 +215,8 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Python-可迭代对象和迭代器的区分
+          
+            <a href="/2019/12/16/P%E9%97%AE%E9%A2%98%E3%80%81NP%E9%97%AE%E9%A2%98%E3%80%81NP%E5%AE%8C%E5%85%A8%E9%97%AE%E9%A2%98%E5%92%8CNP%E9%9A%BE%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">P问题、NP问题、NP完全问题和NP难问题</a>
         </h1>
 
         <div class="post-meta">
@@ -224,7 +226,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-12-16 21:43:51" itemprop="dateCreated datePublished" datetime="2019-12-16T21:43:51+08:00">2019-12-16</time>
+              <time title="创建时间：2019-12-16 15:31:11" itemprop="dateCreated datePublished" datetime="2019-12-16T15:31:11+08:00">2019-12-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -239,14 +241,14 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构和算法</span>
                   </a>
                 </span>
             </span>
 
           
-            <span id="/2019/12/16/Python-%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%86/" class="post-meta-item leancloud_visitors" data-flag-title="Python-可迭代对象和迭代器的区分" title="阅读次数">
+            <span id="/2019/12/16/P%E9%97%AE%E9%A2%98%E3%80%81NP%E9%97%AE%E9%A2%98%E3%80%81NP%E5%AE%8C%E5%85%A8%E9%97%AE%E9%A2%98%E5%92%8CNP%E9%9A%BE%E9%97%AE%E9%A2%98/" class="post-meta-item leancloud_visitors" data-flag-title="P问题、NP问题、NP完全问题和NP难问题" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -261,8 +263,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/12/16/Python-%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%86/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/16/Python-%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%86/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/12/16/P%E9%97%AE%E9%A2%98%E3%80%81NP%E9%97%AE%E9%A2%98%E3%80%81NP%E5%AE%8C%E5%85%A8%E9%97%AE%E9%A2%98%E5%92%8CNP%E9%9A%BE%E9%97%AE%E9%A2%98/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/16/P%E9%97%AE%E9%A2%98%E3%80%81NP%E9%97%AE%E9%A2%98%E3%80%81NP%E5%AE%8C%E5%85%A8%E9%97%AE%E9%A2%98%E5%92%8CNP%E9%9A%BE%E9%97%AE%E9%A2%98/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -277,86 +279,38 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="可迭代对象-Iterable："><a href="#可迭代对象-Iterable：" class="headerlink" title="可迭代对象 Iterable："></a>可迭代对象 <code>Iterable</code>：</h2><p><strong>可以用 for 循环遍历的对象</strong>，包括：</p>
-<ul>
-<li><strong>集合数据类型</strong>，如 <code>list</code>、<code>tuple</code>、<code>dict</code>、<code>set</code>、<code>str</code>等；</li>
-<li><strong>生成器 <code>generator</code></strong>，包括“<code>( i for i in range(10) )</code>”生成器和带yield的generator function。</li>
+          <ul>
+<li>P问题: <ul>
+<li>存在多项式时间复杂度算法的问题(P：polynominal，多项式)</li>
+<li>这是因为对计算机而言, 研究一个超过多项式时间复杂度的问题毫无意义</li>
 </ul>
-<h2 id="迭代器-iterator"><a href="#迭代器-iterator" class="headerlink" title="迭代器 iterator"></a>迭代器 <code>iterator</code></h2><p><strong>可以被 <code>next()</code> 函数调用并不断返回下一个值的对象</strong>称为迭代器，包括：</p>
-<ul>
-<li><strong>生成器<code>generator</code></strong></li>
-<li><p>但list、dict、str虽然是Iterable，却不是Iterator。</p>
 </li>
-<li><p>把list、dict、str等Iterable变成Iterator可以使用<code>iter()</code>函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(iter([]), Iterator)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(iter(<span class="string">'abc'</span>), Iterator)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<li>NP问题: <ul>
+<li>能在多项式时间内验证得出一个正确解的问题(NP:Nondeterministic polynominal，非确定性多项式)</li>
+<li>不一定存在多项式时间复杂度算法的问题</li>
+<li>P问题是NP问题的子集</li>
+</ul>
+</li>
+<li>NPC问题:<ul>
+<li>如果所有NP问题都能在多项式时间内转化为他, 则称该np问题为npc问题(NPC:NP complete又叫NP完全问题)</li>
+<li>NPC问题是NP问题的子集</li>
+</ul>
+</li>
+<li>NPH问题:<ul>
+<li>NP难问题, 不是一个NP问题, 如果所有的NPC问题都可以在多项式时间内转化为他的话, 我们就叫他NPH（hard）问题。</li>
+</ul>
 </li>
 </ul>
 
+      
     </div>
 
     
     
     
-        <div class="reward-container">
-  <div>您的鼓励是我原创的动力～</div>
-  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
-    打赏
-  </button>
-  <div id="qr" style="display: none;">
-      
-      <div style="display: inline-block;">
-        <img src="/images/wechatpay.jpg" alt="Monte Yang 微信支付">
-        <p>微信支付</p>
-      </div>
-      
-      <div style="display: inline-block;">
-        <img src="/images/alipay.jpg" alt="Monte Yang 支付宝">
-        <p>支付宝</p>
-      </div>
-
-  </div>
-</div>
-
-        
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>Monte Yang
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="http://monteyang.github.io/2019/12/16/Python-%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%86/" title="Python-可迭代对象和迭代器的区分">http://monteyang.github.io/2019/12/16/Python-可迭代对象和迭代器的区分/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-</div>
-
-
       <footer class="post-footer">
-          
-          <div class="post-tags">
-              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2019/12/16/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3/" rel="prev" title="Python-axis的理解">
-      <i class="fa fa-chevron-left"></i> Python-axis的理解
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2019/12/16/Python-slot-%E6%96%B9%E6%B3%95/" rel="next" title="Python-__slot__方法">
-      Python-__slot__方法 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
+        <div class="post-eof"></div>
       </footer>
-    
   </article>
   
   
@@ -364,10 +318,15 @@
 
   </div>
 
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+  </nav>
+
+
 
           </div>
           
-    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -414,7 +373,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#可迭代对象-Iterable："><span class="nav-text">可迭代对象 Iterable：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#迭代器-iterator"><span class="nav-text">迭代器 iterator</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -560,7 +518,7 @@
       quicklink({
         timeout: 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.github.io/2019/12/16/Python-%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E5%92%8C%E8%BF%AD%E4%BB%A3%E5%99%A8%E7%9A%84%E5%8C%BA%E5%88%86/',]
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.github.io/page/5/',]
       });
       });
   </script>
