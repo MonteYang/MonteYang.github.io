@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://monteyang.github.io/"/>
-  <updated>2020-02-12T08:58:23.100Z</updated>
+  <updated>2020-02-12T16:37:43.936Z</updated>
   <id>http://monteyang.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python-正则表达式</title>
+    <link href="http://monteyang.github.io/Python-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.html"/>
+    <id>http://monteyang.github.io/Python-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.html</id>
+    <published>2020-02-12T16:37:43.936Z</published>
+    <updated>2020-02-12T16:37:43.936Z</updated>
+    
+    <content type="html"><![CDATA[<p>正则表达式(regular expression)描述了一种字符串匹配的模式（pattern），用于字符串的匹配和提取等操作。</p><p>正则表达式的匹配模式在任意编程语言中都是通用的。</p><blockquote><p>常用的正则表达式：<a href="https://c.runoob.com/front-end/854" target="_blank" rel="noopener">https://c.runoob.com/front-end/854</a></p></blockquote><div class="table-container"><table><thead><tr><th>正则表达式</th><th>功能</th></tr></thead><tbody><tr><td><code>.</code></td><td>匹配任意字符,除换行符<code>\n</code></td></tr><tr><td><code>*</code></td><td>将上一个字符重复0次或多次</td></tr><tr><td><code>+</code></td><td>将上一个字符重复1次或多次</td></tr><tr><td><code>?</code></td><td>将上一个字符重复0次或1次</td></tr><tr><td><code>\s</code></td><td>匹配空白字符</td></tr><tr><td><code>\d</code></td><td>匹配任意数字</td></tr></tbody></table></div><hr><h1 id="匹配字符串首尾"><a href="#匹配字符串首尾" class="headerlink" title="匹配字符串首尾"></a>匹配字符串首尾</h1><ul><li><code>^</code>: 匹配字符串的起始</li><li><code>$</code>: 匹配字符串的末尾</li></ul><hr><h1 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h1><p>利用分组, 提取字符串中特定的内容.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = re.match(<span class="string">r'^(\d&#123;3&#125;)-(\d&#123;3,8&#125;)$'</span>, <span class="string">'010-12345'</span>)  <span class="comment"># 匹配电话号码, 用括号`()`括起来的正则表达式表示一个分组</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m</span><br><span class="line">&lt;_sre.SRE_Match object; span=(<span class="number">0</span>, <span class="number">9</span>), match=<span class="string">'010-12345'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">0</span>)  <span class="comment"># 用group函数可以提取匹配的部分</span></span><br><span class="line"><span class="string">'010-12345'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">1</span>)  <span class="comment"># group(1)表示第一个分组</span></span><br><span class="line"><span class="string">'010'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">2</span>)  <span class="comment"># group(2)表示第一个分组</span></span><br><span class="line"><span class="string">'12345'</span></span><br></pre></td></tr></table></figure><ul><li>用括号<code>()</code>括起来的正则表达式表示一个分组</li></ul><p>想判断字符串中具有一致规律的多个子串时, 可以采用分组:</p><ul><li>例如, 正则表达式 <code>&lt;(\w*)&gt;.*&lt;(/\1)&gt;</code> 可以匹配 <code>&lt;h1&gt;fadsfas&lt;\h1&gt;</code> , 不能匹配 <code>&lt;h1&gt;fadsfas&lt;\h2&gt;</code> .</li></ul><p>当分组个数过多时, 可以给分组起别名, 在同一个正则表达式中重复引用该分组.</p><ul><li>分组起别名: <code>(?P&lt;name&gt;___)</code> 其中<code>___</code>填写分组内的正则式</li><li>引用别名为name的分组: <code>(?P=name)</code></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;正则表达式(regular expression)描述了一种字符串匹配的模式（pattern），用于字符串的匹配和提取等操作。&lt;/p&gt;
+&lt;p&gt;正则表达式的匹配模式在任意编程语言中都是通用的。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;常用的正则表达式：&lt;a href=&quot;htt
+      
+    
+    </summary>
+    
+    
+      <category term="Coding" scheme="http://monteyang.github.io/categories/Coding/"/>
+    
+      <category term="Python" scheme="http://monteyang.github.io/categories/Coding/Python/"/>
+    
+    
+      <category term="Python" scheme="http://monteyang.github.io/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>Python-多任务的实现</title>
@@ -544,33 +575,6 @@
       
         &lt;h3 id=&quot;维数公式&quot;&gt;&lt;a href=&quot;#维数公式&quot; class=&quot;headerlink&quot; title=&quot;维数公式&quot;&gt;&lt;/a&gt;维数公式&lt;/h3&gt;&lt;script type=&quot;math/tex; mode=display&quot;&gt;dim(V+U) = dimV + dimU-dim(
       
-    
-    </summary>
-    
-    
-      <category term="矩阵论" scheme="http://monteyang.github.io/categories/%E7%9F%A9%E9%98%B5%E8%AE%BA/"/>
-    
-    
-      <category term="矩阵论" scheme="http://monteyang.github.io/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>矩阵论笔记-1.线性空间、线性子空间、矩阵的值域和核空间</title>
-    <link href="http://monteyang.github.io/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html"/>
-    <id>http://monteyang.github.io/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html</id>
-    <published>2019-12-16T09:30:04.000Z</published>
-    <updated>2020-02-12T08:17:27.916Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-线性空间"><a href="#1-线性空间" class="headerlink" title="1.线性空间"></a>1.线性空间</h2><h3 id="1-1-线性空间的定义"><a href="#1-1-线性空间的定义" class="headerlink" title="1.1 线性空间的定义"></a>1.1 线性空间的定义</h3><p>设非空集合$V$，一个数域$K$，$x,y,z \in V$， $k,l\in K$，如果$V$满足加法封闭和数乘封闭，则称$V$为线性空间。</p><blockquote><ol><li>加法封闭：  加法交换律、加法结合律、零向量、负向量。</li><li>数乘封闭： 数对元素的分配律、元素对数的分配律、数因子结合律、单位向量。<a id="more"></a><h3 id="1-2-线性空间的性质"><a href="#1-2-线性空间的性质" class="headerlink" title="1.2 线性空间的性质"></a>1.2 线性空间的性质</h3></li><li>零元素唯一</li><li>任一元素的负元素唯一</li><li>设 数$k,0,1\in K$，向量$x, 0, -x \in V$，有：<ul><li>$0x=0$</li><li>$(-1)x=-x$</li><li>$k0=0$      </li><li>若 $kx=0$, 则 $k=0$ 或 $x=0$   </li></ul></li></ol></blockquote><h3 id="1-3-线性空间的维数"><a href="#1-3-线性空间的维数" class="headerlink" title="1.3 线性空间的维数"></a>1.3 线性空间的维数</h3><p>线性空间$V$中<strong>线性无关向量组所含向量最大个数$n$</strong>，称为$V$的维数，记作 $dimV = n$。</p><p>$n$ 维线性空间记作$V^n$。</p><h3 id="1-4-线性空间的基"><a href="#1-4-线性空间的基" class="headerlink" title="1.4 线性空间的基"></a>1.4 线性空间的基</h3><p>$n$维线性空间中，任意$n$个线性无关的向量 $x_1,x_2,…,x_n$，构成该空间的一组<strong>基</strong>。这n个线性无关的向量称作<strong>基向量</strong>。</p><p>空间中<strong>任意一个向量 $x$ 可由这组基唯一表示</strong>，即 $x=a_1x_1+a_2x_2+…+a_nx_n$ 。<br>此时，称 $a_1, a_2, …, a_n$ 为 $x$ 在该基下的<strong>坐标</strong>，记为$[a_1, a_2, …, a_n]^T$。</p><p><strong>向量$x$在基 $x_1,x_2,…,x_n$ 下的矩阵表示为</strong>：</p><script type="math/tex; mode=display">x=\begin{bmatrix}x_1 & x_2 & ... & x_n\end{bmatrix} \cdot \begin{bmatrix}a_1\\ a_2\\ ...\\a_n \end{bmatrix}</script><h3 id="1-5-基变换与坐标变换"><a href="#1-5-基变换与坐标变换" class="headerlink" title="1.5 基变换与坐标变换"></a>1.5 基变换与坐标变换</h3><h4 id="1-5-1-基变换："><a href="#1-5-1-基变换：" class="headerlink" title="1.5.1 基变换："></a>1.5.1 基变换：</h4><p>设 $x_1,x_2,…,x_n$ 是 空间$V^n$ 的旧基，$y_1,y_2,…,y_n$ 是新基。新基可以用旧基表示为</p><script type="math/tex; mode=display">\begin{bmatrix}y_1 & y_2 & ... & y_n\end{bmatrix} = \begin{bmatrix}x_1 & x_2 & ... & x_nliangge\end{bmatrix} \cdot C_{n×n}</script><p>其中，矩阵$C_{n×n}$为 (旧基到新基的) <strong>过渡矩阵</strong>。</p><h4 id="1-5-2-坐标变换："><a href="#1-5-2-坐标变换：" class="headerlink" title="1.5.2 坐标变换："></a>1.5.2 坐标变换：</h4><p>向量$x$在旧基 $x_1,x_2,…,x_n$下的矩阵表示：</p><script type="math/tex; mode=display">x=\begin{bmatrix}x_1 & x_2 & ... & x_n\end{bmatrix} \cdot \begin{bmatrix}a_1\\ a_2\\ ...\\a_n \end{bmatrix} \tag{1}</script><p>其中 ，$[a_1, a_2, …, a_n]^T$为 $x$ 在基 $x_1,x_2,…,x_n$下的坐标。</p><p>向量$x$在新基$y_1,y_2,…,y_n$下的矩阵表示：</p><script type="math/tex; mode=display">x=\begin{bmatrix}y_1 & y_2 & ... & y_n\end{bmatrix} \cdot \begin{bmatrix}b_1\\ b_2\\ ...\\b_n \end{bmatrix}  \tag{2}</script><p>其中 ，$[b_1, b_2, …, b_n]^T$为 $x$ 在基 $y_1,y_2,…,y_n$下的坐标。<br>由式(1)=式(2)，得</p><script type="math/tex; mode=display">\begin{bmatrix}b_1\\ b_2\\ ...\\b_n \end{bmatrix}=C^{-1} \cdot \begin{bmatrix}a_1\\ a_2\\ ...\\a_n \end{bmatrix}</script><p>称作 <strong>向量$x$在基变换C下的坐标变换公式</strong>。</p><blockquote><p><em>个人理解</em>：</p><ol><li>对线性空间作变换，也就是对线性空间的基做变换。（这是因为，线性空间中的任一向量都能由该空间的一组基线性表示，即一组基可决定一个空间。但是，一个空间可对应不同的多组基）</li><li>线性空间中的一个向量本身是不变的，但对基作变换后，基改变，从而基下的坐标改变，称为<strong>坐标变换</strong>，即，同一向量在不同基下的表示是不同的。</li></ol></blockquote><hr><h2 id="2-线性子空间"><a href="#2-线性子空间" class="headerlink" title="2. 线性子空间"></a>2. 线性子空间</h2><h3 id="2-1-定义"><a href="#2-1-定义" class="headerlink" title="2.1 定义"></a>2.1 定义</h3><p>$V_1$是线性空间$V$的非空子集和，$V_1$中满足数乘封闭和加法封闭，则称$V_1$是$V$的<strong>线性子空间</strong>或<strong>子空间</strong>。</p><blockquote><p><em>个人理解</em>：三维空间中的一个过原点的二维平面，或一条过原点的直线，都是该三维空间中的线性子空间。这两个子空间也满足数乘封闭和加法封闭。</p></blockquote><h3 id="2-2-性质"><a href="#2-2-性质" class="headerlink" title="2.2 性质"></a>2.2 性质</h3><ul><li>线性子空间也是线性空间。（定义中满足数乘、加法封闭，即线性子空间首先要是<strong>线性的</strong>）</li><li>非零线性空间的<strong>平凡子空间</strong>：线性空间自身以及零空间he。</li><li>一个线性空间的子空间，其维数小于等于线性空间的维数（显然）。</li></ul><p>延伸：n元齐次线性方程组的<strong>解空间</strong> $W$ 是 $n$维向量空间 $V^n$ 的一个子空间。方程组的基础解系就是解空间的基。</p><h3 id="2-3-子空间的运算"><a href="#2-3-子空间的运算" class="headerlink" title="2.3 子空间的运算"></a>2.3 子空间的运算</h3><h4 id="2-3-1-和空间"><a href="#2-3-1-和空间" class="headerlink" title="2.3.1 和空间"></a>2.3.1 和空间</h4><script type="math/tex; mode=display">V_1  +V_2 = \left \{  x_1 + x_2 \ | \ x_1 \in V_1, x_2 \in V_2 \right \}</script><h4 id="2-3-2-交空间"><a href="#2-3-2-交空间" class="headerlink" title="2.3.2 交空间"></a>2.3.2 交空间</h4><script type="math/tex; mode=display">V_1  \cap V_2 = \left \{  a \ | \ a \in V_1 且 a \in V_2 \right \}</script><hr><h2 id="3-矩阵的值域、核空间"><a href="#3-矩阵的值域、核空间" class="headerlink" title="3. 矩阵的值域、核空间"></a>3. 矩阵的值域、核空间</h2><h3 id="3-1-向量张成的空间"><a href="#3-1-向量张成的空间" class="headerlink" title="3.1 向量张成的空间"></a>3.1 向量张成的空间</h3><p>$x_1,x_2,…,x_n$张成的空间，记为</p><script type="math/tex; mode=display">V_1=L(x_1, x_2, ..., x_n)=\left \{  k_1x_1 + k_2x_2 + ... + k_nx_n \right \}$$其中$k_i$为常数。> *个人理解*：类似以向量组为基所生成的空间。### 3.2 矩阵的值域矩阵 $A\in C^{m×n}$的 $n$ 个列向量为 $a_1, a_2, ..., a_n$，则矩阵A的值域为$$R(A)=L(a_1, a_2, ..., a_n)=\left \{ y\ | \ y=Ax\right \}</script><blockquote><p><em>个人理解</em>：矩阵的值域是 <strong>矩阵中的所有列向量所张成的空间</strong>。<br><strong>若把 $A$ 看作一种线性变换，那么矩阵的值域 $y=Ax$ 为线性空间中的原向量 $x$ 经线性变换后所得到的象。</strong></p></blockquote><h3 id="3-3-矩阵的核空间"><a href="#3-3-矩阵的核空间" class="headerlink" title="3.3 矩阵的核空间"></a>3.3 矩阵的核空间</h3><script type="math/tex; mode=display">N(A) = \left \{  x\  | \ Ax=0  \right \}</script><p>核空间也叫零空间，零空间的维数为零度，记作 $n(A)$ 。</p><blockquote><p>个人理解：使 $Ax=0$ 成立的 $x$。<br><strong>若把 $A$ 看作一种线性变换， 那么矩阵的核是经过线性变换后变为零向量的向量（原象）。</strong></p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;1-线性空间&quot;&gt;&lt;a href=&quot;#1-线性空间&quot; class=&quot;headerlink&quot; title=&quot;1.线性空间&quot;&gt;&lt;/a&gt;1.线性空间&lt;/h2&gt;&lt;h3 id=&quot;1-1-线性空间的定义&quot;&gt;&lt;a href=&quot;#1-1-线性空间的定义&quot; class=&quot;headerlink&quot; title=&quot;1.1 线性空间的定义&quot;&gt;&lt;/a&gt;1.1 线性空间的定义&lt;/h3&gt;&lt;p&gt;设非空集合$V$，一个数域$K$，$x,y,z \in V$， $k,l\in K$，如果$V$满足加法封闭和数乘封闭，则称$V$为线性空间。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;加法封闭：  加法交换律、加法结合律、零向量、负向量。&lt;/li&gt;
-&lt;li&gt;数乘封闭： 数对元素的分配律、元素对数的分配律、数因子结合律、单位向量。
     
     </summary>
     
