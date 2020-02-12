@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>MonteYang&#39;s Blog</title>
   
-  <subtitle>摊牌了</subtitle>
+  
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://monteyang.github.io/"/>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Python-多任务的实现</title>
-    <link href="http://monteyang.github.io/2020/02/12/Python-%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0/"/>
-    <id>http://monteyang.github.io/2020/02/12/Python-%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0/</id>
+    <link href="http://monteyang.github.io/Python-%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0.html"/>
+    <id>http://monteyang.github.io/Python-%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0.html</id>
     <published>2020-02-12T04:48:21.000Z</published>
     <updated>2020-02-12T08:58:23.100Z</updated>
     
@@ -48,8 +48,8 @@
   
   <entry>
     <title>论文阅读-Bag of Tricks for Image Classification with Convolutional Neural Networks</title>
-    <link href="http://monteyang.github.io/2020/02/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks/"/>
-    <id>http://monteyang.github.io/2020/02/11/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks/</id>
+    <link href="http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html"/>
+    <id>http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html</id>
     <published>2020-02-11T07:45:42.000Z</published>
     <updated>2020-02-12T08:59:25.720Z</updated>
     
@@ -73,8 +73,8 @@
   
   <entry>
     <title>LeetCode-41-50题</title>
-    <link href="http://monteyang.github.io/2020/02/11/LeetCode-41-50%E9%A2%98/"/>
-    <id>http://monteyang.github.io/2020/02/11/LeetCode-41-50%E9%A2%98/</id>
+    <link href="http://monteyang.github.io/LeetCode-41-50%E9%A2%98.html"/>
+    <id>http://monteyang.github.io/LeetCode-41-50%E9%A2%98.html</id>
     <published>2020-02-11T05:24:11.000Z</published>
     <updated>2020-02-12T08:19:31.608Z</updated>
     
@@ -98,8 +98,8 @@
   
   <entry>
     <title>Reinforcement Learning-马尔可夫决策过程</title>
-    <link href="http://monteyang.github.io/2020/02/09/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/"/>
-    <id>http://monteyang.github.io/2020/02/09/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/</id>
+    <link href="http://monteyang.github.io/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html"/>
+    <id>http://monteyang.github.io/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html</id>
     <published>2020-02-09T15:15:16.000Z</published>
     <updated>2020-02-12T09:29:45.191Z</updated>
     
@@ -124,8 +124,8 @@
   
   <entry>
     <title>论文阅读-PointNet</title>
-    <link href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-PointNet/"/>
-    <id>http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-PointNet/</id>
+    <link href="http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-PointNet.html"/>
+    <id>http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-PointNet.html</id>
     <published>2020-01-09T06:56:01.000Z</published>
     <updated>2020-02-12T08:59:25.720Z</updated>
     
@@ -152,8 +152,8 @@
   
   <entry>
     <title>论文阅读-VoxNet</title>
-    <link href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-VoxNet/"/>
-    <id>http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-VoxNet/</id>
+    <link href="http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-VoxNet.html"/>
+    <id>http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-VoxNet.html</id>
     <published>2020-01-09T06:38:39.000Z</published>
     <updated>2020-02-12T08:59:25.720Z</updated>
     
@@ -186,8 +186,8 @@
   
   <entry>
     <title>论文阅读-Ciss-Net</title>
-    <link href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Ciss-Net/"/>
-    <id>http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Ciss-Net/</id>
+    <link href="http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Ciss-Net.html"/>
+    <id>http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Ciss-Net.html</id>
     <published>2020-01-09T06:28:22.000Z</published>
     <updated>2020-02-12T08:59:25.720Z</updated>
     
@@ -219,8 +219,8 @@
   
   <entry>
     <title>论文阅读-MeshNet</title>
-    <link href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-MeshNet/"/>
-    <id>http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-MeshNet/</id>
+    <link href="http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-MeshNet.html"/>
+    <id>http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-MeshNet.html</id>
     <published>2020-01-09T03:18:28.000Z</published>
     <updated>2020-02-12T11:19:25.664Z</updated>
     
@@ -250,8 +250,8 @@
   
   <entry>
     <title>Paper Reading Plan</title>
-    <link href="http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E8%AE%A1%E5%88%92/"/>
-    <id>http://monteyang.github.io/2020/01/09/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E8%AE%A1%E5%88%92/</id>
+    <link href="http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E8%AE%A1%E5%88%92.html"/>
+    <id>http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E8%AE%A1%E5%88%92.html</id>
     <published>2020-01-09T03:02:40.000Z</published>
     <updated>2020-02-12T09:05:18.336Z</updated>
     
@@ -281,8 +281,8 @@
   
   <entry>
     <title>LeetCode-31-40题</title>
-    <link href="http://monteyang.github.io/2020/01/08/LeetCode-31-40%E9%A2%98/"/>
-    <id>http://monteyang.github.io/2020/01/08/LeetCode-31-40%E9%A2%98/</id>
+    <link href="http://monteyang.github.io/LeetCode-31-40%E9%A2%98.html"/>
+    <id>http://monteyang.github.io/LeetCode-31-40%E9%A2%98.html</id>
     <published>2020-01-08T02:56:02.000Z</published>
     <updated>2020-02-12T08:15:49.052Z</updated>
     
@@ -306,8 +306,8 @@
   
   <entry>
     <title>2019年的总结</title>
-    <link href="http://monteyang.github.io/2020/01/04/2019%E5%B9%B4%E7%9A%84%E6%80%BB%E7%BB%93/"/>
-    <id>http://monteyang.github.io/2020/01/04/2019%E5%B9%B4%E7%9A%84%E6%80%BB%E7%BB%93/</id>
+    <link href="http://monteyang.github.io/2019%E5%B9%B4%E7%9A%84%E6%80%BB%E7%BB%93.html"/>
+    <id>http://monteyang.github.io/2019%E5%B9%B4%E7%9A%84%E6%80%BB%E7%BB%93.html</id>
     <published>2020-01-04T15:15:35.000Z</published>
     <updated>2020-02-12T08:57:15.028Z</updated>
     
@@ -335,8 +335,8 @@
   
   <entry>
     <title>LeetCode-21-30题</title>
-    <link href="http://monteyang.github.io/2020/01/04/LeetCode-21-30%E9%A2%98/"/>
-    <id>http://monteyang.github.io/2020/01/04/LeetCode-21-30%E9%A2%98/</id>
+    <link href="http://monteyang.github.io/LeetCode-21-30%E9%A2%98.html"/>
+    <id>http://monteyang.github.io/LeetCode-21-30%E9%A2%98.html</id>
     <published>2020-01-04T13:42:00.000Z</published>
     <updated>2020-02-12T08:15:49.052Z</updated>
     
@@ -360,8 +360,8 @@
   
   <entry>
     <title>LeetCode-11-20题</title>
-    <link href="http://monteyang.github.io/2019/12/17/LeetCode-11-20%E9%A2%98/"/>
-    <id>http://monteyang.github.io/2019/12/17/LeetCode-11-20%E9%A2%98/</id>
+    <link href="http://monteyang.github.io/LeetCode-11-20%E9%A2%98.html"/>
+    <id>http://monteyang.github.io/LeetCode-11-20%E9%A2%98.html</id>
     <published>2019-12-17T13:59:50.000Z</published>
     <updated>2020-02-12T08:15:49.052Z</updated>
     
@@ -385,8 +385,8 @@
   
   <entry>
     <title>LeetCode-1-10题</title>
-    <link href="http://monteyang.github.io/2019/12/17/LeetCode-1-10%E9%A2%98/"/>
-    <id>http://monteyang.github.io/2019/12/17/LeetCode-1-10%E9%A2%98/</id>
+    <link href="http://monteyang.github.io/LeetCode-1-10%E9%A2%98.html"/>
+    <id>http://monteyang.github.io/LeetCode-1-10%E9%A2%98.html</id>
     <published>2019-12-17T13:47:05.000Z</published>
     <updated>2020-02-12T08:15:50.720Z</updated>
     
@@ -418,8 +418,8 @@
   
   <entry>
     <title>Python-__slot__方法</title>
-    <link href="http://monteyang.github.io/2019/12/16/Python-slot-%E6%96%B9%E6%B3%95/"/>
-    <id>http://monteyang.github.io/2019/12/16/Python-slot-%E6%96%B9%E6%B3%95/</id>
+    <link href="http://monteyang.github.io/Python-slot-%E6%96%B9%E6%B3%95.html"/>
+    <id>http://monteyang.github.io/Python-slot-%E6%96%B9%E6%B3%95.html</id>
     <published>2019-12-16T13:45:38.000Z</published>
     <updated>2020-02-12T08:58:23.104Z</updated>
     
@@ -447,8 +447,8 @@
   
   <entry>
     <title>Python-可迭代对象、迭代器、生成器</title>
-    <link href="http://monteyang.github.io/2019/12/16/Python-Iterable%E5%92%8CIterator%E7%9A%84%E5%8C%BA%E5%88%86/"/>
-    <id>http://monteyang.github.io/2019/12/16/Python-Iterable%E5%92%8CIterator%E7%9A%84%E5%8C%BA%E5%88%86/</id>
+    <link href="http://monteyang.github.io/Python-Iterable%E5%92%8CIterator%E7%9A%84%E5%8C%BA%E5%88%86.html"/>
+    <id>http://monteyang.github.io/Python-Iterable%E5%92%8CIterator%E7%9A%84%E5%8C%BA%E5%88%86.html</id>
     <published>2019-12-16T13:43:51.000Z</published>
     <updated>2020-02-12T08:58:23.104Z</updated>
     
@@ -475,8 +475,8 @@
   
   <entry>
     <title>Python-axis的理解</title>
-    <link href="http://monteyang.github.io/2019/12/16/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3/"/>
-    <id>http://monteyang.github.io/2019/12/16/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3/</id>
+    <link href="http://monteyang.github.io/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3.html"/>
+    <id>http://monteyang.github.io/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3.html</id>
     <published>2019-12-16T09:38:52.000Z</published>
     <updated>2020-02-12T08:58:24.320Z</updated>
     
@@ -503,8 +503,8 @@
   
   <entry>
     <title>Python-numpy和list中的浅拷贝和深拷贝</title>
-    <link href="http://monteyang.github.io/2019/12/16/Python-numpy%E5%92%8Clist%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/"/>
-    <id>http://monteyang.github.io/2019/12/16/Python-numpy%E5%92%8Clist%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/</id>
+    <link href="http://monteyang.github.io/Python-numpy%E5%92%8Clist%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D.html"/>
+    <id>http://monteyang.github.io/Python-numpy%E5%92%8Clist%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D.html</id>
     <published>2019-12-16T09:37:03.000Z</published>
     <updated>2020-02-12T08:58:23.104Z</updated>
     
@@ -531,8 +531,8 @@
   
   <entry>
     <title>矩阵论笔记-1.补:维数公式</title>
-    <link href="http://monteyang.github.io/2019/12/16/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E8%A1%A5-%E7%BB%B4%E6%95%B0%E5%85%AC%E5%BC%8F/"/>
-    <id>http://monteyang.github.io/2019/12/16/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E8%A1%A5-%E7%BB%B4%E6%95%B0%E5%85%AC%E5%BC%8F/</id>
+    <link href="http://monteyang.github.io/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E8%A1%A5-%E7%BB%B4%E6%95%B0%E5%85%AC%E5%BC%8F.html"/>
+    <id>http://monteyang.github.io/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E8%A1%A5-%E7%BB%B4%E6%95%B0%E5%85%AC%E5%BC%8F.html</id>
     <published>2019-12-16T09:31:55.000Z</published>
     <updated>2020-02-12T09:27:58.863Z</updated>
     
@@ -557,8 +557,8 @@
   
   <entry>
     <title>矩阵论笔记-1.线性空间、线性子空间、矩阵的值域和核空间</title>
-    <link href="http://monteyang.github.io/2019/12/16/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4/"/>
-    <id>http://monteyang.github.io/2019/12/16/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4/</id>
+    <link href="http://monteyang.github.io/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html"/>
+    <id>http://monteyang.github.io/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html</id>
     <published>2019-12-16T09:30:04.000Z</published>
     <updated>2020-02-12T08:17:27.916Z</updated>
     
