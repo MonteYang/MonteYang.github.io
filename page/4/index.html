@@ -79,7 +79,7 @@
   };
 </script>
 
-  <title>MonteYang's Blog</title>
+  <title>MonteYang's Blog - 朝着咸鱼的反方向努力</title>
   
 
 
@@ -110,6 +110,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="MonteYang's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -127,7 +128,8 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">朝着咸鱼的反方向努力</p>
+        <h1 class="site-subtitle" itemprop="description">朝着咸鱼的反方向努力</h1>
+      
   </div>
 
   <div class="site-nav-toggle">
@@ -150,17 +152,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">14</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">9</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">10</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">22</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">23</span></a>
 
   </li>
         <li class="menu-item menu-item-tools">
@@ -212,6 +214,126 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2019/12/16/Python-Iterable%E5%92%8CIterator%E7%9A%84%E5%8C%BA%E5%88%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Monte Yang">
+      <meta itemprop="description" content="❤MY">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MonteYang's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/16/Python-Iterable%E5%92%8CIterator%E7%9A%84%E5%8C%BA%E5%88%86/" class="post-title-link" itemprop="url">Python-可迭代对象、迭代器、生成器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-16 21:43:51" itemprop="dateCreated datePublished" datetime="2019-12-16T21:43:51+08:00">2019-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 16:58:23" itemprop="dateModified" datetime="2020-02-12T16:58:23+08:00">2020-02-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">Coding</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/12/16/Python-Iterable%E5%92%8CIterator%E7%9A%84%E5%8C%BA%E5%88%86/" class="post-meta-item leancloud_visitors" data-flag-title="Python-可迭代对象、迭代器、生成器" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/12/16/Python-Iterable%E5%92%8CIterator%E7%9A%84%E5%8C%BA%E5%88%86/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/16/Python-Iterable%E5%92%8CIterator%E7%9A%84%E5%8C%BA%E5%88%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="可迭代-Iterable"><a href="#可迭代-Iterable" class="headerlink" title="可迭代 Iterable"></a>可迭代 Iterable</h1><p><strong>可以用 for 循环遍历的</strong>，或者说该类中有<code>__iter__()</code>方法的实现，都是可迭代的对象。包括：</p>
+<ul>
+<li><strong>集合数据类型</strong>，如 <code>list</code>、<code>tuple</code>、<code>dict</code>、<code>set</code>、<code>str</code>等</li>
+<li>生成器 generator，包括“<code>( i for i in range(10) )</code>”这种的生成器和带<code>yield</code>的 generator function</li>
+</ul>
+<hr>
+<h1 id="迭代器-Iterator"><a href="#迭代器-Iterator" class="headerlink" title="迭代器 Iterator"></a>迭代器 Iterator</h1><p><strong>可以被 <code>next()</code> 函数调用并不断返回下一个值的对象</strong>称为迭代器，该类中有<code>__next__()</code>方法的实现，包括：</p>
+<ul>
+<li>减少内存空间</li>
+<li>生成器 generator</li>
+<li>但list、dict、str虽然是Iterable，却不是Iterator</li>
+<li>可以使用<code>iter()</code>函数，把list、dict、str等Iterable变成Iterator</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(iter([]), Iterator)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(iter(<span class="string">'abc'</span>), Iterator)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="生成器-Generator"><a href="#生成器-Generator" class="headerlink" title="生成器 Generator"></a>生成器 Generator</h1><p>是迭代器的一种，函数中有 <code>yield</code>，可以让函数暂停执行。</p>
+<p>生成器对象中的 <code>send()</code> 方法，可将参数传递给生成器中yield的返回值，继续进行迭代。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(num)</span>:</span></span><br><span class="line">    a, b = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    current = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> current &lt; num:</span><br><span class="line">        ret = <span class="keyword">yield</span> a</span><br><span class="line">        current += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">obj = fib(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">ret = obj.send(<span class="string">"ok"</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2019/12/16/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -224,10 +346,10 @@
       <meta itemprop="name" content="MonteYang's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2019/12/16/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3/" class="post-title-link" itemprop="url">Python-axis的理解</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -243,7 +365,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-08 10:18:35" itemprop="dateModified" datetime="2020-01-08T10:18:35+08:00">2020-01-08</time>
+                <time title="修改时间：2020-02-12 16:58:24" itemprop="dateModified" datetime="2020-02-12T16:58:24+08:00">2020-02-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -251,7 +373,13 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
+                  <a href="/categories/Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">Coding</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/Python/" itemprop="url" rel="index">
                     <span itemprop="name">Python</span>
                   </a>
                 </span>
@@ -331,10 +459,10 @@
       <meta itemprop="name" content="MonteYang's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2019/12/16/Python-numpy%E5%92%8Clist%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/" class="post-title-link" itemprop="url">Python-numpy和list中的浅拷贝和深拷贝</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -350,7 +478,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-08 10:18:35" itemprop="dateModified" datetime="2020-01-08T10:18:35+08:00">2020-01-08</time>
+                <time title="修改时间：2020-02-12 16:58:23" itemprop="dateModified" datetime="2020-02-12T16:58:23+08:00">2020-02-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -358,7 +486,13 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
+                  <a href="/categories/Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">Coding</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/Python/" itemprop="url" rel="index">
                     <span itemprop="name">Python</span>
                   </a>
                 </span>
@@ -438,10 +572,10 @@
       <meta itemprop="name" content="MonteYang's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2019/12/16/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E8%A1%A5-%E7%BB%B4%E6%95%B0%E5%85%AC%E5%BC%8F/" class="post-title-link" itemprop="url">矩阵论笔记-1.补:维数公式</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -457,7 +591,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-08 10:18:35" itemprop="dateModified" datetime="2020-01-08T10:18:35+08:00">2020-01-08</time>
+                <time title="修改时间：2020-02-12 17:27:58" itemprop="dateModified" datetime="2020-02-12T17:27:58+08:00">2020-02-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -538,10 +672,10 @@
       <meta itemprop="name" content="MonteYang's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           
             <a href="/2019/12/16/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4/" class="post-title-link" itemprop="url">矩阵论笔记-1.线性空间、线性子空间、矩阵的值域和核空间</a>
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -557,7 +691,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-08 10:18:35" itemprop="dateModified" datetime="2020-01-08T10:18:35+08:00">2020-01-08</time>
+                <time title="修改时间：2020-02-12 16:17:27" itemprop="dateModified" datetime="2020-02-12T16:17:27+08:00">2020-02-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -611,110 +745,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/12/16/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2019/12/16/Matplotlib%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MonteYang's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/16/Matplotlib%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">Matplotlib总结</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-16 17:28:00" itemprop="dateCreated datePublished" datetime="2019-12-16T17:28:00+08:00">2019-12-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-08 10:18:35" itemprop="dateModified" datetime="2020-01-08T10:18:35+08:00">2020-01-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/12/16/Matplotlib%E6%80%BB%E7%BB%93/" class="post-meta-item leancloud_visitors" data-flag-title="Matplotlib总结" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/12/16/Matplotlib%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/16/Matplotlib%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>matplotlib 是最流行的Python绘图库之一，能将数据进行可视化，直观地呈现数据。<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/12/16/Matplotlib%E6%80%BB%E7%BB%93/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -806,20 +836,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -887,6 +917,8 @@
   </div>
 
   
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
   <script src="/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>

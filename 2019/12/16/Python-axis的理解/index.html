@@ -61,7 +61,7 @@
 <meta property="og:description" content="axis的本质是数组层级numpy中的ndarray本质上是一个多维数组，axis表示数组层级123456789arr &#x3D; np.array(np.arange(12).reshape(3,4))print(arr)&quot;&quot;&quot;array([[ 0,  1,  2,  3],       [ 4,  5,  6,  7],       [ 8,  9, 10, 11]])&quot;&quot;&quot;print(arr.sha">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-12-16T09:38:52.000Z">
-<meta property="article:modified_time" content="2020-01-08T02:18:35.299Z">
+<meta property="article:modified_time" content="2020-02-12T08:58:24.320Z">
 <meta property="article:author" content="Monte Yang">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -109,6 +109,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="MonteYang's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -126,7 +127,8 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">朝着咸鱼的反方向努力</p>
+        <h1 class="site-subtitle" itemprop="description">朝着咸鱼的反方向努力</h1>
+      
   </div>
 
   <div class="site-nav-toggle">
@@ -149,17 +151,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">14</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">9</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">10</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">22</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">23</span></a>
 
   </li>
         <li class="menu-item menu-item-tools">
@@ -223,9 +225,9 @@
       <meta itemprop="name" content="MonteYang's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
+        <h2 class="post-title" itemprop="name headline">
           Python-axis的理解
-        </h1>
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -241,7 +243,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-08 10:18:35" itemprop="dateModified" datetime="2020-01-08T10:18:35+08:00">2020-01-08</time>
+                <time title="修改时间：2020-02-12 16:58:24" itemprop="dateModified" datetime="2020-02-12T16:58:24+08:00">2020-02-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,7 +251,13 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
+                  <a href="/categories/Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">Coding</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/Python/" itemprop="url" rel="index">
                     <span itemprop="name">Python</span>
                   </a>
                 </span>
@@ -365,8 +373,8 @@ arr[2][0]\  arr[2][1]\  arr[2][2]\ arr[2][3]\\</script><figure class="highlight 
       <i class="fa fa-chevron-left"></i> Python-numpy和list中的浅拷贝和深拷贝
     </a></div>
       <div class="post-nav-item">
-    <a href="/2019/12/16/Python-Iterable%E5%92%8CIterator%E7%9A%84%E5%8C%BA%E5%88%86/" rel="next" title="Python-Iterable和Iterator的区分">
-      Python-Iterable和Iterator的区分 <i class="fa fa-chevron-right"></i>
+    <a href="/2019/12/16/Python-Iterable%E5%92%8CIterator%E7%9A%84%E5%8C%BA%E5%88%86/" rel="next" title="Python-可迭代对象、迭代器、生成器">
+      Python-可迭代对象、迭代器、生成器 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -444,20 +452,20 @@ arr[2][0]\  arr[2][1]\  arr[2][2]\ arr[2][3]\\</script><figure class="highlight 
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -525,6 +533,8 @@ arr[2][0]\  arr[2][1]\  arr[2][2]\ arr[2][3]\\</script><figure class="highlight 
   </div>
 
   
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
   <script src="/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>

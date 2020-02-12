@@ -55,8 +55,8 @@
 
   <meta name="description" content="matplotlib 是最流行的Python绘图库之一，能将数据进行可视化，直观地呈现数据。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Matplotlib总结">
-<meta property="og:url" content="http://monteyang.github.io/2019/12/16/Matplotlib%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:title" content="Python-Matplotlib总结">
+<meta property="og:url" content="http://monteyang.github.io/2019/12/16/Python-Matplotlib%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="MonteYang&#39;s Blog">
 <meta property="og:description" content="matplotlib 是最流行的Python绘图库之一，能将数据进行可视化，直观地呈现数据。">
 <meta property="og:locale" content="zh_CN">
@@ -65,14 +65,14 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190105131158885.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190105131546443.png">
 <meta property="article:published_time" content="2019-12-16T09:28:00.000Z">
-<meta property="article:modified_time" content="2020-01-08T02:18:35.299Z">
+<meta property="article:modified_time" content="2020-02-12T08:58:23.104Z">
 <meta property="article:author" content="Monte Yang">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="matplotlib">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019010513092169.png">
 
-<link rel="canonical" href="http://monteyang.github.io/2019/12/16/Matplotlib%E6%80%BB%E7%BB%93/">
+<link rel="canonical" href="http://monteyang.github.io/2019/12/16/Python-Matplotlib%E6%80%BB%E7%BB%93/">
 
 
 <script id="page-configurations">
@@ -84,7 +84,7 @@
   };
 </script>
 
-  <title>Matplotlib总结 | MonteYang's Blog</title>
+  <title>Python-Matplotlib总结 | MonteYang's Blog</title>
   
 
 
@@ -115,6 +115,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="MonteYang's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -132,7 +133,8 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">朝着咸鱼的反方向努力</p>
+        <h1 class="site-subtitle" itemprop="description">朝着咸鱼的反方向努力</h1>
+      
   </div>
 
   <div class="site-nav-toggle">
@@ -155,17 +157,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">14</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">9</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">10</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">22</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">23</span></a>
 
   </li>
         <li class="menu-item menu-item-tools">
@@ -217,7 +219,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2019/12/16/Matplotlib%E6%80%BB%E7%BB%93/">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/2019/12/16/Python-Matplotlib%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -229,9 +231,9 @@
       <meta itemprop="name" content="MonteYang's Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Matplotlib总结
-        </h1>
+        <h2 class="post-title" itemprop="name headline">
+          Python-Matplotlib总结
+        </h2>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -247,7 +249,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-08 10:18:35" itemprop="dateModified" datetime="2020-01-08T10:18:35+08:00">2020-01-08</time>
+                <time title="修改时间：2020-02-12 16:58:23" itemprop="dateModified" datetime="2020-02-12T16:58:23+08:00">2020-02-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -255,14 +257,20 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
+                  <a href="/categories/Coding/" itemprop="url" rel="index">
+                    <span itemprop="name">Coding</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Coding/Python/" itemprop="url" rel="index">
                     <span itemprop="name">Python</span>
                   </a>
                 </span>
             </span>
 
           
-            <span id="/2019/12/16/Matplotlib%E6%80%BB%E7%BB%93/" class="post-meta-item leancloud_visitors" data-flag-title="Matplotlib总结" title="阅读次数">
+            <span id="/2019/12/16/Python-Matplotlib%E6%80%BB%E7%BB%93/" class="post-meta-item leancloud_visitors" data-flag-title="Python-Matplotlib总结" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -277,8 +285,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/12/16/Matplotlib%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/16/Matplotlib%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/12/16/Python-Matplotlib%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/16/Python-Matplotlib%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -349,7 +357,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://monteyang.github.io/2019/12/16/Matplotlib%E6%80%BB%E7%BB%93/" title="Matplotlib总结">http://monteyang.github.io/2019/12/16/Matplotlib总结/</a>
+    <a href="http://monteyang.github.io/2019/12/16/Python-Matplotlib%E6%80%BB%E7%BB%93/" title="Python-Matplotlib总结">http://monteyang.github.io/2019/12/16/Python-Matplotlib总结/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -454,20 +462,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -535,6 +543,8 @@
   </div>
 
   
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
   <script src="/lib/anime.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
   <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
@@ -584,7 +594,7 @@
       quicklink({
         timeout: 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.github.io/2019/12/16/Matplotlib%E6%80%BB%E7%BB%93/',]
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.github.io/2019/12/16/Python-Matplotlib%E6%80%BB%E7%BB%93/',]
       });
       });
   </script>
