@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+<meta name="baidu-site-verification" content="VlKVHbCSz8" />
+<meta name="google-site-verification" content="Z2kTm-EFepZNHmfORKL12HMkSscrPSlFJpX7LkPhJpA" />
+<meta name="msvalidate.01" content="6848BAEF6B569BCE80C501D1FA6868F6" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo32x32.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo16x16.jpg">
+  <link rel="mask-icon" href="/images/logo.jpg" color="#222">
+  <meta name="google-site-verification" content="icNwy15E8Gh6yqWfe90ZBdQqrjzWp-mUhgzUFw6yMPw">
+  <meta name="msvalidate.01" content="6848BAEF6B569BCE80C501D1FA6868F6">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://monteyang.github.io').hostname,
+    root: '/',
+    scheme: 'Muse',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"right","width":300,"display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: true,
+    lazyload: true,
+    pangu: true,
+    comments: {"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="《Bag of Tricks for Image Classification with Convolutional Neural Networks》论文阅读">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读-Bag of Tricks for Image Classification with Convolutional Neural Networks">
+<meta property="og:url" content="http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html">
+<meta property="og:site_name" content="MonteYang&#39;s Blog">
+<meta property="og:description" content="《Bag of Tricks for Image Classification with Convolutional Neural Networks》论文阅读">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-11T07:45:42.000Z">
+<meta property="article:modified_time" content="2020-02-12T08:59:25.720Z">
+<meta property="article:author" content="Monte Yang">
+<meta property="article:tag" content="论文阅读">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>论文阅读-Bag of Tricks for Image Classification with Convolutional Neural Networks | MonteYang's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="MonteYang's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MonteYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">朝着咸鱼的反方向努力</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">13</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">10</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档<span class="badge">24</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tools">
+
+    <a href="/tools/" rel="section"><i class="fa fa-fw fa-wrench"></i>常用工具</a>
+
+  </li>
+        <li class="menu-item menu-item-bookmarks">
+
+    <a href="/bookmarks/" rel="section"><i class="fa fa-fw fa-bookmark"></i>实用网站</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/MonteYang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Monte Yang">
+      <meta itemprop="description" content="❤MY">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MonteYang's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          论文阅读-Bag of Tricks for Image Classification with Convolutional Neural Networks
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-11 15:45:42" itemprop="dateCreated datePublished" datetime="2020-02-11T15:45:42+08:00">2020-02-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-12 16:59:25" itemprop="dateModified" datetime="2020-02-12T16:59:25+08:00">2020-02-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html" class="post-meta-item leancloud_visitors" data-flag-title="论文阅读-Bag of Tricks for Image Classification with Convolutional Neural Networks" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>《<a href="https://arxiv.org/abs/1812.01187" target="_blank" rel="noopener">Bag of Tricks for Image Classification with Convolutional Neural Networks</a>》论文阅读</p>
+<a id="more"></a>
+<blockquote>
+<p><strong>文章目录</strong>:</p>
+<ul>
+<li><a href="#abstract">Abstract</a></li>
+<li><a href="#1-introduction">1. Introduction</a><ul>
+<li><a href="#%e6%96%87%e7%ab%a0%e7%bb%93%e6%9e%84">文章结构</a></li>
+</ul>
+</li>
+<li><a href="#2-training-procedures-%e5%9f%ba%e5%87%86%e7%9a%84%e8%ae%ad%e7%bb%83%e8%bf%87%e7%a8%8b">2. Training Procedures (基准的训练过程)</a><ul>
+<li><a href="#21-baseline-training-procedure">2.1 Baseline Training Procedure</a></li>
+<li><a href="#22-experiment-results">2.2  Experiment Results</a></li>
+</ul>
+</li>
+<li><a href="#3-efficient-training-%e8%ae%ad%e7%bb%83%e6%95%88%e7%8e%87">3. Efficient Training (训练效率)</a><ul>
+<li><a href="#31-large-batch-training-%e9%92%88%e5%af%b9batch%e5%92%8clearning-rate">3.1 Large-batch training (针对Batch和learning rate)</a><ul>
+<li><a href="#1-linear-scaling-learning-rate-lr%e7%9a%84%e5%88%9d%e5%a7%8b%e5%8c%96%e9%9a%8fbatch-size-%e7%ba%bf%e6%80%a7%e5%a2%9e%e5%8a%a0">1.  Linear scaling learning rate (lr的初始化随batch size 线性增加)</a></li>
+<li><a href="#2-learning-rate-warmup-%e8%ae%ad%e7%bb%83%e6%9c%9f%e9%97%b4lr%e9%80%90%e6%b8%90%e5%a2%9e%e5%8a%a0%e5%88%b0%e5%88%9d%e5%a7%8b%e5%80%bc">2. Learning rate warmup (训练期间,lr逐渐增加到初始值)</a></li>
+<li><a href="#3-zero-mathsemanticsmrowmi%ce%b3mimrowannotation-encoding%22applicationx-tex%22gammaannotationsemanticsmath%ce%b3-%e9%92%88%e5%af%b9residual-block%e4%b8%ad%e7%9a%84bn%e5%b1%82%e5%88%9d%e5%a7%8b%e5%8c%96">3. Zero $\gamma$ (针对residual block中的BN层初始化)</a></li>
+<li><a href="#4-no-bias-decay">4. No bias decay</a></li>
+</ul>
+</li>
+<li><a href="#32-low-precision-training-gpu%e4%bd%8e%e7%b2%be%e5%ba%a6">3.2. Low-precision training (GPU低精度)</a></li>
+</ul>
+</li>
+<li><a href="#4-model-tweaks-%e6%a8%a1%e5%9e%8b%e8%b0%83%e6%95%b4">4. Model Tweaks (模型调整)</a><ul>
+<li><a href="#41-%e4%bb%8b%e7%bb%8dresnet%e7%bd%91%e7%bb%9c%e7%bb%93%e6%9e%84">4.1 介绍ResNet网络结构</a></li>
+<li><a href="#42-resnet%e7%9a%84%e8%b0%83%e6%95%b4">4.2 ResNet的调整</a></li>
+</ul>
+</li>
+<li><a href="#5-%e8%ae%ad%e7%bb%83%e6%94%b9%e8%bf%9b">5. 训练改进</a><ul>
+<li><a href="#51-cos%e5%ad%a6%e4%b9%a0%e7%8e%87%e8%a1%b0%e5%87%8f-cosine-learning-rate-decay">5.1. cos学习率衰减  (Cosine Learning Rate Decay)</a></li>
+<li><a href="#52-%e6%a0%87%e7%ad%be%e5%b9%b3%e6%bb%91-label-smoothing">5.2. 标签平滑 (Label Smoothing)</a></li>
+<li><a href="#53-%e7%9f%a5%e8%af%86%e8%92%b8%e9%a6%8f-knowledge-distillation">5.3 知识蒸馏 (Knowledge Distillation)</a></li>
+<li><a href="#54-%e6%b7%b7%e5%90%88%e8%ae%ad%e7%bb%83-mixup-training">5.4 混合训练 (Mixup Training)</a></li>
+</ul>
+</li>
+<li><a href="#6-%e8%bf%81%e7%a7%bb%e5%ad%a6%e4%b9%a0">6. 迁移学习</a><ul>
+<li><a href="#%e8%af%ad%e4%b9%89%e5%88%86%e5%89%b2">语义分割</a></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<hr>
+<h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>本文整理了CNN的一些tricks.</p>
+<hr>
+<h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h1><ul>
+<li><p>网络结构发展: AlexNet, VGG, NiN, Inception, ResNet, DenseNet, NASNet.</p>
+</li>
+<li><p>提升训练效果的技巧:</p>
+<ul>
+<li><strong>损失函数</strong></li>
+<li><strong>数据预处理</strong></li>
+<li><strong>优化方法</strong></li>
+</ul>
+</li>
+<li><p>次要的 tricks:</p>
+<ul>
+<li><strong>修改卷积层的 stride</strong></li>
+<li><strong>调整 learning rate</strong></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>这些 tricks 不仅可以用在分类任务,也可以应用于目标检测和语义分割任务中.</li>
+</ul>
+<h2 id="文章结构"><a href="#文章结构" class="headerlink" title="文章结构"></a>文章结构</h2><ul>
+<li>Section 2: 设置一个训练的 baseline</li>
+<li>Section 3: 讨论几种 tricks</li>
+<li>Section 4: review 三种 ResNet 网络结构,提出一种新的网络结构</li>
+<li>Section 5: 额外的训练改进</li>
+<li>Section 6: 迁移学习</li>
+</ul>
+<hr>
+<h1 id="2-Training-Procedures-基准的训练过程"><a href="#2-Training-Procedures-基准的训练过程" class="headerlink" title="2. Training Procedures (基准的训练过程)"></a>2. Training Procedures (基准的训练过程)</h1><h2 id="2-1-Baseline-Training-Procedure"><a href="#2-1-Baseline-Training-Procedure" class="headerlink" title="2.1 Baseline Training Procedure"></a>2.1 Baseline Training Procedure</h2><ol>
+<li>Randomly sample an image and decode it into 32-bit floating point raw pixel values in [0; 255].</li>
+<li>Randomly crop a rectangular region whose aspect ratio is randomly sampled in [3/4, 4/3] and area randomly sampled in [8%; 100%], then resize the cropped region into a <strong>224-by-224</strong> <strong>square image</strong>.</li>
+<li><strong>Flip</strong> horizontally with 0.5 probability.</li>
+<li><strong>Scale hue</strong>, <strong>saturation</strong>, and <strong>brightness</strong> with coefficients uniformly drawn from [0.6, 1.4].</li>
+<li>Add PCA noise with a coefficient sampled from a normal distribution N(0, 0.1)</li>
+<li>Normalize RGB channels by subtracting 123.68, 116.779, 103.939 and dividing by 58.393, 57.12, 57.375, respectively.</li>
+</ol>
+<ul>
+<li><p>未做额外的随机数据增强处理</p>
+</li>
+<li><p>初始化</p>
+<ul>
+<li>网络权重W初始化: <strong>Xavier</strong> algorithm<ul>
+<li>In particular, we set the parameter to random values uniformly drawn from [−a; a], where a = p6=(din + dout). Here din and dout are the input and output channel sizes, respectively.</li>
+</ul>
+</li>
+<li>Bias 初始化: All <strong>biases are initialized to 0.</strong></li>
+<li>BN 层初始化: For <strong>batch normalization</strong> layers, <strong>γ vectors are initialized to 1 and β vectors to 0</strong>.</li>
+</ul>
+</li>
+<li><p>优化</p>
+<ul>
+<li><strong>Nesterov Accelerated Gradient (NAG) descent</strong></li>
+<li>Each model is trained for 120 epochs on 8 Nvidia V100 GPUs with a total <strong>batch size of 256</strong>.</li>
+<li>The <strong>learning rate</strong> is initialized to <strong>0.1</strong> and <strong>divided by 10 at the 30th, 60th, and 90th epochs.</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="2-2-Experiment-Results"><a href="#2-2-Experiment-Results" class="headerlink" title="2.2  Experiment Results"></a>2.2  Experiment Results</h2><ul>
+<li>论文的 baseline 与 reference 之间的对比</li>
+</ul>
+<hr>
+<h1 id="3-Efficient-Training-训练效率"><a href="#3-Efficient-Training-训练效率" class="headerlink" title="3. Efficient Training (训练效率)"></a>3. Efficient Training (训练效率)</h1><h2 id="3-1-Large-batch-training-针对Batch和learning-rate"><a href="#3-1-Large-batch-training-针对Batch和learning-rate" class="headerlink" title="3.1 Large-batch training (针对Batch和learning rate)"></a>3.1 Large-batch training (针对Batch和learning rate)</h2><ul>
+<li>增大 batch size, 导致<ul>
+<li>使训练过程变慢</li>
+<li>对于非凸问题, 收敛速率降低</li>
+<li>换言之, 对于相同的epoch, 选择大的batch size所得到验证集准确率低于小的batch size所得到的验证集准确率</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-Linear-scaling-learning-rate-lr的初始化随batch-size-线性增加"><a href="#1-Linear-scaling-learning-rate-lr的初始化随batch-size-线性增加" class="headerlink" title="1.  Linear scaling learning rate (lr的初始化随batch size 线性增加)"></a>1.  Linear scaling learning rate (lr的初始化随batch size 线性增加)</h3><blockquote>
+<p>当 batch size 增加时, 使 learning rate 的初始值相应增加</p>
+</blockquote>
+<ul>
+<li><p>a large batch size reduces the noise in the gradient, so we may increase the learning rate to make a larger progress along the opposite of the gradient direction.<br>(<strong>大的 batch size 降低了梯度的噪声, 所以我们需要增大 learning rate, 以更大的步长朝着梯度的反方向前进</strong>).</p>
+</li>
+<li><p>例子</p>
+<ul>
+<li>if we follow He et al. [9] to choose 0.1 as the initial learning rate for <strong>batch size 256</strong>, then when <strong>changing to a larger batch</strong> <strong>size b</strong>, we will <strong>increase the initial learning rate</strong> to <strong>0.1 × b/256</strong>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-Learning-rate-warmup-训练期间-lr逐渐增加到初始值"><a href="#2-Learning-rate-warmup-训练期间-lr逐渐增加到初始值" class="headerlink" title="2. Learning rate warmup (训练期间,lr逐渐增加到初始值)"></a>2. Learning rate warmup (训练期间,lr逐渐增加到初始值)</h3><blockquote>
+<p>lr 由 0 初始化, 线性增长到 initial value.</p>
+</blockquote>
+<p>在训练初期,所有参数都是随机初始化,所以此时离最终的结果还很远.此时,用一个很大的lr会导致数值不稳定.<br>因此,<strong>在warmup策略中,采用线性增长的lr,初期时lr值很小,随着数值稳定时,采用大的lr.</strong></p>
+<ul>
+<li><strong>lr 从 0 线性增长到初始化值</strong></li>
+<li>Goyal et al. [7] proposes a gradual warmup strategy that increases the learning rate from 0 to the initial learning rate linearly.</li>
+<li>In other words, assume we will use the first m batches (e.g. 5 data epochs) to warm up, and the <strong>initial learning rate is η</strong>, then <strong>at batch i, 1 ≤ i ≤ m</strong>, we will set the learning rate to be <strong>iη=m</strong></li>
+</ul>
+<h3 id="3-Zero-gamma-针对residual-block中的BN层初始化"><a href="#3-Zero-gamma-针对residual-block中的BN层初始化" class="headerlink" title="3. Zero $\gamma$ (针对residual block中的BN层初始化)"></a>3. Zero $\gamma$ (针对residual block中的BN层初始化)</h3><blockquote>
+<p>将residual block的最后一层(BN)中的 gamma 值以 0 初始化.</p>
+</blockquote>
+<p><strong>ResNet网络由多个residual block组成, 每个block有几个卷积层. 注意每个 block 的最后一层都是 BN 层.</strong></p>
+<p>给定 <code>input x</code>, 假定 <code>block(x)</code>是这个block的输出,则这个 residual block 的输出是 <code>x + block(x)</code> .</p>
+<ul>
+<li><strong>在 zero gamma 策略中, 我们将所有 BN 层的 gamma 以 <code>0</code> 初始化.</strong></li>
+</ul>
+<p>这就导致了所有 residual block 的输出直接返回了输入, 即 <code>return = x + block(x) = x + 0 = x</code> , 使得 residual block 在初期很容易进行训练.</p>
+<h3 id="4-No-bias-decay"><a href="#4-No-bias-decay" class="headerlink" title="4. No bias decay"></a>4. No bias decay</h3><blockquote>
+<p>不对任何层的 bias 使用正则化 decay.</p>
+</blockquote>
+<p>weight decay 一般应用于所有的 learnable param 包括 weights 和 bias.</p>
+<ul>
+<li>不对任何层的 bias 使用正则化<ul>
+<li>Conv层</li>
+<li>FC层</li>
+<li>BN层</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>以上所述针对于 batch size 小于 2K 的情况.<br>TODO 分层自适应学习率,针对大规模batch情况.<br>Note that LARS [4] offers layer-wise adaptive learning rate and is reported to be effective for extremely large batch sizes (beyond 16K).</p>
+</blockquote>
+<h2 id="3-2-Low-precision-training-GPU低精度"><a href="#3-2-Low-precision-training-GPU低精度" class="headerlink" title="3.2. Low-precision training (GPU低精度)"></a>3.2. Low-precision training (GPU低精度)</h2><p>GPU切换成FP16模式: 只适用于好的GPU如V100, 暂时不用考虑.</p>
+<hr>
+<h1 id="4-Model-Tweaks-模型调整"><a href="#4-Model-Tweaks-模型调整" class="headerlink" title="4. Model Tweaks (模型调整)"></a>4. Model Tweaks (模型调整)</h1><h2 id="4-1-介绍ResNet网络结构"><a href="#4-1-介绍ResNet网络结构" class="headerlink" title="4.1 介绍ResNet网络结构"></a>4.1 介绍ResNet网络结构</h2><p>略</p>
+<h2 id="4-2-ResNet的调整"><a href="#4-2-ResNet的调整" class="headerlink" title="4.2 ResNet的调整"></a>4.2 ResNet的调整</h2><ol>
+<li><p>ResNet-B<br>TODO ??</p>
+</li>
+<li><p>ResNet-C - 将输入第一个conv层的7x7改成3x3<br>such as SENet [12], PSPNet [31], DeepLabV3 [1], and ShuffleNetV2 [21]</p>
+</li>
+<li><p>ResNet-D - 在shortcut路径上,添加一个AvgPool层</p>
+</li>
+</ol>
+<hr>
+<h1 id="5-训练改进"><a href="#5-训练改进" class="headerlink" title="5. 训练改进"></a>5. 训练改进</h1><h2 id="5-1-cos学习率衰减-Cosine-Learning-Rate-Decay"><a href="#5-1-cos学习率衰减-Cosine-Learning-Rate-Decay" class="headerlink" title="5.1. cos学习率衰减  (Cosine Learning Rate Decay)"></a>5.1. cos学习率衰减  (Cosine Learning Rate Decay)</h2><p>学习率的调整在训练过程中至关重要.</p>
+<ul>
+<li>step decay - 每隔30 epochs,降低0.1</li>
+<li>cosine decay<ul>
+<li>根据当前的batch数来调整学习率</li>
+<li>Assume the total number of batches is T (the warmup stage is ignored), then at batch t, the learning rate $lr$ is computed as:</li>
+<li>$lr=\frac{1}{2}(1+cos(\frac{t\pi}{T}))$</li>
+</ul>
+</li>
+<li>曲线形状为cos曲线0~$\pi$的部分<ul>
+<li>学习率开始时下降的缓慢</li>
+<li>中间类似线性下降</li>
+<li>最后下降的缓慢</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-2-标签平滑-Label-Smoothing"><a href="#5-2-标签平滑-Label-Smoothing" class="headerlink" title="5.2. 标签平滑 (Label Smoothing)"></a>5.2. 标签平滑 (Label Smoothing)</h2><h2 id="5-3-知识蒸馏-Knowledge-Distillation"><a href="#5-3-知识蒸馏-Knowledge-Distillation" class="headerlink" title="5.3 知识蒸馏 (Knowledge Distillation)"></a>5.3 知识蒸馏 (Knowledge Distillation)</h2><h2 id="5-4-混合训练-Mixup-Training"><a href="#5-4-混合训练-Mixup-Training" class="headerlink" title="5.4 混合训练 (Mixup Training)"></a>5.4 混合训练 (Mixup Training)</h2><hr>
+<h1 id="6-迁移学习"><a href="#6-迁移学习" class="headerlink" title="6. 迁移学习"></a>6. 迁移学习</h1><h2 id="语义分割"><a href="#语义分割" class="headerlink" title="语义分割"></a>语义分割</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>trick</th>
+<th>work?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>cos学习率下降</strong></td>
+<td><strong>yes</strong></td>
+</tr>
+<tr>
+<td>标签平滑</td>
+<td>no</td>
+</tr>
+<tr>
+<td>蒸馏</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>因为[标签平滑\知识蒸馏\混合]模糊了像素级别的信息,可能会降低整体的准确率.</p>
+<blockquote>
+<ul>
+<li>TODO: 了解网络结构 SE-ResNeXt-50, SE代表什么? 与ResNet的联系?</li>
+<li>TODO: 用于处理大规模batch情况: LARS [4] offers layer-wise adaptive learning rate</li>
+</ul>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>您的鼓励是我原创的动力～</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Monte Yang 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Monte Yang 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Monte Yang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html" title="论文阅读-Bag of Tricks for Image Classification with Convolutional Neural Networks">http://monteyang.github.io/论文阅读-Bag of Tricks for Image Classification with Convolutional Neural Networks.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag"><i class="fa fa-tag"></i> 论文阅读</a>
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/LeetCode-41-50%E9%A2%98.html" rel="prev" title="LeetCode-41-50题">
+      <i class="fa fa-chevron-left"></i> LeetCode-41-50题
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Python-%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E3%80%81%E5%8D%8F%E7%A8%8B.html" rel="next" title="Python-多任务的实现：进程、线程、协程">
+      Python-多任务的实现：进程、线程、协程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Abstract"><span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1. Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文章结构"><span class="nav-text">文章结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Training-Procedures-基准的训练过程"><span class="nav-text">2. Training Procedures (基准的训练过程)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Baseline-Training-Procedure"><span class="nav-text">2.1 Baseline Training Procedure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Experiment-Results"><span class="nav-text">2.2  Experiment Results</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Efficient-Training-训练效率"><span class="nav-text">3. Efficient Training (训练效率)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Large-batch-training-针对Batch和learning-rate"><span class="nav-text">3.1 Large-batch training (针对Batch和learning rate)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Linear-scaling-learning-rate-lr的初始化随batch-size-线性增加"><span class="nav-text">1.  Linear scaling learning rate (lr的初始化随batch size 线性增加)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Learning-rate-warmup-训练期间-lr逐渐增加到初始值"><span class="nav-text">2. Learning rate warmup (训练期间,lr逐渐增加到初始值)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Zero-gamma-针对residual-block中的BN层初始化"><span class="nav-text">3. Zero $\gamma$ (针对residual block中的BN层初始化)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-No-bias-decay"><span class="nav-text">4. No bias decay</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-Low-precision-training-GPU低精度"><span class="nav-text">3.2. Low-precision training (GPU低精度)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Model-Tweaks-模型调整"><span class="nav-text">4. Model Tweaks (模型调整)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-介绍ResNet网络结构"><span class="nav-text">4.1 介绍ResNet网络结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-ResNet的调整"><span class="nav-text">4.2 ResNet的调整</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-训练改进"><span class="nav-text">5. 训练改进</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-cos学习率衰减-Cosine-Learning-Rate-Decay"><span class="nav-text">5.1. cos学习率衰减  (Cosine Learning Rate Decay)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-标签平滑-Label-Smoothing"><span class="nav-text">5.2. 标签平滑 (Label Smoothing)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-知识蒸馏-Knowledge-Distillation"><span class="nav-text">5.3 知识蒸馏 (Knowledge Distillation)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-混合训练-Mixup-Training"><span class="nav-text">5.4 混合训练 (Mixup Training)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-迁移学习"><span class="nav-text">6. 迁移学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#语义分割"><span class="nav-text">语义分割</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Monte Yang"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Monte Yang</p>
+  <div class="site-description" itemprop="description">❤MY</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MonteYang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MonteYang" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:59786677@qq.com" title="E-Mail → mailto:59786677@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <script
+  async
+  src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"
+></script>
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Monte Yang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='88' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout: 3000,
+        priority: true,
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.github.io/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html',]
+      });
+      });
+  </script>
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el: '#valine-comments',
+      verify: false,
+      notify: false,
+      appId: 'yD4jsHEShnMlVwJTQ3dEXVBE-gzGzoHsz',
+      appKey: 'H0dcpU7gfp3FYe6juurfobt8',
+      placeholder: "欢迎留下你的足迹～",
+      avatar: 'mm',
+      meta: guest,
+      pageSize: '10' || 10,
+      visitor: true,
+      lang: 'zh-cn' || 'zh-cn',
+      path: location.pathname,
+      recordIP: true,
+      serverURLs: ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
