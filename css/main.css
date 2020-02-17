@@ -158,7 +158,7 @@ body {
   background: #fff;
   color: #555;
   font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
-  font-size: 0.96em;
+  font-size: 1em;
   line-height: 2;
 }
 @media (max-width: 991px) {
@@ -1256,7 +1256,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff77c7;
+  background: #ff1d8e;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1625,6 +1625,14 @@ pre .javascript .function {
   line-height: 1;
   margin: -20px auto 15px;
   text-align: center;
+}
+.post-body p a {
+  color: #0593d3;
+  border-bottom: none;
+}
+.post-body p a:hover {
+  color: #0477ab;
+  text-decoration: underline;
 }
 .post-sticky-flag {
   display: inline-block;
