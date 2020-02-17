@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-<meta name="baidu-site-verification" content="VlKVHbCSz8" />
+
+<meta name="baidu-site-verification" content="pzKra37kyC" />
 <meta name="google-site-verification" content="Z2kTm-EFepZNHmfORKL12HMkSscrPSlFJpX7LkPhJpA" />
 <meta name="msvalidate.01" content="6848BAEF6B569BCE80C501D1FA6868F6" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.jpg">
@@ -27,7 +28,7 @@
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    hostname: new URL('http://monteyang.github.io').hostname,
+    hostname: new URL('http://monteyang.cn').hostname,
     root: '/',
     scheme: 'Mist',
     version: '7.7.0',
@@ -57,21 +58,21 @@
   <meta name="description" content="1. 概述强化学习是智能体（Agent）与环境（Environment）不断交互, 不断提高自己的决策能力的过程.  面向智能体的学习——通过与环境进行交互 所学习的样本来自于与环境的交互。而非像传统机器学习的样本是现有的。   通过试错和优化进行学习——用试错后的奖励（或惩罚）来学习   总体过程：环境（Environment）会给智能体（Agent）一个观测值（Observation）（全观测">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Reinforcement Learning-基本概念">
-<meta property="og:url" content="http://monteyang.github.io/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html">
+<meta property="og:url" content="http://monteyang.cn/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html">
 <meta property="og:site_name" content="MonteYang&#39;s Blog">
 <meta property="og:description" content="1. 概述强化学习是智能体（Agent）与环境（Environment）不断交互, 不断提高自己的决策能力的过程.  面向智能体的学习——通过与环境进行交互 所学习的样本来自于与环境的交互。而非像传统机器学习的样本是现有的。   通过试错和优化进行学习——用试错后的奖励（或惩罚）来学习   总体过程：环境（Environment）会给智能体（Agent）一个观测值（Observation）（全观测">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://monteyang.github.io/images/RL-%E6%95%B4%E4%BD%93%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:image" content="http://monteyang.github.io/images/RL-%E7%8E%AF%E5%A2%83%E7%8A%B6%E6%80%81.png">
-<meta property="og:image" content="http://monteyang.github.io/images/RL-%E6%99%BA%E8%83%BD%E4%BD%93%E7%8A%B6%E6%80%81.png">
+<meta property="og:image" content="http://monteyang.cn/images/RL-%E6%95%B4%E4%BD%93%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:image" content="http://monteyang.cn/images/RL-%E7%8E%AF%E5%A2%83%E7%8A%B6%E6%80%81.png">
+<meta property="og:image" content="http://monteyang.cn/images/RL-%E6%99%BA%E8%83%BD%E4%BD%93%E7%8A%B6%E6%80%81.png">
 <meta property="article:published_time" content="2019-12-16T02:08:42.000Z">
 <meta property="article:modified_time" content="2020-02-15T08:33:09.352Z">
 <meta property="article:author" content="Monte Yang">
 <meta property="article:tag" content="Reinforcement Learning">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://monteyang.github.io/images/RL-%E6%95%B4%E4%BD%93%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta name="twitter:image" content="http://monteyang.cn/images/RL-%E6%95%B4%E4%BD%93%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 
-<link rel="canonical" href="http://monteyang.github.io/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html">
+<link rel="canonical" href="http://monteyang.cn/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html">
 
 
 <script id="page-configurations">
@@ -213,7 +214,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -546,7 +547,7 @@ $$Q_\pi(s,a)=E_\pi(G_t|S_t=s,A_t=a)$$
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://monteyang.github.io/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html" title="Reinforcement Learning-基本概念">http://monteyang.github.io/Reinforcement-Learning-基本概念.html</a>
+    <a href="http://monteyang.cn/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html" title="Reinforcement Learning-基本概念">http://monteyang.cn/Reinforcement-Learning-基本概念.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -828,7 +829,7 @@ $$Q_\pi(s,a)=E_\pi(G_t|S_t=s,A_t=a)$$
       quicklink({
         timeout: 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.github.io/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html',]
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html',]
       });
       });
   </script>

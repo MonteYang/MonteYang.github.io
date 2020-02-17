@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
-<meta name="baidu-site-verification" content="VlKVHbCSz8" />
+
+<meta name="baidu-site-verification" content="pzKra37kyC" />
 <meta name="google-site-verification" content="Z2kTm-EFepZNHmfORKL12HMkSscrPSlFJpX7LkPhJpA" />
 <meta name="msvalidate.01" content="6848BAEF6B569BCE80C501D1FA6868F6" />
   <link rel="apple-touch-icon" sizes="180x180" href="/images/logo.jpg">
@@ -27,7 +28,7 @@
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    hostname: new URL('http://monteyang.github.io').hostname,
+    hostname: new URL('http://monteyang.cn').hostname,
     root: '/',
     scheme: 'Mist',
     version: '7.7.0',
@@ -57,7 +58,7 @@
   <meta name="description" content="本文记录于2019年1月  1.线性空间1.1 线性空间的定义设非空集合$V$，一个数域$K$，$x,y,z \in V$， $k,l\in K$，如果$V$满足加法封闭和数乘封闭，则称$V$为线性空间。   加法封闭：  加法交换律、加法结合律、零向量、负向量。 数乘封闭： 数对元素的分配律、元素对数的分配律、数因子结合律、单位向量。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="矩阵论笔记-1.线性空间、线性子空间、矩阵的值域和核空间">
-<meta property="og:url" content="http://monteyang.github.io/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html">
+<meta property="og:url" content="http://monteyang.cn/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html">
 <meta property="og:site_name" content="MonteYang&#39;s Blog">
 <meta property="og:description" content="本文记录于2019年1月  1.线性空间1.1 线性空间的定义设非空集合$V$，一个数域$K$，$x,y,z \in V$， $k,l\in K$，如果$V$满足加法封闭和数乘封闭，则称$V$为线性空间。   加法封闭：  加法交换律、加法结合律、零向量、负向量。 数乘封闭： 数对元素的分配律、元素对数的分配律、数因子结合律、单位向量。">
 <meta property="og:locale" content="zh_CN">
@@ -67,7 +68,7 @@
 <meta property="article:tag" content="矩阵论">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://monteyang.github.io/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html">
+<link rel="canonical" href="http://monteyang.cn/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html">
 
 
 <script id="page-configurations">
@@ -209,7 +210,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.github.io/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -418,7 +419,7 @@ a_n
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://monteyang.github.io/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html" title="矩阵论笔记-1.线性空间、线性子空间、矩阵的值域和核空间">http://monteyang.github.io/矩阵论笔记-1-线性空间、线性子空间、矩阵的值域和核空间.html</a>
+    <a href="http://monteyang.cn/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html" title="矩阵论笔记-1.线性空间、线性子空间、矩阵的值域和核空间">http://monteyang.cn/矩阵论笔记-1-线性空间、线性子空间、矩阵的值域和核空间.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -700,7 +701,7 @@ a_n
       quicklink({
         timeout: 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.github.io/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html',]
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html',]
       });
       });
   </script>
