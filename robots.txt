@@ -2,6 +2,7 @@
 User-agent: *
 Allow: /
 Allow: /archives/
+Allow: /categories/
 Allow: /bookmarks/
 Allow: /tools/
 
@@ -11,3 +12,6 @@ Disallow: /css/
 Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
+
+Sitemap: http://www.monteyang.cn/sitemap.xml
+Sitemap: http://www.monteyang.cn/baidusitemap.xml
