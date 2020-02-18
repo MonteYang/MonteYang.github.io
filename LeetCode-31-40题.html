@@ -1,411 +1,219 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <!-- title -->
-
-
-
-
-<!-- keywords -->
-
-
-
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta charset="UTF-8">
+
+<meta name="baidu-site-verification" content="pzKra37kyC">
+<meta name="google-site-verification" content="Tpp8m_k5m4Tzi6cI_Yzh5M10Yb0Vh4iUa8WMJqGE3kg">
+<meta name="msvalidate.01" content="6848BAEF6B569BCE80C501D1FA6868F6">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <meta name="author" content="Monte Yang">
-    <meta name="renderer" content="webkit">
-    <meta name="copyright" content="Monte Yang">
-    
-    <meta name="keywords" content="Python,3D Deep Learning">
-    
+
+
+    <meta name="subtitle" content="朝着咸鱼的反方向努力">
+
+
     <meta name="description" content="❤MY">
-    <meta http-equiv="Cache-control" content="no-cache">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>LeetCode-31-40题 · Monte Yang&#39;s Blog</title>
-    <style type="text/css">
-    @font-face {
-        font-family: 'Oswald-Regular';
-        src: url("/font/Oswald-Regular.ttf");
-    }
 
-    body {
-        margin: 0;
-    }
 
-    header,
-    footer,
-    .back-top,
-    .sidebar,
-    .container,
-    .site-intro-meta,
-    .toc-wrapper {
-        display: none;
-    }
+    <meta name="keywords" content="3D Deep learning, Monte Yang, 深度学习, 算法">
 
-    .site-intro {
-        position: relative;
-        z-index: 3;
-        width: 100%;
-        /* height: 50vh; */
-        overflow: hidden;
-    }
 
-    .site-intro-placeholder {
-        position: absolute;
-        z-index: -2;
-        top: 0;
-        left: 0;
-        width: calc(100% + 300px);
-        height: 100%;
-        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
-        background-position: center center;
-        transform: translate3d(-226px, 0, 0);
-        animation: gradient-move 2.5s ease-out 0s infinite;
-    }
+<title>LeetCode-31-40题 | MonteYang&#39;s Blog</title>
 
-    @keyframes gradient-move {
-        0% {
-            transform: translate3d(-226px, 0, 0);
-        }
-        100% {
-            transform: translate3d(0, 0, 0);
-        }
-    }
 
-</style>
 
-    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    <link rel="icon" href="/image/logo32x32.jpg">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
     
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href="/css/style.css">
     
-    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
-/* This file is meant as a standalone workflow for
-- testing support for link[rel=preload]
-- enabling async CSS loading in browsers that do not support rel=preload
-- applying rel preload css once loaded, whether supported or not.
-*/ -->
-<script>
-(function( w ){
-	"use strict";
-	// rel=preload support test
-	if( !w.loadCSS ){
-		w.loadCSS = function(){};
-	}
-	// define on the loadCSS obj
-	var rp = loadCSS.relpreload = {};
-	// rel=preload feature support test
-	// runs once and returns a function for compat purposes
-	rp.support = (function(){
-		var ret;
-		try {
-			ret = w.document.createElement( "link" ).relList.supports( "preload" );
-		} catch (e) {
-			ret = false;
-		}
-		return function(){
-			return ret;
-		};
-	})();
-
-	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
-	// then change that media back to its intended value on load
-	rp.bindMediaToggle = function( link ){
-		// remember existing media attr for ultimate state, or default to 'all'
-		var finalMedia = link.media || "all";
-
-		function enableStylesheet(){
-			link.media = finalMedia;
-		}
-
-		// bind load handlers to enable media
-		if( link.addEventListener ){
-			link.addEventListener( "load", enableStylesheet );
-		} else if( link.attachEvent ){
-			link.attachEvent( "onload", enableStylesheet );
-		}
-
-		// Set rel and non-applicable media type to start an async request
-		// note: timeout allows this to happen async to let rendering continue in IE
-		setTimeout(function(){
-			link.rel = "stylesheet";
-			link.media = "only x";
-		});
-		// also enable media after 3 seconds,
-		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
-		setTimeout( enableStylesheet, 3000 );
-	};
-
-	// loop through link elements in DOM
-	rp.poly = function(){
-		// double check this to prevent external calls from running
-		if( rp.support() ){
-			return;
-		}
-		var links = w.document.getElementsByTagName( "link" );
-		for( var i = 0; i < links.length; i++ ){
-			var link = links[ i ];
-			// qualify links to those with rel=preload and as=style attrs
-			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
-				// prevent rerunning on link
-				link.setAttribute( "data-loadcss", true );
-				// bind listeners to toggle media back
-				rp.bindMediaToggle( link );
-			}
-		}
-	};
-
-	// if unsupported, run the polyfill
-	if( !rp.support() ){
-		// run once at least
-		rp.poly();
-
-		// rerun poly on an interval until onload
-		var run = w.setInterval( rp.poly, 500 );
-		if( w.addEventListener ){
-			w.addEventListener( "load", function(){
-				rp.poly();
-				w.clearInterval( run );
-			} );
-		} else if( w.attachEvent ){
-			w.attachEvent( "onload", function(){
-				rp.poly();
-				w.clearInterval( run );
-			} );
-		}
-	}
 
 
-	// commonjs
-	if( typeof exports !== "undefined" ){
-		exports.loadCSS = loadCSS;
-	}
-	else {
-		w.loadCSS = loadCSS;
-	}
-}( typeof global !== "undefined" ? global : this ) );
-</script>
 
-    <link rel="icon" href= "/assets/logo32x32.jpg" />
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
-    <link rel="preload" href="/scripts/main.js" as="script" />
-    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
-    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    <!-- scripts list from _config.yml -->
     
-    <!-- fancybox -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
-    <!-- 百度统计  -->
+    <script src="/js/script.js"></script>
     
-    <!-- 谷歌统计  -->
+    <script src="/js/tocbot.min.js"></script>
     
+
+
+
+    
+    
+        
+    
+
+
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="MonteYang's Blog" type="application/atom+xml">
 </head>
-
-    
-        <body class="post-body">
-    
-    
-<header class="header">
-
-    <div class="read-progress"></div>
-    <div class="header-sidebar-menu">&#xe775;</div>
-    <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >Monte Yang&#39;s Blog</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">LeetCode-31-40题</a>
-            </div>
-    </div>
-    
-    <a class="home-link" href=/>Monte Yang's Blog</a>
-</header>
+<body>
     <div class="wrapper">
-        <div class="site-intro" style="
-
-
-
-
-
-
-
-height:30vh;
-">
-    
-    <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
-            
-    <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
-    <div class="site-intro-meta">
-        <!-- 标题  -->
-        <h1 class="intro-title">
-            <!-- 主页  -->
-            
-            LeetCode-31-40题
-            <!-- 404 -->
-            
-        </h1>
-        <!-- 副标题 -->
-        <p class="intro-subtitle">
-            <!-- 主页副标题  -->
-            
-            
-            <!-- 404 -->
-            
-        </p>
-        <!-- 文章页meta -->
-        
-            <div class="post-intros">
-                <!-- 文章页标签  -->
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">MonteYang&#39;s Blog</a></div>
+            <div class="menu navbar-right">
                 
-                    <div class= post-intro-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags = "LeetCode">LeetCode</a>
-    
-</div>
+                    <a class="menu-item" href="/archives">Posts</a>
                 
+                    <a class="menu-item" href="/category">Categories</a>
                 
-                    <div class="post-intro-read">
-                        <span>字数统计: <span class="post-count word-count">2.9k</span>阅读时长: <span class="post-count reading-time">13 min</span></span>
-                    </div>
+                    <a class="menu-item" href="/tag">Tags</a>
                 
-                <div class="post-intro-meta">
-                    <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                    <span class="post-intro-time">2020/01/08</span>
-                    
-                    <span id="busuanzi_container_page_pv" class="busuanzi-pv">
-                        <span class="iconfont-archer">&#xe602;</span>
-                        <span id="busuanzi_value_page_pv"></span>
-                    </span>
-                    
-                    <span class="shareWrapper">
-                        <span class="iconfont-archer shareIcon">&#xe71d;</span>
-                        <span class="shareText">Share</span>
-                        <ul class="shareList">
-                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
-                                <div class="share-qrcode"></div>
-                            </li>
-                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
-                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
-                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
-                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
-                        </ul>
-                    </span>
-                </div>
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
             </div>
-        
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">MonteYang&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
     </div>
 </div>
-        <script>
- 
-  // get user agent
-  var browser = {
-    versions: function () {
-      var u = window.navigator.userAgent;
-      return {
-        userAgent: u,
-        trident: u.indexOf('Trident') > -1, //IE内核
-        presto: u.indexOf('Presto') > -1, //opera内核
-        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
-        iPad: u.indexOf('iPad') > -1, //是否为iPad
-        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
-        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
-        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
-      };
-    }()
-  }
-  console.log("userAgent:" + browser.versions.userAgent);
 
-  // callback
-  function fontLoaded() {
-    console.log('font loaded');
-    if (document.getElementsByClassName('site-intro-meta')) {
-      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
-      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
-      var postIntros = document.getElementsByClassName('post-intros')[0]
-      if (postIntros) {
-        postIntros.classList.add('post-fade-in');
-      }
-    }
-  }
-
-  // UC不支持跨域，所以直接显示
-  function asyncCb(){
-    if (browser.versions.uc) {
-      console.log("UCBrowser");
-      fontLoaded();
-    } else {
-      WebFont.load({
-        custom: {
-          families: ['Oswald-Regular']
-        },
-        loading: function () {  //所有字体开始加载
-          // console.log('loading');
-        },
-        active: function () {  //所有字体已渲染
-          fontLoaded();
-        },
-        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
-          console.log('inactive: timeout');
-          fontLoaded();
-        },
-        timeout: 5000 // Set the timeout to two seconds
-      });
-    }
-  }
-
-  function asyncErr(){
-    console.warn('script load from CDN failed, will load local script')
-  }
-
-  // load webfont-loader async, and add callback function
-  function async(u, cb, err) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
-    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
-
-  var asyncLoadWithFallBack = function(arr, success, reject) {
-      var currReject = function(){
-        reject()
-        arr.shift()
-        if(arr.length)
-          async(arr[0], success, currReject)
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
         }
+    )
 
-      async(arr[0], success, currReject)
-  }
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
 
-  asyncLoadWithFallBack([
-    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
-    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
-    "/lib/webfontloader.min.js"
-  ], asyncCb, asyncErr)
-</script>        
-        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
-        <div class="container container-unloaded">
-            <main class="main post-page">
-    <article class="article-entry">
-        <blockquote>
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">LeetCode-31-40题</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Monte Yang</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">一月 8, 2020&nbsp;&nbsp;10:56:02</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/LeetCode/">LeetCode</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <blockquote>
 <p>leetcode <code>31~40</code> 题</p>
 </blockquote>
 <a id="more"></a>
+
 <hr>
 <h1 id="31-下一个排列"><a href="#31-下一个排列" class="headerlink" title="31. 下一个排列"></a>31. 下一个排列</h1><p>实现获取下一个排列的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列。</p>
 <p>如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。</p>
@@ -413,28 +221,27 @@ height:30vh;
 <p>以下是一些例子，输入位于左侧列，其相应输出位于右侧列。</p>
 <pre><code>1,2,3 → 1,3,2
 3,2,1 → 1,2,3
-1,1,5 → 1,5,1
-</code></pre><blockquote>
+1,1,5 → 1,5,1</code></pre><blockquote>
 <p>思路:<br>字典序算法</p>
+</blockquote>
 <ol>
 <li>从右往左, 找出第一个小于右邻的数 <code>list[x]</code>;</li>
 <li>从右往左, 找出第一个比 <code>list[x]</code> 大的数 <code>list[y]</code>;</li>
 <li>交换 <code>list[x]</code> 和 <code>list[y]</code>;</li>
 <li>将 <code>list[x]</code> 后面的序列从小到大排序. </li>
 </ol>
-</blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">nextPermutation</span><span class="params">(self, nums: List[int])</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums) == <span class="number">1</span>: <span class="keyword">return</span> </span><br><span class="line">        <span class="comment"># 1</span></span><br><span class="line">        x = <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &lt; nums[i+<span class="number">1</span>]:</span><br><span class="line">                x = i</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="comment"># 如果不存在下一个更大的字典序(即当前序列为最大的字典序), 则将序列转为最小字典序</span></span><br><span class="line">        <span class="keyword">if</span> x == <span class="number">-1</span>:</span><br><span class="line">            nums.sort()</span><br><span class="line">            <span class="keyword">return</span> </span><br><span class="line">        <span class="comment"># 2</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[x]:</span><br><span class="line">                y = i</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="comment"># 3, 4</span></span><br><span class="line">        nums[x], nums[y] = nums[y], nums[x]</span><br><span class="line">        nums[x+<span class="number">1</span>:] = sorted(nums[x+<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
+
+
 <hr>
 <h1 id="32-最长有效括号"><a href="#32-最长有效括号" class="headerlink" title="32. 最长有效括号"></a>32. 最长有效括号</h1><p>给定一个只包含 ‘(‘ 和 ‘)’ 的字符串，找出最长的包含有效括号的子串的长度。</p>
 <p>示例 1:</p>
 <pre><code>输入: &quot;(()&quot;
 输出: 2
-解释: 最长有效括号子串为 &quot;()&quot;
-</code></pre><p>示例 2:</p>
+解释: 最长有效括号子串为 &quot;()&quot;</code></pre><p>示例 2:</p>
 <pre><code>输入: &quot;)()())&quot;
 输出: 4
-解释: 最长有效括号子串为 &quot;()()&quot;
-</code></pre><blockquote>
+解释: 最长有效括号子串为 &quot;()()&quot;</code></pre><blockquote>
 <p>思路:</p>
 <ol>
 <li>用栈实现括号匹配</li>
@@ -444,6 +251,7 @@ height:30vh;
 </ol>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestValidParentheses</span><span class="params">(self, s: str)</span> -&gt; int:</span></span><br><span class="line">        <span class="comment"># ()()()(()()()(()))</span></span><br><span class="line">        <span class="comment"># 特殊情况</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        stack = []</span><br><span class="line">        idxs = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">            <span class="comment"># 如果栈为空时</span></span><br><span class="line">            <span class="keyword">if</span> stack == []:</span><br><span class="line">                <span class="keyword">if</span> s[i] == <span class="string">')'</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    stack.append(i)</span><br><span class="line">            <span class="comment"># 如果栈非空时</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> s[i] == <span class="string">')'</span>:</span><br><span class="line">                    idxs.append(i)</span><br><span class="line">                    idxs.append(stack.pop())</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    stack.append(i)</span><br><span class="line"></span><br><span class="line">        idxs.sort()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> idxs: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        max_length = <span class="number">0</span></span><br><span class="line">        length = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, len(idxs)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> idxs[j+<span class="number">1</span>] - idxs[j] == <span class="number">1</span>:</span><br><span class="line">                length += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> max_length &lt; length:</span><br><span class="line">                    max_length = length</span><br><span class="line">                length = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> max(length, max_length)</span><br></pre></td></tr></table></figure>
+
 <hr>
 <h1 id="33-搜索旋转排序数组"><a href="#33-搜索旋转排序数组" class="headerlink" title="33. 搜索旋转排序数组"></a>33. 搜索旋转排序数组</h1><p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p>
 <p>( 例如，数组 <code>[0,1,2,4,5,6,7]</code> 可能变为 <code>[4,5,6,7,0,1,2]</code> )。</p>
@@ -452,28 +260,24 @@ height:30vh;
 <p>你的算法时间复杂度必须是 <code>O(log n)</code> 级别。</p>
 <p>示例 1:</p>
 <pre><code>输入: nums = [4,5,6,7,0,1,2], target = 0
-输出: 4
-</code></pre><p>示例 2:</p>
+输出: 4</code></pre><p>示例 2:</p>
 <pre><code>输入: nums = [4,5,6,7,0,1,2], target = 3
-输出: -1
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="comment"># nums = [4,5,6,7,0,1,2]</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="comment"># 找出最小值的索引</span></span><br><span class="line">        min_idx = self.search_min_idx(nums)</span><br><span class="line">        <span class="keyword">if</span> min_idx != <span class="number">0</span>:</span><br><span class="line">            nums = nums[min_idx:] + nums[:min_idx]</span><br><span class="line">        <span class="comment"># 二分查找</span></span><br><span class="line">        tmp_idx = self.bin_search(nums, target)</span><br><span class="line">        <span class="keyword">if</span> tmp_idx == <span class="number">-1</span>: <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="keyword">return</span> (tmp_idx + min_idx) % len(nums)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search_min_idx</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> </span></span><br><span class="line">        <span class="keyword">return</span> nums.index(min(nums))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bin_search</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        二分查找法:</span></span><br><span class="line"><span class="string">            - 如果nums中存在目标值, 则返回该值的index;</span></span><br><span class="line"><span class="string">            - 如果nums中不存在目标值, 则返回 -1.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        low = <span class="number">0</span></span><br><span class="line">        high = len(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> low &lt;= high:</span><br><span class="line">            mid = (low + high) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> target &lt; nums[mid]:</span><br><span class="line">                high = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> target &gt; nums[mid]:</span><br><span class="line">                low = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+输出: -1</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="comment"># nums = [4,5,6,7,0,1,2]</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="comment"># 找出最小值的索引</span></span><br><span class="line">        min_idx = self.search_min_idx(nums)</span><br><span class="line">        <span class="keyword">if</span> min_idx != <span class="number">0</span>:</span><br><span class="line">            nums = nums[min_idx:] + nums[:min_idx]</span><br><span class="line">        <span class="comment"># 二分查找</span></span><br><span class="line">        tmp_idx = self.bin_search(nums, target)</span><br><span class="line">        <span class="keyword">if</span> tmp_idx == <span class="number">-1</span>: <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="keyword">return</span> (tmp_idx + min_idx) % len(nums)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search_min_idx</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> </span></span><br><span class="line">        <span class="keyword">return</span> nums.index(min(nums))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bin_search</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        二分查找法:</span></span><br><span class="line"><span class="string">            - 如果nums中存在目标值, 则返回该值的index;</span></span><br><span class="line"><span class="string">            - 如果nums中不存在目标值, 则返回 -1.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        low = <span class="number">0</span></span><br><span class="line">        high = len(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> low &lt;= high:</span><br><span class="line">            mid = (low + high) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> target &lt; nums[mid]:</span><br><span class="line">                high = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> target &gt; nums[mid]:</span><br><span class="line">                low = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+
+
 <hr>
 <h1 id="34-TODO"><a href="#34-TODO" class="headerlink" title="34. TODO"></a>34. TODO</h1><hr>
 <h1 id="35-搜索插入位置"><a href="#35-搜索插入位置" class="headerlink" title="35. 搜索插入位置"></a>35. 搜索插入位置</h1><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
 <p>你可以假设数组中无重复元素。</p>
 <p>示例 1:</p>
 <pre><code>输入: [1,3,5,6], 5
-输出: 2
-</code></pre><p>示例 2:</p>
+输出: 2</code></pre><p>示例 2:</p>
 <pre><code>输入: [1,3,5,6], 2
-输出: 1
-</code></pre><p>示例 3:</p>
+输出: 1</code></pre><p>示例 3:</p>
 <pre><code>输入: [1,3,5,6], 7
-输出: 4
-</code></pre><p>示例 4:</p>
+输出: 4</code></pre><p>示例 4:</p>
 <pre><code>输入: [1,3,5,6], 0
-输出: 0
-</code></pre><blockquote>
+输出: 0</code></pre><blockquote>
 <p><strong>思路</strong></p>
 <ol>
 <li>扫一次, 若当前值小于 <code>target</code>, 则跳过; 若当前值大于等于 <code>target</code>, 则返回当前索引</li>
@@ -481,10 +285,12 @@ height:30vh;
 </ol>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchInsert</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">for</span> i, num <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">            <span class="keyword">if</span> num &lt; target:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> i</span><br><span class="line">        <span class="keyword">return</span> len(nums)</span><br></pre></td></tr></table></figure>
+
+
 <hr>
 <h1 id="36-有效的数独"><a href="#36-有效的数独" class="headerlink" title="36. 有效的数独"></a>36. 有效的数独</h1><p>判断一个 9x9 的数独是否有效。只需要根据以下规则，验证已经填入的数字是否有效即可。</p>
 <p>数字 <code>1-9</code> 在每一行只能出现一次。<br>数字 <code>1-9</code> 在每一列只能出现一次。<br>数字 <code>1-9</code> 在每一个以粗实线分隔的 3x3 宫内只能出现一次。</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png" alt=""></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png" alt></p>
 <p>上图是一个部分填充的有效的数独。</p>
 <p>数独部分空格内已填入了数字，空白格用 <code>&#39;.&#39;</code> 表示。</p>
 <p>示例 1:</p>
@@ -500,8 +306,7 @@ height:30vh;
 [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;],
 [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]
 ]
-输出: true
-</code></pre><p>示例 2:</p>
+输出: true</code></pre><p>示例 2:</p>
 <pre><code>输入:
 [
 [&quot;8&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],
@@ -516,13 +321,11 @@ height:30vh;
 ]
 输出: false
 解释: 除了第一行的第一个数字从 5 改为 8 以外，空格内其他数字均与 示例1 相同。
-    但由于位于左上角的 3x3 宫内有两个 8 存在, 因此这个数独是无效的。
-</code></pre><p>说明:</p>
+    但由于位于左上角的 3x3 宫内有两个 8 存在, 因此这个数独是无效的。</code></pre><p>说明:</p>
 <pre><code>一个有效的数独（部分已被填充）不一定是可解的。
 只需要根据以上规则，验证已经填入的数字是否有效即可。
-给定数独序列只包含数字 1-9 和字符 &#39;.&#39; 。
-给定数独永远是 9x9 形式的。
-</code></pre><blockquote>
+给定数独序列只包含数字 1-9 和字符 &apos;.&apos; 。
+给定数独永远是 9x9 形式的。</code></pre><blockquote>
 <p><strong>思路</strong></p>
 <ol>
 <li>数独板块中共有 <strong>9行 \ 9列 \ 9个小块</strong>, <strong>每行 \ 每列 \ 每个小块</strong> 都建立一个 hash map, 用来记录该<strong>行\列\小块</strong>中数字对应的个数</li>
@@ -534,6 +337,8 @@ height:30vh;
 </ol>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValidSudoku</span><span class="params">(self, board: List[List[str]])</span> -&gt; bool:</span></span><br><span class="line">        small_box = [[&#123;&#125; <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">3</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">3</span>)]  <span class="comment"># 3*3个 small box</span></span><br><span class="line">        row = [&#123;&#125; <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">9</span>)]  <span class="comment"># 9行</span></span><br><span class="line">        colum = copy.deepcopy(row)  <span class="comment"># 9列</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> idx_row, r <span class="keyword">in</span> enumerate(board):</span><br><span class="line">            <span class="keyword">for</span> idx_colum, num <span class="keyword">in</span> enumerate(r):</span><br><span class="line">                <span class="keyword">if</span> num == <span class="string">'.'</span>: <span class="keyword">continue</span></span><br><span class="line">                <span class="comment"># 当前元素为 num, 判断该元素属于哪个small_box</span></span><br><span class="line">                <span class="comment"># 如果对应的small box中没有该数, 设置hash中的key的value为1</span></span><br><span class="line">                <span class="comment"># 如果对应的small box已存在该数, 则返回错误</span></span><br><span class="line">                <span class="keyword">if</span> num <span class="keyword">not</span> <span class="keyword">in</span> small_box[idx_row // <span class="number">3</span>][idx_colum // <span class="number">3</span>]:</span><br><span class="line">                    small_box[idx_row // <span class="number">3</span>][idx_colum // <span class="number">3</span>][num] = <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">                <span class="comment"># 判断该元素在当前row中是否存在</span></span><br><span class="line">                <span class="keyword">if</span> num <span class="keyword">not</span> <span class="keyword">in</span> row[idx_row]:</span><br><span class="line">                    row[idx_row][num] = <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">                <span class="comment"># 判断该元素在当前列中是否存在</span></span><br><span class="line">                <span class="keyword">if</span> num <span class="keyword">not</span> <span class="keyword">in</span> colum[idx_colum]:</span><br><span class="line">                    colum[idx_colum][num] = <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+
 <hr>
 <h1 id="37-TODO"><a href="#37-TODO" class="headerlink" title="37. TODO"></a>37. TODO</h1><hr>
 <h1 id="38-外观数列"><a href="#38-外观数列" class="headerlink" title="38. 外观数列"></a>38. 外观数列</h1><p>「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。前五项如下：</p>
@@ -550,40 +355,38 @@ height:30vh;
 <p>示例 1:</p>
 <pre><code>输入: 1
 输出: &quot;1&quot;
-解释：这是一个基本样例。
-</code></pre><p>示例 2:</p>
+解释：这是一个基本样例。</code></pre><p>示例 2:</p>
 <pre><code>输入: 4
 输出: &quot;1211&quot;
-解释：当 n = 3 时，序列是 &quot;21&quot;，其中我们有 &quot;2&quot; 和 &quot;1&quot; 两组，&quot;2&quot; 可以读作 &quot;12&quot;，也就是出现频次 = 1 而 值 = 2；类似 &quot;1&quot; 可以读作 &quot;11&quot;。所以答案是 &quot;12&quot; 和 &quot;11&quot; 组合在一起，也就是 &quot;1211&quot;。
-</code></pre><blockquote>
+解释：当 n = 3 时，序列是 &quot;21&quot;，其中我们有 &quot;2&quot; 和 &quot;1&quot; 两组，&quot;2&quot; 可以读作 &quot;12&quot;，也就是出现频次 = 1 而 值 = 2；类似 &quot;1&quot; 可以读作 &quot;11&quot;。所以答案是 &quot;12&quot; 和 &quot;11&quot; 组合在一起，也就是 &quot;1211&quot;。</code></pre><blockquote>
 <p>思路：<br>迭代求解</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countAndSay</span><span class="params">(self, n: int)</span> -&gt; str:</span></span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'1'</span></span><br><span class="line">        s = <span class="string">'1*'</span></span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">1</span>:</span><br><span class="line">            s = self.util(s)</span><br><span class="line">            n -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> s[:<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">util</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">""" 输入s, 返回s的下一个外观数列, 注意s的最后一个字符是'*'.</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        Args:</span></span><br><span class="line"><span class="string">            s (string): 以 * 结尾的字符串</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        Returns:</span></span><br><span class="line"><span class="string">            string: 下一个外观数列</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res = <span class="string">''</span></span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(s)):</span><br><span class="line">            <span class="keyword">if</span> s[i] == s[i - <span class="number">1</span>]:</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res += (str(cnt) + s[i - <span class="number">1</span>])</span><br><span class="line">                cnt = <span class="number">1</span></span><br><span class="line">        s = res + <span class="string">'*'</span></span><br><span class="line">        <span class="keyword">return</span> s</span><br></pre></td></tr></table></figure>
+
 <hr>
 <h1 id="39-组合总和"><a href="#39-组合总和" class="headerlink" title="39. 组合总和"></a>39. 组合总和</h1><p>给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。</p>
 <p>candidates 中的数字可以无限制重复被选取。</p>
 <p>说明：</p>
 <pre><code>所有数字（包括 target）都是正整数。
-解集不能包含重复的组合。 
-</code></pre><p>示例 1:</p>
+解集不能包含重复的组合。 </code></pre><p>示例 1:</p>
 <pre><code>输入: candidates = [2,3,6,7], target = 7,
 所求解集为:
 [
 ⁠ [7],
 ⁠ [2,2,3]
-]
-</code></pre><p>示例 2:</p>
+]</code></pre><p>示例 2:</p>
 <pre><code>输入: candidates = [2,3,5], target = 8,
 所求解集为:
 [
 [2,2,2,2],
 [2,3,3],
 [3,5]
-]
-</code></pre><blockquote>
+]</code></pre><blockquote>
 <p>思路: 回溯法 + 利用树的数据结构判断</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">combinationSum</span><span class="params">(self, candidates: List[int], target: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        res = []</span><br><span class="line">        <span class="comment"># 先排序</span></span><br><span class="line">        candidates.sort()</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">util</span><span class="params">(candidates, cur_sum, tmp_list)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> candidates == []: <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 如果当前列表之和等于 target, 加入res</span></span><br><span class="line">            <span class="keyword">if</span> cur_sum == target:</span><br><span class="line">                res.append(tmp_list)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 如果当前列表元素之和大于 target，直接返回（剪枝）</span></span><br><span class="line">            <span class="keyword">elif</span> cur_sum &gt; target:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 如果当前列表元素之和小于 target，继续添加元素</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">for</span> i, c <span class="keyword">in</span> enumerate(candidates):</span><br><span class="line">                    _tmp_list = copy.deepcopy(tmp_list)</span><br><span class="line">                    _tmp_list.append(c)</span><br><span class="line">                    util(candidates[i:], cur_sum+c, _tmp_list)</span><br><span class="line">        </span><br><span class="line">        util(candidates, <span class="number">0</span>, [])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+
 <hr>
 <h1 id="40-组合之和II"><a href="#40-组合之和II" class="headerlink" title="40. 组合之和II"></a>40. 组合之和II</h1><p>给定一个数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。</p>
 <p>candidates 中的每个数字在每个组合中只能使用一次。</p>
@@ -600,636 +403,85 @@ height:30vh;
 [1, 2, 5],
 [2, 6],
 [1, 1, 6]
-]
-</code></pre><p>示例 2:</p>
+]</code></pre><p>示例 2:</p>
 <pre><code>输入: candidates = [2,5,2,1,2], target = 5,
 所求解集为:
 [
 [1,2,2],
 [5]
-]
-</code></pre><blockquote>
+]</code></pre><blockquote>
 <p>思路:<br>与上一题相似, 多增加去重步骤</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">combinationSum2</span><span class="params">(self, candidates: List[int], target: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        res = []</span><br><span class="line">        candidates.sort()  <span class="comment"># [1,1,2,5,6,]</span></span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">back_track</span><span class="params">(cur_sum, cur_list, candidates)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> cur_sum == target:</span><br><span class="line">                res.append(cur_list)</span><br><span class="line">            <span class="keyword">elif</span> cur_sum &gt; target:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">for</span> i, c <span class="keyword">in</span> enumerate(candidates):</span><br><span class="line">                    <span class="comment"># 去重</span></span><br><span class="line">                    <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> c == candidates[i<span class="number">-1</span>]: <span class="keyword">continue</span></span><br><span class="line">                    _cur_list = cur_list[:]</span><br><span class="line">                    _cur_list.append(c)</span><br><span class="line">                    back_track(cur_sum+c, _cur_list, candidates[i+<span class="number">1</span>:])</span><br><span class="line">        </span><br><span class="line">        back_track(<span class="number">0</span>, [], candidates)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 
-    </article>
-    <!-- license  -->
-    
-        <div class="license-wrapper">
-            <p>原文作者：<a href="http://monteyang.cn">Monte Yang</a>
-            <p>原文链接：<a href="http://monteyang.cn/LeetCode-31-40%E9%A2%98.html">http://monteyang.cn/LeetCode-31-40%E9%A2%98.html</a>
-            <p>发表日期：<a href="http://monteyang.cn/LeetCode-31-40%E9%A2%98.html">January 8th 2020, 10:56:02 am</a>
-            <p>更新日期：<a href="http://monteyang.cn/LeetCode-31-40%E9%A2%98.html">February 18th 2020, 4:44:38 pm</a>
-            <p>版权声明：本文采用<a rel="license noopener" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
-    
-    <!-- paginator  -->
-    <ul class="post-paginator">
-        <li class="next">
-            
-                <div class="nextSlogan">Next Post</div>
-                <a href= "/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E8%AE%A1%E5%88%92.html" title= "Paper Reading Plan">
-                    <div class="nextTitle">Paper Reading Plan</div>
-                </a>
-            
-        </li>
-        <li class="previous">
-            
-                <div class="prevSlogan">Previous Post</div>
-                <a href= "/2019%E5%B9%B4%E7%9A%84%E6%80%BB%E7%BB%93.html" title= "2019年的总结">
-                    <div class="prevTitle">2019年的总结</div>
-                </a>
-            
-        </li>
-    </ul>
-    <!-- 评论插件 -->
-    <!-- 来必力City版安装代码 -->
 
-<!-- City版安装代码已完成 -->
-    
-    
-    <!-- partial('_partial/comment/changyan') -->
-    <!--PC版-->
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Monte Yang</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://monteyang.cn/LeetCode-31-40%E9%A2%98.html">http://monteyang.cn/LeetCode-31-40%E9%A2%98.html</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="external nofollow noopener noreferrer">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
 
-
-    
-    
-
-    <!-- 评论 -->
-</main>
-            <!-- profile -->
-            
-        </div>
-        <footer class="footer footer-unloaded">
-    <!-- social  -->
-    
-    <div class="social">
+            </section>
         
-    
-        
-            
-                <a href="mailto:59786677@qq.com" class="iconfont-archer email" title=email ></a>
-            
-        
-    
-        
-            
-                <a href="//github.com/monteyang" class="iconfont-archer github" target="_blank" title=github></a>
-            
-        
-    
-        
-            
-                <span class="iconfont-archer wechat" title=wechat>
-                  
-                  <img class="profile-qr" src="/avatar/wechat.jpg" />
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/LeetCode/"># LeetCode</a>
+                    
+                        
                 </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
             
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
+                <a class="prev" rel="prev" href="/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E8%AE%A1%E5%88%92.html">Paper Reading Plan</a>
             
-                <a href="/atom.xml" class="iconfont-archer rss" target="_blank" title=rss></a>
             
-        
-    
+            <a class="next" rel="next" href="/2019%E5%B9%B4%E7%9A%84%E6%80%BB%E7%BB%93.html">2019年的总结</a>
+            
+        </section>
 
-    </div>
-    
-    <!-- powered by Hexo  -->
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
     <div class="copyright">
-        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+        <span>© Monte Yang | Powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank" rel="external nofollow noopener noreferrer">Chic</a></span>
     </div>
-    <!-- 不蒜子  -->
-    
-    <div class="busuanzi-container">
-    
-     
-    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
-    
-    </div>
-    
 </footer>
-    </div>
-    <!-- toc -->
-    
-    <div class="toc-wrapper" style=
-    
 
-
-
-
-
-
-
-top:30vh;
-
-    >
-        <div class="toc-catalog">
-            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
-        </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#31-下一个排列"><span class="toc-number">1.</span> <span class="toc-text">31. 下一个排列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#32-最长有效括号"><span class="toc-number">2.</span> <span class="toc-text">32. 最长有效括号</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#33-搜索旋转排序数组"><span class="toc-number">3.</span> <span class="toc-text">33. 搜索旋转排序数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#34-TODO"><span class="toc-number">4.</span> <span class="toc-text">34. TODO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#35-搜索插入位置"><span class="toc-number">5.</span> <span class="toc-text">35. 搜索插入位置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#36-有效的数独"><span class="toc-number">6.</span> <span class="toc-text">36. 有效的数独</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#37-TODO"><span class="toc-number">7.</span> <span class="toc-text">37. TODO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#38-外观数列"><span class="toc-number">8.</span> <span class="toc-text">38. 外观数列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#39-组合总和"><span class="toc-number">9.</span> <span class="toc-text">39. 组合总和</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#40-组合之和II"><span class="toc-number">10.</span> <span class="toc-text">40. 组合之和II</span></a></li></ol>
     </div>
-    
-    <div class="back-top iconfont-archer">&#xe639;</div>
-    <div class="sidebar sidebar-hide">
-    <ul class="sidebar-tabs sidebar-tabs-active-0">
-        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
-        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
-        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
-    </ul>
-    <div class="sidebar-content sidebar-content-show-archive">
-          <div class="sidebar-panel-archives">
-    <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div class="total-and-search">
-        <div class="total-archive">
-        Total : 25
-        </div>
-        <!-- search  -->
-        
-    </div>
-    
-    <div class="post-archive">
-    
-    
-    
-    
-    <div class="archive-year"> 2020 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/12</span><a class="archive-post-title" href= "/Python-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.html" >Python-正则表达式</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/12</span><a class="archive-post-title" href= "/Python-%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E3%80%81%E5%8D%8F%E7%A8%8B.html" >Python-多任务的实现</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/11</span><a class="archive-post-title" href= "/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html" >论文阅读-Bag of Tricks for Image Classification with Convolutional Neural Networks</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/11</span><a class="archive-post-title" href= "/LeetCode-41-50%E9%A2%98.html" >LeetCode-41-50题</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html" >Reinforcement Learning-马尔可夫决策过程</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/09</span><a class="archive-post-title" href= "/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-PointNet.html" >论文阅读-PointNet</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/09</span><a class="archive-post-title" href= "/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-VoxNet.html" >论文阅读-VoxNet</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/09</span><a class="archive-post-title" href= "/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Ciss-Net.html" >论文阅读-Ciss-Net</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/09</span><a class="archive-post-title" href= "/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-MeshNet.html" >论文阅读-MeshNet</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/09</span><a class="archive-post-title" href= "/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E8%AE%A1%E5%88%92.html" >Paper Reading Plan</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/08</span><a class="archive-post-title" href= "/LeetCode-31-40%E9%A2%98.html" >LeetCode-31-40题</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/04</span><a class="archive-post-title" href= "/2019%E5%B9%B4%E7%9A%84%E6%80%BB%E7%BB%93.html" >2019年的总结</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/04</span><a class="archive-post-title" href= "/LeetCode-21-30%E9%A2%98.html" >LeetCode-21-30题</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2019 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/17</span><a class="archive-post-title" href= "/LeetCode-11-20%E9%A2%98.html" >LeetCode-11-20题</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/17</span><a class="archive-post-title" href= "/LeetCode-1-10%E9%A2%98.html" >LeetCode-1-10题</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/16</span><a class="archive-post-title" href= "/Python-Iterable%E5%92%8CIterator%E7%9A%84%E5%8C%BA%E5%88%86.html" >Python-可迭代对象、迭代器、生成器</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/16</span><a class="archive-post-title" href= "/Python-Matplotlib%E6%80%BB%E7%BB%93.html" >Python-Matplotlib总结</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/16</span><a class="archive-post-title" href= "/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html" >Reinforcement Learning-基本概念</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/15</span><a class="archive-post-title" href= "/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3.html" >Python-axis的理解</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/14</span><a class="archive-post-title" href= "/Python-numpy%E5%92%8Clist%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D.html" >Python-numpy和list中的浅拷贝和深拷贝</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/12</span><a class="archive-post-title" href= "/Python-slot-%E6%96%B9%E6%B3%95.html" >Python - __slot__方法</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/04</span><a class="archive-post-title" href= "/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E8%A1%A5-%E7%BB%B4%E6%95%B0%E5%85%AC%E5%BC%8F.html" >矩阵论笔记-1.补:维数公式</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">01/04</span><a class="archive-post-title" href= "/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html" >矩阵论笔记-1.线性空间、线性子空间、矩阵的值域和核空间</a>
-        </li>
-    
-    
-    
-    
-    
-        </ul>
-    
-    <div class="archive-year"> 2018 </div>
-    <ul class="year-list">
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/17</span><a class="archive-post-title" href= "/Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html" >Linux基本命令总结</a>
-        </li>
-    
-    
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/16</span><a class="archive-post-title" href= "/P%E9%97%AE%E9%A2%98%E3%80%81NP%E9%97%AE%E9%A2%98%E3%80%81NP%E5%AE%8C%E5%85%A8%E9%97%AE%E9%A2%98%E5%92%8CNP%E9%9A%BE%E9%97%AE%E9%A2%98.html" >P问题、NP问题、NP完全问题和NP难问题</a>
-        </li>
-    
-    </div>
-  </div>
-        <div class="sidebar-panel-tags">
-    <div class="sidebar-tags-name">
-    
-        <span class="sidebar-tag-name" data-tags="Reinforcement Learning"><span class="iconfont-archer">&#xe606;</span>Reinforcement Learning</span>
-    
-        <span class="sidebar-tag-name" data-tags="总结"><span class="iconfont-archer">&#xe606;</span>总结</span>
-    
-        <span class="sidebar-tag-name" data-tags="Python"><span class="iconfont-archer">&#xe606;</span>Python</span>
-    
-        <span class="sidebar-tag-name" data-tags="LeetCode"><span class="iconfont-archer">&#xe606;</span>LeetCode</span>
-    
-        <span class="sidebar-tag-name" data-tags="矩阵论"><span class="iconfont-archer">&#xe606;</span>矩阵论</span>
-    
-        <span class="sidebar-tag-name" data-tags="论文阅读"><span class="iconfont-archer">&#xe606;</span>论文阅读</span>
-    
-        <span class="sidebar-tag-name" data-tags="image segmentation"><span class="iconfont-archer">&#xe606;</span>image segmentation</span>
-    
-        <span class="sidebar-tag-name" data-tags="Mesh"><span class="iconfont-archer">&#xe606;</span>Mesh</span>
-    
-        <span class="sidebar-tag-name" data-tags="Voxel"><span class="iconfont-archer">&#xe606;</span>Voxel</span>
-    
-        <span class="sidebar-tag-name" data-tags="Linux"><span class="iconfont-archer">&#xe606;</span>Linux</span>
-    
-        <span class="sidebar-tag-name" data-tags="笔记"><span class="iconfont-archer">&#xe606;</span>笔记</span>
-    
-        <span class="sidebar-tag-name" data-tags="paper reading plan"><span class="iconfont-archer">&#xe606;</span>paper reading plan</span>
-    
-    </div>
-    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
-    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
-    缺失模块。<br/>
-    1、请确保node版本大于6.2<br/>
-    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
-    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
-    3、在根目录_config.yml里添加配置：
-    <pre style="color: #787878; font-size: 0.6rem;">
-jsonContent:
-  meta: false
-  pages: false
-  posts:
-    title: true
-    date: true
-    path: true
-    text: false
-    raw: false
-    content: false
-    slug: false
-    updated: false
-    comments: false
-    link: false
-    permalink: false
-    excerpt: false
-    categories: true
-    tags: true</pre>
-    </div> 
-    <div class="sidebar-tags-list"></div>
-</div>
-        <div class="sidebar-panel-categories">
-    <div class="sidebar-categories-name">
-    
-        <span class="sidebar-category-name" data-categories="Reinforcement-Learning"><span class="iconfont-archer">&#xe60a;</span>Reinforcement-Learning</span>
-    
-        <span class="sidebar-category-name" data-categories="数据结构和算法"><span class="iconfont-archer">&#xe60a;</span>数据结构和算法</span>
-    
-        <span class="sidebar-category-name" data-categories="总结与随感"><span class="iconfont-archer">&#xe60a;</span>总结与随感</span>
-    
-        <span class="sidebar-category-name" data-categories="Python"><span class="iconfont-archer">&#xe60a;</span>Python</span>
-    
-        <span class="sidebar-category-name" data-categories="LeetCode"><span class="iconfont-archer">&#xe60a;</span>LeetCode</span>
-    
-        <span class="sidebar-category-name" data-categories="矩阵论"><span class="iconfont-archer">&#xe60a;</span>矩阵论</span>
-    
-        <span class="sidebar-category-name" data-categories="论文阅读"><span class="iconfont-archer">&#xe60a;</span>论文阅读</span>
-    
-        <span class="sidebar-category-name" data-categories="论文阅读/笔记"><span class="iconfont-archer">&#xe60a;</span>论文阅读/笔记</span>
-    
-        <span class="sidebar-category-name" data-categories="Linux"><span class="iconfont-archer">&#xe60a;</span>Linux</span>
-    
-        <span class="sidebar-category-name" data-categories="论文阅读/计划"><span class="iconfont-archer">&#xe60a;</span>论文阅读/计划</span>
-    
-    </div>
-    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
-    <div class="sidebar-categories-list"></div>
-</div>
-    </div>
-</div> 
-    <script>
-    var siteMeta = {
-        root: "/",
-        author: "Monte Yang"
-    }
-</script>
-    <!-- CDN failover -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-    <script type="text/javascript">
-        if (typeof window.$ === 'undefined')
-        {
-            console.warn('jquery load from jsdelivr failed, will load local script')
-            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
-        }
-    </script>
-    <script src="/scripts/main.js"></script>
-    <!-- algolia -->
-    
-    <!-- busuanzi  -->
-    
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
-    <!-- CNZZ  -->
-    
-    </div>
-    <!-- async load share.js -->
-    
-        <script src="/scripts/share.js" async></script>    
-     
-    </body>
+</body>
 </html>
-
-
