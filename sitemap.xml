@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://monteyang.cn/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html</loc>
+    
+    <lastmod>2020-02-18T03:27:16.784Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://monteyang.cn/about/index.html</loc>
     
-    <lastmod>2020-02-17T19:40:20.052Z</lastmod>
+    <lastmod>2020-02-18T03:11:43.520Z</lastmod>
     
   </url>
   
@@ -124,13 +131,6 @@
     <loc>http://monteyang.cn/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3.html</loc>
     
     <lastmod>2020-02-16T07:11:06.036Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://monteyang.cn/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html</loc>
-    
-    <lastmod>2020-02-15T08:33:09.352Z</lastmod>
     
   </url>
   
