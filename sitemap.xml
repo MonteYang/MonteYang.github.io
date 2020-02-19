@@ -44,14 +44,14 @@
   </url>
   
   <url>
-    <loc>http://monteyang.cn/category/index.html</loc>
+    <loc>http://monteyang.cn/tag/index.html</loc>
     
     <lastmod>2020-02-18T15:22:56.199Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://monteyang.cn/tag/index.html</loc>
+    <loc>http://monteyang.cn/category/index.html</loc>
     
     <lastmod>2020-02-18T15:22:56.199Z</lastmod>
     
@@ -163,6 +163,13 @@
   </url>
   
   <url>
+    <loc>http://monteyang.cn/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3.html</loc>
+    
+    <lastmod>2020-02-18T15:22:56.175Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://monteyang.cn/Python-Matplotlib%E6%80%BB%E7%BB%93.html</loc>
     
     <lastmod>2020-02-18T15:22:56.175Z</lastmod>
@@ -171,13 +178,6 @@
   
   <url>
     <loc>http://monteyang.cn/Python-numpy%E5%92%8Clist%E4%B8%AD%E7%9A%84%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D.html</loc>
-    
-    <lastmod>2020-02-18T15:22:56.175Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://monteyang.cn/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3.html</loc>
     
     <lastmod>2020-02-18T15:22:56.175Z</lastmod>
     
