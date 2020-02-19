@@ -546,13 +546,13 @@ $$Q_\pi(s,a)=E_\pi(G_t|S_t=s,A_t=a)$$
         clientID: 'c3f96e8fb86bf653ad6c',
         clientSecret: '67954d29616c8cd146127aa2147f7e637aceb151',
         repo: 'gitalk',
-        owner: '59786677@qq.com',
+        owner: 'MonteYang',
         admin: 'MonteYang',
         id: md5(location.pathname),      
         labels: 'Gitalk'.split(',').filter(l => l),
         perPage: 10,
         pagerDirection: 'last',
-        createIssueManually: true,
+        createIssueManually: false,
         distractionFreeMode: false
       })
       gitalk.render('gitalk-container')
