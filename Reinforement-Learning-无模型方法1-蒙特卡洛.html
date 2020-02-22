@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+
+<meta name="baidu-site-verification" content="pzKra37kyC">
+<meta name="google-site-verification" content="Tpp8m_k5m4Tzi6cI_Yzh5M10Yb0Vh4iUa8WMJqGE3kg">
+<meta name="msvalidate.01" content="6848BAEF6B569BCE80C501D1FA6868F6">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Monte Yang">
+
+
+    <meta name="subtitle" content="朝着咸鱼的反方向努力">
+
+
+    <meta name="description" content="❤MY">
+
+
+    <meta name="keywords" content="3D Deep learning, Monte Yang, 深度学习, 算法">
+
+
+<title>Reinforement-Learning-无模型方法1-蒙特卡洛 | MonteYang&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/image/logo32x32.jpg">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="MonteYang's Blog" type="application/atom+xml">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">MonteYang&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">MonteYang&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Reinforement-Learning-无模型方法1-蒙特卡洛</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Monte Yang</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">2020-2-22&nbsp;&nbsp;6:11:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                            Category:
+                            
+                                <a href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="无模型方法简介"><a href="#无模型方法简介" class="headerlink" title="无模型方法简介"></a>无模型方法简介</h1><ul>
+<li>属于<strong>学习</strong>的方法，即智能体和环境需要进行<strong>交互</strong>，从经验中学习</li>
+<li>采用样本备份</li>
+<li>需要结合充分的探索，<strong>explore</strong></li>
+</ul>
+<p>由于未知环境模型，所以无法预知自己的后继状态和奖励值。智能体通过与环境进行交互，然后观察环境返回的值，本质上相当于从概率分布 $P_{ss^′}^a$, $R^a_s$ 中进行采样。需要实现完整的轨迹，还需要确定$A$，在策略中进行采样得到 $A$（可控制）。当采样足够充分时，可以使用样本分布良好地刻画环境模型总体分布。</p>
+<h2 id="无模型学习和动态规划的对比"><a href="#无模型学习和动态规划的对比" class="headerlink" title="无模型学习和动态规划的对比"></a>无模型学习和动态规划的对比</h2><ul>
+<li>无模型学习<ul>
+<li>未知环境模型</li>
+<li>需要与环境进行交互, 有交互成本（一般在仿真情况下进行）</li>
+<li>样本备份</li>
+<li>异步备份</li>
+<li>需要充分的探索</li>
+<li><strong>两个策略</strong><ul>
+<li>行为策略（智能体和环境进行交互时的策略）</li>
+<li>目标策略（是我们要学习的策略，求值函数时，$v_\pi$，$q_\pi$的下标）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>动态规划<ul>
+<li>已知环境模型</li>
+<li>不需要直接交互, 直接利用环境模型推导</li>
+<li>全宽备份</li>
+<li>同步和异步</li>
+<li>无探索</li>
+<li>一个策略</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="在策略和离策略"><a href="#在策略和离策略" class="headerlink" title="在策略和离策略"></a>在策略和离策略</h1><p>根据行为策略和目标策略是否相同，可以把无模型方法分为：</p>
+<ul>
+<li>在策略（on-policy）</li>
+<li>离策略（off-policy）</li>
+</ul>
+<h2 id="在策略"><a href="#在策略" class="headerlink" title="在策略"></a>在策略</h2><ul>
+<li>行为策略和目标策略是同一个策略</li>
+<li>样本来自于行为策略，直接使用样本统计属性去估计总体</li>
+<li>更简单，且收敛性更好</li>
+<li>数据利用性更差 (只有智能体<strong>当前</strong>交互的样本能够被利用)</li>
+<li>限定了学习过程中的策略是<strong>随机性策略</strong>（为了保证充分探索）</li>
+</ul>
+<h2 id="离策略"><a href="#离策略" class="headerlink" title="离策略"></a>离策略</h2><ul>
+<li>行为策略和目标策略不是同一个策略</li>
+<li>一般行为策略 $µ$ 选用随机性策略，目标策略 $π$ 选用确定性策略</li>
+<li>需要结合<strong>重要性采样</strong>才能使用样本估计总体</li>
+<li>方差更大，收敛性更差</li>
+<li>数据利用性更好 (可以使用其他智能体交互的样本)</li>
+<li>行为策略需要比目标策略更具备探索性。即，在每个状态下，目标策略的可行动作是行为策略可行动作的子集</li>
+</ul>
+<blockquote>
+<p>重要性采样：<br>重要性采样是一种估计概率分布期望值的技术，它使用了来自其他概率分<br>布的样本。<br>主要用于无法直接采样原分布的情况<br>估计期望值时，需要加权概率分布的比值（称为重要性采样率）</p>
+</blockquote>
+<hr>
+<h1 id="蒙特卡洛方法"><a href="#蒙特卡洛方法" class="headerlink" title="蒙特卡洛方法"></a>蒙特卡洛方法</h1><p>特点：</p>
+<ul>
+<li>MC 方法可以被用于<strong>任意涉及随机变量的估计</strong></li>
+<li>这里 MC 方法特指<strong>利用统计平均估计期望值</strong>的方法</li>
+<li>强化学习中存在很多估计期望值的计算 $v_π$; $v_∗$</li>
+<li>使用 MC 方法只需要<strong>利用经验数据</strong>，不需要 P; R</li>
+<li>MC 方法从完整的片段中学习。因此 MC 方法仅仅用于片段性任务 (必须有终止条件)</li>
+</ul>
+<p>最简单的思路，通过不断的采样，然后统计平均回报值来估计值函数，方差较大</p>
+<p><img src="../images/RL-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B-%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="蒙特卡洛中的样本"></p>
+<hr>
+<h1 id="蒙特卡洛评价"><a href="#蒙特卡洛评价" class="headerlink" title="蒙特卡洛评价"></a>蒙特卡洛评价</h1><h2 id="表述说明"><a href="#表述说明" class="headerlink" title="表述说明"></a>表述说明</h2><ul>
+<li><p>轨迹：把状态-动作的序列称为一个智能体的轨迹(trajectory)<br>$$ρ = S_1, A_1, S_2, A_2, ·_ · · , S_T$$</p>
+<blockquote>
+<p>状态动作序列构成了马尔可夫链图上的一条轨迹，有时也会加上奖励</p>
+</blockquote>
+</li>
+<li><p>从 $π, P_{ss’}^a$ 采样一条轨迹：我们把智能体从初始状态开始和环境进行交互的整个过程中得到的轨迹叫做采样一条轨迹。其中需要考虑两个分布$π, P_{ss’}^a$</p>
+</li>
+</ul>
+<ul>
+<li>从策略中采样一条轨迹 $ρ$。因为 $P_{ss’}^a$ 是稳定的，所以轨迹的分布随着策略的变化而变化。我们简述成从一个策略 π 中采样轨迹<br>$$ρ ∼ π$$</li>
+</ul>
+<h2 id="蒙特卡洛评价-1"><a href="#蒙特卡洛评价-1" class="headerlink" title="蒙特卡洛评价"></a>蒙特卡洛评价</h2><p>目标：给定策略 π，求 vπ</p>
+<blockquote>
+<p>过去的方法（动态规划中）使用了贝尔曼期望方程<br> <img src="../images/RL-MC-%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%9F%E6%9C%9B%E6%96%B9%E7%A8%8B.png" alt></p>
+<ul>
+<li>直接解</li>
+<li>迭代式动态规划</li>
+</ul>
+</blockquote>
+<p>MC 利用了值函数的定义</p>
+<p><img src="../images/RL-MC%E7%AD%96%E7%95%A5%E8%AF%84%E4%BB%B7.png" alt></p>
+<p>MC 策略评价<strong>使用回报值的经验平均来估计实际期望值</strong></p>
+<p>MC策略评价包括：</p>
+<h3 id="首次拜访MC策略评价"><a href="#首次拜访MC策略评价" class="headerlink" title="首次拜访MC策略评价"></a>首次拜访MC策略评价</h3><ul>
+<li>为了评价状态 s，使用给定的策略 π 采样大量的轨迹<ul>
+<li>在每一条轨迹中，对于状态 s <strong>首次</strong>出现的时间 t</li>
+<li>增加状态数量 $N(s) \leftarrow N(s) + 1$</li>
+<li>增加总回报值 $G_{sum}(s) \leftarrow G_{sum}(s) + G_t$</li>
+</ul>
+</li>
+<li>计算平均值得到值函数的估计 $V(s) = \frac{G_{sum}(s)}{N(s)}$</li>
+<li>每条轨迹都是独立同分布的</li>
+<li>根据大数定律，随着 $N(s)\rightarrow \infty, V(s) \rightarrow v_π(s)$</li>
+<li>在 MC 方法下， $V(s)$ 是 $v_π(s)$ 的无偏估计</li>
+</ul>
+<h3 id="每次拜访MC策略评价"><a href="#每次拜访MC策略评价" class="headerlink" title="每次拜访MC策略评价"></a>每次拜访MC策略评价</h3><ul>
+<li>为了评价状态 s</li>
+<li>使用给定的策略 π 采样大量的轨迹<ul>
+<li>在每一条轨迹中，对于状态 s <strong>每次</strong>出现的时间 t</li>
+<li>增加状态数量 $N(s) \leftarrow N(s) + 1$</li>
+<li>增加总回报值 $G_{sum}(s) \leftarrow G_{sum}(s) + G_t$</li>
+</ul>
+</li>
+<li>计算平均值得到值函数的估计 $V(s) = \frac{G_{sum}(s)}{N(s)}$</li>
+<li>同样地，随着 $N(s)\rightarrow \infty, V(s) \rightarrow v_π(s)$</li>
+<li>收敛性的证明不如首次拜访 MC 策略评价直观。</li>
+<li>更容易拓展到函数逼近和资格迹（后述）</li>
+</ul>
+<p>在没有模型的时候，一般我们选择估计<strong>Q 函数</strong>。</p>
+<p>因为我们可以通过 Q 函数直接得到贪婪的策略，最优的 Q 函数可以得到最优的策略。（直接取Max）</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>偏差为 0，是无偏估计</li>
+<li>方差较大，需要大量数据去消除</li>
+<li>收敛性较好</li>
+<li>容易理解和使用</li>
+<li>没有利用马尔可夫性，有时可以用在非马尔可夫环境</li>
+</ul>
+<hr>
+<h1 id="蒙特卡洛优化"><a href="#蒙特卡洛优化" class="headerlink" title="蒙特卡洛优化"></a>蒙特卡洛优化</h1><h2 id="值函数的使用"><a href="#值函数的使用" class="headerlink" title="值函数的使用"></a>值函数的使用</h2><ul>
+<li>在 V 函数上做贪婪策略提升要求环境模型</li>
+</ul>
+<p><img src="../images/RL-MC-V%E5%87%BD%E6%95%B0%E8%B4%AA%E5%A9%AA%E7%AD%96%E7%95%A5%E6%8F%90%E5%8D%87.png" alt></p>
+<ul>
+<li>在 Q 函数上做贪婪策略提升是<strong>无模型</strong>的</li>
+</ul>
+<p><img src="../images/RL-Q%E5%87%BD%E6%95%B0%E7%AD%96%E7%95%A5%E6%8F%90%E5%8D%87.png" alt></p>
+<h2 id="epsilon-贪婪策略提升"><a href="#epsilon-贪婪策略提升" class="headerlink" title="$\epsilon$ - 贪婪策略提升"></a>$\epsilon$ - 贪婪策略提升</h2><p>需要保证智能体一直在探索新的策略，保证所有的 m 个动作都有一定的概率被采样。</p>
+<ul>
+<li>用 $1 − \epsilon$ 的概率选择贪婪的动作</li>
+<li>用 $\epsilon$ 的概率随机从 m 个动作中选择</li>
+</ul>
+<p><img src="../images/RL-MCe%E8%B4%AA%E5%A9%AA.png" alt></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Monte Yang</span>
+                    </p>
+                
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="external nofollow noopener noreferrer">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Reinforcement-Learning/"># Reinforcement Learning</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">Back</a>
+                <span>· </span>
+                <a href="/">Home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/Reinforement-Learning-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html">Reinforement-Learning-动态规划</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+
+    <div id="gitalk-container"></div>
+    <script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+<link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
+<script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: 'c3f96e8fb86bf653ad6c',
+        clientSecret: '67954d29616c8cd146127aa2147f7e637aceb151',
+        repo: 'MonteYang.github.io',
+        owner: 'MonteYang',
+        admin: 'MonteYang',
+        id: md5(location.pathname),      
+        labels: 'Gitalk'.split(',').filter(l => l),
+        perPage: 10,
+        pagerDirection: 'last',
+        createIssueManually: false,
+        distractionFreeMode: false
+      })
+      gitalk.render('gitalk-container')
+</script>
+
+
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>2019 ~ 2020</span>
+        <!-- <span>© Monte Yang | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span> -->
+        <span>© Monte Yang | Powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
