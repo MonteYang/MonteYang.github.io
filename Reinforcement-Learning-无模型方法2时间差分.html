@@ -49,8 +49,7 @@
 
     
     
-        
-            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
     "HTML-CSS": {
@@ -87,7 +86,6 @@
 </script>
 
 
-        
     
 
 
@@ -250,26 +248,29 @@
 
         <div class="post-content">
             <h1 id="时间差分方法简介"><a href="#时间差分方法简介" class="headerlink" title="时间差分方法简介"></a>时间差分方法简介</h1><ul>
-<li><p>是强化学习中最为核心的想法，混合了DP和MC。</p>
-<ul>
+<li>是强化学习中最为核心的想法，混合了DP和MC<ul>
 <li>和 MC 类似， TD 也从历史经验中学习</li>
 <li>和 DP 类似，使用后继状态的值函数更新当前状态的值函数</li>
 </ul>
 </li>
-<li><p>属于无模型方法</p>
+</ul>
 <ul>
+<li>属于无模型方法<ul>
 <li>未知 P，R，需要智能体与环境进行交互，样本备份，需要充分的探索…</li>
 </ul>
 </li>
-<li><p>同时利用了采样和贝尔曼方程</p>
-</li>
-<li><p>可以从不完整的片段中学习（通过<strong>自举法</strong>）</p>
+</ul>
 <ul>
+<li>同时利用了采样和贝尔曼方程</li>
+</ul>
+<ul>
+<li>可以从不完整的片段中学习（通过<strong>自举法</strong>）<ul>
 <li>可同时应用于片段性任务和连续性任务</li>
 </ul>
 </li>
-<li><p><strong>通过估计来更新估计</strong></p>
-</li>
+</ul>
+<ul>
+<li><strong>通过估计来更新估计</strong></li>
 </ul>
 <blockquote>
 <p><strong>自举法</strong><br>(bootstrapping) 又名拔靴法、自助法。通过对样本进行<strong>重采样</strong>得到的估计总体的方法。<br>重采样：对样本里的数据再采样一次。<br>强化学习的 MC 中，一条轨迹是一个样本。TD 中，把一条轨迹采样成小片段，再对片段进行采样，所以属于自举法。</p>
