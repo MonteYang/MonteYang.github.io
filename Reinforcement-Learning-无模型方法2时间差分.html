@@ -22,7 +22,7 @@
     <meta name="keywords" content="3D Deep learning, Monte Yang, 深度学习, 算法">
 
 
-<title>机器学习-决策树 | MonteYang&#39;s Blog</title>
+<title>Reinforcement-Learning-无模型方法2时间差分 | MonteYang&#39;s Blog</title>
 
 
 
@@ -224,7 +224,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">机器学习-决策树</h1>
+            <h1 class="post-title">Reinforcement-Learning-无模型方法2时间差分</h1>
             
                 <div class="post-meta">
                     
@@ -233,14 +233,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">2020-2-22&nbsp;&nbsp;14:49:11</a>
+                        Date: <a href="#">2020-2-23&nbsp;&nbsp;12:37:25</a>
                         </span>
                     
                     
                         <span class="post-category">
                             Category:
                             
-                                <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                                <a href="/categories/Reinforcement-Learning/">Reinforcement Learning</a>
                             
                         </span>
                     
@@ -249,68 +249,111 @@
         </header>
 
         <div class="post-content">
-            <p><img src="../images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91.png" alt></p>
-<hr>
-<h1 id="决策树模型"><a href="#决策树模型" class="headerlink" title="决策树模型"></a>决策树模型</h1><p>从根节点开始，在每一个节点进行决策，最终走到叶子节点。既可以做<strong>分类</strong>，也可以做<strong>回归</strong>。</p>
-<p>优点：可读性强，分类速度快。</p>
-<p>通常，决策树学习分为三步： <strong>特征选择</strong>、<strong>决策树生成（构建）</strong>和<strong>决策树的剪枝</strong>。</p>
-<blockquote>
-<p><strong>难点在于决策树的构建</strong>。当构建好决策树后，利用其进行测试，对数据进行分类或回归都是十分简单的。</p>
-</blockquote>
-<h1 id="树的组成"><a href="#树的组成" class="headerlink" title="树的组成"></a>树的组成</h1><ul>
-<li>根节点： 第一个判断条件的节点</li>
-<li>非叶子结点： 中间的过程</li>
-<li>叶子节点： 得到最终的决策结果</li>
-</ul>
-<p>决策树中的每个节点（特征）相当于在数据中切一刀，如果候选的特征越多，切的次数越多。</p>
-<h1 id="决策树生成"><a href="#决策树生成" class="headerlink" title="决策树生成"></a>决策树生成</h1><p>决策树的训练过程就是<strong>决策树的生成</strong>，从给定数据集，构造出一课树。</p>
-<p>从根节点开始选择特征，考虑如何进行特征切分。</p>
-<blockquote>
-<p>从根节点到下面的节点，如何进行选择和切分？</p>
-</blockquote>
-<p>思路： 从根节点到下面的节点所对应的特征，应该依次是从分类效果最好到不好。</p>
-<p>因此，目标： 通过一种衡量标准，计算不同特征进行分支选择后的分类情况，衡量特征的分类效果，找出最好的特征当作根节点，以此类推。</p>
-<h2 id="熵"><a href="#熵" class="headerlink" title="熵"></a>熵</h2><p>熵：<strong>表示随机变量不确定性的度量。不确定性越强，熵值越高</strong>。</p>
-<p>假设 $X$ 是一个具有有限个值的离散型随机变量，服从如下的概率分布：</p>
-<p>$$P(X=x_i)=p_i,\qquad i=1,2,\cdots,n $$</p>
-<p>则，随机变量$X$的熵定义为：</p>
-<p>$$H(X)=-\sum_{i=1}^np_i log p_i \quad (2)$$</p>
-<p>假设 X 服从如下分布：</p>
-<p>$$P(X=1)=p，P(X=0)=1-p，0 \le p \le 1$$</p>
-<p>于是根据 <strong>公式（2）</strong> 得到它的熵为：</p>
-<p>$$H(p)=-p\log_2p-(1-p)\log_2(1-p)$$</p>
-<p><img src="../images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91-%E7%86%B5.png" alt></p>
-<p>概率和熵值大小的关系：</p>
+            <h1 id="时间差分方法简介"><a href="#时间差分方法简介" class="headerlink" title="时间差分方法简介"></a>时间差分方法简介</h1><ul>
+<li><p>是强化学习中最为核心的想法，混合了DP和MC。</p>
 <ul>
-<li>当 p=0或1 时，H(p)=0，随机变量没有不确定性</li>
-<li>当 p=0.5 时，H(p)=1，随机变量的不确定性最大</li>
+<li>和 MC 类似， TD 也从历史经验中学习</li>
+<li>和 DP 类似，使用后继状态的值函数更新当前状态的值函数</li>
 </ul>
-<h2 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h2><p>设随机变量 $(X,Y)$ 的<strong>联合概率分布</strong>为：</p>
-<p>$$P(X=x_i,Y=y_j)=p_{ij},\quad i=1,2,\cdots,n;\quad j=1,2,\cdots ,m$$</p>
-<p><strong>条件熵 $H(Y|X)$</strong> 表示在已知随机变量 $X$ 的取值条件下，随机变量 $Y$ 的不确定性。</p>
-<p>其数学定义为：$X$ 给定的条件下 $Y$ 的条件概率分布的熵对 $X$ 的数学期望，<br>$$H(Y|X)=\sum_{i=1}^np_iH(Y|X=x_i)$$</p>
-<p>其中，$p_i=P(X=x_i),\quad i=1,2,\cdots,n$</p>
-<p>在此基础上，引出<strong>信息增益</strong>（Information Gain），它<strong>表示在特征 $X$ 给定的条件下，而使得类 $Y$ 的信息不确定性减少的程度</strong>。数学精确表述如下：特征 $A$ 对训练数据集 $D$ 的<strong>信息增益 $G(D,A)$</strong> 定义为集合 $D$ 的熵 $H(D)$ 与特征 $A$ 给定的条件下 $D$ 的条件熵 $H(D | A)$ 之差，即：</p>
-<p>$$G(D,A)=H(D)-H(D|A)$$</p>
-<p>决策树学习应用信息增益准则选择特征。给定训练数据集 $D$ 和特征 $A$。熵 $H(D)$ 表示对数据集 $D$ 进行分类的不确定性，而条件熵 $H(D|A)$ 表示在特征 $A$ 给定的条件下对数据集 $D$ 进行分类的不确定性。而他们的差，即信息增益就表示由于特征 $A$ 给定的情况下而使得对数据集 $D$ 进行分类的不确定性减少的程度。显然，对于数据集 $D$ 而言，信息增益依赖于特征。一般情况下，不同的特征具有不同的信息增益。<strong>信息增益大的特征具有更强的分类能力。</strong></p>
-<p>由以上的表述，我们应该清楚地知道，决策树构建过程中，我们应该选择信息增益最大的特征进行分裂构建。</p>
-<h2 id="ID3"><a href="#ID3" class="headerlink" title="ID3"></a>ID3</h2><p>ID3算法的核心是递归的构建决策树，递归的过程中，在每个节点上，计算信息增益选择特征，直至满足递归停止条件（所有特征的信息增益都很小或者没有特征可以选择）。</p>
-<h2 id="C4-5"><a href="#C4-5" class="headerlink" title="C4.5"></a>C4.5</h2><p>C4.5 算法和 ID3 算法基本上完全一致，只是特征选择时的选择方法将信息增益换成<strong>信息增益比</strong>。</p>
-<blockquote>
-<p><strong>信息增益比</strong>：<br>特征 $A$ 对训练数据集 $D$ 的信息增益比 $G_R(D,A)$ 表示特征 $A$ 的信息增益 $G(D,A)$ 与训练数据集 $D$ 关于特征 $A$ 的熵 $H_A(D)$ 的比值，即：<br>$$G_R(D,A)=\frac{G(D,A)}{H_A(D)}$$</p>
-</blockquote>
-<hr>
-<h1 id="决策树的剪枝"><a href="#决策树的剪枝" class="headerlink" title="决策树的剪枝"></a>决策树的剪枝</h1><p>决策树过拟合风险很大，理论上可以完全分开（极限情况：每个数据对应一个叶子结点）</p>
-<h2 id="预剪枝"><a href="#预剪枝" class="headerlink" title="预剪枝"></a>预剪枝</h2><p>在构建决策树的过程中，进行剪枝，预剪枝的方法包括：</p>
+</li>
+<li><p>属于无模型方法</p>
 <ul>
-<li>限制树的<strong>深度</strong></li>
-<li>限制<strong>叶子结点的个数</strong></li>
-<li>限制<strong>叶子结点的样本数</strong></li>
-<li>限制<strong>信息增益</strong></li>
+<li>未知 P，R，需要智能体与环境进行交互，样本备份，需要充分的探索…</li>
 </ul>
-<h2 id="后剪枝"><a href="#后剪枝" class="headerlink" title="后剪枝"></a>后剪枝</h2><p>后剪枝指的是，建立树之后，再进行剪枝。<br>通过一定的衡量标准，衡量是否分裂该结点。</p>
-<p>总体思路为：</p>
-<p>由完全树 T0 开始，剪枝部分结点得到 T1，再次剪枝部分结点得到 T2……直到剩下树根的树 Tk；在验证数据集上对这 k 个树分别评价，选择损失函数最小的树 Ta。</p>
+</li>
+<li><p>同时利用了采样和贝尔曼方程</p>
+</li>
+<li><p>可以从不完整的片段中学习（通过<strong>自举法</strong>）</p>
+<ul>
+<li>可同时应用于片段性任务和连续性任务</li>
+</ul>
+</li>
+<li><p><strong>通过估计来更新估计</strong></p>
+</li>
+</ul>
+<blockquote>
+<p><strong>自举法</strong><br>(bootstrapping) 又名拔靴法、自助法。通过对样本进行<strong>重采样</strong>得到的估计总体的方法。<br>重采样：对样本里的数据再采样一次。<br>强化学习的 MC 中，一条轨迹是一个样本。TD 中，把一条轨迹采样成小片段，再对片段进行采样，所以属于自举法。</p>
+</blockquote>
+<h1 id="时间差分评价"><a href="#时间差分评价" class="headerlink" title="时间差分评价"></a>时间差分评价</h1><p><strong>目的</strong>：给定策略 $π$，求其对应的值函数 $v_π$</p>
+<blockquote>
+<p>对比之前的蒙特卡洛算法。</p>
+<ul>
+<li>增量蒙特卡洛算法<ul>
+<li>用实际回报值$G_t$去更新值函数 $V(S_t)$<br><img src="../images/RL-TD-MC%E6%9B%B4%E6%96%B0%E5%80%BC%E5%87%BD%E6%95%B0.png" alt></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="时间差分评价算法"><a href="#时间差分评价算法" class="headerlink" title="时间差分评价算法"></a>时间差分评价算法</h2><p>时间差分算法 (Temporal-difference， TD)中，<strong>使用估计的回报值 $R_{t+1} + γV(S_{t+1})$ 去更新值函数 $V(S_t)$ (TD(0))</strong></p>
+<p><img src="../images/RL-TD%E6%9B%B4%E6%96%B0%E5%80%BC%E5%87%BD%E6%95%B0.png" alt></p>
+<p>其中：</p>
+<ul>
+<li>$R_{t+1} + γV(S_{t+1})$ 称为 TD 目标</li>
+<li>$δ<em>t = R</em>{t+1} + γV(S_{t+1}) − V(S_t)$ 称为 TD 误差</li>
+<li>$\alpha$ 在0~1之间</li>
+</ul>
+<p>时间差分策略评价算法</p>
+<p><img src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-%E7%AE%97%E6%B3%95.png" alt></p>
+<h2 id="评价算法对比：-TD-和-DP"><a href="#评价算法对比：-TD-和-DP" class="headerlink" title="评价算法对比： TD 和 DP"></a>评价算法对比： TD 和 DP</h2><p>DP中， 利用了贝尔曼方程去解强化学习问题</p>
+<p><img src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-DP.png" alt></p>
+<p><img src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-DP%E5%9B%BE.png" alt></p>
+<p>而 TD 中，也利用了贝尔曼方程，但做了以下改动：</p>
+<ul>
+<li><p>全宽备份 $\rightarrow$ 样本备份： 并去掉了期望符号<br><img src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-%E5%AF%B9%E6%AF%94DP.png" alt></p>
+</li>
+<li><p>增加了学习率<br><img src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-%E5%AF%B9%E6%AF%94DP2.png" alt></p>
+</li>
+</ul>
+<p>采样多的时候，收敛后，时间差分评价算法满足贝尔曼方程</p>
+<p><img src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-%E5%AF%B9%E6%AF%94DP3.png" alt></p>
+<p>整体看来，在时间差分评价算法中，是利用TD目标和当前值函数的差来指导学<br>习，所以称作时间差分</p>
+<p><img src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-TD%E5%9B%BE.png" alt></p>
+<h2 id="评价算法对比：-TD-和-MC"><a href="#评价算法对比：-TD-和-MC" class="headerlink" title="评价算法对比： TD 和 MC"></a>评价算法对比： TD 和 MC</h2><p>在 MC 中，考虑的是整条轨迹。</p>
+<p><img src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-MC%E5%9B%BE.png" alt></p>
+<ul>
+<li>TD 在每一步之后都能在线学习； MC 必须等待回报值得到之后才能学习</li>
+<li>TD 利用了马尔科夫性； MC 没有利用马尔科夫性</li>
+<li>MC 有高方差，零偏差； TD 有低方差，和一些偏差</li>
+</ul>
+<p><img src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-%E5%A4%87%E4%BB%BD%E5%9B%BE.png" alt></p>
+<h2 id="ML-和-RL-中的偏差-方差权衡"><a href="#ML-和-RL-中的偏差-方差权衡" class="headerlink" title="ML 和 RL 中的偏差/方差权衡"></a>ML 和 RL 中的偏差/方差权衡</h2><h3 id="ML-中的偏差和方差的trade-off"><a href="#ML-中的偏差和方差的trade-off" class="headerlink" title="ML 中的偏差和方差的trade-off"></a>ML 中的偏差和方差的trade-off</h3><p>在监督学习中，偏差/方差有另外的理解——<strong>欠拟合</strong>和<strong>过拟合</strong></p>
+<ul>
+<li>偏差大 (欠拟合): 预测值和样本之间的差</li>
+<li>方差大 (过拟合): 样本值之间的方差, 学出的模型泛化能力差</li>
+</ul>
+<p>方差大意味着样本的置信度较差</p>
+<p>机器学习方法都会在偏差和方差之间做 trade-off</p>
+<p><img src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-%E5%81%8F%E5%B7%AE%E5%92%8C%E6%96%B9%E5%B7%AE.png" alt></p>
+<h3 id="RL-中的偏差和方差的trade-off"><a href="#RL-中的偏差和方差的trade-off" class="headerlink" title="RL 中的偏差和方差的trade-off"></a>RL 中的偏差和方差的trade-off</h3><ul>
+<li>回报值 $G_t = R_{t+1} + \gamma R_{t+2} + … + {\gamma}^{T-t-1}R_T$ 是值函数 $v_\pi(S_t)$ 的无偏估计</li>
+<li>真实的 TD 目标值 $R_{t+1} + γv_π(S_{t+1})$ 是值函数 $v_π(S_t)$ 的无偏估计</li>
+<li>使用的 TD 目标值 $R_{t+1} + γV_π(S_{t+1})$ 是值函数 $v_π(S_t)$ 的有偏估计</li>
+<li>TD 目标值的方差要远小于回报值<ul>
+<li>回报值依赖于很多随机变量 $A_{t},S_{t+1},R_{t+1},A_{t+1},S_{t+2},R_{t+2},· · ·$</li>
+<li>TD 目标值仅仅依赖于一个随机序列 $A_t,S_{t+1},R_{t+1}$</li>
+</ul>
+</li>
+</ul>
+<h1 id="时间差分优化"><a href="#时间差分优化" class="headerlink" title="时间差分优化"></a>时间差分优化</h1><ul>
+<li>广义策略迭代<ul>
+<li>策略评价: TD 策略评价， $Q = q_π$</li>
+<li>策略提升: $\epsilon$-贪婪策略提升</li>
+</ul>
+</li>
+<li>TD 优化相比 MC 优化有几点好处<ul>
+<li>低方差</li>
+<li>在线更新 (online)</li>
+<li>不完整序列</li>
+</ul>
+</li>
+</ul>
+<h2 id="在策略-TD-优化——Sarsa"><a href="#在策略-TD-优化——Sarsa" class="headerlink" title="在策略 TD 优化——Sarsa"></a>在策略 TD 优化——Sarsa</h2><p><img src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-SARSA.png" alt></p>
+<p><img src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-sarsa%E5%85%AC%E5%BC%8F.png" alt></p>
+<p>值迭代</p>
+<p>为什么是<strong>在策略</strong>？</p>
+<p>执行的动作 A 是来自当前 Q 值下的 $\epsilon$-贪婪策略，构建 TD 目标值是的动作 A′ 是来自当前 Q 值下的 $\epsilon$-贪婪策略，这两者是同一个策略。</p>
+<h2 id="离策略-TD-优化——Q学习"><a href="#离策略-TD-优化——Q学习" class="headerlink" title="离策略 TD 优化——Q学习"></a>离策略 TD 优化——Q学习</h2><p><img src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-Q%E5%AD%A6%E4%B9%A0.png" alt></p>
+<p><img src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-Q%E5%AD%A6%E4%B9%A0%E6%B5%81%E7%A8%8B.png" alt></p>
 
         </div>
 
@@ -339,7 +382,7 @@
                 <span class="tag">
                     
                     
-                        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"># 机器学习</a>
+                        <a href="/tags/Reinforcement-Learning/"># Reinforcement Learning</a>
                     
                         
                 </span>
@@ -352,10 +395,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/Reinforcement-Learning-%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%952%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86.html">Reinforcement-Learning-无模型方法2时间差分</a>
             
-            
-            <a class="next" rel="next" href="/Reinforement-Learning-%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%951-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html">Reinforement-Learning-无模型方法1-蒙特卡洛</a>
+            <a class="next" rel="next" href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91.html">机器学习-决策树</a>
             
         </section>
 
