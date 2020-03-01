@@ -22,7 +22,7 @@
     <meta name="keywords" content="3D Deep learning, Monte Yang, 深度学习, 算法">
 
 
-<title>Python-Matplotlib总结 | MonteYang&#39;s Blog</title>
+<title>Python-Matplotlib简单小结 | MonteYang&#39;s Blog</title>
 
 
 
@@ -222,7 +222,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Python-Matplotlib总结</h1>
+            <h1 class="post-title">Python-Matplotlib简单小结</h1>
             
                 <div class="post-meta">
                     
@@ -248,9 +248,6 @@
 
         <div class="post-content">
             <p>matplotlib 是最流行的Python绘图库之一，能将数据进行可视化，直观地呈现数据。</p>
-<a id="more"></a>
-
-<hr>
 <h2 id="1-绘制图片"><a href="#1-绘制图片" class="headerlink" title="1. 绘制图片"></a>1. 绘制图片</h2><h3 id="1-1-设置图片大小、分辨率"><a href="#1-1-设置图片大小、分辨率" class="headerlink" title="1.1 设置图片大小、分辨率"></a>1.1 设置图片大小、分辨率</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 常用的导入方式</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="comment"># 设置图片大小, dpi是图片分辨率默认是100</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">20</span>, <span class="number">8</span>), dpi=<span class="number">80</span>)</span><br><span class="line"></span><br><span class="line">x = np.arange(<span class="number">2</span>, <span class="number">26</span>, <span class="number">2</span>)</span><br><span class="line">y = np.random.randn(<span class="number">12</span>)</span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.xticks(x)</span><br><span class="line"><span class="comment"># 调整x轴上的刻度，当刻度太密集时使用列表的步长（列表间隔）来解决，matplotlib会自动帮我们对应</span></span><br><span class="line"><span class="comment"># plt.xticks(x[::2])</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <h3 id="1-2-调整轴上的刻度"><a href="#1-2-调整轴上的刻度" class="headerlink" title="1.2 调整轴上的刻度"></a>1.2 调整轴上的刻度</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x_ticks = [<span class="string">"第&#123;&#125;个"</span>.format(i) <span class="keyword">for</span> i <span class="keyword">in</span> x]</span><br><span class="line">plt.xticks(x, x_ticks, rotation=<span class="number">90</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <p>plt.xticks() 中的两组数据长度务必相同</p>
