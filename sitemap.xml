@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://monteyang.cn/2019%E5%B9%B4%E7%9A%84%E6%80%BB%E7%BB%93.html</loc>
+    
+    <lastmod>2020-03-03T15:28:58.111Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://monteyang.cn/about/index.html</loc>
+    
+    <lastmod>2020-03-03T15:27:03.999Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://monteyang.cn/Python--%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8.html</loc>
     
-    <lastmod>2020-03-03T15:19:41.447Z</lastmod>
+    <lastmod>2020-03-03T15:24:24.923Z</lastmod>
     
   </url>
   
@@ -47,13 +61,6 @@
     <loc>http://monteyang.cn/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html</loc>
     
     <lastmod>2020-02-29T17:32:31.556Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://monteyang.cn/about/index.html</loc>
-    
-    <lastmod>2020-02-29T17:26:17.748Z</lastmod>
     
   </url>
   
@@ -103,13 +110,6 @@
     <loc>http://monteyang.cn/Reinforcement-Learning-%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%952-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86.html</loc>
     
     <lastmod>2020-02-29T08:11:09.748Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://monteyang.cn/2019%E5%B9%B4%E7%9A%84%E6%80%BB%E7%BB%93.html</loc>
-    
-    <lastmod>2020-02-24T11:44:32.420Z</lastmod>
     
   </url>
   
