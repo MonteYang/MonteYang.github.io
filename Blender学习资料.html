@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+<meta name="baidu-site-verification" content="pzKra37kyC">
+<meta name="google-site-verification" content="Tpp8m_k5m4Tzi6cI_Yzh5M10Yb0Vh4iUa8WMJqGE3kg">
+<meta name="msvalidate.01" content="6848BAEF6B569BCE80C501D1FA6868F6">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo32x32.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo16x16.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="Tpp8m_k5m4Tzi6cI_Yzh5M10Yb0Vh4iUa8WMJqGE3kg">
+  <meta name="baidu-site-verification" content="pzKra37kyC">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('http://monteyang.cn').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"right","width":300,"display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"flat"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: true,
+    mediumzoom: true,
+    lazyload: true,
+    pangu: true,
+    comments: {"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Blender是什么？ 摘自官方手册：Blender是一个完整集成的3D创作套件，提供了大量的基础工具，包括建模、渲染、动画&amp;绑定、视频编辑、视觉效果、合成、贴图，以及多种类型的模拟。跨平台，使用了OpenGL的GUI可以在所有主流平台上都表现出一致的显示效果(并且可通过Python脚本来自定义界面)。高质量的3D架构，带来了快速且高效的工作流。活跃的社区支持， blender.org&#x2F;c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Blender学习资料">
+<meta property="og:url" content="http://monteyang.cn/Blender%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99.html">
+<meta property="og:site_name" content="MonteYang&#39;s Blog">
+<meta property="og:description" content="Blender是什么？ 摘自官方手册：Blender是一个完整集成的3D创作套件，提供了大量的基础工具，包括建模、渲染、动画&amp;绑定、视频编辑、视觉效果、合成、贴图，以及多种类型的模拟。跨平台，使用了OpenGL的GUI可以在所有主流平台上都表现出一致的显示效果(并且可通过Python脚本来自定义界面)。高质量的3D架构，带来了快速且高效的工作流。活跃的社区支持， blender.org&#x2F;c">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-10T03:51:23.000Z">
+<meta property="article:modified_time" content="2020-03-10T13:10:24.571Z">
+<meta property="article:author" content="Monte Yang">
+<meta property="article:tag" content="Blender">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://monteyang.cn/Blender%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Blender学习资料 | MonteYang's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="MonteYang's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MonteYang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">朝着咸鱼的反方向努力</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-tools">
+
+    <a href="/tools/" rel="section"><i class="fa fa-fw fa-wrench"></i>工具</a>
+
+  </li>
+        <li class="menu-item menu-item-bookmarks">
+
+    <a href="/bookmarks/" rel="section"><i class="fa fa-fw fa-bookmark"></i>书签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/MonteYang" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/Blender%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Monte Yang">
+      <meta itemprop="description" content="❤MY">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MonteYang's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          Blender学习资料
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-10 11:51:23 / 修改时间：21:10:24" itemprop="dateCreated datePublished" datetime="2020-03-10T11:51:23+08:00">2020-03-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index">
+                    <span itemprop="name">软件</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Blender是什么？"><a href="#Blender是什么？" class="headerlink" title="Blender是什么？"></a>Blender是什么？</h1><blockquote>
+<p>摘自官方手册：<br>Blender是一个完整集成的3D创作套件，提供了大量的基础工具，包括<strong>建模、渲染、动画&amp;绑定、视频编辑、视觉效果、合成、贴图，以及多种类型的模拟</strong>。跨平台，使用了OpenGL的GUI可以在所有主流平台上都表现出一致的显示效果(并且<strong>可通过Python脚本来自定义界面</strong>)。高质量的3D架构，带来了快速且高效的工作流。活跃的社区支持， blender.org/community 收录了大量的站点列表。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>可以看出，Blender的功能很强大，从3D图形到视频，它都能搞。</p>
+<p>之前对3D建模软件完全不了解，仅仅是听说过3DMax、Maya这些名字而已。在查阅了一些资料后，发现这种3D建模软件还是适合设计类专业的同学进行系统学习。</p>
+<p>在查资料的过程中，发现这个软件有很多优秀的特点，包括：</p>
+<ul>
+<li><strong>跨平台</strong>： 对Linux用户很友好</li>
+<li><strong>开源</strong>： 基于社区的开源项目，很吊，更新迭代快，完善速度快</li>
+<li><strong>插件</strong>： 可以想象很多大牛会在这搞一些“骚操作”插件</li>
+<li><strong>有Python API</strong>： 这就更骚了，会写代码的话，建模效率岂不是飞起？</li>
+</ul>
+<p>其实博主个人对3D建模、设计什么的不是很感兴趣，所以就学习下基本的操作和Python的调用，也是因为之前师兄说Blender中可以用Python对3D模型处理，之后可能会用得上吧。</p>
+<h1 id="学习资料和社区"><a href="#学习资料和社区" class="headerlink" title="学习资料和社区"></a>学习资料和社区</h1><ul>
+<li><a href="https://www.blendercn.org/" target="_blank" rel="external nofollow noopener noreferrer">Blender中国社区</a>: 国内Blender资料最全的社区。包括视频教程、中文文档、论坛等。</li>
+<li><a href="https://docs.blender.org/manual/zh-hans/dev/index.html" target="_blank" rel="external nofollow noopener noreferrer">Blender 2.83 参考手册</a></li>
+<li><a href="https://docs.blender.org/api/current/index.html" target="_blank" rel="external nofollow noopener noreferrer">Blender 2.82 Python API Documentation</a></li>
+<li><a href="https://www.bilibili.com/video/av17804799/" target="_blank" rel="external nofollow noopener noreferrer">Blender官方入门教程（中文）B站</a>: 每个视频极短，适合小白入门，</li>
+</ul>
+<h1 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h1><p>众所周知，无论是玩什么软件，掌握快捷键都能<strong>极大程度地提高工作效率</strong>。</p>
+<h2 id="通用操作"><a href="#通用操作" class="headerlink" title="通用操作"></a>通用操作</h2><ul>
+<li>停止当前操作：【ESC】</li>
+<li>快捷搜索：【SPACE】</li>
+<li>撤销：【Ctrl】+【z】</li>
+<li>重做：【Ctrl】+【shift】+【z】</li>
+<li>渲染：【F12】</li>
+<li>单选：【鼠标右键】（RMB）</li>
+<li>全选：【A】</li>
+<li>框选：【B】</li>
+<li>刷选：【C】</li>
+<li>套选：【Ctrl】+【鼠标左键】（LMB）</li>
+<li>删除：【X】/【Delete】</li>
+<li>复制：【Shift】+【D】</li>
+<li>添加：【Shift】+【A】</li>
+<li>取消：【Esc】/【RMB】</li>
+<li>确认：【Return】/【LMB】</li>
+</ul>
+<h2 id="界面操作"><a href="#界面操作" class="headerlink" title="界面操作"></a>界面操作</h2><ul>
+<li>工具栏位置对称切换：【F5】</li>
+<li>固定/解固定工具栏：【SHIFT】+【LMB】</li>
+<li>放大/缩小：【SHIFT】+【SPACE】</li>
+<li>放大/缩小：【Ctrl】+【UP】/【Ctrl】+【DOWN】</li>
+<li>移动视窗：【SHIFT】+【鼠标滚轮】</li>
+<li>旋转视窗：【鼠标滚轮】</li>
+<li>3DView：【SHIFT】+【F5】</li>
+<li>UVEditorView：【SHIFT】+【F10】</li>
+</ul>
+<h2 id="小键盘"><a href="#小键盘" class="headerlink" title="小键盘"></a>小键盘</h2><ul>
+<li>透视开启/关闭：【5】</li>
+<li>前视图（+Ctrl后视图）：【1】</li>
+<li>右视图（+Ctrl左视图）：【2】</li>
+<li>顶视图（+Ctrl底视图）：【7】</li>
+<li>摄像机视角（如果有摄像机）：【0】</li>
+<li>将当前视图设为摄像机视角：【Ctrl】+【alt】+【0】</li>
+<li>全屏显示当前视图：【Ctrl】+【up】</li>
+<li>显示选中目标：小键盘【del】</li>
+<li>显示所有目标：【Home】</li>
+<li>场景平移：【Shift】+【鼠标中键】</li>
+<li>场景缩放：【Ctrl】+【鼠标中键】（或者【滚轮】）</li>
+</ul>
+<h2 id="建模"><a href="#建模" class="headerlink" title="建模"></a>建模</h2><ul>
+<li>编辑模式：【Tab】</li>
+<li>点线面三模式切换（编辑模式下）：【Tab】+【Ctrl】</li>
+<li>加选/减选：【Ctrl】+【小键盘+/-】（可定义为【PageUP】，【PageDown】）</li>
+<li>选择循环点/边/面：【Alt】+【LMB】</li>
+<li>线框模式：【Z】</li>
+<li>隐藏选中目标：【H】</li>
+<li>显示所有隐藏目标：【Alt】+【H】</li>
+</ul>
+<h2 id="选中目标状态下"><a href="#选中目标状态下" class="headerlink" title="选中目标状态下"></a>选中目标状态下</h2><ul>
+<li>挤出：【E】+【LMB】（挤出到鼠标位置）</li>
+<li>移动：【G】</li>
+<li>旋转：【R】</li>
+<li>缩放：【S】(以上操作再按下X、Y、Z以固定轴向、轴心活动）</li>
+<li>内插面：【i】</li>
+<li>顶点/边滑移：【GG】</li>
+<li>环切：【Ctrl】+【R】</li>
+<li>边线折痕：【Shift】+【E】</li>
+<li>快捷拓展命令栏：【W】</li>
+<li>切割：【K】</li>
+<li>分割：【Y】</li>
+<li>分离（单独个体）：【P】</li>
+<li>合并：【Ctrl】+【J】</li>
+<li>倒角：【Ctrl】+【B】</li>
+<li>球形化：【Shift】+【Alt】+【S】</li>
+<li>关联选取：【L】</li>
+<li>相似选取：【Shift】+【G】</li>
+<li>创建父级：【Ctrl】+【P】</li>
+<li>清除父级：【Alt】+【P】</li>
+<li>吸附：【Shift】+【S】</li>
+</ul>
+<h2 id="节点编辑器"><a href="#节点编辑器" class="headerlink" title="节点编辑器"></a>节点编辑器</h2><ul>
+<li>连接节点：【F】（选取两个目标）</li>
+<li>断开节点：【Ctrl】+【LMB】（划掉连接线）</li>
+<li>添加转接点：【Shift】+【LMB】（划掉连接线）</li>
+<li>合并节点：【Ctrl】+【J】</li>
+<li>断开选中节点：【Alt】+【D】</li>
+<li>移动背景视图：【Alt】+【鼠标滚轮】</li>
+<li>显示激活节点：小键盘【del】</li>
+<li>显示所有节点：【Home】</li>
+</ul>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><ul>
+<li>删除动画关键帧在信息清单视图：（DopeSheet）中按【B】框选按【X】删除选中的keyframes</li>
+<li>插入一个关键帧（keyframe）：【I】</li>
+<li>清除该关键帧：【Alt】-【I】</li>
+<li>清空所有关键帧（删除所有的F-Curves）：【Alt】-【Shift】-【I】</li>
+<li>assignadriver：【D】</li>
+<li>clearthedriver：【Alt】-【D】</li>
+<li>addaKeyingSet：【K】</li>
+<li>cleartheKeyingSet：【Alt】-【K】</li>
+<li>清除posemode下的旋转：【Alt】+【R】</li>
+<li>清除posemode下的缩放：【Alt】+【S】</li>
+<li>清楚posemode下的位移：【Alt】+【G】</li>
+</ul>
+<h2 id="文本编辑"><a href="#文本编辑" class="headerlink" title="文本编辑"></a>文本编辑</h2><ul>
+<li>到文本开始处：【Home】</li>
+<li>到文本结束处：【End】</li>
+<li>拷贝文本：【Ctrl】-【C】</li>
+<li>粘贴文本：【Ctrl】-【V】</li>
+<li>选择所有文本：【Ctrl】-【A】</li>
+</ul>
+<h2 id="数字调整"><a href="#数字调整" class="headerlink" title="数字调整"></a>数字调整</h2><ul>
+<li>拖动时捕捉离散步骤：【Ctrl】</li>
+<li>更高的调整精度：【Shift】</li>
+</ul>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><ul>
+<li>编辑模式下，弹出边编辑菜单，其中有UV映射常用的seem（缝边）功能：【Ctrl】+【E】</li>
+<li>合并物体：【Ctrl】+【J】</li>
+<li>分离物体：【P】</li>
+<li>把选中的两个相邻三角形合并成四边形（quads）：【ALT】+【J】</li>
+<li>吸附游标到选择点：【SHIFT】+【S】</li>
+<li>撕开所选边：【V】</li>
+<li>撕开所选边并填充：【ALT】+【V】</li>
+<li>编辑模式下，合并选中的2个节点：【ALT】+【M】</li>
+<li>打开吸附模式：【SHIFT】+【TAB】</li>
+<li>打开点线面选择模式选取菜单：【Ctrl】+【TAB】</li>
+<li>在EditMode下，将选中的表面变成三角面：【Ctrl】+【T】</li>
+<li>环切loopcut：【Ctrl】+【R】</li>
+<li>多个环切：【再按住鼠标滚轮上下滚动】</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>donate here~</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Monte Yang 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Monte Yang 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Monte Yang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://monteyang.cn/Blender%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99.html" title="Blender学习资料">http://monteyang.cn/Blender学习资料.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Blender/" rel="tag"><i class="fa fa-tag"></i> Blender</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91.html" rel="prev" title="机器学习-决策树">
+      <i class="fa fa-chevron-left"></i> 机器学习-决策树
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Blender是什么？"><span class="nav-text">Blender是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习资料和社区"><span class="nav-text">学习资料和社区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用快捷键"><span class="nav-text">常用快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通用操作"><span class="nav-text">通用操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#界面操作"><span class="nav-text">界面操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小键盘"><span class="nav-text">小键盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建模"><span class="nav-text">建模</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选中目标状态下"><span class="nav-text">选中目标状态下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#节点编辑器"><span class="nav-text">节点编辑器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画"><span class="nav-text">动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本编辑"><span class="nav-text">文本编辑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字调整"><span class="nav-text">数字调整</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充"><span class="nav-text">补充</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Monte Yang" src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">Monte Yang</p>
+  <div class="site-description" itemprop="description">❤MY</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MonteYang" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MonteYang" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:59786677@qq.com" title="E-Mail → mailto:59786677@qq.com" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="external nofollow noopener noreferrer" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2019 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Monte Yang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> 强力驱动
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://mist.theme-next.org/" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Mist</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout: 3000,
+        priority: true,
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/Blender%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99.html',]
+      });
+      });
+  </script>
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'c3f96e8fb86bf653ad6c',
+      clientSecret: '67954d29616c8cd146127aa2147f7e637aceb151',
+      repo: 'MonteYang.github.io',
+      owner: 'MonteYang',
+      admin: ['MonteYang'],
+      id: 'ddcfb26fa854064bf462472f9c5dad3f',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+</body>
+</html>
