@@ -9,8 +9,8 @@
 <meta name="google-site-verification" content="Tpp8m_k5m4Tzi6cI_Yzh5M10Yb0Vh4iUa8WMJqGE3kg">
 <meta name="msvalidate.01" content="6848BAEF6B569BCE80C501D1FA6868F6">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo32x32.jpg">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo16x16.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/M32x32.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/M16x16.jpeg">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
   <meta name="google-site-verification" content="Tpp8m_k5m4Tzi6cI_Yzh5M10Yb0Vh4iUa8WMJqGE3kg">
   <meta name="baidu-site-verification" content="pzKra37kyC">
@@ -54,26 +54,27 @@
   };
 </script>
 
-  <meta name="description" content="马尔科夫性 - 马尔可夫过程 - 马尔可夫奖励过程 - 马尔可夫决策过程">
+  <meta name="description" content="无模型方法简介 属于学习的方法，即智能体和环境需要进行交互，从经验中学习 采用样本备份 需要结合充分的探索，explore  由于未知环境模型，所以无法预知自己的后继状态和奖励值。智能体通过与环境进行交互，然后观察环境返回的值，本质上相当于从概率分布 $P_{ss^′}^a$, $R^a_s$ 中进行采样。需要实现完整的轨迹，还需要确定$A$，在策略中进行采样得到 $A$（可控制）。当采样足够充分">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Reinforcement Learning-马尔可夫决策过程">
-<meta property="og:url" content="http://monteyang.cn/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html">
+<meta property="og:title" content="强化学习-4.无模型方法1-蒙特卡洛">
+<meta property="og:url" content="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-4.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%951-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html">
 <meta property="og:site_name" content="Monte&#39;s Blog">
-<meta property="og:description" content="马尔科夫性 - 马尔可夫过程 - 马尔可夫奖励过程 - 马尔可夫决策过程">
+<meta property="og:description" content="无模型方法简介 属于学习的方法，即智能体和环境需要进行交互，从经验中学习 采用样本备份 需要结合充分的探索，explore  由于未知环境模型，所以无法预知自己的后继状态和奖励值。智能体通过与环境进行交互，然后观察环境返回的值，本质上相当于从概率分布 $P_{ss^′}^a$, $R^a_s$ 中进行采样。需要实现完整的轨迹，还需要确定$A$，在策略中进行采样得到 $A$（可控制）。当采样足够充分">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://monteyang.cn/images/RL-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E4%BE%8B%E5%AD%90.png">
-<meta property="og:image" content="http://monteyang.cn/images/RL-MRPs%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B.png">
-<meta property="og:image" content="http://monteyang.cn/images/RL-MRP%E8%A7%A3%E8%B4%9D%E5%B0%94%E6%9B%BC.png">
-<meta property="og:image" content="http://monteyang.cn/images/RL-MDP%E7%AD%96%E7%95%A5%E5%88%86%E5%B8%83.png">
-<meta property="og:image" content="http://monteyang.cn/images/RL-%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%AD%96%E7%95%A5.png">
-<meta property="article:published_time" content="2019-12-16T02:09:42.000Z">
-<meta property="article:modified_time" content="2020-02-29T08:11:32.364Z">
+<meta property="og:image" content="http://monteyang.cn/images/RL-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B-%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:image" content="http://monteyang.cn/images/RL-MC-%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%9F%E6%9C%9B%E6%96%B9%E7%A8%8B.png">
+<meta property="og:image" content="http://monteyang.cn/images/RL-MC%E7%AD%96%E7%95%A5%E8%AF%84%E4%BB%B7.png">
+<meta property="og:image" content="http://monteyang.cn/images/RL-MC-V%E5%87%BD%E6%95%B0%E8%B4%AA%E5%A9%AA%E7%AD%96%E7%95%A5%E6%8F%90%E5%8D%87.png">
+<meta property="og:image" content="http://monteyang.cn/images/RL-Q%E5%87%BD%E6%95%B0%E7%AD%96%E7%95%A5%E6%8F%90%E5%8D%87.png">
+<meta property="og:image" content="http://monteyang.cn/images/RL-MCe%E8%B4%AA%E5%A9%AA.png">
+<meta property="article:published_time" content="2019-12-16T02:11:42.000Z">
+<meta property="article:modified_time" content="2020-03-11T13:19:59.775Z">
 <meta property="article:author" content="Monte Yang">
-<meta property="article:tag" content="Reinforcement Learning">
+<meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://monteyang.cn/images/RL-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E4%BE%8B%E5%AD%90.png">
+<meta name="twitter:image" content="http://monteyang.cn/images/RL-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B-%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 
-<link rel="canonical" href="http://monteyang.cn/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html">
+<link rel="canonical" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-4.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%951-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html">
 
 
 <script id="page-configurations">
@@ -85,7 +86,7 @@
   };
 </script>
 
-  <title>Reinforcement Learning-马尔可夫决策过程 | Monte's Blog</title>
+  <title>强化学习-4.无模型方法1-蒙特卡洛 | Monte's Blog</title>
   
 
 
@@ -215,10 +216,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-4.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%951-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/M.jpeg">
       <meta itemprop="name" content="Monte Yang">
       <meta itemprop="description" content="❤MY">
     </span>
@@ -228,7 +229,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          Reinforcement Learning-马尔可夫决策过程
+          强化学习-4.无模型方法1-蒙特卡洛
         </h2>
 
         <div class="post-meta">
@@ -238,14 +239,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-12-16 10:09:42" itemprop="dateCreated datePublished" datetime="2019-12-16T10:09:42+08:00">2019-12-16</time>
+              <time title="创建时间：2019-12-16 10:11:42" itemprop="dateCreated datePublished" datetime="2019-12-16T10:11:42+08:00">2019-12-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-29 16:11:32" itemprop="dateModified" datetime="2020-02-29T16:11:32+08:00">2020-02-29</time>
+                <time title="修改时间：2020-03-11 21:19:59" itemprop="dateModified" datetime="2020-03-11T21:19:59+08:00">2020-03-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,8 +254,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Reinforcement-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Reinforcement Learning</span>
+                  <a href="/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">强化学习</span>
                   </a>
                 </span>
             </span>
@@ -277,151 +278,145 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <blockquote>
-<p>马尔科夫性 - 马尔可夫过程 - 马尔可夫奖励过程 - 马尔可夫决策过程</p>
-</blockquote>
-<a id="more"></a>
-
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>马尔可夫决策过程（Markov Decision Processes, MDPs）是对强化学习问题的数学描述。</p>
-<ul>
-<li>要求环境是<strong>全观测</strong>的。</li>
+        <h1 id="无模型方法简介"><a href="#无模型方法简介" class="headerlink" title="无模型方法简介"></a>无模型方法简介</h1><ul>
+<li>属于<strong>学习</strong>的方法，即智能体和环境需要进行<strong>交互</strong>，从经验中学习</li>
+<li>采用样本备份</li>
+<li>需要结合充分的探索，<strong>explore</strong></li>
+</ul>
+<p>由于未知环境模型，所以无法预知自己的后继状态和奖励值。智能体通过与环境进行交互，然后观察环境返回的值，本质上相当于从概率分布 $P_{ss^′}^a$, $R^a_s$ 中进行采样。需要实现完整的轨迹，还需要确定$A$，在策略中进行采样得到 $A$（可控制）。当采样足够充分时，可以使用样本分布良好地刻画环境模型总体分布。</p>
+<h2 id="无模型学习和动态规划的对比"><a href="#无模型学习和动态规划的对比" class="headerlink" title="无模型学习和动态规划的对比"></a>无模型学习和动态规划的对比</h2><ul>
+<li>无模型学习<ul>
+<li>未知环境模型</li>
+<li>需要与环境进行交互, 有交互成本（一般在仿真情况下进行）</li>
+<li>样本备份</li>
+<li>异步备份</li>
+<li>需要充分的探索</li>
+<li><strong>两个策略</strong><ul>
+<li>行为策略（智能体和环境进行交互时的策略）</li>
+<li>目标策略（是我们要学习的策略，求值函数时，$v_\pi$，$q_\pi$的下标）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>动态规划<ul>
+<li>已知环境模型</li>
+<li>不需要直接交互, 直接利用环境模型推导</li>
+<li>全宽备份</li>
+<li>同步和异步</li>
+<li>无探索</li>
+<li>一个策略</li>
+</ul>
+</li>
 </ul>
 <hr>
-<h1 id="马尔可夫性"><a href="#马尔可夫性" class="headerlink" title="马尔可夫性"></a>马尔可夫性</h1><blockquote>
-<p>“只要知道现在，将来和过去是条件独立的，可以抛去过去所有的信息。”</p>
-</blockquote>
-<p>定义：如果在t时刻的状态$S_t$满足下式，则这个状态被称为<strong>马尔科夫状态</strong>，即该状态满足马尔科夫性</p>
-<p>$$ P[S_{t+1}|S_{t}] = P[S_{t+1}|S_1, …, S_t] $$</p>
-<p>注：</p>
+<h1 id="在策略和离策略"><a href="#在策略和离策略" class="headerlink" title="在策略和离策略"></a>在策略和离策略</h1><p>根据行为策略和目标策略是否相同，可以把无模型方法分为：</p>
 <ul>
-<li>状态$S_t$包含了所有历史相关信息，即之前的信息都可以在该状态上体现出来</li>
-<li>所以要求环境是全观测的，(如果是部分观测的话，状态信息有缺失)。</li>
-<li><strong>是否满足马尔可夫性与状态的定义息息相关</strong></li>
+<li>在策略（on-policy）</li>
+<li>离策略（off-policy）</li>
 </ul>
-<p>例子：</p>
-<ul>
-<li>下棋</li>
-<li>俄罗斯方块</li>
+<h2 id="在策略"><a href="#在策略" class="headerlink" title="在策略"></a>在策略</h2><ul>
+<li>行为策略和目标策略是同一个策略</li>
+<li>样本来自于行为策略，直接使用样本统计属性去估计总体</li>
+<li>更简单，且收敛性更好</li>
+<li>数据利用性更差 (只有智能体<strong>当前</strong>交互的样本能够被利用)</li>
+<li>限定了学习过程中的策略是<strong>随机性策略</strong>（为了保证充分探索）</li>
 </ul>
-<p>有了马尔可夫状态之后：</p>
-<ul>
-<li>定义状态转移矩阵</li>
-<li>忽略时间的影响</li>
-</ul>
-<hr>
-<h1 id="状态转移矩阵"><a href="#状态转移矩阵" class="headerlink" title="状态转移矩阵"></a>状态转移矩阵</h1><p>状态转移概率指从一个马尔可夫状态 s 跳转到后继状态 (successor<br>state) s′ 的概率。</p>
-<p>$$ \mathcal{P} _ {ss^{‘}} = \mathbb{P} [S_{t+1} = s^{‘} | S_t = s] $$</p>
-<p>若状态是<strong>离散</strong>的（有限个）：<br>所有的状态组成行，所有后继状态组成列，得到状态转移矩阵</p>
-<p>$$ \mathcal{P} =<br>\begin{bmatrix}<br>\mathcal{P} _ {11} &amp; … &amp; \mathcal{P} _ {1n} \<br>… &amp; … &amp; … \<br>\mathcal{P} _ {n1} &amp; … &amp; \mathcal{P} _ {nn}  \<br>\end{bmatrix}$$</p>
-<ul>
-<li>$n$为状态个数</li>
-<li>每行元素相加为1</li>
-</ul>
-<p>若状态是<strong>连续</strong>的，即无限个状态，适合用本节最上式的函数形式表示。</p>
-<ul>
-<li>此时，$\int_{s’}\mathcal{P}(s’|s)=1$</li>
-</ul>
-<hr>
-<h1 id="马尔可夫过程"><a href="#马尔可夫过程" class="headerlink" title="马尔可夫过程"></a>马尔可夫过程</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>一个马尔可夫过程 (Markov process, MP) 是一个无记忆的随机过程，即一些马尔可夫状态的序列。</p>
-<p>马尔可夫过程可由一个二元组来定义 $&lt;S,\mathcal{P}&gt;$</p>
-<ul>
-<li>$S$：代表状态集合</li>
-<li>$\mathcal{P}$：代表状态转移矩阵</li>
+<h2 id="离策略"><a href="#离策略" class="headerlink" title="离策略"></a>离策略</h2><ul>
+<li>行为策略和目标策略不是同一个策略</li>
+<li>一般行为策略 $µ$ 选用随机性策略，目标策略 $π$ 选用确定性策略</li>
+<li>需要结合<strong>重要性采样</strong>才能使用样本估计总体</li>
+<li>方差更大，收敛性更差</li>
+<li>数据利用性更好 (可以使用其他智能体交互的样本)</li>
+<li>行为策略需要比目标策略更具备探索性。即，在每个状态下，目标策略的可行动作是行为策略可行动作的子集</li>
 </ul>
 <blockquote>
-<p>通常假设$\mathcal{P}$是存在且稳定的<br>当$\mathcal{P}$不稳定时，采用在线学习、快速学习等方法</p>
+<p>重要性采样：<br>重要性采样是一种估计概率分布期望值的技术，它使用了来自其他概率分<br>布的样本。<br>主要用于无法直接采样原分布的情况<br>估计期望值时，需要加权概率分布的比值（称为重要性采样率）</p>
 </blockquote>
-<h2 id="马尔可夫过程的例子"><a href="#马尔可夫过程的例子" class="headerlink" title="马尔可夫过程的例子"></a>马尔可夫过程的例子</h2><p><img data-src="/images/RL-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E4%BE%8B%E5%AD%90.png" alt="马尔可夫链"></p>
-<ul>
-<li>马尔可夫过程中的终止状态有2种：<ul>
-<li>时间终止</li>
-<li>状态终止</li>
-</ul>
-</li>
-</ul>
-<h2 id="片段（Episode）"><a href="#片段（Episode）" class="headerlink" title="片段（Episode）"></a>片段（Episode）</h2><p>定义： 强化学习中，从初始状态 $S_1$ 到终止状态 $S_T$ 的序列过程。</p>
-<p>$$S_1, S_2, …, S_T$$</p>
 <hr>
-<h1 id="马尔可夫奖励过程"><a href="#马尔可夫奖励过程" class="headerlink" title="马尔可夫奖励过程"></a>马尔可夫奖励过程</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>在马尔可夫过程的基础上，<strong>在转移关系中赋予不同的奖励值</strong>，即得到马尔可夫奖励过程。</p>
-<p>马尔可夫奖励 (Markov Reward Process, MRP) 过程由一个四元组组成 $⟨S, \mathcal{P}, \mathcal{R}, γ⟩$</p>
+<h1 id="蒙特卡洛方法"><a href="#蒙特卡洛方法" class="headerlink" title="蒙特卡洛方法"></a>蒙特卡洛方法</h1><p>特点：</p>
 <ul>
-<li>S：状态集合</li>
-<li>$\mathcal{P}$：状态转移矩阵</li>
-<li>$\mathcal{R}$：奖励函数， $\mathcal{R}(s)$ 描述了在状态 s 的奖励，$\mathcal{R}(s) = E [\mathcal{R}_{t+1}|S_t = s]$</li>
-<li>$γ$：衰减因子</li>
+<li>MC 方法可以被用于<strong>任意涉及随机变量的估计</strong></li>
+<li>这里 MC 方法特指<strong>利用统计平均估计期望值</strong>的方法</li>
+<li>强化学习中存在很多估计期望值的计算 $v_π$; $v_∗$</li>
+<li>使用 MC 方法只需要<strong>利用经验数据</strong>，不需要 P; R</li>
+<li>MC 方法从完整的片段中学习。因此 MC 方法仅仅用于片段性任务 (必须有终止条件)</li>
 </ul>
-<h2 id="回报值"><a href="#回报值" class="headerlink" title="回报值"></a>回报值</h2><ul>
-<li>奖励值：对一个<strong>状态</strong>的评价</li>
-<li>回报值：对一个<strong>片段</strong>的评价</li>
-</ul>
-<p>回报值（return $G_t$）是从时间t处开始的累积衰减奖励</p>
-<p>$$G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + …$$</p>
-<h2 id="MRPs中的值函数"><a href="#MRPs中的值函数" class="headerlink" title="MRPs中的值函数"></a>MRPs中的值函数</h2><blockquote>
-<p>为什么要值函数？<br>回报值是一个片段的结果，存在很大的样本偏差<br>回报值的角标是 t，值函数关注的是状态 s</p>
-</blockquote>
-<p>一个 MRP 的值函数如下定义<br>$$v(s) = \mathbb{E}[G_t|S_t = s]$$</p>
-<p>这里的值函数针对的是状态 s，所以称为<strong>状态值函数</strong>，又称 V 函数</p>
-<h2 id="MRPs中的贝尔曼方程（重点）"><a href="#MRPs中的贝尔曼方程（重点）" class="headerlink" title="MRPs中的贝尔曼方程（重点）"></a>MRPs中的贝尔曼方程（重点）</h2><p>$$\begin{aligned}v(s)&amp;=\mathbb{E}[G_t|S_t=s] \ &amp;=\mathbb{E}[ R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + .. S_t=s] \ &amp;=\mathbb{E}[ R_{t+1} + \gamma G_{t+1} | S_t=s ] \ &amp;=\mathbb{E}[ R_{t+1} + \gamma v(S_{t+1}) | S_t=s ]\end{aligned}$$</p>
-<p>当前状态的值函数包括两部分：</p>
-<ul>
-<li>第一项：瞬时奖励 $R_{t+1}$</li>
-<li>第二项：后继状态 $S_{t+1}$ 的值函数乘衰减系数</li>
-</ul>
-<p>如果已知转移矩阵 $P$，那么<br>$$\begin{aligned} v(s) &amp;= \mathbb{E} [R_{t+1} + γv(S_{t+1}) | S_t = s] \    &amp;= \mathbb{E} [Rt+1jSt = s] + γ \mathbb{E}[v(S_{t+1})|S_t = s] \&amp;= \mathcal{R}(s) + γ ∑\mathcal{P}_{ss^′}v(s^′)\end{aligned}$$</p>
-<p>矩阵-向量形式为：</p>
-<p>$$v = \mathcal{R} + \gamma \mathcal{P} v$$</p>
-<p><img data-src="/images/RL-MRPs%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B.png" alt></p>
-<p>本质上是一个线性方程，可以直接解：</p>
-<p><img data-src="/images/RL-MRP%E8%A7%A3%E8%B4%9D%E5%B0%94%E6%9B%BC.png" alt></p>
-<p>直接求解只适用于小型MRPs：</p>
-<ul>
-<li>计算复杂度$O(n^3)$</li>
-<li>要求已知 $\mathcal{P}$</li>
-</ul>
+<p>最简单的思路，通过不断的采样，然后统计平均回报值来估计值函数，方差较大</p>
+<p><img data-src="../images/RL-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B-%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="蒙特卡洛中的样本"></p>
 <hr>
-<h1 id="马尔可夫决策过程"><a href="#马尔可夫决策过程" class="headerlink" title="马尔可夫决策过程"></a>马尔可夫决策过程</h1><p>在 MRP 中引入决策即得到了马尔可夫决策过程（Markov Decision Processes, MDPs）</p>
-<h2 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h2><p>一个马尔可夫决策过程 (MDPs) 由一个五元组构成 $⟨S, \mathcal{A}, \mathcal{P}, \mathcal{R}, γ⟩$</p>
-<ul>
-<li><p>$\mathcal{A}$ ： 动作的集合</p>
-</li>
-<li><p>$\mathcal{P}$ ： 状态转移矩阵，<br>$$\mathcal{P}<em>{ss^{‘}}^{a} = \mathbb{P}[ S</em>{t+1}=s’ | S_t=s, A_{t}=a]$$</p>
-</li>
-<li><p>$\mathcal{R}(s,a)$：奖励函数， 表示在状态s做动作a的奖励。$\mathcal{R}(s) = E [\mathcal{R}_{t+1}|S_t = s]$</p>
-</li>
-</ul>
-<h2 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h2><p>在 MDPs 中，一个策略 (Policy)π 是在给定状态下的动作的概率分布</p>
-<p>$$\pi(a | s) = \mathbb{P}[ A_t = a | S_t = s ]$$</p>
-<p><img data-src="/images/RL-MDP%E7%AD%96%E7%95%A5%E5%88%86%E5%B8%83.png" alt></p>
-<ul>
-<li>策略是时间稳定的，只与s有关，与时间t无关</li>
-<li>是RL问题的终极目标</li>
-<li>如果分布是 one-hot 的，那么为确定性策略，否则为随机策略</li>
-</ul>
-<p><img data-src="/images/RL-%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%AD%96%E7%95%A5.png" alt></p>
-<h2 id="MDPs与MRPs之间的关系"><a href="#MDPs与MRPs之间的关系" class="headerlink" title="MDPs与MRPs之间的关系"></a>MDPs与MRPs之间的关系</h2><p>如果MDP问题给定策略$\pi$，则会退化成MRP问题。</p>
-<h2 id="MDPs中的值函数"><a href="#MDPs中的值函数" class="headerlink" title="MDPs中的值函数"></a>MDPs中的值函数</h2><ol>
-<li><p>状态值函数（V函数）</p>
-<ul>
-<li>定义：从状态s开始，使用策略$\pi$得到的期望回报值</li>
-</ul>
-<p>$$v_{\pi}(s) = \mathbb{E}_\pi[G_t|S_t = s]$$</p>
-</li>
-</ol>
-<ol start="2">
-<li><p>状态动作值函数（Q函数）</p>
-<ul>
-<li><p>定义：MDPs 中的状态动作值函数是从状态 s 开始，执行动作 a， <strong>然后</strong>使用策略 π 得到的期望回报值</p>
+<h1 id="蒙特卡洛评价"><a href="#蒙特卡洛评价" class="headerlink" title="蒙特卡洛评价"></a>蒙特卡洛评价</h1><h2 id="表述说明"><a href="#表述说明" class="headerlink" title="表述说明"></a>表述说明</h2><ul>
+<li><p>轨迹：把状态-动作的序列称为一个智能体的轨迹(trajectory)<br>$$ρ = S_1, A_1, S_2, A_2, ·_ · · , S_T$$</p>
 <blockquote>
-<p>动作a不一定来自于策略 $\pi$，实际上是做完动作 a之后，才遵循策略 $\pi$ 进行动作选择</p>
+<p>状态动作序列构成了马尔可夫链图上的一条轨迹，有时也会加上奖励</p>
 </blockquote>
-<p>$$q_{\pi}(s, a) = \mathbb{E}_\pi[ G_t | S_t = s, A_t = a ]$$</p>
+</li>
+<li><p>从 $π, P_{ss’}^a$ 采样一条轨迹：我们把智能体从初始状态开始和环境进行交互的整个过程中得到的轨迹叫做采样一条轨迹。其中需要考虑两个分布$π, P_{ss’}^a$</p>
 </li>
 </ul>
+<ul>
+<li>从策略中采样一条轨迹 $ρ$。因为 $P_{ss’}^a$ 是稳定的，所以轨迹的分布随着策略的变化而变化。我们简述成从一个策略 π 中采样轨迹<br>$$ρ ∼ π$$</li>
+</ul>
+<h2 id="蒙特卡洛评价-1"><a href="#蒙特卡洛评价-1" class="headerlink" title="蒙特卡洛评价"></a>蒙特卡洛评价</h2><p>目标：给定策略 π，求 vπ</p>
+<blockquote>
+<p>过去的方法（动态规划中）使用了贝尔曼期望方程<br> <img data-src="../images/RL-MC-%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%9F%E6%9C%9B%E6%96%B9%E7%A8%8B.png" alt></p>
+<ul>
+<li>直接解</li>
+<li>迭代式动态规划</li>
+</ul>
+</blockquote>
+<p>MC 利用了值函数的定义</p>
+<p><img data-src="../images/RL-MC%E7%AD%96%E7%95%A5%E8%AF%84%E4%BB%B7.png" alt></p>
+<p>MC 策略评价<strong>使用回报值的经验平均来估计实际期望值</strong></p>
+<p>MC策略评价包括：</p>
+<h3 id="首次拜访MC策略评价"><a href="#首次拜访MC策略评价" class="headerlink" title="首次拜访MC策略评价"></a>首次拜访MC策略评价</h3><ul>
+<li>为了评价状态 s，使用给定的策略 π 采样大量的轨迹<ul>
+<li>在每一条轨迹中，对于状态 s <strong>首次</strong>出现的时间 t</li>
+<li>增加状态数量 $N(s) \leftarrow N(s) + 1$</li>
+<li>增加总回报值 $G_{sum}(s) \leftarrow G_{sum}(s) + G_t$</li>
+</ul>
 </li>
-</ol>
-<h2 id="贝尔曼期望方程"><a href="#贝尔曼期望方程" class="headerlink" title="贝尔曼期望方程"></a>贝尔曼期望方程</h2><p>和 MRP 相似， MDPs 中的值函数也能分解成<strong>瞬时奖励</strong>和<strong>后继状态的值函数</strong>两部分</p>
-<p>$$ v_ \pi(s)=\mathbb{E}_ \pi [ R_{t+1} + \gamma v_ \pi(S_{t+1}) | S_t=s ] $$</p>
-<p>$$ q_ \pi(s,a)=\mathbb{E}_ \pi [ R_{t+1} + \gamma q_ \pi(S_{t+1}, A_{t+1}) | S_t=s, A_t=a] $$</p>
+<li>计算平均值得到值函数的估计 $V(s) = \frac{G_{sum}(s)}{N(s)}$</li>
+<li>每条轨迹都是独立同分布的</li>
+<li>根据大数定律，随着 $N(s)\rightarrow \infty, V(s) \rightarrow v_π(s)$</li>
+<li>在 MC 方法下， $V(s)$ 是 $v_π(s)$ 的无偏估计</li>
+</ul>
+<h3 id="每次拜访MC策略评价"><a href="#每次拜访MC策略评价" class="headerlink" title="每次拜访MC策略评价"></a>每次拜访MC策略评价</h3><ul>
+<li>为了评价状态 s</li>
+<li>使用给定的策略 π 采样大量的轨迹<ul>
+<li>在每一条轨迹中，对于状态 s <strong>每次</strong>出现的时间 t</li>
+<li>增加状态数量 $N(s) \leftarrow N(s) + 1$</li>
+<li>增加总回报值 $G_{sum}(s) \leftarrow G_{sum}(s) + G_t$</li>
+</ul>
+</li>
+<li>计算平均值得到值函数的估计 $V(s) = \frac{G_{sum}(s)}{N(s)}$</li>
+<li>同样地，随着 $N(s)\rightarrow \infty, V(s) \rightarrow v_π(s)$</li>
+<li>收敛性的证明不如首次拜访 MC 策略评价直观。</li>
+<li>更容易拓展到函数逼近和资格迹（后述）</li>
+</ul>
+<p>在没有模型的时候，一般我们选择估计<strong>Q 函数</strong>。</p>
+<p>因为我们可以通过 Q 函数直接得到贪婪的策略，最优的 Q 函数可以得到最优的策略。（直接取Max）</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>偏差为 0，是无偏估计</li>
+<li>方差较大，需要大量数据去消除</li>
+<li>收敛性较好</li>
+<li>容易理解和使用</li>
+<li>没有利用马尔可夫性，有时可以用在非马尔可夫环境</li>
+</ul>
+<hr>
+<h1 id="蒙特卡洛优化"><a href="#蒙特卡洛优化" class="headerlink" title="蒙特卡洛优化"></a>蒙特卡洛优化</h1><h2 id="值函数的使用"><a href="#值函数的使用" class="headerlink" title="值函数的使用"></a>值函数的使用</h2><ul>
+<li>在 V 函数上做贪婪策略提升要求环境模型</li>
+</ul>
+<p><img data-src="../images/RL-MC-V%E5%87%BD%E6%95%B0%E8%B4%AA%E5%A9%AA%E7%AD%96%E7%95%A5%E6%8F%90%E5%8D%87.png" alt></p>
+<ul>
+<li>在 Q 函数上做贪婪策略提升是<strong>无模型</strong>的</li>
+</ul>
+<p><img data-src="../images/RL-Q%E5%87%BD%E6%95%B0%E7%AD%96%E7%95%A5%E6%8F%90%E5%8D%87.png" alt></p>
+<h2 id="epsilon-贪婪策略提升"><a href="#epsilon-贪婪策略提升" class="headerlink" title="$\epsilon$ - 贪婪策略提升"></a>$\epsilon$ - 贪婪策略提升</h2><p>需要保证智能体一直在探索新的策略，保证所有的 m 个动作都有一定的概率被采样。</p>
+<ul>
+<li>用 $1 − \epsilon$ 的概率选择贪婪的动作</li>
+<li>用 $\epsilon$ 的概率随机从 m 个动作中选择</li>
+</ul>
+<p><img data-src="../images/RL-MCe%E8%B4%AA%E5%A9%AA.png" alt></p>
 
     </div>
 
@@ -457,7 +452,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://monteyang.cn/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html" title="Reinforcement Learning-马尔可夫决策过程">http://monteyang.cn/Reinforcement-Learning-马尔科夫决策过程.html</a>
+    <a href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-4.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%951-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html" title="强化学习-4.无模型方法1-蒙特卡洛">http://monteyang.cn/强化学习-4.无模型方法1-蒙特卡洛.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -469,7 +464,7 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/Reinforcement-Learning/" rel="tag"><i class="fa fa-tag"></i> Reinforcement Learning</a>
+              <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> 强化学习</a>
           </div>
 
         
@@ -478,12 +473,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/Reinforcement-Learning-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html" rel="prev" title="Reinforcement Learning-基本概念">
-      <i class="fa fa-chevron-left"></i> Reinforcement Learning-基本概念
+    <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-3.%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html" rel="prev" title="强化学习-3.动态规划">
+      <i class="fa fa-chevron-left"></i> 强化学习-3.动态规划
     </a></div>
       <div class="post-nav-item">
-    <a href="/Reinforcement-Learning-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html" rel="next" title="Reinforcement Learning-动态规划">
-      Reinforcement Learning-动态规划 <i class="fa fa-chevron-right"></i>
+    <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-5.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%952-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86.html" rel="next" title="强化学习-5.无模型方法2-时间差分">
+      强化学习-5.无模型方法2-时间差分 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -545,13 +540,13 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#马尔可夫性"><span class="nav-text">马尔可夫性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态转移矩阵"><span class="nav-text">状态转移矩阵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#马尔可夫过程"><span class="nav-text">马尔可夫过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#马尔可夫过程的例子"><span class="nav-text">马尔可夫过程的例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#片段（Episode）"><span class="nav-text">片段（Episode）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#马尔可夫奖励过程"><span class="nav-text">马尔可夫奖励过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-1"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回报值"><span class="nav-text">回报值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MRPs中的值函数"><span class="nav-text">MRPs中的值函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MRPs中的贝尔曼方程（重点）"><span class="nav-text">MRPs中的贝尔曼方程（重点）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#马尔可夫决策过程"><span class="nav-text">马尔可夫决策过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-2"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#策略"><span class="nav-text">策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDPs与MRPs之间的关系"><span class="nav-text">MDPs与MRPs之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDPs中的值函数"><span class="nav-text">MDPs中的值函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贝尔曼期望方程"><span class="nav-text">贝尔曼期望方程</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#无模型方法简介"><span class="nav-text">无模型方法简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#无模型学习和动态规划的对比"><span class="nav-text">无模型学习和动态规划的对比</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在策略和离策略"><span class="nav-text">在策略和离策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在策略"><span class="nav-text">在策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离策略"><span class="nav-text">离策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蒙特卡洛方法"><span class="nav-text">蒙特卡洛方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蒙特卡洛评价"><span class="nav-text">蒙特卡洛评价</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#表述说明"><span class="nav-text">表述说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡洛评价-1"><span class="nav-text">蒙特卡洛评价</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#首次拜访MC策略评价"><span class="nav-text">首次拜访MC策略评价</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#每次拜访MC策略评价"><span class="nav-text">每次拜访MC策略评价</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蒙特卡洛优化"><span class="nav-text">蒙特卡洛优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#值函数的使用"><span class="nav-text">值函数的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#epsilon-贪婪策略提升"><span class="nav-text">$\epsilon$ - 贪婪策略提升</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Monte Yang" src="/images/avatar.jpeg">
+    <img class="site-author-image" itemprop="image" alt="Monte Yang" src="/images/M.jpeg">
   <p class="site-author-name" itemprop="name">Monte Yang</p>
   <div class="site-description" itemprop="description">❤MY</div>
 </div>
@@ -761,7 +756,7 @@
       quicklink({
         timeout: 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/Reinforcement-Learning-%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html',]
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-4.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%951-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html',]
       });
       });
   </script>
@@ -777,7 +772,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo: 'MonteYang.github.io',
       owner: 'MonteYang',
       admin: ['MonteYang'],
-      id: '8ed8c1e1c89cb70a343d82c5bcc1cd3a',
+      id: '8541768b72fdde3919dc59d2ba056ed0',
         language: 'zh-CN',
       distractionFreeMode: true
     });
