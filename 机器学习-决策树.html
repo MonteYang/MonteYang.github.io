@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
@@ -111,11 +111,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -272,11 +272,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><img data-src="../images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91.png" alt></p>
+        <p><img data-src="../images/机器学习-决策树.png" alt></p>
 <hr>
 <a id="more"></a>
-
-
 <h1 id="决策树模型"><a href="#决策树模型" class="headerlink" title="决策树模型"></a>决策树模型</h1><p>从根节点开始，在每一个节点进行决策，最终走到叶子节点。既可以做<strong>分类</strong>，也可以做<strong>回归</strong>。</p>
 <p>优点：可读性强，分类速度快。</p>
 <p>通常，决策树学习分为三步： <strong>特征选择</strong>、<strong>决策树生成（构建）</strong>和<strong>决策树的剪枝</strong>。</p>
@@ -298,33 +296,27 @@
 <p>因此，目标： 通过一种衡量标准，计算不同特征进行分支选择后的分类情况，衡量特征的分类效果，找出最好的特征当作根节点，以此类推。</p>
 <h2 id="熵"><a href="#熵" class="headerlink" title="熵"></a>熵</h2><p>熵：<strong>表示随机变量不确定性的度量。不确定性越强，熵值越高</strong>。</p>
 <p>假设 $X$ 是一个具有有限个值的离散型随机变量，服从如下的概率分布：</p>
-<p>$$P(X=x_i)=p_i,\qquad i=1,2,\cdots,n $$</p>
-<p>则，随机变量$X$的熵定义为：</p>
-<p>$$H(X)=-\sum_{i=1}^np_i log p_i \quad (2)$$</p>
-<p>假设 X 服从如下分布：</p>
-<p>$$P(X=1)=p，P(X=0)=1-p，0 \le p \le 1$$</p>
-<p>于是根据 <strong>公式（2）</strong> 得到它的熵为：</p>
-<p>$$H(p)=-p\log_2p-(1-p)\log_2(1-p)$$</p>
-<p><img data-src="../images/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91-%E7%86%B5.png" alt></p>
+<script type="math/tex; mode=display">P(X=x_i)=p_i,\qquad i=1,2,\cdots,n</script><p>则，随机变量$X$的熵定义为：</p>
+<script type="math/tex; mode=display">H(X)=-\sum_{i=1}^np_i log p_i \quad (2)</script><p>假设 X 服从如下分布：</p>
+<script type="math/tex; mode=display">P(X=1)=p，P(X=0)=1-p，0 \le p \le 1</script><p>于是根据 <strong>公式（2）</strong> 得到它的熵为：</p>
+<script type="math/tex; mode=display">H(p)=-p\log_2p-(1-p)\log_2(1-p)</script><p><img data-src="../images/机器学习-决策树-熵.png" alt></p>
 <p>概率和熵值大小的关系：</p>
 <ul>
 <li>当 p=0或1 时，H(p)=0，随机变量没有不确定性</li>
 <li>当 p=0.5 时，H(p)=1，随机变量的不确定性最大</li>
 </ul>
 <h2 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h2><p>设随机变量 $(X,Y)$ 的<strong>联合概率分布</strong>为：</p>
-<p>$$P(X=x_i,Y=y_j)=p_{ij},\quad i=1,2,\cdots,n;\quad j=1,2,\cdots ,m$$</p>
-<p><strong>条件熵 $H(Y|X)$</strong> 表示在已知随机变量 $X$ 的取值条件下，随机变量 $Y$ 的不确定性。</p>
-<p>其数学定义为：$X$ 给定的条件下 $Y$ 的条件概率分布的熵对 $X$ 的数学期望，<br>$$H(Y|X)=\sum_{i=1}^np_iH(Y|X=x_i)$$</p>
-<p>其中，$p_i=P(X=x_i),\quad i=1,2,\cdots,n$</p>
+<script type="math/tex; mode=display">P(X=x_i,Y=y_j)=p_{ij},\quad i=1,2,\cdots,n;\quad j=1,2,\cdots ,m</script><p><strong>条件熵 $H(Y|X)$</strong> 表示在已知随机变量 $X$ 的取值条件下，随机变量 $Y$ 的不确定性。</p>
+<p>其数学定义为：$X$ 给定的条件下 $Y$ 的条件概率分布的熵对 $X$ 的数学期望，</p>
+<script type="math/tex; mode=display">H(Y|X)=\sum_{i=1}^np_iH(Y|X=x_i)</script><p>其中，$p_i=P(X=x_i),\quad i=1,2,\cdots,n$</p>
 <p>在此基础上，引出<strong>信息增益</strong>（Information Gain），它<strong>表示在特征 $X$ 给定的条件下，而使得类 $Y$ 的信息不确定性减少的程度</strong>。数学精确表述如下：特征 $A$ 对训练数据集 $D$ 的<strong>信息增益 $G(D,A)$</strong> 定义为集合 $D$ 的熵 $H(D)$ 与特征 $A$ 给定的条件下 $D$ 的条件熵 $H(D | A)$ 之差，即：</p>
-<p>$$G(D,A)=H(D)-H(D|A)$$</p>
-<p>决策树学习应用信息增益准则选择特征。给定训练数据集 $D$ 和特征 $A$。熵 $H(D)$ 表示对数据集 $D$ 进行分类的不确定性，而条件熵 $H(D|A)$ 表示在特征 $A$ 给定的条件下对数据集 $D$ 进行分类的不确定性。而他们的差，即信息增益就表示由于特征 $A$ 给定的情况下而使得对数据集 $D$ 进行分类的不确定性减少的程度。显然，对于数据集 $D$ 而言，信息增益依赖于特征。一般情况下，不同的特征具有不同的信息增益。<strong>信息增益大的特征具有更强的分类能力。</strong></p>
+<script type="math/tex; mode=display">G(D,A)=H(D)-H(D|A)</script><p>决策树学习应用信息增益准则选择特征。给定训练数据集 $D$ 和特征 $A$。熵 $H(D)$ 表示对数据集 $D$ 进行分类的不确定性，而条件熵 $H(D|A)$ 表示在特征 $A$ 给定的条件下对数据集 $D$ 进行分类的不确定性。而他们的差，即信息增益就表示由于特征 $A$ 给定的情况下而使得对数据集 $D$ 进行分类的不确定性减少的程度。显然，对于数据集 $D$ 而言，信息增益依赖于特征。一般情况下，不同的特征具有不同的信息增益。<strong>信息增益大的特征具有更强的分类能力。</strong></p>
 <p>由以上的表述，我们应该清楚地知道，决策树构建过程中，我们应该选择信息增益最大的特征进行分裂构建。</p>
 <h2 id="ID3"><a href="#ID3" class="headerlink" title="ID3"></a>ID3</h2><p>ID3算法的核心是递归的构建决策树，递归的过程中，在每个节点上，计算信息增益选择特征，直至满足递归停止条件（所有特征的信息增益都很小或者没有特征可以选择）。</p>
 <h2 id="C4-5"><a href="#C4-5" class="headerlink" title="C4.5"></a>C4.5</h2><p>C4.5 算法和 ID3 算法基本上完全一致，只是特征选择时的选择方法将信息增益换成<strong>信息增益比</strong>。</p>
 <blockquote>
-<p><strong>信息增益比</strong>：<br>特征 $A$ 对训练数据集 $D$ 的信息增益比 $G_R(D,A)$ 表示特征 $A$ 的信息增益 $G(D,A)$ 与训练数据集 $D$ 关于特征 $A$ 的熵 $H_A(D)$ 的比值，即：<br>$$G_R(D,A)=\frac{G(D,A)}{H_A(D)}$$</p>
-</blockquote>
+<p><strong>信息增益比</strong>：<br>特征 $A$ 对训练数据集 $D$ 的信息增益比 $G_R(D,A)$ 表示特征 $A$ 的信息增益 $G(D,A)$ 与训练数据集 $D$ 关于特征 $A$ 的熵 $H_A(D)$ 的比值，即：</p>
+<script type="math/tex; mode=display">G_R(D,A)=\frac{G(D,A)}{H_A(D)}</script></blockquote>
 <hr>
 <h1 id="决策树的剪枝"><a href="#决策树的剪枝" class="headerlink" title="决策树的剪枝"></a>决策树的剪枝</h1><p>决策树过拟合风险很大，理论上可以完全分开（极限情况：每个数据对应一个叶子结点）</p>
 <h2 id="预剪枝"><a href="#预剪枝" class="headerlink" title="预剪枝"></a>预剪枝</h2><p>在构建决策树的过程中，进行剪枝，预剪枝的方法包括：</p>
@@ -699,7 +691,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
     gitalk.render('gitalk-container');
   }, window.Gitalk);
 });
-</script>
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 </html>

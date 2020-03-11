@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
@@ -110,11 +110,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -275,7 +275,6 @@
 <p>关于Python中正则表达式的总结</p>
 </blockquote>
 <a id="more"></a>
-
 <p>正则表达式(regular expression)描述了一种字符串匹配的模式（pattern），用于字符串的匹配和提取等操作。</p>
 <p>正则表达式的匹配模式在任意编程语言中都是通用的。</p>
 <blockquote>
@@ -284,6 +283,7 @@
 <ul>
 <li>最常用的正则表达式</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -291,7 +291,8 @@
 <th>功能</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>.</code></td>
 <td>匹配任意字符,除换行符<code>\n</code></td>
 </tr>
@@ -315,7 +316,9 @@
 <td><code>\d</code></td>
 <td>匹配任意数字</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
 <h1 id="匹配字符串首尾"><a href="#匹配字符串首尾" class="headerlink" title="匹配字符串首尾"></a>匹配字符串首尾</h1><p>在正则表达式的首部添加<code>^</code>，意味着待匹配的字符串从首部就要和正则式匹配。类似的，正则式尾部添加<code>$</code>，表示待匹配的字符串从尾部需和正则式匹配。</p>
 <ul>
@@ -325,7 +328,6 @@
 <hr>
 <h1 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h1><p>利用分组, 可以提取字符串中你想要的内容。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = re.match(<span class="string">r'^(\d&#123;3&#125;)-(\d&#123;3,8&#125;)$'</span>, <span class="string">'010-12345'</span>)  <span class="comment"># 匹配电话号码, 用括号`()`括起来的正则表达式表示一个分组</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m</span><br><span class="line">&lt;_sre.SRE_Match object; span=(<span class="number">0</span>, <span class="number">9</span>), match=<span class="string">'010-12345'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">0</span>)  <span class="comment"># 用group函数可以提取匹配的部分</span></span><br><span class="line"><span class="string">'010-12345'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">1</span>)  <span class="comment"># group(1)表示第一个分组</span></span><br><span class="line"><span class="string">'010'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>m.group(<span class="number">2</span>)  <span class="comment"># group(2)表示第一个分组</span></span><br><span class="line"><span class="string">'12345'</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>用括号<code>()</code>括起来的正则表达式表示一个分组</li>
 </ul>
@@ -660,7 +662,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
     gitalk.render('gitalk-container');
   }, window.Gitalk);
 });
-</script>
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 </html>

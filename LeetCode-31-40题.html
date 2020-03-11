@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
@@ -112,11 +112,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -277,7 +277,6 @@
 <p>leetcode <code>31~40</code> 题</p>
 </blockquote>
 <a id="more"></a>
-
 <hr>
 <h1 id="31-下一个排列"><a href="#31-下一个排列" class="headerlink" title="31. 下一个排列"></a>31. 下一个排列</h1><p>实现获取下一个排列的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列。</p>
 <p>如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。</p>
@@ -285,27 +284,28 @@
 <p>以下是一些例子，输入位于左侧列，其相应输出位于右侧列。</p>
 <pre><code>1,2,3 → 1,3,2
 3,2,1 → 1,2,3
-1,1,5 → 1,5,1</code></pre><blockquote>
+1,1,5 → 1,5,1
+</code></pre><blockquote>
 <p>思路:<br>字典序算法</p>
-</blockquote>
 <ol>
 <li>从右往左, 找出第一个小于右邻的数 <code>list[x]</code>;</li>
 <li>从右往左, 找出第一个比 <code>list[x]</code> 大的数 <code>list[y]</code>;</li>
 <li>交换 <code>list[x]</code> 和 <code>list[y]</code>;</li>
 <li>将 <code>list[x]</code> 后面的序列从小到大排序. </li>
 </ol>
+</blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">nextPermutation</span><span class="params">(self, nums: List[int])</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(nums) == <span class="number">1</span>: <span class="keyword">return</span> </span><br><span class="line">        <span class="comment"># 1</span></span><br><span class="line">        x = <span class="number">-1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-2</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &lt; nums[i+<span class="number">1</span>]:</span><br><span class="line">                x = i</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="comment"># 如果不存在下一个更大的字典序(即当前序列为最大的字典序), 则将序列转为最小字典序</span></span><br><span class="line">        <span class="keyword">if</span> x == <span class="number">-1</span>:</span><br><span class="line">            nums.sort()</span><br><span class="line">            <span class="keyword">return</span> </span><br><span class="line">        <span class="comment"># 2</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[x]:</span><br><span class="line">                y = i</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="comment"># 3, 4</span></span><br><span class="line">        nums[x], nums[y] = nums[y], nums[x]</span><br><span class="line">        nums[x+<span class="number">1</span>:] = sorted(nums[x+<span class="number">1</span>:])</span><br></pre></td></tr></table></figure>
-
-
 <hr>
 <h1 id="32-最长有效括号"><a href="#32-最长有效括号" class="headerlink" title="32. 最长有效括号"></a>32. 最长有效括号</h1><p>给定一个只包含 ‘(‘ 和 ‘)’ 的字符串，找出最长的包含有效括号的子串的长度。</p>
 <p>示例 1:</p>
 <pre><code>输入: &quot;(()&quot;
 输出: 2
-解释: 最长有效括号子串为 &quot;()&quot;</code></pre><p>示例 2:</p>
+解释: 最长有效括号子串为 &quot;()&quot;
+</code></pre><p>示例 2:</p>
 <pre><code>输入: &quot;)()())&quot;
 输出: 4
-解释: 最长有效括号子串为 &quot;()()&quot;</code></pre><blockquote>
+解释: 最长有效括号子串为 &quot;()()&quot;
+</code></pre><blockquote>
 <p>思路:</p>
 <ol>
 <li>用栈实现括号匹配</li>
@@ -315,7 +315,6 @@
 </ol>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestValidParentheses</span><span class="params">(self, s: str)</span> -&gt; int:</span></span><br><span class="line">        <span class="comment"># ()()()(()()()(()))</span></span><br><span class="line">        <span class="comment"># 特殊情况</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        stack = []</span><br><span class="line">        idxs = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</span><br><span class="line">            <span class="comment"># 如果栈为空时</span></span><br><span class="line">            <span class="keyword">if</span> stack == []:</span><br><span class="line">                <span class="keyword">if</span> s[i] == <span class="string">')'</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    stack.append(i)</span><br><span class="line">            <span class="comment"># 如果栈非空时</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> s[i] == <span class="string">')'</span>:</span><br><span class="line">                    idxs.append(i)</span><br><span class="line">                    idxs.append(stack.pop())</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    stack.append(i)</span><br><span class="line"></span><br><span class="line">        idxs.sort()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> idxs: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        max_length = <span class="number">0</span></span><br><span class="line">        length = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, len(idxs)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> idxs[j+<span class="number">1</span>] - idxs[j] == <span class="number">1</span>:</span><br><span class="line">                length += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> max_length &lt; length:</span><br><span class="line">                    max_length = length</span><br><span class="line">                length = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> max(length, max_length)</span><br></pre></td></tr></table></figure>
-
 <hr>
 <h1 id="33-搜索旋转排序数组"><a href="#33-搜索旋转排序数组" class="headerlink" title="33. 搜索旋转排序数组"></a>33. 搜索旋转排序数组</h1><p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p>
 <p>( 例如，数组 <code>[0,1,2,4,5,6,7]</code> 可能变为 <code>[4,5,6,7,0,1,2]</code> )。</p>
@@ -324,24 +323,28 @@
 <p>你的算法时间复杂度必须是 <code>O(log n)</code> 级别。</p>
 <p>示例 1:</p>
 <pre><code>输入: nums = [4,5,6,7,0,1,2], target = 0
-输出: 4</code></pre><p>示例 2:</p>
+输出: 4
+</code></pre><p>示例 2:</p>
 <pre><code>输入: nums = [4,5,6,7,0,1,2], target = 3
-输出: -1</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="comment"># nums = [4,5,6,7,0,1,2]</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="comment"># 找出最小值的索引</span></span><br><span class="line">        min_idx = self.search_min_idx(nums)</span><br><span class="line">        <span class="keyword">if</span> min_idx != <span class="number">0</span>:</span><br><span class="line">            nums = nums[min_idx:] + nums[:min_idx]</span><br><span class="line">        <span class="comment"># 二分查找</span></span><br><span class="line">        tmp_idx = self.bin_search(nums, target)</span><br><span class="line">        <span class="keyword">if</span> tmp_idx == <span class="number">-1</span>: <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="keyword">return</span> (tmp_idx + min_idx) % len(nums)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search_min_idx</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> </span></span><br><span class="line">        <span class="keyword">return</span> nums.index(min(nums))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bin_search</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        二分查找法:</span></span><br><span class="line"><span class="string">            - 如果nums中存在目标值, 则返回该值的index;</span></span><br><span class="line"><span class="string">            - 如果nums中不存在目标值, 则返回 -1.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        low = <span class="number">0</span></span><br><span class="line">        high = len(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> low &lt;= high:</span><br><span class="line">            mid = (low + high) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> target &lt; nums[mid]:</span><br><span class="line">                high = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> target &gt; nums[mid]:</span><br><span class="line">                low = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
-
-
+输出: -1
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="comment"># nums = [4,5,6,7,0,1,2]</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="comment"># 找出最小值的索引</span></span><br><span class="line">        min_idx = self.search_min_idx(nums)</span><br><span class="line">        <span class="keyword">if</span> min_idx != <span class="number">0</span>:</span><br><span class="line">            nums = nums[min_idx:] + nums[:min_idx]</span><br><span class="line">        <span class="comment"># 二分查找</span></span><br><span class="line">        tmp_idx = self.bin_search(nums, target)</span><br><span class="line">        <span class="keyword">if</span> tmp_idx == <span class="number">-1</span>: <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="keyword">return</span> (tmp_idx + min_idx) % len(nums)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search_min_idx</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="comment"># <span class="doctag">TODO:</span> </span></span><br><span class="line">        <span class="keyword">return</span> nums.index(min(nums))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bin_search</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        二分查找法:</span></span><br><span class="line"><span class="string">            - 如果nums中存在目标值, 则返回该值的index;</span></span><br><span class="line"><span class="string">            - 如果nums中不存在目标值, 则返回 -1.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        low = <span class="number">0</span></span><br><span class="line">        high = len(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> low &lt;= high:</span><br><span class="line">            mid = (low + high) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> target &lt; nums[mid]:</span><br><span class="line">                high = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> target &gt; nums[mid]:</span><br><span class="line">                low = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
 <hr>
 <h1 id="34-TODO"><a href="#34-TODO" class="headerlink" title="34. TODO"></a>34. TODO</h1><hr>
 <h1 id="35-搜索插入位置"><a href="#35-搜索插入位置" class="headerlink" title="35. 搜索插入位置"></a>35. 搜索插入位置</h1><p>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。</p>
 <p>你可以假设数组中无重复元素。</p>
 <p>示例 1:</p>
 <pre><code>输入: [1,3,5,6], 5
-输出: 2</code></pre><p>示例 2:</p>
+输出: 2
+</code></pre><p>示例 2:</p>
 <pre><code>输入: [1,3,5,6], 2
-输出: 1</code></pre><p>示例 3:</p>
+输出: 1
+</code></pre><p>示例 3:</p>
 <pre><code>输入: [1,3,5,6], 7
-输出: 4</code></pre><p>示例 4:</p>
+输出: 4
+</code></pre><p>示例 4:</p>
 <pre><code>输入: [1,3,5,6], 0
-输出: 0</code></pre><blockquote>
+输出: 0
+</code></pre><blockquote>
 <p><strong>思路</strong></p>
 <ol>
 <li>扫一次, 若当前值小于 <code>target</code>, 则跳过; 若当前值大于等于 <code>target</code>, 则返回当前索引</li>
@@ -349,8 +352,6 @@
 </ol>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchInsert</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">for</span> i, num <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">            <span class="keyword">if</span> num &lt; target:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> i</span><br><span class="line">        <span class="keyword">return</span> len(nums)</span><br></pre></td></tr></table></figure>
-
-
 <hr>
 <h1 id="36-有效的数独"><a href="#36-有效的数独" class="headerlink" title="36. 有效的数独"></a>36. 有效的数独</h1><p>判断一个 9x9 的数独是否有效。只需要根据以下规则，验证已经填入的数字是否有效即可。</p>
 <p>数字 <code>1-9</code> 在每一行只能出现一次。<br>数字 <code>1-9</code> 在每一列只能出现一次。<br>数字 <code>1-9</code> 在每一个以粗实线分隔的 3x3 宫内只能出现一次。</p>
@@ -370,7 +371,8 @@
 [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;],
 [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]
 ]
-输出: true</code></pre><p>示例 2:</p>
+输出: true
+</code></pre><p>示例 2:</p>
 <pre><code>输入:
 [
 [&quot;8&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],
@@ -385,11 +387,13 @@
 ]
 输出: false
 解释: 除了第一行的第一个数字从 5 改为 8 以外，空格内其他数字均与 示例1 相同。
-    但由于位于左上角的 3x3 宫内有两个 8 存在, 因此这个数独是无效的。</code></pre><p>说明:</p>
+    但由于位于左上角的 3x3 宫内有两个 8 存在, 因此这个数独是无效的。
+</code></pre><p>说明:</p>
 <pre><code>一个有效的数独（部分已被填充）不一定是可解的。
 只需要根据以上规则，验证已经填入的数字是否有效即可。
-给定数独序列只包含数字 1-9 和字符 &apos;.&apos; 。
-给定数独永远是 9x9 形式的。</code></pre><blockquote>
+给定数独序列只包含数字 1-9 和字符 &#39;.&#39; 。
+给定数独永远是 9x9 形式的。
+</code></pre><blockquote>
 <p><strong>思路</strong></p>
 <ol>
 <li>数独板块中共有 <strong>9行 \ 9列 \ 9个小块</strong>, <strong>每行 \ 每列 \ 每个小块</strong> 都建立一个 hash map, 用来记录该<strong>行\列\小块</strong>中数字对应的个数</li>
@@ -401,8 +405,6 @@
 </ol>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValidSudoku</span><span class="params">(self, board: List[List[str]])</span> -&gt; bool:</span></span><br><span class="line">        small_box = [[&#123;&#125; <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">3</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">3</span>)]  <span class="comment"># 3*3个 small box</span></span><br><span class="line">        row = [&#123;&#125; <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">9</span>)]  <span class="comment"># 9行</span></span><br><span class="line">        colum = copy.deepcopy(row)  <span class="comment"># 9列</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> idx_row, r <span class="keyword">in</span> enumerate(board):</span><br><span class="line">            <span class="keyword">for</span> idx_colum, num <span class="keyword">in</span> enumerate(r):</span><br><span class="line">                <span class="keyword">if</span> num == <span class="string">'.'</span>: <span class="keyword">continue</span></span><br><span class="line">                <span class="comment"># 当前元素为 num, 判断该元素属于哪个small_box</span></span><br><span class="line">                <span class="comment"># 如果对应的small box中没有该数, 设置hash中的key的value为1</span></span><br><span class="line">                <span class="comment"># 如果对应的small box已存在该数, 则返回错误</span></span><br><span class="line">                <span class="keyword">if</span> num <span class="keyword">not</span> <span class="keyword">in</span> small_box[idx_row // <span class="number">3</span>][idx_colum // <span class="number">3</span>]:</span><br><span class="line">                    small_box[idx_row // <span class="number">3</span>][idx_colum // <span class="number">3</span>][num] = <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">                <span class="comment"># 判断该元素在当前row中是否存在</span></span><br><span class="line">                <span class="keyword">if</span> num <span class="keyword">not</span> <span class="keyword">in</span> row[idx_row]:</span><br><span class="line">                    row[idx_row][num] = <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">                <span class="comment"># 判断该元素在当前列中是否存在</span></span><br><span class="line">                <span class="keyword">if</span> num <span class="keyword">not</span> <span class="keyword">in</span> colum[idx_colum]:</span><br><span class="line">                    colum[idx_colum][num] = <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
-
-
 <hr>
 <h1 id="37-TODO"><a href="#37-TODO" class="headerlink" title="37. TODO"></a>37. TODO</h1><hr>
 <h1 id="38-外观数列"><a href="#38-外观数列" class="headerlink" title="38. 外观数列"></a>38. 外观数列</h1><p>「外观数列」是一个整数序列，从数字 1 开始，序列中的每一项都是对前一项的描述。前五项如下：</p>
@@ -419,38 +421,40 @@
 <p>示例 1:</p>
 <pre><code>输入: 1
 输出: &quot;1&quot;
-解释：这是一个基本样例。</code></pre><p>示例 2:</p>
+解释：这是一个基本样例。
+</code></pre><p>示例 2:</p>
 <pre><code>输入: 4
 输出: &quot;1211&quot;
-解释：当 n = 3 时，序列是 &quot;21&quot;，其中我们有 &quot;2&quot; 和 &quot;1&quot; 两组，&quot;2&quot; 可以读作 &quot;12&quot;，也就是出现频次 = 1 而 值 = 2；类似 &quot;1&quot; 可以读作 &quot;11&quot;。所以答案是 &quot;12&quot; 和 &quot;11&quot; 组合在一起，也就是 &quot;1211&quot;。</code></pre><blockquote>
+解释：当 n = 3 时，序列是 &quot;21&quot;，其中我们有 &quot;2&quot; 和 &quot;1&quot; 两组，&quot;2&quot; 可以读作 &quot;12&quot;，也就是出现频次 = 1 而 值 = 2；类似 &quot;1&quot; 可以读作 &quot;11&quot;。所以答案是 &quot;12&quot; 和 &quot;11&quot; 组合在一起，也就是 &quot;1211&quot;。
+</code></pre><blockquote>
 <p>思路：<br>迭代求解</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countAndSay</span><span class="params">(self, n: int)</span> -&gt; str:</span></span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'1'</span></span><br><span class="line">        s = <span class="string">'1*'</span></span><br><span class="line">        <span class="keyword">while</span> n &gt; <span class="number">1</span>:</span><br><span class="line">            s = self.util(s)</span><br><span class="line">            n -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> s[:<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">util</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">""" 输入s, 返回s的下一个外观数列, 注意s的最后一个字符是'*'.</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        Args:</span></span><br><span class="line"><span class="string">            s (string): 以 * 结尾的字符串</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        Returns:</span></span><br><span class="line"><span class="string">            string: 下一个外观数列</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res = <span class="string">''</span></span><br><span class="line">        cnt = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(s)):</span><br><span class="line">            <span class="keyword">if</span> s[i] == s[i - <span class="number">1</span>]:</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res += (str(cnt) + s[i - <span class="number">1</span>])</span><br><span class="line">                cnt = <span class="number">1</span></span><br><span class="line">        s = res + <span class="string">'*'</span></span><br><span class="line">        <span class="keyword">return</span> s</span><br></pre></td></tr></table></figure>
-
 <hr>
 <h1 id="39-组合总和"><a href="#39-组合总和" class="headerlink" title="39. 组合总和"></a>39. 组合总和</h1><p>给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。</p>
 <p>candidates 中的数字可以无限制重复被选取。</p>
 <p>说明：</p>
 <pre><code>所有数字（包括 target）都是正整数。
-解集不能包含重复的组合。 </code></pre><p>示例 1:</p>
+解集不能包含重复的组合。 
+</code></pre><p>示例 1:</p>
 <pre><code>输入: candidates = [2,3,6,7], target = 7,
 所求解集为:
 [
 ⁠ [7],
 ⁠ [2,2,3]
-]</code></pre><p>示例 2:</p>
+]
+</code></pre><p>示例 2:</p>
 <pre><code>输入: candidates = [2,3,5], target = 8,
 所求解集为:
 [
 [2,2,2,2],
 [2,3,3],
 [3,5]
-]</code></pre><blockquote>
+]
+</code></pre><blockquote>
 <p>思路: 回溯法 + 利用树的数据结构判断</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">combinationSum</span><span class="params">(self, candidates: List[int], target: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        res = []</span><br><span class="line">        <span class="comment"># 先排序</span></span><br><span class="line">        candidates.sort()</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">util</span><span class="params">(candidates, cur_sum, tmp_list)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> candidates == []: <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 如果当前列表之和等于 target, 加入res</span></span><br><span class="line">            <span class="keyword">if</span> cur_sum == target:</span><br><span class="line">                res.append(tmp_list)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># 如果当前列表元素之和大于 target，直接返回（剪枝）</span></span><br><span class="line">            <span class="keyword">elif</span> cur_sum &gt; target:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 如果当前列表元素之和小于 target，继续添加元素</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">for</span> i, c <span class="keyword">in</span> enumerate(candidates):</span><br><span class="line">                    _tmp_list = copy.deepcopy(tmp_list)</span><br><span class="line">                    _tmp_list.append(c)</span><br><span class="line">                    util(candidates[i:], cur_sum+c, _tmp_list)</span><br><span class="line">        </span><br><span class="line">        util(candidates, <span class="number">0</span>, [])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
-
 <hr>
 <h1 id="40-组合之和II"><a href="#40-组合之和II" class="headerlink" title="40. 组合之和II"></a>40. 组合之和II</h1><p>给定一个数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。</p>
 <p>candidates 中的每个数字在每个组合中只能使用一次。</p>
@@ -467,13 +471,15 @@
 [1, 2, 5],
 [2, 6],
 [1, 1, 6]
-]</code></pre><p>示例 2:</p>
+]
+</code></pre><p>示例 2:</p>
 <pre><code>输入: candidates = [2,5,2,1,2], target = 5,
 所求解集为:
 [
 [1,2,2],
 [5]
-]</code></pre><blockquote>
+]
+</code></pre><blockquote>
 <p>思路:<br>与上一题相似, 多增加去重步骤</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">combinationSum2</span><span class="params">(self, candidates: List[int], target: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        res = []</span><br><span class="line">        candidates.sort()  <span class="comment"># [1,1,2,5,6,]</span></span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">back_track</span><span class="params">(cur_sum, cur_list, candidates)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> cur_sum == target:</span><br><span class="line">                res.append(cur_list)</span><br><span class="line">            <span class="keyword">elif</span> cur_sum &gt; target:</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">for</span> i, c <span class="keyword">in</span> enumerate(candidates):</span><br><span class="line">                    <span class="comment"># 去重</span></span><br><span class="line">                    <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> c == candidates[i<span class="number">-1</span>]: <span class="keyword">continue</span></span><br><span class="line">                    _cur_list = cur_list[:]</span><br><span class="line">                    _cur_list.append(c)</span><br><span class="line">                    back_track(cur_sum+c, _cur_list, candidates[i+<span class="number">1</span>:])</span><br><span class="line">        </span><br><span class="line">        back_track(<span class="number">0</span>, [], candidates)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
@@ -791,7 +797,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
     gitalk.render('gitalk-container');
   }, window.Gitalk);
 });
-</script>
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 </html>

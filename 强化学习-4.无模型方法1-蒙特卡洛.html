@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
@@ -117,11 +117,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -293,7 +293,7 @@
 <li>需要充分的探索</li>
 <li><strong>两个策略</strong><ul>
 <li>行为策略（智能体和环境进行交互时的策略）</li>
-<li>目标策略（是我们要学习的策略，求值函数时，$v_\pi$，$q_\pi$的下标）</li>
+<li>目标策略（是我们要学习的策略，求值函数时，$v<em>\pi$，$q</em>\pi$的下标）</li>
 </ul>
 </li>
 </ul>
@@ -337,42 +337,42 @@
 <ul>
 <li>MC 方法可以被用于<strong>任意涉及随机变量的估计</strong></li>
 <li>这里 MC 方法特指<strong>利用统计平均估计期望值</strong>的方法</li>
-<li>强化学习中存在很多估计期望值的计算 $v_π$; $v_∗$</li>
+<li>强化学习中存在很多估计期望值的计算 $v<em>π$; $v</em>∗$</li>
 <li>使用 MC 方法只需要<strong>利用经验数据</strong>，不需要 P; R</li>
 <li>MC 方法从完整的片段中学习。因此 MC 方法仅仅用于片段性任务 (必须有终止条件)</li>
 </ul>
 <p>最简单的思路，通过不断的采样，然后统计平均回报值来估计值函数，方差较大</p>
-<p><img data-src="../images/RL-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B-%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="蒙特卡洛中的样本"></p>
+<p><img data-src="../images/RL-蒙特卡洛-示意图.png" alt="蒙特卡洛中的样本"></p>
 <hr>
 <h1 id="蒙特卡洛评价"><a href="#蒙特卡洛评价" class="headerlink" title="蒙特卡洛评价"></a>蒙特卡洛评价</h1><h2 id="表述说明"><a href="#表述说明" class="headerlink" title="表述说明"></a>表述说明</h2><ul>
-<li><p>轨迹：把状态-动作的序列称为一个智能体的轨迹(trajectory)<br>$$ρ = S_1, A_1, S_2, A_2, ·_ · · , S_T$$</p>
-<blockquote>
+<li><p>轨迹：把状态-动作的序列称为一个智能体的轨迹(trajectory)</p>
+<script type="math/tex; mode=display">ρ = S_1, A_1, S_2, A_2, ·_ · · , S_T</script><blockquote>
 <p>状态动作序列构成了马尔可夫链图上的一条轨迹，有时也会加上奖励</p>
 </blockquote>
 </li>
-<li><p>从 $π, P_{ss’}^a$ 采样一条轨迹：我们把智能体从初始状态开始和环境进行交互的整个过程中得到的轨迹叫做采样一条轨迹。其中需要考虑两个分布$π, P_{ss’}^a$</p>
+<li><p>从 $π, P<em>{ss’}^a$ 采样一条轨迹：我们把智能体从初始状态开始和环境进行交互的整个过程中得到的轨迹叫做采样一条轨迹。其中需要考虑两个分布$π, P</em>{ss’}^a$</p>
 </li>
 </ul>
 <ul>
-<li>从策略中采样一条轨迹 $ρ$。因为 $P_{ss’}^a$ 是稳定的，所以轨迹的分布随着策略的变化而变化。我们简述成从一个策略 π 中采样轨迹<br>$$ρ ∼ π$$</li>
+<li>从策略中采样一条轨迹 $ρ$。因为 $P_{ss’}^a$ 是稳定的，所以轨迹的分布随着策略的变化而变化。我们简述成从一个策略 π 中采样轨迹<script type="math/tex; mode=display">ρ ∼ π</script></li>
 </ul>
 <h2 id="蒙特卡洛评价-1"><a href="#蒙特卡洛评价-1" class="headerlink" title="蒙特卡洛评价"></a>蒙特卡洛评价</h2><p>目标：给定策略 π，求 vπ</p>
 <blockquote>
-<p>过去的方法（动态规划中）使用了贝尔曼期望方程<br> <img data-src="../images/RL-MC-%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%9F%E6%9C%9B%E6%96%B9%E7%A8%8B.png" alt></p>
+<p>过去的方法（动态规划中）使用了贝尔曼期望方程<br> <img data-src="../images/RL-MC-贝尔曼期望方程.png" alt></p>
 <ul>
 <li>直接解</li>
 <li>迭代式动态规划</li>
 </ul>
 </blockquote>
 <p>MC 利用了值函数的定义</p>
-<p><img data-src="../images/RL-MC%E7%AD%96%E7%95%A5%E8%AF%84%E4%BB%B7.png" alt></p>
+<p><img data-src="../images/RL-MC策略评价.png" alt></p>
 <p>MC 策略评价<strong>使用回报值的经验平均来估计实际期望值</strong></p>
 <p>MC策略评价包括：</p>
 <h3 id="首次拜访MC策略评价"><a href="#首次拜访MC策略评价" class="headerlink" title="首次拜访MC策略评价"></a>首次拜访MC策略评价</h3><ul>
 <li>为了评价状态 s，使用给定的策略 π 采样大量的轨迹<ul>
 <li>在每一条轨迹中，对于状态 s <strong>首次</strong>出现的时间 t</li>
 <li>增加状态数量 $N(s) \leftarrow N(s) + 1$</li>
-<li>增加总回报值 $G_{sum}(s) \leftarrow G_{sum}(s) + G_t$</li>
+<li>增加总回报值 $G<em>{sum}(s) \leftarrow G</em>{sum}(s) + G_t$</li>
 </ul>
 </li>
 <li>计算平均值得到值函数的估计 $V(s) = \frac{G_{sum}(s)}{N(s)}$</li>
@@ -385,7 +385,7 @@
 <li>使用给定的策略 π 采样大量的轨迹<ul>
 <li>在每一条轨迹中，对于状态 s <strong>每次</strong>出现的时间 t</li>
 <li>增加状态数量 $N(s) \leftarrow N(s) + 1$</li>
-<li>增加总回报值 $G_{sum}(s) \leftarrow G_{sum}(s) + G_t$</li>
+<li>增加总回报值 $G<em>{sum}(s) \leftarrow G</em>{sum}(s) + G_t$</li>
 </ul>
 </li>
 <li>计算平均值得到值函数的估计 $V(s) = \frac{G_{sum}(s)}{N(s)}$</li>
@@ -406,17 +406,17 @@
 <h1 id="蒙特卡洛优化"><a href="#蒙特卡洛优化" class="headerlink" title="蒙特卡洛优化"></a>蒙特卡洛优化</h1><h2 id="值函数的使用"><a href="#值函数的使用" class="headerlink" title="值函数的使用"></a>值函数的使用</h2><ul>
 <li>在 V 函数上做贪婪策略提升要求环境模型</li>
 </ul>
-<p><img data-src="../images/RL-MC-V%E5%87%BD%E6%95%B0%E8%B4%AA%E5%A9%AA%E7%AD%96%E7%95%A5%E6%8F%90%E5%8D%87.png" alt></p>
+<p><img data-src="../images/RL-MC-V函数贪婪策略提升.png" alt></p>
 <ul>
 <li>在 Q 函数上做贪婪策略提升是<strong>无模型</strong>的</li>
 </ul>
-<p><img data-src="../images/RL-Q%E5%87%BD%E6%95%B0%E7%AD%96%E7%95%A5%E6%8F%90%E5%8D%87.png" alt></p>
+<p><img data-src="../images/RL-Q函数策略提升.png" alt></p>
 <h2 id="epsilon-贪婪策略提升"><a href="#epsilon-贪婪策略提升" class="headerlink" title="$\epsilon$ - 贪婪策略提升"></a>$\epsilon$ - 贪婪策略提升</h2><p>需要保证智能体一直在探索新的策略，保证所有的 m 个动作都有一定的概率被采样。</p>
 <ul>
 <li>用 $1 − \epsilon$ 的概率选择贪婪的动作</li>
 <li>用 $\epsilon$ 的概率随机从 m 个动作中选择</li>
 </ul>
-<p><img data-src="../images/RL-MCe%E8%B4%AA%E5%A9%AA.png" alt></p>
+<p><img data-src="../images/RL-MCe贪婪.png" alt></p>
 
     </div>
 
@@ -779,7 +779,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
     gitalk.render('gitalk-container');
   }, window.Gitalk);
 });
-</script>
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 </html>

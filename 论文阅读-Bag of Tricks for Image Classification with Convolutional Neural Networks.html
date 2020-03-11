@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
@@ -111,11 +111,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -276,10 +276,8 @@
 <p>《<a href="https://arxiv.org/abs/1812.01187" target="_blank" rel="external nofollow noopener noreferrer">Bag of Tricks for Image Classification with Convolutional Neural Networks</a>》论文阅读</p>
 </blockquote>
 <a id="more"></a>
-
 <blockquote>
 <p><strong>文章目录</strong>:</p>
-</blockquote>
 <ul>
 <li><a href="#abstract">Abstract</a></li>
 <li><a href="#1-introduction">1. Introduction</a><ul>
@@ -319,6 +317,7 @@
 </ul>
 </li>
 </ul>
+</blockquote>
 <hr>
 <h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>本文整理了CNN的一些tricks.</p>
 <hr>
@@ -465,14 +464,16 @@
 </li>
 </ul>
 <h2 id="5-2-标签平滑-Label-Smoothing"><a href="#5-2-标签平滑-Label-Smoothing" class="headerlink" title="5.2. 标签平滑 (Label Smoothing)"></a>5.2. 标签平滑 (Label Smoothing)</h2><h2 id="5-3-知识蒸馏-Knowledge-Distillation"><a href="#5-3-知识蒸馏-Knowledge-Distillation" class="headerlink" title="5.3 知识蒸馏 (Knowledge Distillation)"></a>5.3 知识蒸馏 (Knowledge Distillation)</h2><h2 id="5-4-混合训练-Mixup-Training"><a href="#5-4-混合训练-Mixup-Training" class="headerlink" title="5.4 混合训练 (Mixup Training)"></a>5.4 混合训练 (Mixup Training)</h2><hr>
-<h1 id="6-迁移学习"><a href="#6-迁移学习" class="headerlink" title="6. 迁移学习"></a>6. 迁移学习</h1><h2 id="语义分割"><a href="#语义分割" class="headerlink" title="语义分割"></a>语义分割</h2><table>
+<h1 id="6-迁移学习"><a href="#6-迁移学习" class="headerlink" title="6. 迁移学习"></a>6. 迁移学习</h1><h2 id="语义分割"><a href="#语义分割" class="headerlink" title="语义分割"></a>语义分割</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>trick</th>
 <th>work?</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>cos学习率下降</strong></td>
 <td><strong>yes</strong></td>
 </tr>
@@ -484,7 +485,9 @@
 <td>蒸馏</td>
 <td>no</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>因为[标签平滑\知识蒸馏\混合]模糊了像素级别的信息,可能会降低整体的准确率.</p>
 <blockquote>
 <ul>
@@ -855,7 +858,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
     gitalk.render('gitalk-container');
   }, window.Gitalk);
 });
-</script>
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 </html>

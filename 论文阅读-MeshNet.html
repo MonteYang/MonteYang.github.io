@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
@@ -114,11 +114,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -287,7 +287,6 @@
 <li>源码: √</li>
 </ul>
 <a id="more"></a>
-
 <h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><ul>
 <li>PoinNet</li>
 <li>KC-Net</li>
@@ -310,8 +309,7 @@
 <li>应用于 3D shape classification/retrieval</li>
 </ul>
 <h3 id="2-Method"><a href="#2-Method" class="headerlink" title="2. Method"></a>2. Method</h3><ul>
-<li><p>将一个face视作一个单元</p>
-</li>
+<li>将一个face视作一个单元</li>
 <li><p>face的特征分为:</p>
 <ul>
 <li><strong>空间特征</strong></li>
@@ -368,14 +366,14 @@
 <li>Retrieval: mAP</li>
 </ul>
 <h4 id="3-4-Ablation-Study"><a href="#3-4-Ablation-Study" class="headerlink" title="3.4 Ablation Study"></a>3.4 Ablation Study</h4><p>TODO:</p>
-<h4 id="3-5-Result"><a href="#3-5-Result" class="headerlink" title="3.5 Result"></a>3.5 Result</h4><p><img data-src="/images/MeshNet-exp-results.png" alt="实验结果" title="ModelNet实验结果"></p>
-<!-- ### 4. Advantages
-- 将point的方法应用于Mesh的特征提取(空间提取, KC)
-
-
-### 5. Disadvantages
-- 空间特征提取 不仅考虑面的中心点, 可以加入中心点周围的三个点的信息, 可能会有所提升.
-- 当前面和周围三个面可能会有相似的特征.可否进行替换 -->
+<h4 id="3-5-Result"><a href="#3-5-Result" class="headerlink" title="3.5 Result"></a>3.5 Result</h4><p><img data-src="/images/MeshNet-exp-results.png" alt="实验结果" title="ModelNet实验结果"><br>&lt;!— ### 4. Advantages</p>
+<ul>
+<li>将point的方法应用于Mesh的特征提取(空间提取, KC)</li>
+</ul>
+<h3 id="5-Disadvantages"><a href="#5-Disadvantages" class="headerlink" title="5. Disadvantages"></a>5. Disadvantages</h3><ul>
+<li>空间特征提取 不仅考虑面的中心点, 可以加入中心点周围的三个点的信息, 可能会有所提升.</li>
+<li>当前面和周围三个面可能会有相似的特征.可否进行替换 —&gt;</li>
+</ul>
 
     </div>
 
@@ -500,7 +498,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MeshNet-Mesh-Neural-Network-for-3D-Shape-Representation"><span class="nav-text">MeshNet: Mesh Neural Network for 3D Shape Representation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文章"><span class="nav-text">相关文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-text">Note</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Problem"><span class="nav-text">1. Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Method"><span class="nav-text">2. Method</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Network-Structure"><span class="nav-text">Network Structure</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Experiment"><span class="nav-text">3. Experiment</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Dataset"><span class="nav-text">3.1 Dataset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Implemention"><span class="nav-text">3.2 Implemention</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Metric"><span class="nav-text">3.3 Metric</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-Ablation-Study"><span class="nav-text">3.4 Ablation Study</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-Result"><span class="nav-text">3.5 Result</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MeshNet-Mesh-Neural-Network-for-3D-Shape-Representation"><span class="nav-text">MeshNet: Mesh Neural Network for 3D Shape Representation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文章"><span class="nav-text">相关文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-text">Note</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Problem"><span class="nav-text">1. Problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Method"><span class="nav-text">2. Method</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Network-Structure"><span class="nav-text">Network Structure</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Experiment"><span class="nav-text">3. Experiment</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Dataset"><span class="nav-text">3.1 Dataset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Implemention"><span class="nav-text">3.2 Implemention</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Metric"><span class="nav-text">3.3 Metric</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-Ablation-Study"><span class="nav-text">3.4 Ablation Study</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-Result"><span class="nav-text">3.5 Result</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Disadvantages"><span class="nav-text">5. Disadvantages</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -691,7 +689,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
     gitalk.render('gitalk-container');
   }, window.Gitalk);
 });
-</script>
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 </html>

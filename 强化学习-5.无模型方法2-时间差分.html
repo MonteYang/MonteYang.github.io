@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
@@ -127,11 +127,11 @@
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -321,43 +321,43 @@
 <p>对比之前的蒙特卡洛算法。</p>
 <ul>
 <li>增量蒙特卡洛算法<ul>
-<li>用实际回报值$G_t$去更新值函数 $V(S_t)$<br><img data-src="../images/RL-TD-MC%E6%9B%B4%E6%96%B0%E5%80%BC%E5%87%BD%E6%95%B0.png" alt></li>
+<li>用实际回报值$G_t$去更新值函数 $V(S_t)$<br><img data-src="../images/RL-TD-MC更新值函数.png" alt></li>
 </ul>
 </li>
 </ul>
 </blockquote>
-<h2 id="时间差分评价算法"><a href="#时间差分评价算法" class="headerlink" title="时间差分评价算法"></a>时间差分评价算法</h2><p>时间差分算法 (Temporal-difference， TD)中，<strong>使用估计的回报值 $R_{t+1} + γV(S_{t+1})$ 去更新值函数 $V(S_t)$ (TD(0))</strong></p>
-<p><img data-src="../images/RL-TD%E6%9B%B4%E6%96%B0%E5%80%BC%E5%87%BD%E6%95%B0.png" alt></p>
+<h2 id="时间差分评价算法"><a href="#时间差分评价算法" class="headerlink" title="时间差分评价算法"></a>时间差分评价算法</h2><p>时间差分算法 (Temporal-difference， TD)中，<strong>使用估计的回报值 $R<em>{t+1} + γV(S</em>{t+1})$ 去更新值函数 $V(S_t)$ (TD(0))</strong></p>
+<p><img data-src="../images/RL-TD更新值函数.png" alt></p>
 <p>其中：</p>
 <ul>
-<li>$R_{t+1} + \gamma V(S_{t+1})$ 称为 TD 目标</li>
-<li>$\delta_t = R_{t+1} + \gamma V(S_{t+1}) − V(S_t)$ 称为 TD 误差</li>
+<li>$R<em>{t+1} + \gamma V(S</em>{t+1})$ 称为 TD 目标</li>
+<li>$\delta<em>t = R</em>{t+1} + \gamma V(S_{t+1}) − V(S_t)$ 称为 TD 误差</li>
 <li>$\alpha$ 在0~1之间</li>
 </ul>
 <p>时间差分策略评价算法</p>
-<p><img data-src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-%E7%AE%97%E6%B3%95.png" alt></p>
+<p><img data-src="../images/RL-时间差分-算法.png" alt></p>
 <h2 id="评价算法对比：-TD-和-DP"><a href="#评价算法对比：-TD-和-DP" class="headerlink" title="评价算法对比： TD 和 DP"></a>评价算法对比： TD 和 DP</h2><p>DP中， 利用了贝尔曼方程去解强化学习问题</p>
-<p><img data-src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-DP.png" alt></p>
-<p><img data-src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-DP%E5%9B%BE.png" alt></p>
+<p><img data-src="../images/RL-时间差分-DP.png" alt></p>
+<p><img data-src="../images/RL-时间差分-DP图.png" alt></p>
 <p>而 TD 中，也利用了贝尔曼方程，但做了以下改动：</p>
 <ul>
-<li><p>全宽备份 $\rightarrow$ 样本备份： 并去掉了期望符号<br><img data-src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-%E5%AF%B9%E6%AF%94DP.png" alt></p>
+<li><p>全宽备份 $\rightarrow$ 样本备份： 并去掉了期望符号<br><img data-src="../images/RL-时间差分-对比DP.png" alt></p>
 </li>
-<li><p>增加了学习率<br><img data-src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-%E5%AF%B9%E6%AF%94DP2.png" alt></p>
+<li><p>增加了学习率<br><img data-src="../images/RL-时间差分-对比DP2.png" alt></p>
 </li>
 </ul>
 <p>采样多的时候，收敛后，时间差分评价算法满足贝尔曼方程</p>
-<p><img data-src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-%E5%AF%B9%E6%AF%94DP3.png" alt></p>
+<p><img data-src="../images/RL-时间差分-对比DP3.png" alt></p>
 <p>整体看来，在时间差分评价算法中，是利用TD目标和当前值函数的差来指导学习，所以称作时间差分</p>
-<p><img data-src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-TD%E5%9B%BE.png" alt></p>
+<p><img data-src="../images/RL-时间差分-TD图.png" alt></p>
 <h2 id="评价算法对比：-TD-和-MC"><a href="#评价算法对比：-TD-和-MC" class="headerlink" title="评价算法对比： TD 和 MC"></a>评价算法对比： TD 和 MC</h2><p>在 MC 中，考虑的是整条轨迹。</p>
-<p><img data-src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-MC%E5%9B%BE.png" alt></p>
+<p><img data-src="../images/RL-时间差分-MC图.png" alt></p>
 <ul>
 <li>TD 在每一步之后都能在线学习； MC 必须等待回报值得到之后才能学习</li>
 <li>TD 利用了马尔科夫性； MC 没有利用马尔科夫性</li>
 <li>MC 有高方差，零偏差； TD 有低方差，和一些偏差</li>
 </ul>
-<p><img data-src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-%E5%A4%87%E4%BB%BD%E5%9B%BE.png" alt></p>
+<p><img data-src="../images/RL-时间差分-备份图.png" alt></p>
 <h2 id="ML-和-RL-中的偏差-方差权衡"><a href="#ML-和-RL-中的偏差-方差权衡" class="headerlink" title="ML 和 RL 中的偏差/方差权衡"></a>ML 和 RL 中的偏差/方差权衡</h2><h3 id="ML-中的偏差和方差的trade-off"><a href="#ML-中的偏差和方差的trade-off" class="headerlink" title="ML 中的偏差和方差的trade-off"></a>ML 中的偏差和方差的trade-off</h3><p>在监督学习中，偏差/方差有另外的理解——<strong>欠拟合</strong>和<strong>过拟合</strong></p>
 <ul>
 <li>偏差大 (欠拟合): 预测值和样本之间的差</li>
@@ -365,14 +365,14 @@
 </ul>
 <p>方差大意味着样本的置信度较差</p>
 <p>机器学习方法都会在偏差和方差之间做 trade-off</p>
-<p><img data-src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-%E5%81%8F%E5%B7%AE%E5%92%8C%E6%96%B9%E5%B7%AE.png" alt></p>
+<p><img data-src="../images/RL-时间差分-偏差和方差.png" alt></p>
 <h3 id="RL-中的偏差和方差的trade-off"><a href="#RL-中的偏差和方差的trade-off" class="headerlink" title="RL 中的偏差和方差的trade-off"></a>RL 中的偏差和方差的trade-off</h3><ul>
-<li>回报值 $G_t = R_{t+1} + \gamma R_{t+2} + … + {\gamma}^{T-t-1}R_T$ 是值函数 $v_\pi(S_t)$ 的无偏估计</li>
-<li>真实的 TD 目标值 $R_{t+1} + γv_π(S_{t+1})$ 是值函数 $v_π(S_t)$ 的无偏估计</li>
-<li>使用的 TD 目标值 $R_{t+1} + γV_π(S_{t+1})$ 是值函数 $v_π(S_t)$ 的有偏估计</li>
+<li>回报值 $G<em>t = R</em>{t+1} + \gamma R<em>{t+2} + … + {\gamma}^{T-t-1}R_T$ 是值函数 $v</em>\pi(S_t)$ 的无偏估计</li>
+<li>真实的 TD 目标值 $R<em>{t+1} + γv</em>π(S<em>{t+1})$ 是值函数 $v</em>π(S_t)$ 的无偏估计</li>
+<li>使用的 TD 目标值 $R<em>{t+1} + γV</em>π(S<em>{t+1})$ 是值函数 $v</em>π(S_t)$ 的有偏估计</li>
 <li>TD 目标值的方差要远小于回报值<ul>
-<li>回报值依赖于很多随机变量 $A_{t},S_{t+1},R_{t+1},A_{t+1},S_{t+2},R_{t+2},· · ·$</li>
-<li>TD 目标值仅仅依赖于一个随机序列 $A_t,S_{t+1},R_{t+1}$</li>
+<li>回报值依赖于很多随机变量 $A<em>{t},S</em>{t+1},R<em>{t+1},A</em>{t+1},S<em>{t+2},R</em>{t+2},· · ·$</li>
+<li>TD 目标值仅仅依赖于一个随机序列 $A<em>t,S</em>{t+1},R_{t+1}$</li>
 </ul>
 </li>
 </ul>
@@ -389,13 +389,13 @@
 </ul>
 </li>
 </ul>
-<h2 id="在策略-TD-优化——Sarsa"><a href="#在策略-TD-优化——Sarsa" class="headerlink" title="在策略 TD 优化——Sarsa"></a>在策略 TD 优化——Sarsa</h2><p><img data-src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-SARSA.png" alt></p>
-<p><img data-src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-sarsa%E5%85%AC%E5%BC%8F.png" alt></p>
+<h2 id="在策略-TD-优化——Sarsa"><a href="#在策略-TD-优化——Sarsa" class="headerlink" title="在策略 TD 优化——Sarsa"></a>在策略 TD 优化——Sarsa</h2><p><img data-src="../images/RL-时间差分-SARSA.png" alt></p>
+<p><img data-src="../images/RL-时间差分-sarsa公式.png" alt></p>
 <p>值迭代</p>
 <p>为什么是<strong>在策略</strong>？</p>
 <p>执行的动作 A 是来自当前 Q 值下的 $\epsilon$-贪婪策略，构建 TD 目标值是的动作 A′ 是来自当前 Q 值下的 $\epsilon$-贪婪策略，这两者是同一个策略。</p>
-<h2 id="离策略-TD-优化——Q学习"><a href="#离策略-TD-优化——Q学习" class="headerlink" title="离策略 TD 优化——Q学习"></a>离策略 TD 优化——Q学习</h2><p><img data-src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-Q%E5%AD%A6%E4%B9%A0.png" alt></p>
-<p><img data-src="../images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-Q%E5%AD%A6%E4%B9%A0%E6%B5%81%E7%A8%8B.png" alt></p>
+<h2 id="离策略-TD-优化——Q学习"><a href="#离策略-TD-优化——Q学习" class="headerlink" title="离策略 TD 优化——Q学习"></a>离策略 TD 优化——Q学习</h2><p><img data-src="../images/RL-时间差分-Q学习.png" alt></p>
+<p><img data-src="../images/RL-时间差分-Q学习流程.png" alt></p>
 
     </div>
 
@@ -758,7 +758,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
     gitalk.render('gitalk-container');
   }, window.Gitalk);
 });
-</script>
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 </html>
