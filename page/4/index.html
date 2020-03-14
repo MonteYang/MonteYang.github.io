@@ -241,7 +241,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-14 20:55:20" itemprop="dateModified" datetime="2020-03-14T20:55:20+08:00">2020-03-14</time>
+                <time title="修改时间：2020-03-14 21:36:14" itemprop="dateModified" datetime="2020-03-14T21:36:14+08:00">2020-03-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -266,7 +266,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="可迭代-Iterable"><a href="#可迭代-Iterable" class="headerlink" title="可迭代 Iterable"></a>可迭代 Iterable</h1><p>Python中一切皆为对象，其中<strong>可以用<code>for</code>循环遍历的，即内部有<code>__iter__()</code>方法的对象，都是可迭代的对象</strong>。</p>
+          <h1 id="可迭代-Iterable"><a href="#可迭代-Iterable" class="headerlink" title="可迭代(Iterable)"></a>可迭代(Iterable)</h1><p>我们知道，在Python中一切皆为对象。其中<strong>可以用<code>for</code>循环遍历的，即内部有<code>__iter__()</code>方法的对象，都是可迭代的对象</strong>。</p>
 <p><strong><code>for</code>循环的本质</strong>： 使用for循环实际上干了两件事，首先调用<code>__iter__()</code>返回一个对象，该对象需要有<code>__next__()</code>方法，然后再循环调用该对象的<code>__next__()</code>方法不断获取下一个值。</p>
 <p>常见的可迭代对象包括：</p>
 <ul>
@@ -274,18 +274,20 @@
 <li>迭代器 Iterator</li>
 </ul>
 <p>可以用<code>isinstance()</code>函数判断对象是否可迭代：</p>
-<h2 id><a href="#" class="headerlink" title></a><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance([], Iterable)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure></h2><h1 id="迭代器-Iterator"><a href="#迭代器-Iterator" class="headerlink" title="迭代器 Iterator"></a>迭代器 Iterator</h1><p><strong>可以被 <code>next()</code> 函数调用，并不断返回下一个值的对象</strong>都称为迭代器，也就意味着这种对象中需要有<code>__next__()</code>方法的实现。迭代器的特点是内存消耗少。其中：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance([], Iterable)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="迭代器-Iterator"><a href="#迭代器-Iterator" class="headerlink" title="迭代器(Iterator)"></a>迭代器(Iterator)</h1><p><strong>可以被 <code>next()</code> 函数调用，并不断返回下一个值的对象</strong>都称为迭代器，也就意味着这种对象中需要有<code>__next__()</code>方法的实现。迭代器的特点是内存消耗少。其中：</p>
 <ul>
 <li>生成器 Generator 是一种迭代器。</li>
-<li><code>list</code>、<code>dict</code>、<code>str</code>虽然是可迭代对象，却不是迭代器，可以使用<code>iter()</code>函数，把list、dict、str等可迭代对象变成迭代器。</li>
+<li>list、dict、str虽然是可迭代对象，却不是迭代器，可以使用<code>iter()</code>函数，把list、dict、str等可迭代对象变成迭代器。</li>
 </ul>
 <p><strong>可迭代对象和迭代器的关系</strong>：<br>可迭代对象中包含<code>__iter__()</code>方法的实现，经过<code>iter()</code>函数调用后，返回一个迭代器，而迭代器中有<code>__next__()</code>方法的实现。</p>
 <p>可以用<code>isinstance()</code>函数判断对象是否为迭代器：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterator</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance([], Iterator)</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(iter([]), Iterator)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(iter(<span class="string">'abc'</span>), Iterator)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure></p>
 <hr>
-<h1 id="生成器-Generator"><a href="#生成器-Generator" class="headerlink" title="生成器 Generator"></a>生成器 Generator</h1><p>生成器属于迭代器的一种，因此也可以被<code>next()</code>函数调用。</p>
+<h1 id="生成器-Generator"><a href="#生成器-Generator" class="headerlink" title="生成器(Generator)"></a>生成器(Generator)</h1><p>生成器属于迭代器的一种，因此也可以被<code>next()</code>函数调用。</p>
 <p>生成器可以分为两种：</p>
 <ol>
-<li>形如<code>( i for i in range(10) )</code>的生成器</li>
+<li>形如<code>( i for i in range(10))</code> 的生成器</li>
 <li>带<code>yield</code>关键字的生成器函数</li>
 </ol>
 <p>生成器函数的例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(num)</span>:</span></span><br><span class="line">    a, b = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    current = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> current &lt; num:</span><br><span class="line">        ret = <span class="keyword">yield</span> a</span><br><span class="line">        current += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">obj = fib(<span class="number">10</span>)</span><br></pre></td></tr></table></figure></p>
@@ -1087,6 +1089,23 @@
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        本站访客数：<span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        本站总访问量：<span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
 </div>
 
 
