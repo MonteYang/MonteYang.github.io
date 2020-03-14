@@ -267,13 +267,6 @@
             </span>
 
           
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
 
         </div>
       </header>
@@ -316,13 +309,13 @@
 <p><img data-src="../images/RL-值函数近似-随机梯度w.png" alt></p>
 <h1 id="值函数近似下的增量式评价算法"><a href="#值函数近似下的增量式评价算法" class="headerlink" title="值函数近似下的增量式评价算法"></a>值函数近似下的增量式评价算法</h1><p>在 RL 环境中，并不知道真实的值函数 $v_π(s)$，只有奖励值。<br>可以用<strong>目标值</strong>代替真实的值函数。</p>
 <p>关于目标值，有以下几种讨论：</p>
-<h2 id="值函数近似下的-MC"><a href="#值函数近似下的-MC" class="headerlink" title="值函数近似下的 $MC$"></a>值函数近似下的 $MC$</h2><p>对于 $MC$，目标值是回报值 $G<em>t$，回报值 $G_t$ 是真实值函数 $v</em>π(S_t)$ 的无偏估计，构建训练数据：</p>
+<h2 id="值函数近似下的-MC"><a href="#值函数近似下的-MC" class="headerlink" title="值函数近似下的 $MC$"></a>值函数近似下的 $MC$</h2><p>对于 $MC$，目标值是回报值 $G_t$，回报值 $G_t$ 是真实值函数 $v_π(S_t)$ 的无偏估计，构建训练数据：</p>
 <script type="math/tex; mode=display">⟨S_1,G_1⟩,⟨S_2,G_2⟩,· · · ,⟨S_T,G_T⟩</script><p>参数w更新：</p>
 <p><img data-src="../images/RL-值函数近似-MC.png" alt></p>
-<h2 id="值函数近似下的-TD"><a href="#值函数近似下的-TD" class="headerlink" title="值函数近似下的 $TD$"></a>值函数近似下的 $TD$</h2><p>对于 $TD(0)$，目标值是 TD 目标值 $R<em>{t+1} + γv(S</em>{t+1}, w)$，TD目标值是真实值函数 $v_π(S_t)$ 的有偏估计，构建训练数据：</p>
+<h2 id="值函数近似下的-TD"><a href="#值函数近似下的-TD" class="headerlink" title="值函数近似下的 $TD$"></a>值函数近似下的 $TD$</h2><p>对于 $TD(0)$，目标值是 TD 目标值 $R_{t+1} + γv(S_{t+1}, w)$，TD目标值是真实值函数 $v_π(S_t)$ 的有偏估计，构建训练数据：</p>
 <script type="math/tex; mode=display">⟨S_{1}, R_2 + γ\hat{v}(S_2, w)⟩, ⟨S_{2}, R_3 + γ\hat{v}(S_3, w)⟩, · · · , ⟨S_{T−1}, R_T⟩</script><p>参数w更新：</p>
 <p><img data-src="../images/RL-值函数近似-TD0.png" alt></p>
-<h2 id="值函数近似下的-TD-lambda"><a href="#值函数近似下的-TD-lambda" class="headerlink" title="值函数近似下的 $TD(\lambda)$"></a>值函数近似下的 $TD(\lambda)$</h2><p>对于 $TD(λ)$，目标值是 $λ$ 回报值 $G^λ<em>t$，$λ$ 回报值 $G^λ_t$ 也是真实值函数 $v</em>π(s)$ 的有偏估计</p>
+<h2 id="值函数近似下的-TD-lambda"><a href="#值函数近似下的-TD-lambda" class="headerlink" title="值函数近似下的 $TD(\lambda)$"></a>值函数近似下的 $TD(\lambda)$</h2><p>对于 $TD(λ)$，目标值是 $λ$ 回报值 $G^λ_t$，$λ$ 回报值 $G^λ_t$ 也是真实值函数 $v_π(s)$ 的有偏估计</p>
 <p><img data-src="../images/RL-值函数近似-TDlambda.png" alt></p>
 <h1 id="值函数近似下的增量式优化算法"><a href="#值函数近似下的增量式优化算法" class="headerlink" title="值函数近似下的增量式优化算法"></a>值函数近似下的增量式优化算法</h1><p>优化算法中选用的是Q函数，和v函数类似。</p>
 <ul>
@@ -330,7 +323,7 @@
 </ul>
 <p><img data-src="../images/RL-值函数近似-策略优化MC.png" alt></p>
 <ul>
-<li>对于 TD(0)，目标值是 TD 目标值 $R<em>{t+1} + γQ(S</em>{t+1}, A_{t+1})$</li>
+<li>对于 TD(0)，目标值是 TD 目标值 $R_{t+1} + γQ(S_{t+1}, A_{t+1})$</li>
 </ul>
 <p><img data-src="../images/RL-值函数近似-策略优化TD.png" alt></p>
 <ul>
@@ -344,7 +337,7 @@
     
     
         <div class="reward-container">
-  <div>donate here~</div>
+  <div>如果觉得有些帮助～</div>
   <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
     打赏
   </button>
@@ -539,23 +532,6 @@
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        本站访客数：<span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        本站总访问量：<span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
 </div>
 
 

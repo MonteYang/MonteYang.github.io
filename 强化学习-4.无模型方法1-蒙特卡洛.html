@@ -261,13 +261,6 @@
             </span>
 
           
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
 
         </div>
       </header>
@@ -293,7 +286,7 @@
 <li>需要充分的探索</li>
 <li><strong>两个策略</strong><ul>
 <li>行为策略（智能体和环境进行交互时的策略）</li>
-<li>目标策略（是我们要学习的策略，求值函数时，$v<em>\pi$，$q</em>\pi$的下标）</li>
+<li>目标策略（是我们要学习的策略，求值函数时，$v_\pi$，$q_\pi$的下标）</li>
 </ul>
 </li>
 </ul>
@@ -337,7 +330,7 @@
 <ul>
 <li>MC 方法可以被用于<strong>任意涉及随机变量的估计</strong></li>
 <li>这里 MC 方法特指<strong>利用统计平均估计期望值</strong>的方法</li>
-<li>强化学习中存在很多估计期望值的计算 $v<em>π$; $v</em>∗$</li>
+<li>强化学习中存在很多估计期望值的计算 $v_π$; $v_∗$</li>
 <li>使用 MC 方法只需要<strong>利用经验数据</strong>，不需要 P; R</li>
 <li>MC 方法从完整的片段中学习。因此 MC 方法仅仅用于片段性任务 (必须有终止条件)</li>
 </ul>
@@ -350,7 +343,7 @@
 <p>状态动作序列构成了马尔可夫链图上的一条轨迹，有时也会加上奖励</p>
 </blockquote>
 </li>
-<li><p>从 $π, P<em>{ss’}^a$ 采样一条轨迹：我们把智能体从初始状态开始和环境进行交互的整个过程中得到的轨迹叫做采样一条轨迹。其中需要考虑两个分布$π, P</em>{ss’}^a$</p>
+<li><p>从 $π, P_{ss’}^a$ 采样一条轨迹：我们把智能体从初始状态开始和环境进行交互的整个过程中得到的轨迹叫做采样一条轨迹。其中需要考虑两个分布$π, P_{ss’}^a$</p>
 </li>
 </ul>
 <ul>
@@ -372,7 +365,7 @@
 <li>为了评价状态 s，使用给定的策略 π 采样大量的轨迹<ul>
 <li>在每一条轨迹中，对于状态 s <strong>首次</strong>出现的时间 t</li>
 <li>增加状态数量 $N(s) \leftarrow N(s) + 1$</li>
-<li>增加总回报值 $G<em>{sum}(s) \leftarrow G</em>{sum}(s) + G_t$</li>
+<li>增加总回报值 $G_{sum}(s) \leftarrow G_{sum}(s) + G_t$</li>
 </ul>
 </li>
 <li>计算平均值得到值函数的估计 $V(s) = \frac{G_{sum}(s)}{N(s)}$</li>
@@ -385,7 +378,7 @@
 <li>使用给定的策略 π 采样大量的轨迹<ul>
 <li>在每一条轨迹中，对于状态 s <strong>每次</strong>出现的时间 t</li>
 <li>增加状态数量 $N(s) \leftarrow N(s) + 1$</li>
-<li>增加总回报值 $G<em>{sum}(s) \leftarrow G</em>{sum}(s) + G_t$</li>
+<li>增加总回报值 $G_{sum}(s) \leftarrow G_{sum}(s) + G_t$</li>
 </ul>
 </li>
 <li>计算平均值得到值函数的估计 $V(s) = \frac{G_{sum}(s)}{N(s)}$</li>
@@ -424,7 +417,7 @@
     
     
         <div class="reward-container">
-  <div>donate here~</div>
+  <div>如果觉得有些帮助～</div>
   <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
     打赏
   </button>
@@ -619,23 +612,6 @@
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        本站访客数：<span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        本站总访问量：<span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
 </div>
 
 

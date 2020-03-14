@@ -266,13 +266,6 @@
             </span>
 
           
-            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-            </span>
 
         </div>
       </header>
@@ -314,7 +307,7 @@
 </ul>
 </li>
 </ul>
-<h1 id="策略评价"><a href="#策略评价" class="headerlink" title="策略评价"></a>策略评价</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>问题: 给定一个策略 π，求对应的值函数 $v<em>π(s)$(or $q</em>π(s; a))$。</p>
+<h1 id="策略评价"><a href="#策略评价" class="headerlink" title="策略评价"></a>策略评价</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>问题: 给定一个策略 π，求对应的值函数 $v_π(s)$(or $q_π(s; a))$。</p>
 <blockquote>
 <p><strong>对于动态规划问题</strong>，v函数和q函数是可以相互推导的。</p>
 </blockquote>
@@ -326,7 +319,7 @@
 </li>
 </ol>
 <ol>
-<li>迭代解（√）： $v<em>1$ -&gt; $v_2$ -&gt; · · · -&gt; $v</em>π$<ul>
+<li>迭代解（√）： $v_1$ -&gt; $v_2$ -&gt; · · · -&gt; $v_π$<ul>
 <li>利用贝尔曼期望方程迭代求解</li>
 <li>可以收敛到 $v_π$</li>
 </ul>
@@ -343,7 +336,7 @@
 <ul>
 <li><strong>这里的 k 表示第 k 次迭代</strong></li>
 </ul>
-<p>从$v<em>1$一直迭代求到最后（能够收敛），可以得到最终的$v</em>\pi$</p>
+<p>从$v_1$一直迭代求到最后（能够收敛），可以得到最终的$v_\pi$</p>
 <h2 id="同步备份下的迭代式策略评价算法"><a href="#同步备份下的迭代式策略评价算法" class="headerlink" title="同步备份下的迭代式策略评价算法"></a>同步备份下的迭代式策略评价算法</h2><p>关键词：</p>
 <ul>
 <li>备份（backup）：$v_{k+1}(s)$ 需要用到 $v_k(s’)$，用$v_k(s’)$更新当前状态。更新状态s的值函数，称为备份状态s。</li>
@@ -363,12 +356,12 @@
 <p><img data-src="http://www.monteyang.cn/images/RL-动态规划-贪婪.png" alt></p>
 <p>在每个状态下，都选择能使q函数最大的动作。</p>
 <ul>
-<li>$v<em>{π′}(s) ≥ v</em>π(s);\forall{s}$，新的策略优于之前的策略</li>
+<li>$v_{π′}(s) ≥ v_π(s);\forall{s}$，新的策略优于之前的策略</li>
 <li>使得更新后的策略不差于之前的策略的过程称为策略提升</li>
 <li>贪婪动作只是策略提升一种方式</li>
 </ul>
 <p>一般情况下，可能需要多次迭代（策略评价/策略提升）才能到达最优策略</p>
-<h2 id="策略提升定理"><a href="#策略提升定理" class="headerlink" title="策略提升定理"></a>策略提升定理</h2><p>对于两个确定性策略 $π′$ 和 $π$，如果满足 $q<em>π(s, π′(s)) ≥ v</em>π(s)$，那么可以得到</p>
+<h2 id="策略提升定理"><a href="#策略提升定理" class="headerlink" title="策略提升定理"></a>策略提升定理</h2><p>对于两个确定性策略 $π′$ 和 $π$，如果满足 $q_π(s, π′(s)) ≥ v_π(s)$，那么可以得到</p>
 <script type="math/tex; mode=display">v_{π'}(s) ≥ v_π(s)</script><blockquote>
 <p>其中，$q_π(s, π′(s))$ 表示在当前状态s下，通过策略$π′$选择第一个动作，之后通过策略$\pi$进行动作选择，得到的期望回报值。</p>
 </blockquote>
@@ -388,7 +381,7 @@
 </blockquote>
 <p>利用迭代式策略评价的策略迭代算法为：</p>
 <p><img data-src="http://www.monteyang.cn/images/RL-动态规划-迭代式策略评价的策略迭代算法.png" alt></p>
-<p>一般而言，策略评价需要一直进行迭代求解$v<em>\pi$。但是策略评价不一定要收敛到$v</em>\pi$，才能进行策略提升，可以引入提前停止的规则</p>
+<p>一般而言，策略评价需要一直进行迭代求解$v_\pi$。但是策略评价不一定要收敛到$v_\pi$，才能进行策略提升，可以引入提前停止的规则</p>
 <ul>
 <li>例如：值函数更新的 ∆ 足够小则停止</li>
 <li>例如：限定迭代式策略评价只迭代 k 次。（当$k=1$时，是值迭代）</li>
@@ -405,19 +398,19 @@
 </ul>
 <p>在策略评价中，值函数v只有符合当前策略的情况下才稳定（迭代后的值函数不变，如果值函数不符合当前策略，就一定能通过迭代进行改变）</p>
 <p>策略提升中，策略只有在当前的值函数下，是贪婪的，才稳定。</p>
-<p>因此，稳定状态下，分别收敛到最优的 $v<em>*(s), \pi</em>*(s)$。</p>
+<p>因此，稳定状态下，分别收敛到最优的 $v_<em>(s), \pi_</em>(s)$。</p>
 <h1 id="值迭代"><a href="#值迭代" class="headerlink" title="值迭代"></a>值迭代</h1><h2 id="强化学习的最优性原理"><a href="#强化学习的最优性原理" class="headerlink" title="强化学习的最优性原理"></a>强化学习的最优性原理</h2><p>任何最优的策略都能被分解成两部分</p>
 <ul>
 <li>最优的初始动作 $A_∗$</li>
 <li>从后继状态 ${S}^′$ 开始沿着最优策略继续进行</li>
 </ul>
-<p>一个策略 $π(a|s)$ 能够实现从 $s$ 开始的最优值函数，$v<em>\pi(s)=v</em>*(s)$，当且仅当 对于任何从状态 $s$ 开始的后继状态 ${s}^{‘}$，$π$ 能实现从状态 $s^′$ 开始的最优值函数 $v<em>π(s^′) = v</em>∗(s^′)$</p>
-<h2 id="值迭代-1"><a href="#值迭代-1" class="headerlink" title="值迭代"></a>值迭代</h2><p>根据最优性原理，只要知道 $v<em>∗(s^′)$（后继状态的最优值函数），即可以知道 $v</em>∗(s)$ （当前状态的最优值函数）<br>我们只需要选择一步动作即可，值迭代：</p>
+<p>一个策略 $π(a|s)$ 能够实现从 $s$ 开始的最优值函数，$v_\pi(s)=v_*(s)$，当且仅当 对于任何从状态 $s$ 开始的后继状态 ${s}^{‘}$，$π$ 能实现从状态 $s^′$ 开始的最优值函数 $v_π(s^′) = v_∗(s^′)$</p>
+<h2 id="值迭代-1"><a href="#值迭代-1" class="headerlink" title="值迭代"></a>值迭代</h2><p>根据最优性原理，只要知道 $v_∗(s^′)$（后继状态的最优值函数），即可以知道 $v_∗(s)$ （当前状态的最优值函数）<br>我们只需要选择一步动作即可，值迭代：</p>
 <p><img data-src="http://www.monteyang.cn/images/RL-动态规划-值迭代.png" alt></p>
 <p>该式同时进行了策略评价和策略优化，max操作符表示进行了一次策略提升。</p>
 <p>相当于从终止状态出发，递归地求解之前状态的值函数。</p>
 <h2 id="值迭代和策略迭代的对比"><a href="#值迭代和策略迭代的对比" class="headerlink" title="值迭代和策略迭代的对比"></a>值迭代和策略迭代的对比</h2><h3 id="值迭代-2"><a href="#值迭代-2" class="headerlink" title="值迭代"></a>值迭代</h3><ul>
-<li>$v<em>1$ -&gt; $v_2$ -&gt; $v_3$ -&gt; · · · -&gt; $v</em>∗$</li>
+<li>$v_1$ -&gt; $v_2$ -&gt; $v_3$ -&gt; · · · -&gt; $v_∗$</li>
 <li>没有显式的策略</li>
 <li>迭代过程中的值函数可能不对应任何策略</li>
 <li>效率较高</li>
@@ -427,7 +420,7 @@
 <p>贝尔曼最优方程<br><img data-src="http://www.monteyang.cn/images/RL-动态规划-贝尔曼最优方程.png" alt></p>
 </blockquote>
 <h3 id="策略迭代-1"><a href="#策略迭代-1" class="headerlink" title="策略迭代"></a>策略迭代</h3><ul>
-<li>$π<em>1$ -&gt; $v_1$ -&gt; $π_2$ -&gt; $v_2$ -&gt; · · · -&gt; $π</em>∗$ -&gt; $v_∗$</li>
+<li>$π_1$ -&gt; $v_1$ -&gt; $π_2$ -&gt; $v_2$ -&gt; · · · -&gt; $π_∗$ -&gt; $v_∗$</li>
 <li>有显式的策略</li>
 <li>迭代过程中的值函数对应了某个具体的策略</li>
 <li>效率较低</li>
@@ -440,7 +433,7 @@
     
     
         <div class="reward-container">
-  <div>donate here~</div>
+  <div>如果觉得有些帮助～</div>
   <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
     打赏
   </button>
@@ -635,23 +628,6 @@
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        本站访客数：<span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-divider">|</span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        本站总访问量：<span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
 </div>
 
 
