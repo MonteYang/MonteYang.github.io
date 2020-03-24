@@ -67,7 +67,7 @@
 <meta property="og:image" content="http://monteyang.cn/images/RL-MDP%E7%AD%96%E7%95%A5%E5%88%86%E5%B8%83.png">
 <meta property="og:image" content="http://monteyang.cn/images/RL-%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%AD%96%E7%95%A5.png">
 <meta property="article:published_time" content="2019-12-16T02:09:42.000Z">
-<meta property="article:modified_time" content="2020-03-11T13:19:01.887Z">
+<meta property="article:modified_time" content="2020-03-22T03:57:16.031Z">
 <meta property="article:author" content="Monte Yang">
 <meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary">
@@ -245,7 +245,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-11 21:19:01" itemprop="dateModified" datetime="2020-03-11T21:19:01+08:00">2020-03-11</time>
+                <time title="修改时间：2020-03-22 11:57:16" itemprop="dateModified" datetime="2020-03-22T11:57:16+08:00">2020-03-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -300,8 +300,8 @@
 <li>忽略时间的影响</li>
 </ul>
 <hr>
-<h1 id="状态转移矩阵"><a href="#状态转移矩阵" class="headerlink" title="状态转移矩阵"></a>状态转移矩阵</h1><p>状态转移概率指从一个马尔可夫状态 s 跳转到后继状态 (successor<br>state) s′ 的概率。</p>
-<script type="math/tex; mode=display">\mathcal{P} _ {ss^{'}} = \mathbb{P} [S_{t+1} = s^{'} | S_t = s]</script><p>若状态是<strong>离散</strong>的（有限个）：<br>所有的状态组成行，所有后继状态组成列，得到状态转移矩阵</p>
+<h1 id="状态转移矩阵"><a href="#状态转移矩阵" class="headerlink" title="状态转移矩阵"></a>状态转移矩阵</h1><p>状态转移概率指从一个马尔可夫状态 s 跳转到后继状态 (successor state) s′ 的概率。</p>
+<script type="math/tex; mode=display">\mathcal{P} _ {ss^{'}} = \mathbb{P} [S_{t+1} = s^{'} | S_t = s]</script><p>若状态是<strong>离散</strong>的（有限个）： 所有的状态组成行，所有后继状态组成列，得到状态转移矩阵</p>
 <script type="math/tex; mode=display">\mathcal{P} =
 \begin{bmatrix}
 \mathcal{P} _ {11} & ... & \mathcal{P} _ {1n} \\
@@ -317,7 +317,7 @@
 </ul>
 <hr>
 <h1 id="马尔可夫过程"><a href="#马尔可夫过程" class="headerlink" title="马尔可夫过程"></a>马尔可夫过程</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>一个马尔可夫过程 (Markov process, MP) 是一个无记忆的随机过程，即一些马尔可夫状态的序列。</p>
-<p>马尔可夫过程可由一个二元组来定义 $<s,\mathcal{p}>$</s,\mathcal{p}></p>
+<p>马尔可夫过程可由一个二元组来定义 $&lt; S,\mathcal{P} &gt;$</p>
 <ul>
 <li>$S$：代表状态集合</li>
 <li>$\mathcal{P}$：代表状态转移矩阵</li>
@@ -353,13 +353,13 @@
 </blockquote>
 <p>一个 MRP 的值函数如下定义</p>
 <script type="math/tex; mode=display">v(s) = \mathbb{E}[G_t|S_t = s]</script><p>这里的值函数针对的是状态 s，所以称为<strong>状态值函数</strong>，又称 V 函数</p>
-<h2 id="MRPs中的贝尔曼方程（重点）"><a href="#MRPs中的贝尔曼方程（重点）" class="headerlink" title="MRPs中的贝尔曼方程（重点）"></a>MRPs中的贝尔曼方程（重点）</h2><script type="math/tex; mode=display">\begin{aligned}v(s)&=\mathbb{E}[G_t|S_t=s] \\ &=\mathbb{E}[ R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + .. S_t=s] \\ &=\mathbb{E}[ R_{t+1} + \gamma G_{t+1} | S_t=s ] \\ &=\mathbb{E}[ R_{t+1} + \gamma v(S_{t+1}) | S_t=s ]\end{aligned}</script><p>当前状态的值函数包括两部分：</p>
+<h2 id="MRPs中的贝尔曼方程（重点）"><a href="#MRPs中的贝尔曼方程（重点）" class="headerlink" title="MRPs中的贝尔曼方程（重点）"></a>MRPs中的贝尔曼方程（重点）</h2><script type="math/tex; mode=display">\begin{aligned}v(s)&=\mathbb{E}[G_t|S_t=s] \\ &=\mathbb{E}[ R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... | S_t=s] \\ &=\mathbb{E}[ R_{t+1} + \gamma G_{t+1} | S_t=s ] \\ &=\mathbb{E}[ R_{t+1} + \gamma v(S_{t+1}) | S_t=s ]\end{aligned}</script><p>当前状态的值函数包括两部分：</p>
 <ul>
 <li>第一项：瞬时奖励 $R_{t+1}$</li>
 <li>第二项：后继状态 $S_{t+1}$ 的值函数乘衰减系数</li>
 </ul>
 <p>如果已知转移矩阵 $P$，那么</p>
-<script type="math/tex; mode=display">\begin{aligned} v(s) &= \mathbb{E} [R_{t+1} + γv(S_{t+1}) | S_t = s] \\    &= \mathbb{E} [Rt+1jSt = s] + γ \mathbb{E}[v(S_{t+1})|S_t = s] \\&= \mathcal{R}(s) + γ ∑\mathcal{P}_{ss^′}v(s^′)\end{aligned}</script><p>矩阵-向量形式为：</p>
+<script type="math/tex; mode=display">\begin{aligned} v(s) &= \mathbb{E} [R_{t+1} + γv(S_{t+1}) | S_t = s] \\    &= \mathbb{E} [R_{t+1} | S_t = s] + γ \mathbb{E}[v(S_{t+1})|S_t = s] \\ &= \mathcal{R}(s) + γ ∑\mathcal{P}_{ss^′}v(s^′)\end{aligned}</script><p>矩阵-向量形式为：</p>
 <script type="math/tex; mode=display">v = \mathcal{R} + \gamma \mathcal{P} v</script><p><img data-src="/images/RL-MRPs贝尔曼方程.png" alt></p>
 <p>本质上是一个线性方程，可以直接解：</p>
 <p><img data-src="/images/RL-MRP解贝尔曼.png" alt></p>
@@ -369,14 +369,14 @@
 <li>要求已知 $\mathcal{P}$</li>
 </ul>
 <hr>
-<h1 id="马尔可夫决策过程"><a href="#马尔可夫决策过程" class="headerlink" title="马尔可夫决策过程"></a>马尔可夫决策过程</h1><p>在 MRP 中引入决策即得到了马尔可夫决策过程（Markov Decision Processes, MDPs）</p>
+<h1 id="马尔可夫决策过程"><a href="#马尔可夫决策过程" class="headerlink" title="马尔可夫决策过程"></a>马尔可夫决策过程</h1><p>MP 和 MRP 中，我们都是作为观察者，去观察其中的状态转移现象，去计算回报值。对于一个 RL 问题，我们更希望去<strong>改变状态转移的流程</strong>，去<strong>最大化回报值</strong>。因此，在 MRP 中引入决策，得到<strong>马尔可夫决策过程（Markov Decision Processes, MDPs）</strong></p>
 <h2 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h2><p>一个马尔可夫决策过程 (MDPs) 由一个五元组构成 $⟨S, \mathcal{A}, \mathcal{P}, \mathcal{R}, γ⟩$</p>
 <ul>
 <li>$\mathcal{A}$ ： 动作的集合</li>
-<li><p>$\mathcal{P}$ ： 状态转移矩阵，</p>
-<script type="math/tex; mode=display">\mathcal{P}_{ss^{'}}^{a} = \mathbb{P}[ S_{t+1}=s' | S_t=s, A_{t}=a]</script></li>
-<li><p>$\mathcal{R}(s,a)$：奖励函数， 表示在状态s做动作a的奖励。$\mathcal{R}(s) = E [\mathcal{R}_{t+1}|S_t = s]$</p>
-</li>
+<li>$\mathcal{P}$ ： 状态转移矩阵</li>
+</ul>
+<script type="math/tex; mode=display">\mathcal{P}_{ss^{'}}^{a} = \mathbb{P}[ S_{t+1}=s' | S_t=s, A_{t}=a]</script><ul>
+<li>$\mathcal{R}(s,a)$：奖励函数， 表示在状态s做动作a的奖励。$\mathcal{R}(s, a) = E [\mathcal{R}_{t+1}|S_t = s, A_{t}=a]$</li>
 </ul>
 <h2 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h2><p>在 MDPs 中，一个策略 (Policy)π 是在给定状态下的动作的概率分布</p>
 <script type="math/tex; mode=display">\pi(a | s) = \mathbb{P}[ A_t = a | S_t = s ]</script><p><img data-src="/images/RL-MDP策略分布.png" alt></p>
@@ -544,20 +544,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -54,20 +54,20 @@
   };
 </script>
 
-  <meta name="description" content="维数公式dim(V+U) &#x3D; dimV + dimU-dim(V\cap U)即，和空间的维数等于两空间维数之和减去两空间的交空间的维数。  例子：三维空间中，记$V$为 $xOy$平面， $U$ 为 $yOz$平面 ，即 $dimV &#x3D; dimU &#x3D; 2$ 。它们的和空间是三维空间，即 $dim(V+U) &#x3D; 3$ 。它们的交空间是y轴，即 $dim(V \cap U)&#x3D;1$。满足维数公式。">
+  <meta name="description" content="计算机进行算术运算时，要求各操作数的类型具有相同的大小（存储位数）及存储方式，通常不能将不同类型的数据直接参与运算。 然而，在 C 语言中，允许不同类型的数据混合运算。某些类型的转换编译器可隐式地自动进行，为自动类型转换；而有些类型转换需要程序员显式指定，称为强制类型转换。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="矩阵论笔记-1.补:维数公式">
-<meta property="og:url" content="http://monteyang.cn/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E8%A1%A5-%E7%BB%B4%E6%95%B0%E5%85%AC%E5%BC%8F.html">
+<meta property="og:title" content="C语言-数据类型转换">
+<meta property="og:url" content="http://monteyang.cn/C%E8%AF%AD%E8%A8%80-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html">
 <meta property="og:site_name" content="Monte&#39;s Blog">
-<meta property="og:description" content="维数公式dim(V+U) &#x3D; dimV + dimU-dim(V\cap U)即，和空间的维数等于两空间维数之和减去两空间的交空间的维数。  例子：三维空间中，记$V$为 $xOy$平面， $U$ 为 $yOz$平面 ，即 $dimV &#x3D; dimU &#x3D; 2$ 。它们的和空间是三维空间，即 $dim(V+U) &#x3D; 3$ 。它们的交空间是y轴，即 $dim(V \cap U)&#x3D;1$。满足维数公式。">
+<meta property="og:description" content="计算机进行算术运算时，要求各操作数的类型具有相同的大小（存储位数）及存储方式，通常不能将不同类型的数据直接参与运算。 然而，在 C 语言中，允许不同类型的数据混合运算。某些类型的转换编译器可隐式地自动进行，为自动类型转换；而有些类型转换需要程序员显式指定，称为强制类型转换。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-01-04T09:31:55.000Z">
-<meta property="article:modified_time" content="2020-02-18T15:22:56.179Z">
+<meta property="article:published_time" content="2019-03-24T00:40:02.000Z">
+<meta property="article:modified_time" content="2020-03-24T09:09:12.451Z">
 <meta property="article:author" content="Monte Yang">
-<meta property="article:tag" content="矩阵论">
+<meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://monteyang.cn/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E8%A1%A5-%E7%BB%B4%E6%95%B0%E5%85%AC%E5%BC%8F.html">
+<link rel="canonical" href="http://monteyang.cn/C%E8%AF%AD%E8%A8%80-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html">
 
 
 <script id="page-configurations">
@@ -79,7 +79,7 @@
   };
 </script>
 
-  <title>矩阵论笔记-1.补:维数公式 | Monte's Blog</title>
+  <title>C语言-数据类型转换 | Monte's Blog</title>
   
 
 
@@ -209,7 +209,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E8%A1%A5-%E7%BB%B4%E6%95%B0%E5%85%AC%E5%BC%8F.html">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/C%E8%AF%AD%E8%A8%80-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/M.jpeg">
@@ -222,7 +222,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          矩阵论笔记-1.补:维数公式
+          C语言-数据类型转换
         </h2>
 
         <div class="post-meta">
@@ -232,14 +232,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-01-04 17:31:55" itemprop="dateCreated datePublished" datetime="2019-01-04T17:31:55+08:00">2019-01-04</time>
+              <time title="创建时间：2019-03-24 08:40:02" itemprop="dateCreated datePublished" datetime="2019-03-24T08:40:02+08:00">2019-03-24</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-18 23:22:56" itemprop="dateModified" datetime="2020-02-18T23:22:56+08:00">2020-02-18</time>
+                <time title="修改时间：2020-03-24 17:09:12" itemprop="dateModified" datetime="2020-03-24T17:09:12+08:00">2020-03-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -247,8 +247,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9F%A9%E9%98%B5%E8%AE%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">矩阵论</span>
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
                   </a>
                 </span>
             </span>
@@ -264,10 +264,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="维数公式"><a href="#维数公式" class="headerlink" title="维数公式"></a>维数公式</h1><script type="math/tex; mode=display">dim(V+U) = dimV + dimU-dim(V\cap U)</script><p>即，<strong>和空间的维数等于两空间维数之和减去两空间的交空间的维数</strong>。</p>
-<blockquote>
-<p>例子：<br>三维空间中，记$V$为 $xOy$平面， $U$ 为 $yOz$平面 ，即 $dimV = dimU = 2$ 。<br>它们的和空间是三维空间，即 $dim(V+U) = 3$ 。<br>它们的交空间是y轴，即 $dim(V \cap U)=1$。<br>满足维数公式。</p>
-</blockquote>
+        <p>计算机进行算术运算时，要求各操作数的类型具有相同的大小（存储位数）及存储方式，<strong>通常不能将不同类型的数据直接参与运算。</strong></p>
+<p>然而，在 C 语言中，允许不同类型的数据混合运算。某些类型的转换编译器可隐式地自动进行，为<strong>自动类型转换</strong>；而有些类型转换需要程序员显式指定，称为<strong>强制类型转换</strong>。</p>
+<a id="more"></a>
+<hr>
+<h1 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h1><p>一个表达式中出现不同类型间的混合运算，较低类型将自动向较高类型转换。</p>
+<p>一般情况下，<strong>数据的取值范围越大、精度越高，其类型也越“高级”</strong>。</p>
+<p>整型类型从低到高依次为：</p>
+<p><code>signed char &lt; unsigned char &lt; short &lt; unsigned short &lt; int &lt; unsigned int &lt; long &lt; unsigned long</code></p>
+<p>浮点类型级别从低到高依次为：</p>
+<p><code>float &lt; double</code></p>
+<h2 id="1、操作数中没有浮点类型数据"><a href="#1、操作数中没有浮点类型数据" class="headerlink" title="1、操作数中没有浮点类型数据"></a>1、操作数中没有浮点类型数据</h2><ul>
+<li>当 char、unsigned char、short 或 unsigned short 出现在表达式中参与运算时，一般将其自动转换为 int 型;</li>
+<li>int 与 unsigned int混合运算时，int自动转换为unsigned int型;</li>
+<li>int、unsigned int 与 long 混合运算时，均转换为 long 类型。</li>
+</ul>
+<h2 id="2、操作数中有浮点类型数据"><a href="#2、操作数中有浮点类型数据" class="headerlink" title="2、操作数中有浮点类型数据"></a>2、操作数中有浮点类型数据</h2><p>当操作数中含有浮点类型数据时，所有操作数都将转换为 double 型。</p>
+<p>例如：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ii=<span class="number">100</span>;</span><br><span class="line"><span class="keyword">double</span> dd=<span class="number">200.5</span>;</span><br><span class="line">ii+dd;  <span class="comment">// 先把 ii转换为double浮点数后再参与运算，运算结果为双精度浮点数300.5</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="3、赋值运算符两侧的类型不一致"><a href="#3、赋值运算符两侧的类型不一致" class="headerlink" title="3、赋值运算符两侧的类型不一致"></a>3、赋值运算符两侧的类型不一致</h2><p>当赋值运算符的右值（常量、变量或表达式）类型与左值类型不一致时，<strong>将右值类型提升或降低为左值类型</strong>。例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> dd;</span><br><span class="line">dd=<span class="number">10</span>; <span class="comment">// 右值为双精度，左值为整数。先把右值整型常量10 提升为双精度浮点类型后，再赋值给 dd</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ii;</span><br><span class="line">ii=<span class="number">10.5</span>;   <span class="comment">// 右值10.5为双精度，左值为整型。右值双精度型 10.5 降低为左值整型，即10.5舍弃小数部分后，把10 赋给整型变量 ii</span></span><br></pre></td></tr></table></figure>
+<h2 id="4、右值超出左值类型范围"><a href="#4、右值超出左值类型范围" class="headerlink" title="4、右值超出左值类型范围"></a>4、右值超出左值类型范围</h2><p>如果赋值运算符右值的范围超出了左值类型的表示范围，将把该右值截断后，赋给左值。例如：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c;           <span class="comment">// char占8位，取值范围是-128-127。</span></span><br><span class="line">c=<span class="number">1025</span>;         <span class="comment">// 整数1025 对应二进制形式是100 0000 0001，超出了8位。</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"％d"</span>,c) ; <span class="comment">// 以十进制输出c的值</span></span><br></pre></td></tr></table></figure><br>该输出结果为 1，因为只取 1025 低 8 位 0000 0001（值为1），赋给字符型变量 c，得到毫无意义的值。</p>
+<hr>
+<h1 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h1><p>自动类型转换如果从较高类型转换为较低类型时，将会降低精度或截断数据，可能得不到预期的结果。</p>
+<p>为了使程序设计更加灵活，转换的目的更加清晰，C 语言提供了可显式指定类型转换的语法，通常称之为<strong>强制类型转换</strong>。</p>
+<h2 id="强制类型转换的格式"><a href="#强制类型转换的格式" class="headerlink" title="强制类型转换的格式"></a>强制类型转换的格式</h2><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">     <span class="comment">(目标类型)</span> 表达式</span><br></pre></td></tr></table></figure>
+<p>例：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a,b;</span><br><span class="line">a=<span class="number">4</span>;</span><br><span class="line">b=<span class="number">3</span>;</span><br><span class="line"><span class="keyword">double</span> dd;</span><br><span class="line">dd=a/b;           <span class="comment">// dd的结果将是1。整型除整型还是整型，没有小数部分。</span></span><br><span class="line">dd=(<span class="keyword">double</span>)(a/b); <span class="comment">// dd的结果是1.000000。（1）先运算a/b，得到的结果是整型的1；（2）把整型的1转换成double，是1.000000。</span></span><br><span class="line">dd=(<span class="keyword">double</span>)a/b;   <span class="comment">// dd的结果是1.333333。（1）先执行(double)a，把a转换为double，即4.000000；（2）把4.00000除以3，得到1.333333，符合自动类型转换的规则。</span></span><br></pre></td></tr></table></figure></p>
 
     </div>
 
@@ -303,7 +325,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://monteyang.cn/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E8%A1%A5-%E7%BB%B4%E6%95%B0%E5%85%AC%E5%BC%8F.html" title="矩阵论笔记-1.补:维数公式">http://monteyang.cn/矩阵论笔记-1-补-维数公式.html</a>
+    <a href="http://monteyang.cn/C%E8%AF%AD%E8%A8%80-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html" title="C语言-数据类型转换">http://monteyang.cn/C语言-数据类型转换.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -315,7 +337,7 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/" rel="tag"><i class="fa fa-tag"></i> 矩阵论</a>
+              <a href="/tags/C-C/" rel="tag"><i class="fa fa-tag"></i> C/C++</a>
           </div>
 
         
@@ -324,12 +346,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html" rel="prev" title="矩阵论笔记-1.线性空间、线性子空间、矩阵的值域和核空间">
-      <i class="fa fa-chevron-left"></i> 矩阵论笔记-1.线性空间、线性子空间、矩阵的值域和核空间
+    <a href="/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3.html" rel="prev" title="Python-axis的理解">
+      <i class="fa fa-chevron-left"></i> Python-axis的理解
     </a></div>
       <div class="post-nav-item">
-    <a href="/Python-slot-%E6%96%B9%E6%B3%95.html" rel="next" title="Python-__slot__方法">
-      Python-__slot__方法 <i class="fa fa-chevron-right"></i>
+    <a href="/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html" rel="next" title="论文阅读-Bag of Tricks for Image Classification with Convolutional Neural Networks">
+      论文阅读-Bag of Tricks for Image Classification with Convolutional Neural Networks <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -391,7 +413,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#维数公式"><span class="nav-text">维数公式</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#自动类型转换"><span class="nav-text">自动类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、操作数中没有浮点类型数据"><span class="nav-text">1、操作数中没有浮点类型数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、操作数中有浮点类型数据"><span class="nav-text">2、操作数中有浮点类型数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、赋值运算符两侧的类型不一致"><span class="nav-text">3、赋值运算符两侧的类型不一致</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、右值超出左值类型范围"><span class="nav-text">4、右值超出左值类型范围</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#强制类型转换"><span class="nav-text">强制类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#强制类型转换的格式"><span class="nav-text">强制类型转换的格式</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -551,54 +573,6 @@
   
 
   
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
 
   
   <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
@@ -607,7 +581,7 @@
       quicklink({
         timeout: 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E8%A1%A5-%E7%BB%B4%E6%95%B0%E5%85%AC%E5%BC%8F.html',]
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/C%E8%AF%AD%E8%A8%80-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html',]
       });
       });
   </script>
@@ -623,7 +597,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo: 'MonteYang.github.io',
       owner: 'MonteYang',
       admin: ['MonteYang'],
-      id: 'f204b5baf64f37309619571e7990d464',
+      id: '6f345fcde8e23b6f3d02de1b76748a7d',
         language: 'zh-CN',
       distractionFreeMode: true
     });
