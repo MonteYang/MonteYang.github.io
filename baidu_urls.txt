@@ -24,6 +24,7 @@ http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-2.%E9%A9%AC%E5%B0%94%E7
 http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-1.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html
 http://monteyang.cn/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html
 http://monteyang.cn/C%E8%AF%AD%E8%A8%80-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html
+http://monteyang.cn/C++-%E5%AD%97%E7%AC%A6%E4%B8%B2.html
 http://monteyang.cn/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3.html
 http://monteyang.cn/Python-%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D.html
 http://monteyang.cn/Python-slot-%E6%96%B9%E6%B3%95.html
