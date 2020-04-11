@@ -54,12 +54,12 @@
   };
 </script>
 
-  <meta name="description" content="数组数组（Array）是一种线性的数据结构，创建数组时，会占用一段连续的内存区域，存放相同数据类型的元素。 在数组中，按索引访问元素的时间复杂为O(1)，这是由内存控制器所保证的。  插入和删除操作的复杂度是O(n)，这也是因为数组在内存中连续存储，插入或删除其中一个元素时，为了保持在内存中的连续性，后面的元素也会随之挪动。  链表和数组一样，链表也是一种线性结构。但链表的内存结构不是连续的内存空">
+  <meta name="description" content="数组数组（Array）是一种线性的数据结构，创建数组时，会占用一段连续的内存区域，存放相同数据类型的元素。 在数组中，按索引访问元素的时间复杂度为O(1)，这是由内存控制器所保证的。  插入和删除操作的复杂度是O(n)，这也是因为数组在内存中连续存储，插入或删除其中一个元素时，为了保持在内存中的连续性，后面的元素也会随之挪动。  链表和数组一样，链表也是一种线性结构。但链表的内存结构不是连续的内存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构与算法-数组和链表">
 <meta property="og:url" content="http://monteyang.cn/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8.html">
 <meta property="og:site_name" content="Monte&#39;s Blog">
-<meta property="og:description" content="数组数组（Array）是一种线性的数据结构，创建数组时，会占用一段连续的内存区域，存放相同数据类型的元素。 在数组中，按索引访问元素的时间复杂为O(1)，这是由内存控制器所保证的。  插入和删除操作的复杂度是O(n)，这也是因为数组在内存中连续存储，插入或删除其中一个元素时，为了保持在内存中的连续性，后面的元素也会随之挪动。  链表和数组一样，链表也是一种线性结构。但链表的内存结构不是连续的内存空">
+<meta property="og:description" content="数组数组（Array）是一种线性的数据结构，创建数组时，会占用一段连续的内存区域，存放相同数据类型的元素。 在数组中，按索引访问元素的时间复杂度为O(1)，这是由内存控制器所保证的。  插入和删除操作的复杂度是O(n)，这也是因为数组在内存中连续存储，插入或删除其中一个元素时，为了保持在内存中的连续性，后面的元素也会随之挪动。  链表和数组一样，链表也是一种线性结构。但链表的内存结构不是连续的内存">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://monteyang.cn/images/DS-%E6%95%B0%E7%BB%84%E5%8F%96%E5%85%83%E7%B4%A0.png">
 <meta property="og:image" content="http://monteyang.cn/images/DS-%E6%95%B0%E7%BB%84%E6%8F%92%E5%85%A5%E5%92%8C%E5%88%A0%E9%99%A4.png">
@@ -69,7 +69,7 @@
 <meta property="og:image" content="http://monteyang.cn/images/DS-%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8.png">
 <meta property="og:image" content="http://monteyang.cn/images/DS-%E9%93%BE%E8%A1%A8%E6%9C%89%E7%8E%AF.png">
 <meta property="article:published_time" content="2019-04-09T09:18:05.000Z">
-<meta property="article:modified_time" content="2020-04-09T17:36:30.259Z">
+<meta property="article:modified_time" content="2020-04-10T06:56:55.979Z">
 <meta property="article:author" content="Monte Yang">
 <meta property="article:tag" content="数据结构和算法">
 <meta name="twitter:card" content="summary">
@@ -247,7 +247,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-10 01:36:30" itemprop="dateModified" datetime="2020-04-10T01:36:30+08:00">2020-04-10</time>
+                <time title="修改时间：2020-04-10 14:56:55" itemprop="dateModified" datetime="2020-04-10T14:56:55+08:00">2020-04-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -273,7 +273,7 @@
 
       
         <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>数组（Array）是一种线性的数据结构，创建数组时，会占用一段<strong>连续的内存区域</strong>，存放相同数据类型的元素。</p>
-<p>在数组中，按索引<strong>访问元素的时间复杂为O(1)</strong>，这是由内存控制器所保证的。</p>
+<p>在数组中，按索引<strong>访问元素的时间复杂度为O(1)</strong>，这是由内存控制器所保证的。</p>
 <p><img data-src="../images/DS-数组取元素.png" alt></p>
 <p><strong>插入和删除操作的复杂度是O(n)</strong>，这也是因为数组在内存中连续存储，插入或删除其中一个元素时，为了保持在内存中的连续性，后面的元素也会随之挪动。</p>
 <p><img data-src="../images/DS-数组插入和删除.png" alt></p>
@@ -286,6 +286,8 @@
 <p>与数组相比，更适合使用链表的场景：</p>
 <ol>
 <li><strong>改善插入和删除操作的效率。</strong> 因为数组的插入和删除操作的时间复杂度较高，使用链表结构，插入和删除操作的时间复杂度为O(1)，如果程序中对线性结构进行大量的插入、删除操作，那么更适合使用链表。</li>
+</ol>
+<ol>
 <li><strong>线性结构中元素个数未知。</strong> 创建数组，需要申请一块固定大小的内存区域，意味着限制住了元素数量，如果内存区域装满了，那么就需要重新申请一块内存区域，而链表可以直接将元素添加到链表尾部。</li>
 </ol>
 <p>双向链表：在链表的每个节点中，既有后继指针next，又有前驱指针prev。</p>
@@ -455,7 +457,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -210,6 +210,230 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/C++-%E5%AD%97%E7%AC%A6%E4%B8%B2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/M.jpeg">
+      <meta itemprop="name" content="Monte Yang">
+      <meta itemprop="description" content="❤MY">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Monte's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/C++-%E5%AD%97%E7%AC%A6%E4%B8%B2.html" class="post-title-link" itemprop="url">C++-字符串</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-24 06:54:26" itemprop="dateCreated datePublished" datetime="2019-03-24T06:54:26+08:00">2019-03-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-26 14:24:23" itemprop="dateModified" datetime="2020-03-26T14:24:23+08:00">2020-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、C语言风格的字符串"><a href="#一、C语言风格的字符串" class="headerlink" title="一、C语言风格的字符串"></a>一、C语言风格的字符串</h1><p>C++兼容C语言, 所以也可以用<strong>以<code>\0</code>结尾的字符数组</strong>来表示字符串, 例如：</p>
+<p><img data-src="../images/array.string.png" alt></p>
+<p>字符串末尾都有一个字符’\0’做结束符, 这里的\0是ASCII码为0的Null字符, 在C语言中这种字符串也称为以零结尾的字符串（Null-terminated String）. 数组元素可以通过数组名加下标的方式访问, 字符串字面值也可以加下标访问其中的字符：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c = <span class="string">"Hello, world.\n"</span>[<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
+<p>但要注意, <strong>字符串字面值是只读的, 不能修改</strong>. 即 <code>&quot;Hello, world.\n&quot;[0]</code>不能作为左值.</p>
+<p>字符串字面值作为右值使用时, 和数组类似, 自动转换成<strong>指向字符串首元素的指针</strong>.</p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[<span class="number">10</span>] = <span class="string">"Hello"</span>;</span><br><span class="line"><span class="keyword">char</span> str[<span class="number">10</span>] = &#123; <span class="string">'H'</span>, <span class="string">'e'</span>, <span class="string">'l'</span>, <span class="string">'l'</span>, <span class="string">'o'</span>, <span class="string">'\0'</span> &#125;;</span><br><span class="line"><span class="keyword">char</span> str[<span class="number">10</span>] = <span class="string">"Hello, world.\n"</span>;</span><br><span class="line"><span class="keyword">char</span> str[] = <span class="string">"Hello, world.\n"</span>;</span><br></pre></td></tr></table></figure>
+<p>str的后四个元素没有指定, 自动初始化为0, 即Null字符.</p>
+<p>如果用于初始化的字符串字面值比数组还长, 则数组str只包含字符串的前10个字符, 不包含Null字符, 这种情况编译器会给出警告.</p>
+<p>如果要用一个字符串字面值准确地初始化一个字符数组, 最好的办法是不指定数组的长度, 让编译器自己计算.</p>
+<h2 id="字符串相关的操作函数"><a href="#字符串相关的操作函数" class="headerlink" title="字符串相关的操作函数"></a>字符串相关的操作函数</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>strcpy(s1, s2);</code></td>
+<td>复制字符串 s2 到字符串 s1.</td>
+</tr>
+<tr>
+<td><code>strcat(s1, s2);</code></td>
+<td>连接字符串 s2 到字符串 s1 的末尾.</td>
+</tr>
+<tr>
+<td><code>strlen(s1);</code></td>
+<td>返回字符串 s1 的长度.</td>
+</tr>
+<tr>
+<td><code>strcmp(s1, s2);</code></td>
+<td>如果 s1 和 s2 是相同的, 则返回 0；如果 s1 &lt; s2 则返回值小于 0；如果 s1 &gt; s2 则返回值大于 0.</td>
+</tr>
+<tr>
+<td><code>strchr(s1, ch);</code></td>
+<td>返回一个指针, 指向字符串 s1 中字符 ch 的第一次出现的位置.</td>
+</tr>
+<tr>
+<td><code>strstr(s1, s2);</code></td>
+<td>返回一个指针, 指向字符串 s1 中字符串 s2 的第一次出现的位置.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="二、C-中的String类"><a href="#二、C-中的String类" class="headerlink" title="二、C++中的String类"></a>二、C++中的String类</h1><h2 id="创建String"><a href="#创建String" class="headerlink" title="创建String"></a>创建String</h2><p>String类不用担心内存溢出的问题, 还可以和C语言的字符串相互转换. 使用时必须包含头文件</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>string类是一个模板类, 位于std命名空间内, 为方便使用还需添加：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个String对象</span></span><br><span class="line"><span class="built_in">string</span> str;</span><br><span class="line"><span class="comment">// 1. 将C语言字符串赋值给String对象</span></span><br><span class="line"><span class="keyword">char</span> strname[<span class="number">30</span>];</span><br><span class="line"><span class="built_in">strcpy</span>(strname, <span class="string">"hello"</span>);</span><br><span class="line">str = strname;</span><br><span class="line"><span class="comment">// 2. 直接对String赋值</span></span><br><span class="line">str = <span class="string">"hello, world!"</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="重载的操作符"><a href="#重载的操作符" class="headerlink" title="重载的操作符"></a>重载的操作符</h2><ul>
+<li><code>=</code>: 可以用<code>=</code>直接对string对象赋值</li>
+<li><code>==, &gt;, &lt;, &gt;=, &lt;=, !=</code> : 比较大小</li>
+<li><code>+, +=</code> : 连接两个字符串</li>
+<li><code>[]</code> : 类似字符数组, 获取字符串中某个位置的字符</li>
+</ul>
+<h2 id="转为C语言的字符串"><a href="#转为C语言的字符串" class="headerlink" title="转为C语言的字符串"></a>转为C语言的字符串</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">char</span> *<span class="title">c_str</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p>返回一个以NULL结尾的C语言字符串, 即返回一个指向C字符串的指针, 字符串内容与String相同, 用于 string 转 const char*.</p>
+<h2 id="String特性描述的成员函数"><a href="#String特性描述的成员函数" class="headerlink" title="String特性描述的成员函数"></a>String特性描述的成员函数</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;     <span class="comment">// 返回字符串的大小</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">length</span><span class="params">()</span></span>;   <span class="comment">// 返回字符串的长度</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>;   <span class="comment">// 清空字符串</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用经验"><a href="#使用经验" class="headerlink" title="使用经验"></a>使用经验</h2><p>C++的string类是一个变长的字符串, 不需要担心内存溢出的问题, 还提供了很多字符串操作函数, 但是由于<strong>string中的字符串存储的内存空间没有固定的位置, 所以string无法用于需要字符串固定地址的情况</strong>.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/M.jpeg">
+      <meta itemprop="name" content="Monte Yang">
+      <meta itemprop="description" content="❤MY">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Monte's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3.html" class="post-title-link" itemprop="url">Python-axis的理解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-15 11:40:13" itemprop="dateCreated datePublished" datetime="2019-01-15T11:40:13+08:00">2019-01-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-26 15:28:55" itemprop="dateModified" datetime="2020-03-26T15:28:55+08:00">2020-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="axis的本质"><a href="#axis的本质" class="headerlink" title="axis的本质"></a>axis的本质</h1><p>axis(轴)是编程语言中常见的概念, 它的本质是<strong>数组的层级</strong>.</p>
+<p>例如, 在Python语言中, numpy的array是一个多维(或一维)的数组:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">arr = np.array(np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line">print(arr)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">array([[ 0,  1,  2,  3],</span></span><br><span class="line"><span class="string">       [ 4,  5,  6,  7],</span></span><br><span class="line"><span class="string">       [ 8,  9, 10, 11]])</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">print(arr.shape)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">(3, 4)</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>axis=0, 表示最外层的<code>[]</code>, 相应的<code>arr.shape[0]</code>为 3, 最外层数组有3个元素；</li>
+<li>axis=1, 表示次外层的<code>[]</code>, 相应的<code>arr.shape[1]</code>为 4, 这就表示, 在最外层的3个数组元素中, 每个数组元素中又有4个元素。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </li></ul></div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://monteyang.cn/Python-%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -470,623 +694,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html" class="post-title-link" itemprop="url">矩阵论笔记-1.线性空间、线性子空间、矩阵的值域和核空间</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-04 17:30:04" itemprop="dateCreated datePublished" datetime="2019-01-04T17:30:04+08:00">2019-01-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-18 23:22:56" itemprop="dateModified" datetime="2020-02-18T23:22:56+08:00">2020-02-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9F%A9%E9%98%B5%E8%AE%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">矩阵论</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>本文记录于2019年1月</p>
-</blockquote>
-<h2 id="1-线性空间"><a href="#1-线性空间" class="headerlink" title="1.线性空间"></a>1.线性空间</h2><h3 id="1-1-线性空间的定义"><a href="#1-1-线性空间的定义" class="headerlink" title="1.1 线性空间的定义"></a>1.1 线性空间的定义</h3><p>设非空集合$V$，一个数域$K$，$x,y,z \in V$， $k,l\in K$，如果$V$满足加法封闭和数乘封闭，则称$V$为线性空间。</p>
-<blockquote>
-<ol>
-<li>加法封闭：  加法交换律、加法结合律、零向量、负向量。</li>
-<li>数乘封闭： 数对元素的分配律、元素对数的分配律、数因子结合律、单位向量。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </li></ol></blockquote></div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html" class="post-title-link" itemprop="url">Linux基本命令总结</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-12-17 18:30:04" itemprop="dateCreated datePublished" datetime="2018-12-17T18:30:04+08:00">2018-12-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-18 23:22:56" itemprop="dateModified" datetime="2020-02-18T23:22:56+08:00">2020-02-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>于2018年12月开始使用Linux操作系统，本文记录于<code>2018-12-17</code></p>
-</blockquote>
-<hr>
-<h1 id="终端命令格式"><a href="#终端命令格式" class="headerlink" title="终端命令格式"></a>终端命令格式</h1><pre><code>`command [-options] [parameter]`
-</code></pre><blockquote>
-<p><code>[]</code> 代表可选</p>
-</blockquote>
-<ul>
-<li>帮助<ul>
-<li><code>command --help</code></li>
-<li><code>man command</code></li>
-</ul>
-</li>
-</ul>
-<hr>
-<h1 id="文件和目录常用命令"><a href="#文件和目录常用命令" class="headerlink" title="文件和目录常用命令"></a>文件和目录常用命令</h1><h2 id="查看目录内容"><a href="#查看目录内容" class="headerlink" title="查看目录内容"></a>查看目录内容</h2><ul>
-<li><p><code>ls</code></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-a</td>
-<td>显示指定目录下所有子目录与文件，包括隐藏文件</td>
-</tr>
-<tr>
-<td>-l</td>
-<td>以列表方式显示文件的详细信息</td>
-</tr>
-<tr>
-<td>-h</td>
-<td>配合 -l 以人性化的方式显示文件大小</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li><p><code>tree</code></p>
-<ul>
-<li>以树状图列出文件目录结构<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>含义</th>
-</tr>
-</thead>
-    <tbody>
-<tr>
-<td>-d</td>
-<td>只显示目录</td>
-</tr>
-</tbody>
-</table>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="切换目录"><a href="#切换目录" class="headerlink" title="切换目录"></a>切换目录</h2><ul>
-<li><p><code>cd</code></p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>含义</th>
-</tr>
-</thead>
-    <tbody>
-<tr>
-<td>cd</td>
-<td>切换到当前用户的主目录(/home/用户目录)</td>
-</tr>
-<tr>
-<td>cd ~</td>
-<td>切换到当前用户的主目录(/home/用户目录)</td>
-</tr>
-<tr>
-<td>cd .</td>
-<td>保持在当前目录不变</td>
-</tr>
-<tr>
-<td>cd ..</td>
-<td>切换到上级目录</td>
-</tr>
-<tr>
-<td>cd -</td>
-<td>可以在最近两次工作目录之间来回切换</td>
-</tr>
-</tbody>
-</table>
-
-</li>
-</ul>
-<h2 id="创建和删除操作"><a href="#创建和删除操作" class="headerlink" title="创建和删除操作"></a>创建和删除操作</h2><ul>
-<li><code>touch</code></li>
-<li><code>rm</code><table>
-<thead>
-<tr>
-<th>选项</th>
-<th>含义</th>
-</tr>
-</thead>
-    <tbody>
-<tr>
-<td>-f</td>
-<td>强制删除，忽略不存在的文件，无需提示</td>
-</tr>
-<tr>
-<td>-r</td>
-<td>递归地删除目录下的内容，**删除文件夹** 时必须加此参数</td>
-</tr>
-</tbody>
-</table>
-
-
-</li>
-</ul>
-<ul>
-<li><code>mkdir</code>、</li>
-</ul>
-<h2 id="拷贝和移动文件"><a href="#拷贝和移动文件" class="headerlink" title="拷贝和移动文件"></a>拷贝和移动文件</h2><ul>
-<li><p><code>cp</code></p>
-<table>
-<thead>
-<tr>
-<th>选项</th>       
-<th>含义</th>
-</tr>
-</thead>
-    <tbody>
-<tr>
-<td>-i</td>
-<td>覆盖文件前提示</td>
-</tr>
-<tr>
-<td>-r</td>
-<td>若给出的源文件是目录文件，则 cp 将递归复制该目录下的所有子目录和文件，目标文件必须为一个目录名</td>
-</tr>
-</tbody>
-</table>
-
-
-</li>
-</ul>
-<ul>
-<li><code>mv</code></li>
-</ul>
-<h2 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h2><ul>
-<li><code>cat</code></li>
-<li><code>more</code></li>
-<li><code>grep</code></li>
-</ul>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
-<li><code>echo</code></li>
-<li><p>重定向 <code>&gt;</code> 和 <code>&gt;&gt;</code></p>
-<ul>
-<li>将本应显示在终端上的内容 <strong>输出／追加</strong> 到指定文件中</li>
-</ul>
-</li>
-<li><p>管道 <code>|</code></p>
-<ul>
-<li><strong>一个命令的输出通过管道</strong> 做为 <strong>另一个命令的输入</strong></li>
-</ul>
-</li>
-<li>清屏 <code>clear</code></li>
-<li><code>whereis</code>, <code>which</code></li>
-</ul>
-<hr>
-<h1 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h1><table>
-<thead>
-<tr>
-<th>通配符</th>
-<th>含义</th>
-</tr>
-</thead>
-    <tbody>
-<tr>
-<td>*</td>
-<td>代表任意个数个字符</td>
-</tr>
-<tr>
-<td>?</td>
-<td>代表任意一个字符，至少 1 个</td>
-</tr>
-<tr>
-<td>[]</td>
-<td>表示可以匹配字符组中的任一一个</td>
-</tr>
-<tr>
-<td>[abc]</td>
-<td>匹配 a、b、c 中的任意一个</td>
-</tr>
-<tr>
-<td>[a-f]</td>
-<td>匹配从 a 到 f 范围内的的任意一个字符</td>
-</tr>
-</tbody>
-</table>
-
-<hr>
-<h1 id="系统信息命令"><a href="#系统信息命令" class="headerlink" title="系统信息命令"></a>系统信息命令</h1><h2 id="时间和日期"><a href="#时间和日期" class="headerlink" title="时间和日期"></a>时间和日期</h2><ul>
-<li><code>date</code></li>
-<li><code>cal</code></li>
-</ul>
-<h2 id="磁盘和目录空间"><a href="#磁盘和目录空间" class="headerlink" title="磁盘和目录空间"></a>磁盘和目录空间</h2><table>
-<thead>
-<tr>
-<th>序号</th>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>01</td>
-<td>df -h</td>
-<td>`disk free` 显示磁盘剩余空间</td>
-</tr>
-<tr>
-<td>02</td>
-<td>du -h [目录名]</td>
-<td>`disk usage` 显示目录下的文件大小</td>
-</tr>
-</tbody>
-</table>
-
-
-<h2 id="进程信息"><a href="#进程信息" class="headerlink" title="进程信息"></a>进程信息</h2><table>
-<thead>
-<tr>
-<th>序号</th>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>01</td>
-<td>ps aux</td>
-<td>`process status` 查看进程的详细状况</td>
-</tr>
-<tr>
-<td>02</td>
-<td>top</td>
-<td>动态显示运行中的进程并且排序</td>
-</tr>
-<tr>
-<td>03</td>
-<td>kill [-9] 进程代号</td>
-<td>终止指定代号的进程，`-9` 表示强行终止</td>
-</tr>
-</tbody>
-</table>
-> `ps` 默认只会显示当前用户通过终端启动的应用程序
-
-*   `ps` 选项说明功能
-
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>含义</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>a</td>
-<td>显示终端上的所有进程，包括其他用户的进程</td>
-</tr>
-<tr>
-<td>u</td>
-<td>显示进程的详细状态</td>
-</tr>
-<tr>
-<td>x</td>
-<td>显示没有控制终端的进程</td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li><code>htop</code>， 还有更多的top。。。</li>
-</ul>
-<hr>
-<h1 id="用户权限相关"><a href="#用户权限相关" class="headerlink" title="用户权限相关"></a>用户权限相关</h1><h2 id="用户-和-权限"><a href="#用户-和-权限" class="headerlink" title="用户 和 权限"></a><strong>用户</strong> 和 <strong>权限</strong></h2><ul>
-<li>Linux系统中，每一个用户对于不同的系统资源（文件/目录）拥有不同的使用权限。</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align: center">序号</th>
-<th style="text-align: center">权限</th>
-<th style="text-align: center">英文</th>
-<th style="text-align: center">缩写</th>
-<th style="text-align: center">数字代号</th>
-</tr>
-</thead>
-    <tbody>
-<tr>
-<td style="text-align: center">01</td>
-<td style="text-align: center">读</td>
-<td style="text-align: center">read</td>
-<td style="text-align: center">r</td>
-<td style="text-align: center">4</td>
-</tr>
-<tr>
-<td style="text-align: center">02</td>
-<td style="text-align: center">写</td>
-<td style="text-align: center">write</td>
-<td style="text-align: center">w</td>
-<td style="text-align: center">2</td>
-</tr>
-<tr>
-<td style="text-align: center">03</td>
-<td style="text-align: center">执行</td>
-<td style="text-align: center">excute</td>
-<td style="text-align: center">x</td>
-<td style="text-align: center">1</td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li><p>用户权限还可以通过用户<strong>组</strong>设置</p>
-</li>
-<li><p><code>ls -l</code></p>
-<ul>
-<li><strong>权限</strong>，第 1 个字符如果是 <code>d</code> 表示目录</li>
-<li><strong>硬链接数</strong>，通俗地讲，就是有多少种方式，可以访问到当前目录／文件</li>
-<li><strong>拥有者</strong>，家目录下 文件／目录 的拥有者通常都是当前用户</li>
-<li><strong>组</strong></li>
-<li><strong>大小</strong></li>
-<li><strong>时间</strong></li>
-<li><strong>名称</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h2><ul>
-<li><p><code>chmod</code> </p>
-<ul>
-<li><code>chmod</code> 可以修改 <strong>用户／组</strong> 对 <strong>文件／目录</strong> 的权限</li>
-<li>命令格式如下：<ul>
-<li><code>chmod +/-rwx 文件名|目录名</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>序号</th>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>01</td>
-<td>chown</td>
-<td>修改拥有者</td>
-</tr>
-<tr>
-<td>02</td>
-<td>chgrp</td>
-<td>修改组</td>
-</tr>
-<tr>
-<td>03</td>
-<td>chmod</td>
-<td>修改权限</td>
-</tr>
-</tbody>
-</table>
-
-
-<ul>
-<li><p>命令格式如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改文件|目录的拥有者</span></span><br><span class="line">chown 用户名 文件名|目录名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归修改文件|目录的组</span></span><br><span class="line">chgrp -R 组名 文件名|目录名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归修改文件权限</span></span><br><span class="line">chmod -R 755 文件名|目录名</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>chmod</code> 在设置权限时，可以简单地使用三个数字分别对应 <strong>拥有者</strong> ／ <strong>组</strong> 和 <strong>其他</strong> 用户的权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接修改文件|目录的 读|写|执行 权限，但是不能精确到 拥有者|组|其他</span></span><br><span class="line">chmod +/-rwx 文件名|目录名</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>常见数字组合有（<code>u</code>表示用户／<code>g</code>表示组／<code>o</code>表示其他）：</p>
-<ul>
-<li><code>777</code> ===&gt; <code>u=rwx,g=rwx,o=rwx</code></li>
-<li><code>755</code> ===&gt; <code>u=rwx,g=rx,o=rx</code></li>
-<li><code>644</code> ===&gt; <code>u=rw,g=r,o=r</code></li>
-</ul>
-</li>
-</ul>
-<hr>
-<h1 id="远程管理"><a href="#远程管理" class="headerlink" title="远程管理"></a>远程管理</h1><h2 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a><code>shutdown</code></h2><ul>
-<li><strong>安全</strong> <strong>关闭</strong> 或者 <strong>重新启动系统</strong></li>
-<li>常用命令示例  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重新启动操作系统，其中 now 表示现在</span></span><br><span class="line">$ shutdown -r now</span><br><span class="line"></span><br><span class="line"><span class="comment"># 立刻关机，其中 now 表示现在</span></span><br><span class="line">$ shutdown now</span><br><span class="line"></span><br><span class="line"><span class="comment"># 系统在今天的 20:25 会关机</span></span><br><span class="line">$ shutdown 20:25</span><br><span class="line"></span><br><span class="line"><span class="comment"># 系统再过十分钟后自动关机</span></span><br><span class="line">$ shutdown +10</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消之前指定的关机计划</span></span><br><span class="line">$ shutdown -c</span><br></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li><strong>不指定选项和参数</strong>，默认表示 <strong>1 分钟</strong>之后 <strong>关闭电脑</strong></li>
-<li>远程维护服务器时，最好不要关闭系统，而应该重新启动系统</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<h2 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a><code>ssh</code></h2><pre>`ssh [-p port] user@remote`</pre>
-
-<ul>
-<li><code>user</code> 是在远程机器上的用户名，如果不指定的话默认为当前用户</li>
-<li><code>remote</code> 是远程机器的地址，可以是 <strong>IP</strong>／<strong>域名</strong>，或者是 <strong>后面会提到的别名</strong></li>
-<li><code>port</code> 是 <strong>SSH Server 监听的端口</strong>，如果不指定，就为默认值 <code>22</code></li>
-</ul>
-<h2 id="scp"><a href="#scp" class="headerlink" title="scp"></a><code>scp</code></h2><ul>
-<li><strong>远程拷贝文件</strong> 的命令</li>
-<li>它的<strong>地址格式与 ssh 基本相同</strong>，指定端口时用的是大写的 <code>-P</code> 而不是小写的<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把本地当前目录下的 01.py 文件 复制到 远程 家目录下的 Desktop/01.py</span></span><br><span class="line"><span class="comment"># 注意：`:` 后面的路径如果不是绝对路径，则以用户的家目录作为参照路径</span></span><br><span class="line">scp -P port 01.py user@remote:Desktop/01.py</span><br><span class="line"><span class="comment"># 把远程 家目录下的 Desktop/01.py 文件 复制到 本地当前目录下的 01.py</span></span><br><span class="line">scp -P port user@remote:Desktop/01.py 01.py</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加上 -r 选项可以传送文件夹</span></span><br><span class="line"><span class="comment"># 把当前目录下的 demo 文件夹 复制到 远程 家目录下的 Desktop</span></span><br><span class="line">scp -r demo user@remote:Desktop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把远程 家目录下的 Desktop 复制到 当前目录下的 demo 文件夹</span></span><br><span class="line">scp -r user@remote:Desktop demo</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li><p>常见服务端口号列表：</p>
-<table>
-<thead>
-<tr>
-<th>序号</th>
-<th>服务</th>
-<th>端口号</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>01</td>
-<td>SSH 服务器</td>
-<td>22</td>
-</tr>
-<tr>
-<td>02</td>
-<td>Web 服务器</td>
-<td>80</td>
-</tr>
-<tr>
-<td>03</td>
-<td>HTTPS</td>
-<td>443</td>
-</tr>
-<tr>
-<td>04</td>
-<td>FTP 服务器</td>
-<td>21</td>
-</tr>
-</tbody>
-</table>
-
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1158,7 +765,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-count">38</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

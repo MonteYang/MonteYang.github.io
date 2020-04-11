@@ -54,33 +54,32 @@
   };
 </script>
 
-  <meta name="description" content="❤MY">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Monte&#39;s Blog">
-<meta property="og:url" content="http://monteyang.cn/index.html">
+  <meta name="description" content="本系列文章为《编写高质量代码——改善Python程序的91个建议》的精炼汇总。  利用assert语句发现问题assert语句的基本语法如下： assert expression1 [&quot;,&quot; expression2] 其中，expression1是判断语句，会返回True或False，当返回False时会引发AssertionError。[]中的内容表示是可选的，用来传递具体">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编写高质量Python程序（二）编程惯用法">
+<meta property="og:url" content="http://monteyang.cn/%E7%BC%96%E5%86%99%E9%AB%98%E8%B4%A8%E9%87%8FPython%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BA%8C%EF%BC%89%E7%BC%96%E7%A8%8B%E6%83%AF%E7%94%A8%E6%B3%95.html">
 <meta property="og:site_name" content="Monte&#39;s Blog">
-<meta property="og:description" content="❤MY">
+<meta property="og:description" content="本系列文章为《编写高质量代码——改善Python程序的91个建议》的精炼汇总。  利用assert语句发现问题assert语句的基本语法如下： assert expression1 [&quot;,&quot; expression2] 其中，expression1是判断语句，会返回True或False，当返回False时会引发AssertionError。[]中的内容表示是可选的，用来传递具体">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-10T02:37:25.000Z">
+<meta property="article:modified_time" content="2020-04-11T13:03:20.592Z">
 <meta property="article:author" content="Monte Yang">
-<meta property="article:tag" content="3D Deep learning">
-<meta property="article:tag" content=" Monte Yang">
-<meta property="article:tag" content=" 深度学习">
-<meta property="article:tag" content=" 算法">
+<meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://monteyang.cn/">
+<link rel="canonical" href="http://monteyang.cn/%E7%BC%96%E5%86%99%E9%AB%98%E8%B4%A8%E9%87%8FPython%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BA%8C%EF%BC%89%E7%BC%96%E7%A8%8B%E6%83%AF%E7%94%A8%E6%B3%95.html">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false
+    isHome: false,
+    isPost: true
   };
 </script>
 
-  <title>Monte's Blog</title>
+  <title>编写高质量Python程序（二）编程惯用法 | Monte's Blog</title>
   
 
 
@@ -206,10 +205,10 @@
             
 
   <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E7%BC%96%E5%86%99%E9%AB%98%E8%B4%A8%E9%87%8FPython%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BA%8C%EF%BC%89%E7%BC%96%E7%A8%8B%E6%83%AF%E7%94%A8%E6%B3%95.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -223,8 +222,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E7%BC%96%E5%86%99%E9%AB%98%E8%B4%A8%E9%87%8FPython%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BA%8C%EF%BC%89%E7%BC%96%E7%A8%8B%E6%83%AF%E7%94%A8%E6%B3%95.html" class="post-title-link" itemprop="url">编写高质量Python程序（二）编程惯用法</a>
+          编写高质量Python程序（二）编程惯用法
         </h2>
 
         <div class="post-meta">
@@ -266,7 +264,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
+        <blockquote>
 <p>本系列文章为《编写高质量代码——改善Python程序的91个建议》的精炼汇总。</p>
 </blockquote>
 <h2 id="利用assert语句发现问题"><a href="#利用assert语句发现问题" class="headerlink" title="利用assert语句发现问题"></a>利用assert语句发现问题</h2><p>assert语句的基本语法如下：</p>
@@ -342,414 +340,68 @@
 </ul>
 <p>如果模块包含的属性和方法存在同名冲突，使用 <code>import module</code> <strong>可以有效地避免名称冲突</strong>。在嵌套的包结构中，每一个模块都以其所在的完整路径作为其前缀，因此，即使名称一样，但由于模块所对应的其前缀不同，就不会产生冲突。</p>
 
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+        <div class="reward-container">
+  <div>如果觉得有些帮助～</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Monte Yang 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Monte Yang 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E7%BC%96%E5%86%99%E9%AB%98%E8%B4%A8%E9%87%8FPython%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%B8%80%EF%BC%89%E5%BC%95%E8%AE%BA.html">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Monte Yang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://monteyang.cn/%E7%BC%96%E5%86%99%E9%AB%98%E8%B4%A8%E9%87%8FPython%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BA%8C%EF%BC%89%E7%BC%96%E7%A8%8B%E6%83%AF%E7%94%A8%E6%B3%95.html" title="编写高质量Python程序（二）编程惯用法">http://monteyang.cn/编写高质量Python程序（二）编程惯用法.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
+
+      <footer class="post-footer">
           
-            <a href="/%E7%BC%96%E5%86%99%E9%AB%98%E8%B4%A8%E9%87%8FPython%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%B8%80%EF%BC%89%E5%BC%95%E8%AE%BA.html" class="post-title-link" itemprop="url">编写高质量Python程序（一）引论</a>
-        </h2>
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          </div>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+        
 
-              <time title="创建时间：2020-04-10 01:45:35" itemprop="dateCreated datePublished" datetime="2020-04-10T01:45:35+08:00">2020-04-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-11 21:03:16" itemprop="dateModified" datetime="2020-04-11T21:03:16+08:00">2020-04-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-            </span>
 
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>本系列文章为《编写高质量代码——改善Python程序的91个建议》的精华汇总。</p>
-</blockquote>
-<h1 id="理解Pythonic概念"><a href="#理解Pythonic概念" class="headerlink" title="理解Pythonic概念"></a>理解Pythonic概念</h1><ul>
-<li><p>什么是 Pythonic？</p>
-<p>  Pythonic的代码就是具有Python独特风格的代码。通俗说来，就是在保证代码可读性的前提下，尽可能地简洁、优雅，看起来像伪代码一样。</p>
-</li>
-<li><p>具有 Python 代码风格的例子</p>
-<ul>
-<li><strong>交换两个变量</strong>。其他语言交换两个变量时，一般需要一个临时的中间变量，而Python中可以用一行代码直接交换。</li>
-<li><strong>for循环直接遍历容器</strong>。其他语言中，需要根据索引下标i对容器进行遍历，而Python可以用for循环直接遍历容器。</li>
-<li><strong>使用 <code>str.format()</code> 格式化字符串</strong>，是最Pythonic的字符串格式化方法。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 交换两个变量</span></span><br><span class="line">a, b = b, a</span><br><span class="line"></span><br><span class="line"><span class="comment"># for循环遍历容器</span></span><br><span class="line"><span class="keyword">for</span> elem <span class="keyword">in</span> alist:</span><br><span class="line">    do_sth_with(elem)</span><br><span class="line"></span><br><span class="line"><span class="comment"># format格式化字符串</span></span><br><span class="line">print(<span class="string">"&#123;greet&#125; from &#123;language&#125;!"</span>.format(greet=<span class="string">"hello, world!"</span>, language=<span class="string">"Python"</span>))</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>Python的库和框架：现有的框架就好比现有的“轮子”，学会利用这些框架，不重复造轮子。</p>
-</li>
-</ul>
-<h1 id="编写Pythonic代码"><a href="#编写Pythonic代码" class="headerlink" title="编写Pythonic代码"></a>编写Pythonic代码</h1><p>注意要避免的事：</p>
-<ul>
-<li>避免只用大小写来区分不同的对象。</li>
-<li>避免使用容易混淆的名称。</li>
-<li>不要害怕过长的变量名。能表达清楚变量代表的含义即可。</li>
-</ul>
-<p>深入理解Pythonic的几个途径：</p>
-<ul>
-<li>学习语言特性和库特性时，<strong>从官方文档入手，</strong> 仿照他们的书写规范。</li>
-<li>Python的版本更新快，跟进前言，掌握新特性。</li>
-<li>学习业界公认的Pythonic代码，如Flask、gevent和requests等。</li>
-</ul>
-<h1 id="理解Python和C语言的不同之处"><a href="#理解Python和C语言的不同之处" class="headerlink" title="理解Python和C语言的不同之处"></a>理解Python和C语言的不同之处</h1><ul>
-<li><strong>“缩进”和“{}”：</strong> C语言用花括号<code>{}</code>分隔代码块，Python中用缩进分隔，避免混用空格和Tab键。</li>
-<li><strong><code>&#39;</code>与<code>&quot;</code>：</strong> 在C语言中，单引号<code>&#39;</code>表示单个的字符型数据(char)，双引号<code>&quot;</code>表示字符串，默认以<code>\0</code>结尾；在Python中，<code>&#39;</code>和<code>&quot;</code>无明显区别。</li>
-<li><strong>三元操作符<code>?:</code>：</strong> C语言中的三元操作符 <code>C?X:Y</code>，表示当条件C为True的时候，取值X，否则取值Y。在Python中的等价形式为 <code>X if C else Y</code>。</li>
-<li><strong>switch…case：</strong> C语言中的<code>switch...case</code>分支语句，Python中可以使用<code>if...elif...else...</code>代替。</li>
-</ul>
-<h1 id="在代码中添加注释"><a href="#在代码中添加注释" class="headerlink" title="在代码中添加注释"></a>在代码中添加注释</h1><p>Python中有3种形式注释：</p>
-<ul>
-<li>块注释</li>
-<li>行注释</li>
-<li>文档注释(dostring)</li>
-</ul>
-<p>需要注意：</p>
-<ol>
-<li>使用块或行注释时，仅仅注释那些复杂操作、算法，还有那些难以理解的、不够一目了然的代码。</li>
-<li>注释和代码隔开一定距离。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = x + <span class="number">1</span>  <span class="comment"># 这样的注释略近</span></span><br><span class="line">x = x + <span class="number">1</span>       <span class="comment"># 更好的注释位置</span></span><br></pre></td></tr></table></figure></li>
-<li><p>给外部可访问的函数或方法添加文档注释。描述其功能、参数、返回值及可能的异常等信息。例如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_lines</span><span class="params">(name, lines)</span>:</span></span><br><span class="line">    <span class="string">"""Return lines that begin with name.</span></span><br><span class="line"><span class="string">    Lines are expected to look like:</span></span><br><span class="line"><span class="string">        name: space separated values</span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        name: string, parameter name.</span></span><br><span class="line"><span class="string">        lines: iterable of string, lines in the file.</span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        List of values in the lines that match.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    retval = []</span><br><span class="line">    matches = itertools.ifilter(<span class="keyword">lambda</span> x: x.startswith(name + <span class="string">":"</span>), lines)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> matches:</span><br><span class="line">        retval.extend(line[len(name) + <span class="number">1</span> :].split())</span><br><span class="line">    <span class="keyword">return</span> retval</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>建议在文件头包含copyright声明、模块描述，有必要的话还可以加入作者信息。例如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Copyright 2014 Google Inc. All Rights Reserved.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Licensed under the Apache License, Version 2.0 (the "License");</span></span><br><span class="line"><span class="comment"># you may not ...</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更新代码之后，注释要和代码同步更新。在实际工作中，很容易发生代码不断迭代，而忘了更新注释的情况，需要加以小心。</p>
-</li>
-</ol>
-<h1 id="适当添加空行，使代码布局更优雅、合理"><a href="#适当添加空行，使代码布局更优雅、合理" class="headerlink" title="适当添加空行，使代码布局更优雅、合理"></a>适当添加空行，使代码布局更优雅、合理</h1><ol>
-<li>在一组代码表达完一个完整思路之后，应用空行进行分隔。</li>
-<li><strong>保持上下文语义的易理解性。</strong> 当一个函数调用另一个函数时，尽量将它们放在一起，一般<strong>调用者在上，被调用者在下。</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">A</span><span class="params">()</span>:</span></span><br><span class="line">    B()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">B</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li><strong>空格的使用</strong><ul>
-<li>二元运算符（赋值<code>=</code>，比较（<code>==, &lt;, &gt;, !=, &lt;=, &gt;=, in, not in, is, is not</code>），布尔运算（<code>and, or, not</code>））的左右两边。如<code>x == 1</code></li>
-<li>逗号和分号前不要使用空格。</li>
-<li>函数名和左括号之间、序列索引操作时序列名和<code>[]</code>之间不需要空格，函数的参数<code>=</code>两侧不需要空格。</li>
-</ul>
-</li>
-</ol>
-<h1 id="编写函数的4个原则"><a href="#编写函数的4个原则" class="headerlink" title="编写函数的4个原则"></a>编写函数的4个原则</h1><ol>
-<li>函数设计尽量短小，嵌套层次不宜过深。</li>
-<li>函数声明需合理、简单、易于使用。</li>
-<li>函数参数设计时，应考虑向下兼容（<strong>兼容之前的版本</strong>）。</li>
-<li>一个函数只做一件事（<strong>解耦合</strong>）。</li>
-</ol>
-<hr>
-<ul>
-<li>参考：《编写高质量代码——改善Python程序的91个建议》</li>
-</ul>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/%E7%BC%96%E5%86%99%E9%AB%98%E8%B4%A8%E9%87%8FPython%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%B8%80%EF%BC%89%E5%BC%95%E8%AE%BA.html" rel="prev" title="编写高质量Python程序（一）引论">
+      <i class="fa fa-chevron-left"></i> 编写高质量Python程序（一）引论
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/Blender%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Blender%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99.html" class="post-title-link" itemprop="url">Blender学习资料</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-10 11:51:23 / 修改时间：21:15:45" itemprop="dateCreated datePublished" datetime="2020-03-10T11:51:23+08:00">2020-03-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%BD%AF%E4%BB%B6/" itemprop="url" rel="index">
-                    <span itemprop="name">软件</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Blender是什么？"><a href="#Blender是什么？" class="headerlink" title="Blender是什么？"></a>Blender是什么？</h1><blockquote>
-<p>摘自官方手册：<br>Blender是一个完整集成的3D创作套件，提供了大量的基础工具，包括<strong>建模、渲染、动画&amp;绑定、视频编辑、视觉效果、合成、贴图，以及多种类型的模拟</strong>。跨平台，使用了OpenGL的GUI可以在所有主流平台上都表现出一致的显示效果(并且<strong>可通过Python脚本来自定义界面</strong>)。高质量的3D架构，带来了快速且高效的工作流。活跃的社区支持， blender.org/community 收录了大量的站点列表。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Blender%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/Python-for%E5%BE%AA%E7%8E%AF%E7%9A%84%E5%86%85%E9%83%A8%E6%9C%BA%E5%88%B6.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Python-for%E5%BE%AA%E7%8E%AF%E7%9A%84%E5%86%85%E9%83%A8%E6%9C%BA%E5%88%B6.html" class="post-title-link" itemprop="url">Python-for循环的内部机制</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-03-02 14:36:24" itemprop="dateCreated datePublished" datetime="2020-03-02T14:36:24+08:00">2020-03-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-31 16:23:05" itemprop="dateModified" datetime="2020-03-31T16:23:05+08:00">2020-03-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Python中，使用for循环可以迭代容器对象中的元素，这里容器对象包括是列表（list）、元组（tuple）、字典（dict）、集合（set）等。但是，为什么这些对象可以使用for循环进行操作呢？</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Python-for%E5%BE%AA%E7%8E%AF%E7%9A%84%E5%86%85%E9%83%A8%E6%9C%BA%E5%88%B6.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91.html" class="post-title-link" itemprop="url">机器学习-决策树</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-22 14:49:11" itemprop="dateCreated datePublished" datetime="2020-02-22T14:49:11+08:00">2020-02-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-05 20:20:34" itemprop="dateModified" datetime="2020-03-05T20:20:34+08:00">2020-03-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img data-src="../images/机器学习-决策树.png" alt></p>
-<hr>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
   </article>
   
   
@@ -757,15 +409,10 @@
 
   </div>
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -812,6 +459,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#利用assert语句发现问题"><span class="nav-text">利用assert语句发现问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两个变量进行数据交换"><span class="nav-text">两个变量进行数据交换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#充分利用Lazy-evaluation的特性"><span class="nav-text">充分利用Lazy evaluation的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不推荐使用type来进行类型检查"><span class="nav-text">不推荐使用type来进行类型检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#警惕eval-的安全漏洞"><span class="nav-text">警惕eval()的安全漏洞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用enumerate-获取序列迭代的索引和值"><span class="nav-text">使用enumerate()获取序列迭代的索引和值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区分-与is的适用场景"><span class="nav-text">区分&#x3D;&#x3D;与is的适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构建合理的包层次来管理模块"><span class="nav-text">构建合理的包层次来管理模块</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -971,54 +619,6 @@
   
 
   
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
 
   
   <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
@@ -1027,11 +627,30 @@
       quicklink({
         timeout: 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/',]
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/%E7%BC%96%E5%86%99%E9%AB%98%E8%B4%A8%E9%87%8FPython%E7%A8%8B%E5%BA%8F%EF%BC%88%E4%BA%8C%EF%BC%89%E7%BC%96%E7%A8%8B%E6%83%AF%E7%94%A8%E6%B3%95.html',]
       });
       });
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </script>
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'c3f96e8fb86bf653ad6c',
+      clientSecret: '67954d29616c8cd146127aa2147f7e637aceb151',
+      repo: 'MonteYang.github.io',
+      owner: 'MonteYang',
+      admin: ['MonteYang'],
+      id: 'e277f6473e1e5c21e850aa326b417900',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 </html>
