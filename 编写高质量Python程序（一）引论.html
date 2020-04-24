@@ -62,7 +62,7 @@
 <meta property="og:description" content="本系列文章为《编写高质量代码——改善Python程序的91个建议》的精华汇总。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-09T17:45:35.000Z">
-<meta property="article:modified_time" content="2020-04-11T13:05:34.380Z">
+<meta property="article:modified_time" content="2020-04-22T14:10:54.691Z">
 <meta property="article:author" content="Monte Yang">
 <meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
@@ -239,7 +239,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-11 21:05:34" itemprop="dateModified" datetime="2020-04-11T21:05:34+08:00">2020-04-11</time>
+                <time title="修改时间：2020-04-22 22:10:54" itemprop="dateModified" datetime="2020-04-22T22:10:54+08:00">2020-04-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,18 +270,19 @@
 <a id="more"></a>
 <h1 id="理解Pythonic概念"><a href="#理解Pythonic概念" class="headerlink" title="理解Pythonic概念"></a>理解Pythonic概念</h1><ul>
 <li><p>什么是 Pythonic？</p>
-<p>  Pythonic的代码就是具有Python独特风格的代码。通俗说来，就是在保证代码可读性的前提下，尽可能地简洁、优雅，看起来像伪代码一样。</p>
+<p>Pythonic的代码就是具有Python独特风格的代码。通俗说来，就是在保证代码可读性的前提下，尽可能地简洁、优雅，看起来像伪代码一样。</p>
 </li>
 <li><p>具有 Python 代码风格的例子</p>
 <ul>
 <li><strong>交换两个变量</strong>。其他语言交换两个变量时，一般需要一个临时的中间变量，而Python中可以用一行代码直接交换。</li>
 <li><strong>for循环直接遍历容器</strong>。其他语言中，需要根据索引下标i对容器进行遍历，而Python可以用for循环直接遍历容器。</li>
-<li><strong>使用 <code>str.format()</code> 格式化字符串</strong>，是最Pythonic的字符串格式化方法。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 交换两个变量</span></span><br><span class="line">a, b = b, a</span><br><span class="line"></span><br><span class="line"><span class="comment"># for循环遍历容器</span></span><br><span class="line"><span class="keyword">for</span> elem <span class="keyword">in</span> alist:</span><br><span class="line">    do_sth_with(elem)</span><br><span class="line"></span><br><span class="line"><span class="comment"># format格式化字符串</span></span><br><span class="line">print(<span class="string">"&#123;greet&#125; from &#123;language&#125;!"</span>.format(greet=<span class="string">"hello, world!"</span>, language=<span class="string">"Python"</span>))</span><br></pre></td></tr></table></figure>
-</li>
+<li><strong>使用 <code>str.format()</code> 格式化字符串</strong>，是最Pythonic的字符串格式化方法。</li>
 </ul>
 </li>
-<li><p>Python的库和框架：现有的框架就好比现有的“轮子”，学会利用这些框架，不重复造轮子。</p>
-</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 交换两个变量</span></span><br><span class="line">a, b = b, a</span><br><span class="line"></span><br><span class="line"><span class="comment"># for循环遍历容器</span></span><br><span class="line"><span class="keyword">for</span> elem <span class="keyword">in</span> alist:</span><br><span class="line">    do_sth_with(elem)</span><br><span class="line"></span><br><span class="line"><span class="comment"># format格式化字符串</span></span><br><span class="line">print(<span class="string">"&#123;greet&#125; from &#123;language&#125;!"</span>.format(greet=<span class="string">"hello, world!"</span>, language=<span class="string">"Python"</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Python的库和框架：现有的框架就好比现有的“轮子”，学会利用这些框架，不重复造轮子。</li>
 </ul>
 <h1 id="编写Pythonic代码"><a href="#编写Pythonic代码" class="headerlink" title="编写Pythonic代码"></a>编写Pythonic代码</h1><p>注意要避免的事：</p>
 <ul>
@@ -310,15 +311,19 @@
 <p>需要注意：</p>
 <ol>
 <li>使用块或行注释时，仅仅注释那些复杂操作、算法，还有那些难以理解的、不够一目了然的代码。</li>
-<li>注释和代码隔开一定距离。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = x + <span class="number">1</span>  <span class="comment"># 这样的注释略近</span></span><br><span class="line">x = x + <span class="number">1</span>       <span class="comment"># 更好的注释位置</span></span><br></pre></td></tr></table></figure></li>
-<li><p>给外部可访问的函数或方法添加文档注释。描述其功能、参数、返回值及可能的异常等信息。例如：</p>
+<li>注释和代码隔开一定距离。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = x + <span class="number">1</span>  <span class="comment"># 这样的注释略近</span></span><br><span class="line">x = x + <span class="number">1</span>       <span class="comment"># 更好的注释位置</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>给外部可访问的函数或方法添加文档注释。描述其功能、参数、返回值及可能的异常等信息。例如：</li>
+</ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_lines</span><span class="params">(name, lines)</span>:</span></span><br><span class="line">    <span class="string">"""Return lines that begin with name.</span></span><br><span class="line"><span class="string">    Lines are expected to look like:</span></span><br><span class="line"><span class="string">        name: space separated values</span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        name: string, parameter name.</span></span><br><span class="line"><span class="string">        lines: iterable of string, lines in the file.</span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        List of values in the lines that match.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    retval = []</span><br><span class="line">    matches = itertools.ifilter(<span class="keyword">lambda</span> x: x.startswith(name + <span class="string">":"</span>), lines)</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> matches:</span><br><span class="line">        retval.extend(line[len(name) + <span class="number">1</span> :].split())</span><br><span class="line">    <span class="keyword">return</span> retval</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>建议在文件头包含copyright声明、模块描述，有必要的话还可以加入作者信息。例如：</p>
+<ol>
+<li>建议在文件头包含copyright声明、模块描述，有必要的话还可以加入作者信息。例如：</li>
+</ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Copyright 2014 Google Inc. All Rights Reserved.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Licensed under the Apache License, Version 2.0 (the "License");</span></span><br><span class="line"><span class="comment"># you may not ...</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更新代码之后，注释要和代码同步更新。在实际工作中，很容易发生代码不断迭代，而忘了更新注释的情况，需要加以小心。</p>
-</li>
+<ol>
+<li>更新代码之后，注释要和代码同步更新。在实际工作中，很容易发生代码不断迭代，而忘了更新注释的情况，需要加以小心。</li>
 </ol>
 <h1 id="适当添加空行，使代码布局更优雅、合理"><a href="#适当添加空行，使代码布局更优雅、合理" class="headerlink" title="适当添加空行，使代码布局更优雅、合理"></a>适当添加空行，使代码布局更优雅、合理</h1><ol>
 <li>在一组代码表达完一个完整思路之后，应用空行进行分隔。</li>
@@ -481,7 +486,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

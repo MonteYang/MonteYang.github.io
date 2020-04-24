@@ -75,10 +75,11 @@
 <meta property="og:image" content="http://monteyang.cn/images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-%E5%81%8F%E5%B7%AE%E5%92%8C%E6%96%B9%E5%B7%AE.png">
 <meta property="og:image" content="http://monteyang.cn/images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-SARSA.png">
 <meta property="og:image" content="http://monteyang.cn/images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-sarsa%E5%85%AC%E5%BC%8F.png">
+<meta property="og:image" content="http://monteyang.cn/images/RL-TD%E7%AE%97%E6%B3%95-Sarsa.png">
 <meta property="og:image" content="http://monteyang.cn/images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-Q%E5%AD%A6%E4%B9%A0.png">
 <meta property="og:image" content="http://monteyang.cn/images/RL-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86-Q%E5%AD%A6%E4%B9%A0%E6%B5%81%E7%A8%8B.png">
 <meta property="article:published_time" content="2019-12-16T02:12:42.000Z">
-<meta property="article:modified_time" content="2020-03-11T13:19:52.015Z">
+<meta property="article:modified_time" content="2020-04-22T03:22:09.783Z">
 <meta property="article:author" content="Monte Yang">
 <meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary">
@@ -256,7 +257,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-11 21:19:52" itemprop="dateModified" datetime="2020-03-11T21:19:52+08:00">2020-03-11</time>
+                <time title="修改时间：2020-04-22 11:22:09" itemprop="dateModified" datetime="2020-04-22T11:22:09+08:00">2020-04-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -282,8 +283,8 @@
 
       
         <h1 id="时间差分方法简介"><a href="#时间差分方法简介" class="headerlink" title="时间差分方法简介"></a>时间差分方法简介</h1><ul>
-<li>是强化学习中最为核心的想法，混合了DP和MC<ul>
-<li>和 MC 类似， TD 也从历史经验中学习</li>
+<li>是强化学习中最为<strong>核心</strong>的想法，混合了DP和MC<ul>
+<li>和 MC 类似， TD 也从<strong>历史经验</strong>中学习</li>
 <li>和 DP 类似，使用后继状态的值函数更新当前状态的值函数</li>
 </ul>
 </li>
@@ -337,13 +338,16 @@
 <li><p>全宽备份 $\rightarrow$ 样本备份： 并去掉了期望符号<br><img data-src="../images/RL-时间差分-对比DP.png" alt></p>
 </li>
 <li><p>增加了学习率<br><img data-src="../images/RL-时间差分-对比DP2.png" alt></p>
+<blockquote>
+<p>为什么增加学习率？<br>因为TD目标值$R+\gamma V(S^{‘})$ 是采样得到的，不是精确的。此处的学习率表示“大致往样本的方向更新一小步”</p>
+</blockquote>
 </li>
 </ul>
-<p>采样多的时候，收敛后，时间差分评价算法满足贝尔曼方程</p>
+<p>大量采样，收敛后，时间差分评价算法满足贝尔曼方程：</p>
 <p><img data-src="../images/RL-时间差分-对比DP3.png" alt></p>
-<p>整体看来，在时间差分评价算法中，是利用TD目标和当前值函数的差来指导学习，所以称作时间差分</p>
+<p>整体看来，在时间差分评价算法中，是利用<strong>TD目标</strong>（估计出来的值函数）和<strong>当前值函数</strong>的差来指导学习，所以称作时间差分</p>
 <p><img data-src="../images/RL-时间差分-TD图.png" alt></p>
-<h2 id="评价算法对比：-TD-和-MC"><a href="#评价算法对比：-TD-和-MC" class="headerlink" title="评价算法对比： TD 和 MC"></a>评价算法对比： TD 和 MC</h2><p>在 MC 中，考虑的是整条轨迹。</p>
+<h2 id="评价算法对比：-TD-和-MC"><a href="#评价算法对比：-TD-和-MC" class="headerlink" title="评价算法对比： TD 和 MC"></a>评价算法对比： TD 和 MC</h2><p>在 MC 中，考虑的是整条轨迹，利用整条轨迹来估计值函数V(s)。</p>
 <p><img data-src="../images/RL-时间差分-MC图.png" alt></p>
 <ul>
 <li>TD 在每一步之后都能在线学习； MC 必须等待回报值得到之后才能学习</li>
@@ -351,7 +355,7 @@
 <li>MC 有高方差，零偏差； TD 有低方差，和一些偏差</li>
 </ul>
 <p><img data-src="../images/RL-时间差分-备份图.png" alt></p>
-<h2 id="ML-和-RL-中的偏差-方差权衡"><a href="#ML-和-RL-中的偏差-方差权衡" class="headerlink" title="ML 和 RL 中的偏差/方差权衡"></a>ML 和 RL 中的偏差/方差权衡</h2><h3 id="ML-中的偏差和方差的trade-off"><a href="#ML-中的偏差和方差的trade-off" class="headerlink" title="ML 中的偏差和方差的trade-off"></a>ML 中的偏差和方差的trade-off</h3><p>在监督学习中，偏差/方差有另外的理解——<strong>欠拟合</strong>和<strong>过拟合</strong></p>
+<h3 id="ML-和-RL-中的偏差-方差权衡"><a href="#ML-和-RL-中的偏差-方差权衡" class="headerlink" title="ML 和 RL 中的偏差/方差权衡"></a>ML 和 RL 中的偏差/方差权衡</h3><h4 id="ML-中的偏差和方差的trade-off"><a href="#ML-中的偏差和方差的trade-off" class="headerlink" title="ML 中的偏差和方差的trade-off"></a>ML 中的偏差和方差的trade-off</h4><p>在监督学习中，偏差/方差有另外的理解——<strong>欠拟合</strong>和<strong>过拟合</strong></p>
 <ul>
 <li>偏差大 (欠拟合): 预测值和样本之间的差</li>
 <li>方差大 (过拟合): 样本值之间的方差, 学出的模型泛化能力差</li>
@@ -359,35 +363,86 @@
 <p>方差大意味着样本的置信度较差</p>
 <p>机器学习方法都会在偏差和方差之间做 trade-off</p>
 <p><img data-src="../images/RL-时间差分-偏差和方差.png" alt></p>
-<h3 id="RL-中的偏差和方差的trade-off"><a href="#RL-中的偏差和方差的trade-off" class="headerlink" title="RL 中的偏差和方差的trade-off"></a>RL 中的偏差和方差的trade-off</h3><ul>
+<h4 id="RL-中的偏差和方差的trade-off"><a href="#RL-中的偏差和方差的trade-off" class="headerlink" title="RL 中的偏差和方差的trade-off"></a>RL 中的偏差和方差的trade-off</h4><ul>
 <li>回报值 $G_t = R_{t+1} + \gamma R_{t+2} + … + {\gamma}^{T-t-1}R_T$ 是值函数 $v_\pi(S_t)$ 的无偏估计</li>
 <li>真实的 TD 目标值 $R_{t+1} + γv_π(S_{t+1})$ 是值函数 $v_π(S_t)$ 的无偏估计</li>
 <li>使用的 TD 目标值 $R_{t+1} + γV_π(S_{t+1})$ 是值函数 $v_π(S_t)$ 的有偏估计</li>
-<li>TD 目标值的方差要远小于回报值<ul>
-<li>回报值依赖于很多随机变量 $A_{t},S_{t+1},R_{t+1},A_{t+1},S_{t+2},R_{t+2},· · ·$</li>
-<li>TD 目标值仅仅依赖于一个随机序列 $A_t,S_{t+1},R_{t+1}$</li>
+<li>TD 目标值的方差要远小于回报值（蒙特卡洛）<ul>
+<li>回报值依赖于很多随机变量 $A_{t},S_{t+1},R_{t+1},A_{t+1},S_{t+2},R_{t+2},· · ·$ ，每一步都会引入一定的方差，所以方差很大</li>
+<li>TD 目标值仅仅依赖于一个随机序列 $A_t,S_{t+1},R_{t+1}$，只有一步随机，所以方差很小</li>
+</ul>
+</li>
+</ul>
+<h3 id="TD-和-MC-的优缺点"><a href="#TD-和-MC-的优缺点" class="headerlink" title="TD 和 MC 的优缺点"></a>TD 和 MC 的优缺点</h3><ul>
+<li>MC 有高方差，零偏差<ul>
+<li>收敛性较好 (即使采用函数逼近)</li>
+<li>对初始值不太敏感</li>
+<li>简单, 容易理解和使用</li>
+<li>随着样本数量的增加，<strong>方差逐渐减少, 趋近于 0</strong></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>TD 有低方差，和一些偏差</p>
+<ul>
+<li>通常比 MC 效率更高</li>
+<li>表格法下 TD(0) 收敛到 $v_π(s)$ (函数逼近时不一定)</li>
+<li>对初始值更敏感（由于用了贝尔曼方程，初始值会影响之后的迭代）</li>
+<li>随着样本数量的增加，<strong>偏差逐渐减少，趋近于 0</strong></li>
+</ul>
+</li>
+<li><p>TD 利用了马尔可夫性</p>
+<ul>
+<li>一般来说 TD 在马尔可夫环境中更有效</li>
+</ul>
+</li>
+<li>MC 没有利用马尔可夫性<ul>
+<li>一般对非马尔可夫环境更有效</li>
+</ul>
+</li>
+</ul>
+<h2 id="其他对比维度"><a href="#其他对比维度" class="headerlink" title="其他对比维度"></a>其他对比维度</h2><ul>
+<li><strong>自举</strong>: 使用随机变量的估计去更新<ul>
+<li>MC 没有自举</li>
+<li>DP 和 TD 都有自举</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>采样</strong>: 通过样本估计期望。这里是通过采样的样本来估计值函数。<ul>
+<li>MC 和 TD 用到了采样（环境模型未知，需要对环境交互进行采样，从而估计值函数）</li>
+<li>DP 不采样（状态转移概率、奖励已知，直接计算值函数）</li>
 </ul>
 </li>
 </ul>
 <h1 id="时间差分优化"><a href="#时间差分优化" class="headerlink" title="时间差分优化"></a>时间差分优化</h1><ul>
 <li>广义策略迭代<ul>
-<li>策略评价: TD 策略评价， $Q = q_π$</li>
+<li>策略评价: <strong>TD 策略评价</strong>， $Q = q_π$</li>
 <li>策略提升: $\epsilon$-贪婪策略提升</li>
 </ul>
 </li>
+</ul>
+<ul>
 <li>TD 优化相比 MC 优化有几点好处<ul>
-<li>低方差</li>
-<li>在线更新 (online)</li>
-<li>不完整序列</li>
+<li><strong>低方差</strong></li>
+<li><strong>在线更新</strong> (online)。在线更新指的是，每进行一步就可以进行更新，而不需要整个episode做完才更新。</li>
+<li><strong>不完整序列</strong></li>
 </ul>
 </li>
 </ul>
-<h2 id="在策略-TD-优化——Sarsa"><a href="#在策略-TD-优化——Sarsa" class="headerlink" title="在策略 TD 优化——Sarsa"></a>在策略 TD 优化——Sarsa</h2><p><img data-src="../images/RL-时间差分-SARSA.png" alt></p>
+<h2 id="在策略-TD-优化——Sarsa"><a href="#在策略-TD-优化——Sarsa" class="headerlink" title="在策略 TD 优化——Sarsa"></a><strong>在策略</strong> TD 优化——Sarsa</h2><p><img data-src="../images/RL-时间差分-SARSA.png" alt></p>
+<p>在当前状态S，根据当前策略，选择动作A，收到奖励R，转移到状态S’。在状态S’下，再根据当前策略（同一个策略）选择动作A’。</p>
 <p><img data-src="../images/RL-时间差分-sarsa公式.png" alt></p>
+<p>注意： TD目标值中的动作 A’ 其实并没有做</p>
+<p><img data-src="../images/RL-TD算法-Sarsa.png" alt></p>
 <p>值迭代</p>
 <p>为什么是<strong>在策略</strong>？</p>
-<p>执行的动作 A 是来自当前 Q 值下的 $\epsilon$-贪婪策略，构建 TD 目标值是的动作 A′ 是来自当前 Q 值下的 $\epsilon$-贪婪策略，这两者是同一个策略。</p>
-<h2 id="离策略-TD-优化——Q学习"><a href="#离策略-TD-优化——Q学习" class="headerlink" title="离策略 TD 优化——Q学习"></a>离策略 TD 优化——Q学习</h2><p><img data-src="../images/RL-时间差分-Q学习.png" alt></p>
+<ul>
+<li>当前状态 S 下，执行的动作 A 是来自当前 Q 函数下的 $\epsilon$-贪婪策略</li>
+<li><strong>TD 目标值</strong>中，在下一个状态S’下，动作 A′ 也是来自当前 Q 函数下的 $\epsilon$-贪婪策略</li>
+<li>这两者是同一个策略。</li>
+</ul>
+<h3 id="期望Sarsa"><a href="#期望Sarsa" class="headerlink" title="期望Sarsa"></a>期望Sarsa</h3><h2 id="离策略-TD-优化——Q学习"><a href="#离策略-TD-优化——Q学习" class="headerlink" title="离策略 TD 优化——Q学习"></a><strong>离策略</strong> TD 优化——Q学习</h2><p><img data-src="../images/RL-时间差分-Q学习.png" alt></p>
 <p><img data-src="../images/RL-时间差分-Q学习流程.png" alt></p>
 
     </div>
@@ -512,7 +567,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#时间差分方法简介"><span class="nav-text">时间差分方法简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间差分评价"><span class="nav-text">时间差分评价</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#时间差分评价算法"><span class="nav-text">时间差分评价算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评价算法对比：-TD-和-DP"><span class="nav-text">评价算法对比： TD 和 DP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评价算法对比：-TD-和-MC"><span class="nav-text">评价算法对比： TD 和 MC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ML-和-RL-中的偏差-方差权衡"><span class="nav-text">ML 和 RL 中的偏差&#x2F;方差权衡</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ML-中的偏差和方差的trade-off"><span class="nav-text">ML 中的偏差和方差的trade-off</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RL-中的偏差和方差的trade-off"><span class="nav-text">RL 中的偏差和方差的trade-off</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间差分优化"><span class="nav-text">时间差分优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在策略-TD-优化——Sarsa"><span class="nav-text">在策略 TD 优化——Sarsa</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离策略-TD-优化——Q学习"><span class="nav-text">离策略 TD 优化——Q学习</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#时间差分方法简介"><span class="nav-text">时间差分方法简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间差分评价"><span class="nav-text">时间差分评价</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#时间差分评价算法"><span class="nav-text">时间差分评价算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评价算法对比：-TD-和-DP"><span class="nav-text">评价算法对比： TD 和 DP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#评价算法对比：-TD-和-MC"><span class="nav-text">评价算法对比： TD 和 MC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ML-和-RL-中的偏差-方差权衡"><span class="nav-text">ML 和 RL 中的偏差&#x2F;方差权衡</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ML-中的偏差和方差的trade-off"><span class="nav-text">ML 中的偏差和方差的trade-off</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RL-中的偏差和方差的trade-off"><span class="nav-text">RL 中的偏差和方差的trade-off</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TD-和-MC-的优缺点"><span class="nav-text">TD 和 MC 的优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他对比维度"><span class="nav-text">其他对比维度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间差分优化"><span class="nav-text">时间差分优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在策略-TD-优化——Sarsa"><span class="nav-text">在策略 TD 优化——Sarsa</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#期望Sarsa"><span class="nav-text">期望Sarsa</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离策略-TD-优化——Q学习"><span class="nav-text">离策略 TD 优化——Q学习</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -527,7 +582,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

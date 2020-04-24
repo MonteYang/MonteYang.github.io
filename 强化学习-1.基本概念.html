@@ -65,7 +65,7 @@
 <meta property="og:image" content="http://monteyang.cn/images/RL-%E7%8E%AF%E5%A2%83%E7%8A%B6%E6%80%81.png">
 <meta property="og:image" content="http://monteyang.cn/images/RL-%E6%99%BA%E8%83%BD%E4%BD%93%E7%8A%B6%E6%80%81.png">
 <meta property="article:published_time" content="2019-12-16T02:08:42.000Z">
-<meta property="article:modified_time" content="2020-04-17T03:00:42.228Z">
+<meta property="article:modified_time" content="2020-04-19T03:23:30.368Z">
 <meta property="article:author" content="Monte Yang">
 <meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary">
@@ -243,7 +243,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-17 11:00:42" itemprop="dateModified" datetime="2020-04-17T11:00:42+08:00">2020-04-17</time>
+                <time title="修改时间：2020-04-19 11:23:30" itemprop="dateModified" datetime="2020-04-19T11:23:30+08:00">2020-04-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -281,7 +281,7 @@
 </blockquote>
 <p>强化学习的<strong>目的</strong> <em>就是为了得到最优的策略</em>。</p>
 <hr>
-<h1 id="2-强化学习的组成"><a href="#2-强化学习的组成" class="headerlink" title="2. 强化学习的组成"></a>2. 强化学习的组成</h1><h2 id="整体结构：环境和智能体"><a href="#整体结构：环境和智能体" class="headerlink" title="整体结构：环境和智能体"></a>整体结构：环境和智能体</h2><p><img data-src="/images/RL-整体示意图.png" alt="环境和智能体"></p>
+<h1 id="2-强化学习的组成"><a href="#2-强化学习的组成" class="headerlink" title="2. 强化学习的组成"></a>2. 强化学习的组成</h1><h2 id="整体结构：环境和智能体"><a href="#整体结构：环境和智能体" class="headerlink" title="整体结构：环境和智能体"></a>整体结构：环境和智能体</h2><p><img data-src="../images/RL-整体示意图.png" alt="环境和智能体"></p>
 <p>每个时刻 $t$:</p>
 <ul>
 <li>智能体（Agent）<ul>
@@ -310,7 +310,7 @@
 <p>如果一个问题不满足奖励假设，就不能用强化学习解决！</p>
 </blockquote>
 <ul>
-<li><p><strong>奖励值</strong>和<strong>回报值（Return）</strong>的比较</p>
+<li><p><strong>奖励值</strong> 和 <strong>回报值（Return）</strong> 的比较</p>
 <p>  回报值 $G_t$ 又称<strong>累积折扣奖励</strong>（cumulative discounted reward）。step $t$ 时的 return 为</p>
 <script type="math/tex; mode=display">G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ...</script><p>  其中$\gamma$表示折扣因子，公式中重视每一步reward的程度随着时间衰减，是一个可调的超参数。</p>
 <ul>
@@ -339,13 +339,13 @@
 <li>打砖块游戏中，前几帧的观测可以看做状态 $S_{t} = O_{t-3}, O_{t-2}, O_{t-1}, O_t$</li>
 </ul>
 </blockquote>
-<h3 id="环境状态-S-e-t"><a href="#环境状态-S-e-t" class="headerlink" title="环境状态 $S^e_t$"></a>环境状态 $S^e_t$</h3><p><img data-src="/images/RL-环境状态.png" alt="环境状态"></p>
+<h3 id="环境状态-S-e-t"><a href="#环境状态-S-e-t" class="headerlink" title="环境状态 $S^e_t$"></a>环境状态 $S^e_t$</h3><p><img data-src="../images/RL-环境状态.png" alt="环境状态"></p>
 <ul>
 <li>所有能够影响环境产生观测/奖励的数据都被认为是环境状态的一部分</li>
 <li>环境状态一般是智能体观察不到的</li>
 <li>即使环境状态 $S^e_t$ 可见的，一般也包含了不相关的信息</li>
 </ul>
-<h3 id="智能体状态-S-a-t"><a href="#智能体状态-S-a-t" class="headerlink" title="智能体状态 $S^a_t$"></a><strong>智能体状态</strong> $S^a_t$</h3><p><img data-src="/images/RL-智能体状态.png" alt="智能体状态"></p>
+<h3 id="智能体状态-S-a-t"><a href="#智能体状态-S-a-t" class="headerlink" title="智能体状态 $S^a_t$"></a><strong>智能体状态</strong> $S^a_t$</h3><p><img data-src="../images/RL-智能体状态.png" alt="智能体状态"></p>
 <ul>
 <li>所有能够影响智能体做出下一个动作的数据都被认为是智能体状态的一部分</li>
 <li><strong>强化学习中使用的状态</strong></li>
@@ -370,7 +370,7 @@
 <h2 id="2-3-动作-Action"><a href="#2-3-动作-Action" class="headerlink" title="2.3 动作 Action"></a>2.3 动作 Action</h2><ul>
 <li>动作是智能体与环境交互的媒介</li>
 <li>动作必须对环境起到<strong>一定的控制作用</strong></li>
-<li>动作必须和奖励匹配</li>
+<li><strong>动作必须和奖励匹配</strong></li>
 </ul>
 <hr>
 <h1 id="3-智能体的组成"><a href="#3-智能体的组成" class="headerlink" title="3. 智能体的组成"></a>3. 智能体的组成</h1><p>智能体的组成主要包括：</p>
@@ -634,7 +634,7 @@ $$Q_\pi(s,a)=E_\pi(G_t|S_t=s,A_t=a)$$
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
