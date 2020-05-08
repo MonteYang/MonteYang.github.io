@@ -210,7 +210,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/Python-%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D.html">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/M.jpeg">
@@ -224,7 +224,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/Python-%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D.html" class="post-title-link" itemprop="url">Python-浅拷贝和深拷贝</a>
+            <a href="/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html" class="post-title-link" itemprop="url">论文阅读-Bag of Tricks for Image Classification with Convolutional Neural Networks</a>
         </h2>
 
         <div class="post-meta">
@@ -234,14 +234,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-01-14 00:58:37" itemprop="dateCreated datePublished" datetime="2019-01-14T00:58:37+08:00">2019-01-14</time>
+              <time title="创建时间：2019-11-11 15:45:42" itemprop="dateCreated datePublished" datetime="2019-11-11T15:45:42+08:00">2019-11-11</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-17 03:38:30" itemprop="dateModified" datetime="2020-03-17T03:38:30+08:00">2020-03-17</time>
+                <time title="修改时间：2020-03-01 01:38:23" itemprop="dateModified" datetime="2020-03-01T01:38:23+08:00">2020-03-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,272 +249,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="浅拷贝和深拷贝"><a href="#浅拷贝和深拷贝" class="headerlink" title="浅拷贝和深拷贝"></a>浅拷贝和深拷贝</h1><ul>
-<li>浅拷贝：<code>copy.copy()</code> 只拷贝最外层的数据，如<code>list1 = [a, b]</code> 其中 <code>a = [1, 2]</code>，<code>b = [3, 4]</code>，执行 <code>list2 = copy.copy(list1)</code> 时，<code>list2</code> 中只会拷贝了 <code>a</code>, <code>b</code> 的指向，不会在内存区域中创建一份完全一样的数据</li>
-<li>深拷贝：<code>copy.deepcopy()</code> 拷贝所有的数据，存入一块新的内存区域中。</li>
-<li>直接赋值： 在 Python 中称作引用，可以理解为指向</li>
-</ul>
-<p>特殊的情形：</p>
-<ul>
-<li>用<code>copy.copy()</code>和<code>copy.deepcopy()</code>，即深拷贝和浅拷贝，对一个内部全部是不可变类型的数据（如元组中嵌套元组等）进行拷贝，那么他们的结果相同，都是拷贝指向；</li>
-<li>如果对一个拥有可变类型数据的元组进行拷贝，那么<code>copy.deepcopy()</code>就是依然是拷贝所有数据， <code>copy.copy()</code>拷贝的是指向。</li>
-</ul>
-<h1 id="对于-list"><a href="#对于-list" class="headerlink" title="对于 list"></a>对于 <code>list</code></h1><ul>
-<li>切片操作 是 <strong>浅拷贝</strong> 等价于 <code>copy.copy()</code></li>
-<li>直接复制给另一个变量仅仅是 <strong>拷贝指向</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切片操作举例</span></span><br><span class="line">In [<span class="number">2</span>]: a = [<span class="number">11</span>, <span class="number">22</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">3</span>]: b = [<span class="number">33</span>, <span class="number">44</span>]</span><br><span class="line"></span><br><span class="line">In [<span class="number">4</span>]: c = [a, b]</span><br><span class="line"></span><br><span class="line">In [<span class="number">5</span>]: d = c[:]</span><br><span class="line"></span><br><span class="line">In [<span class="number">6</span>]: id(c)</span><br><span class="line">Out[<span class="number">6</span>]: <span class="number">140628676451464</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">7</span>]: id(d)</span><br><span class="line">Out[<span class="number">7</span>]: <span class="number">140628676526600</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">8</span>]: id(c[<span class="number">0</span>])</span><br><span class="line">Out[<span class="number">8</span>]: <span class="number">140628686255112</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">9</span>]: id(d[<span class="number">0</span>])</span><br><span class="line">Out[<span class="number">9</span>]: <span class="number">140628686255112</span></span><br></pre></td></tr></table></figure>
-<p>以上可知，切片操作只拷贝了 <code>list</code> 的最外层，效果和 <code>copy.copy()</code> 一样，为浅拷贝。</p>
-<h1 id="对于-numpy"><a href="#对于-numpy" class="headerlink" title="对于 numpy"></a>对于 <code>numpy</code></h1><ul>
-<li><code>np.copy()</code> 是 <strong>深拷贝</strong></li>
-<li>直接赋值给另一个变量依然只是 <strong>拷贝指向</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># numpy深拷贝示例</span></span><br><span class="line">In [<span class="number">12</span>]: arr = np.zeros((<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line"></span><br><span class="line">In [<span class="number">13</span>]: arr</span><br><span class="line">Out[<span class="number">13</span>]:</span><br><span class="line">array([[ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">14</span>]: b = arr.copy()</span><br><span class="line"></span><br><span class="line">In [<span class="number">17</span>]: b[<span class="number">0</span>,<span class="number">0</span>] = <span class="number">1</span> <span class="comment"># 更改b的值</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">18</span>]: arr <span class="comment"># arr不变，说明copy()方法是深拷贝</span></span><br><span class="line">Out[<span class="number">18</span>]:</span><br><span class="line">array([[ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">19</span>]: b</span><br><span class="line">Out[<span class="number">19</span>]:</span><br><span class="line">array([[ <span class="number">1.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># numpy浅拷贝示例</span></span><br><span class="line">In [<span class="number">33</span>]: b = arr <span class="comment"># 直接赋值给变量b</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">34</span>]: b</span><br><span class="line">Out[<span class="number">34</span>]:</span><br><span class="line">array([[ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>]])</span><br><span class="line"></span><br><span class="line">In [<span class="number">35</span>]: arr[<span class="number">0</span>,<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">In [<span class="number">36</span>]: b</span><br><span class="line">Out[<span class="number">36</span>]:</span><br><span class="line">array([[ <span class="number">1.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>],</span><br><span class="line">       [ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>]])</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/Python-slot-%E5%B1%9E%E6%80%A7.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/Python-slot-%E5%B1%9E%E6%80%A7.html" class="post-title-link" itemprop="url">Python-__slot__属性</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-12 21:45:38" itemprop="dateCreated datePublished" datetime="2019-01-12T21:45:38+08:00">2019-01-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-07 18:36:52" itemprop="dateModified" datetime="2020-04-07T18:36:52+08:00">2020-04-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Python中默认用一个<strong>字典</strong>来保存一个对象的实例属性，使得我们在运行时可以任意设置新属性。</p>
-<p>但是，对于已知固有属性的小型类来说，这个字典浪费了很多内存。（由于可设置新属性，Python不能在对象创建时直接分配一个固定量的内存保存所有属性）</p>
-<p>因此，如果创建成千上万个这样的小类，Python就会浪费掉很多内存。</p>
-<p>此时，<strong>引入类中的<code>__slots__</code>属性，使得python</strong>：</p>
-<ul>
-<li><strong>给类指定一个固定大小的空间存放属性</strong></li>
-<li><strong>无法给该类创建的实例添加新的属性</strong></li>
-</ul>
-<h3 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h3><ul>
-<li>不使用<code>__slots__</code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point_1</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x=<span class="number">0</span>, y=<span class="number">0</span>)</span>:</span></span><br><span class="line">        self.x = x</span><br><span class="line">        self.y = y</span><br><span class="line">    <span class="comment"># ...</span></span><br></pre></td></tr></table></figure></li>
-<li>使用<code>__slots__</code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point_2</span><span class="params">(object)</span>:</span></span><br><span class="line">    __slots__ = [<span class="string">'x'</span>, <span class="string">'y'</span>]</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x=<span class="number">0</span>, y=<span class="number">0</span>)</span>:</span></span><br><span class="line">        self.x = x</span><br><span class="line">        self.y = y</span><br><span class="line">    <span class="comment"># ...</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建 Point_1 类的实例 p1</span></span><br><span class="line">In [<span class="number">10</span>]: p1 = Point_1()</span><br><span class="line"><span class="comment"># 可以给 p1 添加新的属性 z</span></span><br><span class="line">In [<span class="number">11</span>]: p1.z = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建 Point_2 类的实例 p2</span></span><br><span class="line">In [<span class="number">12</span>]: p2 = Point_2()</span><br><span class="line"><span class="comment"># 无法给 p2 添加新的属性</span></span><br><span class="line">In [<span class="number">13</span>]: p2.z</span><br><span class="line">---------------------------------------------------------------------------</span><br><span class="line">AttributeError                            Traceback (most recent call last)</span><br><span class="line">&lt;ipython-input<span class="number">-19</span>-b152092c7c5d&gt; <span class="keyword">in</span> &lt;module&gt;()</span><br><span class="line">----&gt; 1 p2.z</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E8%A1%A5-%E7%BB%B4%E6%95%B0%E5%85%AC%E5%BC%8F.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E8%A1%A5-%E7%BB%B4%E6%95%B0%E5%85%AC%E5%BC%8F.html" class="post-title-link" itemprop="url">矩阵论笔记-1.补:维数公式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-04 17:31:55" itemprop="dateCreated datePublished" datetime="2019-01-04T17:31:55+08:00">2019-01-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-18 23:22:56" itemprop="dateModified" datetime="2020-02-18T23:22:56+08:00">2020-02-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9F%A9%E9%98%B5%E8%AE%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">矩阵论</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="维数公式"><a href="#维数公式" class="headerlink" title="维数公式"></a>维数公式</h1><script type="math/tex; mode=display">dim(V+U) = dimV + dimU-dim(V\cap U)</script><p>即，<strong>和空间的维数等于两空间维数之和减去两空间的交空间的维数</strong>。</p>
-<blockquote>
-<p>例子：<br>三维空间中，记$V$为 $xOy$平面， $U$ 为 $yOz$平面 ，即 $dimV = dimU = 2$ 。<br>它们的和空间是三维空间，即 $dim(V+U) = 3$ 。<br>它们的交空间是y轴，即 $dim(V \cap U)=1$。<br>满足维数公式。</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html" class="post-title-link" itemprop="url">矩阵论笔记-1.线性空间、线性子空间、矩阵的值域和核空间</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-04 17:30:04" itemprop="dateCreated datePublished" datetime="2019-01-04T17:30:04+08:00">2019-01-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-18 23:22:56" itemprop="dateModified" datetime="2020-02-18T23:22:56+08:00">2020-02-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%9F%A9%E9%98%B5%E8%AE%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">矩阵论</span>
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
                   </a>
                 </span>
             </span>
@@ -531,23 +267,18 @@
 
       
           <blockquote>
-<p>本文记录于2019年1月</p>
+<p>《<a href="https://arxiv.org/abs/1812.01187" target="_blank" rel="external nofollow noopener noreferrer">Bag of Tricks for Image Classification with Convolutional Neural Networks</a>》论文阅读</p>
 </blockquote>
-<h2 id="1-线性空间"><a href="#1-线性空间" class="headerlink" title="1.线性空间"></a>1.线性空间</h2><h3 id="1-1-线性空间的定义"><a href="#1-1-线性空间的定义" class="headerlink" title="1.1 线性空间的定义"></a>1.1 线性空间的定义</h3><p>设非空集合$V$，一个数域$K$，$x,y,z \in V$， $k,l\in K$，如果$V$满足加法封闭和数乘封闭，则称$V$为线性空间。</p>
-<blockquote>
-<ol>
-<li>加法封闭：  加法交换律、加法结合律、零向量、负向量。</li>
-<li>数乘封闭： 数对元素的分配律、元素对数的分配律、数因子结合律、单位向量。
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/%E7%9F%A9%E9%98%B5%E8%AE%BA%E7%AC%94%E8%AE%B0-1-%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4%E3%80%81%E7%BA%BF%E6%80%A7%E5%AD%90%E7%A9%BA%E9%97%B4%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E5%80%BC%E5%9F%9F%E5%92%8C%E6%A0%B8%E7%A9%BA%E9%97%B4.html#more" rel="contents">
+              <a class="btn" href="/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
           <!--/noindex-->
         
       
-    </li></ol></blockquote></div>
+    </div>
 
     
     
@@ -564,7 +295,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/M.jpeg">
@@ -578,7 +309,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/Linux%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93.html" class="post-title-link" itemprop="url">Linux基本命令总结</a>
+            <a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-%E6%95%B0%E7%BB%84%E5%92%8C%E9%93%BE%E8%A1%A8.html" class="post-title-link" itemprop="url">数据结构与算法-数组和链表</a>
         </h2>
 
         <div class="post-meta">
@@ -588,14 +319,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-12-17 18:30:04" itemprop="dateCreated datePublished" datetime="2018-12-17T18:30:04+08:00">2018-12-17</time>
+              <time title="创建时间：2019-04-09 17:18:05" itemprop="dateCreated datePublished" datetime="2019-04-09T17:18:05+08:00">2019-04-09</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-18 23:22:56" itemprop="dateModified" datetime="2020-02-18T23:22:56+08:00">2020-02-18</time>
+                <time title="修改时间：2020-04-10 14:56:55" itemprop="dateModified" datetime="2020-04-10T14:56:55+08:00">2020-04-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -603,8 +334,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构和算法</span>
                   </a>
                 </span>
             </span>
@@ -620,461 +351,364 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p>于2018年12月开始使用Linux操作系统，本文记录于<code>2018-12-17</code></p>
-</blockquote>
-<hr>
-<h1 id="终端命令格式"><a href="#终端命令格式" class="headerlink" title="终端命令格式"></a>终端命令格式</h1><pre><code>`command [-options] [parameter]`
-</code></pre><blockquote>
-<p><code>[]</code> 代表可选</p>
-</blockquote>
+          <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>数组（Array）是一种线性的数据结构，创建数组时，会占用一段<strong>连续的内存区域</strong>，存放相同数据类型的元素。</p>
+<p>在数组中，按索引<strong>访问元素的时间复杂度为O(1)</strong>，这是由内存控制器所保证的。</p>
+<p><img data-src="../images/DS-数组取元素.png" alt></p>
+<p><strong>插入和删除操作的复杂度是O(n)</strong>，这也是因为数组在内存中连续存储，插入或删除其中一个元素时，为了保持在内存中的连续性，后面的元素也会随之挪动。</p>
+<p><img data-src="../images/DS-数组插入和删除.png" alt></p>
+<h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><p>和数组一样，链表也是一种线性结构。但链表的内存结构不是连续的内存空间，而是将一组零散的内存块串联起来存储。其中每一个内存块称作节点(Node)。每个节点除了存储数据外，还需记录链表中下一个节点的地址，即后继指针next。</p>
+<p><img data-src="../images/DS-链表结构.png" alt></p>
+<p>插入节点：先把新节点的next指针指向插入位置的下一个节点，再把上一个结点的next指针指向新节点。时间复杂度为O(1)。</p>
+<p><img data-src="../images/DS-链表插入节点.png" alt="插入节点"></p>
+<p>删除节点：直接把将被删除节点的上一个节点的next指针指向被删除节点的下一个节点。时间复杂度为O(1)。</p>
+<p><img data-src="../images/DS-链表删除节点.png" alt="删除节点"></p>
+<p>与数组相比，更适合使用链表的场景：</p>
+<ol>
+<li><strong>改善插入和删除操作的效率。</strong> 因为数组的插入和删除操作的时间复杂度较高，使用链表结构，插入和删除操作的时间复杂度为O(1)，如果程序中对线性结构进行大量的插入、删除操作，那么更适合使用链表。</li>
+</ol>
+<ol>
+<li><strong>线性结构中元素个数未知。</strong> 创建数组，需要申请一块固定大小的内存区域，意味着限制住了元素数量，如果内存区域装满了，那么就需要重新申请一块内存区域，而链表可以直接将元素添加到链表尾部。</li>
+</ol>
+<p>双向链表：在链表的每个节点中，既有后继指针next，又有前驱指针prev。</p>
+<p><img data-src="../images/DS-双向链表.png" alt></p>
+<h1 id="题目：反转链表（leetcode-206）"><a href="#题目：反转链表（leetcode-206）" class="headerlink" title="题目：反转链表（leetcode 206）"></a>题目：<strong>反转链表</strong>（leetcode 206）</h1><blockquote>
+<p>题目描述：反转一个单链表。</p>
+<p>示例:</p>
 <ul>
-<li>帮助<ul>
-<li><code>command --help</code></li>
-<li><code>man command</code></li>
-</ul>
-</li>
-</ul>
-<hr>
-<h1 id="文件和目录常用命令"><a href="#文件和目录常用命令" class="headerlink" title="文件和目录常用命令"></a>文件和目录常用命令</h1><h2 id="查看目录内容"><a href="#查看目录内容" class="headerlink" title="查看目录内容"></a>查看目录内容</h2><ul>
-<li><p><code>ls</code></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-a</td>
-<td>显示指定目录下所有子目录与文件，包括隐藏文件</td>
-</tr>
-<tr>
-<td>-l</td>
-<td>以列表方式显示文件的详细信息</td>
-</tr>
-<tr>
-<td>-h</td>
-<td>配合 -l 以人性化的方式显示文件大小</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li><p><code>tree</code></p>
-<ul>
-<li>以树状图列出文件目录结构<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>含义</th>
-</tr>
-</thead>
-    <tbody>
-<tr>
-<td>-d</td>
-<td>只显示目录</td>
-</tr>
-</tbody>
-</table>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="切换目录"><a href="#切换目录" class="headerlink" title="切换目录"></a>切换目录</h2><ul>
-<li><p><code>cd</code></p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>含义</th>
-</tr>
-</thead>
-    <tbody>
-<tr>
-<td>cd</td>
-<td>切换到当前用户的主目录(/home/用户目录)</td>
-</tr>
-<tr>
-<td>cd ~</td>
-<td>切换到当前用户的主目录(/home/用户目录)</td>
-</tr>
-<tr>
-<td>cd .</td>
-<td>保持在当前目录不变</td>
-</tr>
-<tr>
-<td>cd ..</td>
-<td>切换到上级目录</td>
-</tr>
-<tr>
-<td>cd -</td>
-<td>可以在最近两次工作目录之间来回切换</td>
-</tr>
-</tbody>
-</table>
-
-</li>
-</ul>
-<h2 id="创建和删除操作"><a href="#创建和删除操作" class="headerlink" title="创建和删除操作"></a>创建和删除操作</h2><ul>
-<li><code>touch</code></li>
-<li><code>rm</code><table>
-<thead>
-<tr>
-<th>选项</th>
-<th>含义</th>
-</tr>
-</thead>
-    <tbody>
-<tr>
-<td>-f</td>
-<td>强制删除，忽略不存在的文件，无需提示</td>
-</tr>
-<tr>
-<td>-r</td>
-<td>递归地删除目录下的内容，**删除文件夹** 时必须加此参数</td>
-</tr>
-</tbody>
-</table>
-
-
-</li>
-</ul>
-<ul>
-<li><code>mkdir</code>、</li>
-</ul>
-<h2 id="拷贝和移动文件"><a href="#拷贝和移动文件" class="headerlink" title="拷贝和移动文件"></a>拷贝和移动文件</h2><ul>
-<li><p><code>cp</code></p>
-<table>
-<thead>
-<tr>
-<th>选项</th>       
-<th>含义</th>
-</tr>
-</thead>
-    <tbody>
-<tr>
-<td>-i</td>
-<td>覆盖文件前提示</td>
-</tr>
-<tr>
-<td>-r</td>
-<td>若给出的源文件是目录文件，则 cp 将递归复制该目录下的所有子目录和文件，目标文件必须为一个目录名</td>
-</tr>
-</tbody>
-</table>
-
-
-</li>
-</ul>
-<ul>
-<li><code>mv</code></li>
-</ul>
-<h2 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h2><ul>
-<li><code>cat</code></li>
-<li><code>more</code></li>
-<li><code>grep</code></li>
-</ul>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
-<li><code>echo</code></li>
-<li><p>重定向 <code>&gt;</code> 和 <code>&gt;&gt;</code></p>
-<ul>
-<li>将本应显示在终端上的内容 <strong>输出／追加</strong> 到指定文件中</li>
-</ul>
-</li>
-<li><p>管道 <code>|</code></p>
-<ul>
-<li><strong>一个命令的输出通过管道</strong> 做为 <strong>另一个命令的输入</strong></li>
-</ul>
-</li>
-<li>清屏 <code>clear</code></li>
-<li><code>whereis</code>, <code>which</code></li>
-</ul>
-<hr>
-<h1 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h1><table>
-<thead>
-<tr>
-<th>通配符</th>
-<th>含义</th>
-</tr>
-</thead>
-    <tbody>
-<tr>
-<td>*</td>
-<td>代表任意个数个字符</td>
-</tr>
-<tr>
-<td>?</td>
-<td>代表任意一个字符，至少 1 个</td>
-</tr>
-<tr>
-<td>[]</td>
-<td>表示可以匹配字符组中的任一一个</td>
-</tr>
-<tr>
-<td>[abc]</td>
-<td>匹配 a、b、c 中的任意一个</td>
-</tr>
-<tr>
-<td>[a-f]</td>
-<td>匹配从 a 到 f 范围内的的任意一个字符</td>
-</tr>
-</tbody>
-</table>
-
-<hr>
-<h1 id="系统信息命令"><a href="#系统信息命令" class="headerlink" title="系统信息命令"></a>系统信息命令</h1><h2 id="时间和日期"><a href="#时间和日期" class="headerlink" title="时间和日期"></a>时间和日期</h2><ul>
-<li><code>date</code></li>
-<li><code>cal</code></li>
-</ul>
-<h2 id="磁盘和目录空间"><a href="#磁盘和目录空间" class="headerlink" title="磁盘和目录空间"></a>磁盘和目录空间</h2><table>
-<thead>
-<tr>
-<th>序号</th>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>01</td>
-<td>df -h</td>
-<td>`disk free` 显示磁盘剩余空间</td>
-</tr>
-<tr>
-<td>02</td>
-<td>du -h [目录名]</td>
-<td>`disk usage` 显示目录下的文件大小</td>
-</tr>
-</tbody>
-</table>
-
-
-<h2 id="进程信息"><a href="#进程信息" class="headerlink" title="进程信息"></a>进程信息</h2><table>
-<thead>
-<tr>
-<th>序号</th>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>01</td>
-<td>ps aux</td>
-<td>`process status` 查看进程的详细状况</td>
-</tr>
-<tr>
-<td>02</td>
-<td>top</td>
-<td>动态显示运行中的进程并且排序</td>
-</tr>
-<tr>
-<td>03</td>
-<td>kill [-9] 进程代号</td>
-<td>终止指定代号的进程，`-9` 表示强行终止</td>
-</tr>
-</tbody>
-</table>
-> `ps` 默认只会显示当前用户通过终端启动的应用程序
-
-*   `ps` 选项说明功能
-
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>含义</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>a</td>
-<td>显示终端上的所有进程，包括其他用户的进程</td>
-</tr>
-<tr>
-<td>u</td>
-<td>显示进程的详细状态</td>
-</tr>
-<tr>
-<td>x</td>
-<td>显示没有控制终端的进程</td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li><code>htop</code>， 还有更多的top。。。</li>
-</ul>
-<hr>
-<h1 id="用户权限相关"><a href="#用户权限相关" class="headerlink" title="用户权限相关"></a>用户权限相关</h1><h2 id="用户-和-权限"><a href="#用户-和-权限" class="headerlink" title="用户 和 权限"></a><strong>用户</strong> 和 <strong>权限</strong></h2><ul>
-<li>Linux系统中，每一个用户对于不同的系统资源（文件/目录）拥有不同的使用权限。</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align: center">序号</th>
-<th style="text-align: center">权限</th>
-<th style="text-align: center">英文</th>
-<th style="text-align: center">缩写</th>
-<th style="text-align: center">数字代号</th>
-</tr>
-</thead>
-    <tbody>
-<tr>
-<td style="text-align: center">01</td>
-<td style="text-align: center">读</td>
-<td style="text-align: center">read</td>
-<td style="text-align: center">r</td>
-<td style="text-align: center">4</td>
-</tr>
-<tr>
-<td style="text-align: center">02</td>
-<td style="text-align: center">写</td>
-<td style="text-align: center">write</td>
-<td style="text-align: center">w</td>
-<td style="text-align: center">2</td>
-</tr>
-<tr>
-<td style="text-align: center">03</td>
-<td style="text-align: center">执行</td>
-<td style="text-align: center">excute</td>
-<td style="text-align: center">x</td>
-<td style="text-align: center">1</td>
-</tr>
-</tbody>
-</table>
-
-<ul>
-<li><p>用户权限还可以通过用户<strong>组</strong>设置</p>
-</li>
-<li><p><code>ls -l</code></p>
-<ul>
-<li><strong>权限</strong>，第 1 个字符如果是 <code>d</code> 表示目录</li>
-<li><strong>硬链接数</strong>，通俗地讲，就是有多少种方式，可以访问到当前目录／文件</li>
-<li><strong>拥有者</strong>，家目录下 文件／目录 的拥有者通常都是当前用户</li>
-<li><strong>组</strong></li>
-<li><strong>大小</strong></li>
-<li><strong>时间</strong></li>
-<li><strong>名称</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="修改文件权限"><a href="#修改文件权限" class="headerlink" title="修改文件权限"></a>修改文件权限</h2><ul>
-<li><p><code>chmod</code> </p>
-<ul>
-<li><code>chmod</code> 可以修改 <strong>用户／组</strong> 对 <strong>文件／目录</strong> 的权限</li>
-<li>命令格式如下：<ul>
-<li><code>chmod +/-rwx 文件名|目录名</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>序号</th>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>01</td>
-<td>chown</td>
-<td>修改拥有者</td>
-</tr>
-<tr>
-<td>02</td>
-<td>chgrp</td>
-<td>修改组</td>
-</tr>
-<tr>
-<td>03</td>
-<td>chmod</td>
-<td>修改权限</td>
-</tr>
-</tbody>
-</table>
-
-
-<ul>
-<li><p>命令格式如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改文件|目录的拥有者</span></span><br><span class="line">chown 用户名 文件名|目录名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归修改文件|目录的组</span></span><br><span class="line">chgrp -R 组名 文件名|目录名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 递归修改文件权限</span></span><br><span class="line">chmod -R 755 文件名|目录名</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>chmod</code> 在设置权限时，可以简单地使用三个数字分别对应 <strong>拥有者</strong> ／ <strong>组</strong> 和 <strong>其他</strong> 用户的权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接修改文件|目录的 读|写|执行 权限，但是不能精确到 拥有者|组|其他</span></span><br><span class="line">chmod +/-rwx 文件名|目录名</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>常见数字组合有（<code>u</code>表示用户／<code>g</code>表示组／<code>o</code>表示其他）：</p>
-<ul>
-<li><code>777</code> ===&gt; <code>u=rwx,g=rwx,o=rwx</code></li>
-<li><code>755</code> ===&gt; <code>u=rwx,g=rx,o=rx</code></li>
-<li><code>644</code> ===&gt; <code>u=rw,g=r,o=r</code></li>
-</ul>
-</li>
-</ul>
-<hr>
-<h1 id="远程管理"><a href="#远程管理" class="headerlink" title="远程管理"></a>远程管理</h1><h2 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown"></a><code>shutdown</code></h2><ul>
-<li><strong>安全</strong> <strong>关闭</strong> 或者 <strong>重新启动系统</strong></li>
-<li>常用命令示例  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 重新启动操作系统，其中 now 表示现在</span></span><br><span class="line">$ shutdown -r now</span><br><span class="line"></span><br><span class="line"><span class="comment"># 立刻关机，其中 now 表示现在</span></span><br><span class="line">$ shutdown now</span><br><span class="line"></span><br><span class="line"><span class="comment"># 系统在今天的 20:25 会关机</span></span><br><span class="line">$ shutdown 20:25</span><br><span class="line"></span><br><span class="line"><span class="comment"># 系统再过十分钟后自动关机</span></span><br><span class="line">$ shutdown +10</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取消之前指定的关机计划</span></span><br><span class="line">$ shutdown -c</span><br></pre></td></tr></table></figure>
-<blockquote>
-<ul>
-<li><strong>不指定选项和参数</strong>，默认表示 <strong>1 分钟</strong>之后 <strong>关闭电脑</strong></li>
-<li>远程维护服务器时，最好不要关闭系统，而应该重新启动系统</li>
+<li>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</li>
+<li>输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</li>
 </ul>
 </blockquote>
-</li>
-</ul>
-<h2 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a><code>ssh</code></h2><pre>`ssh [-p port] user@remote`</pre>
-
 <ul>
-<li><code>user</code> 是在远程机器上的用户名，如果不指定的话默认为当前用户</li>
-<li><code>remote</code> 是远程机器的地址，可以是 <strong>IP</strong>／<strong>域名</strong>，或者是 <strong>后面会提到的别名</strong></li>
-<li><code>port</code> 是 <strong>SSH Server 监听的端口</strong>，如果不指定，就为默认值 <code>22</code></li>
+<li><strong>思路</strong>: 链表中，由于当前节点（由cur指针指向）只有对后继节点的引用，所以<strong>需要一个临时指针指向当前节点的前驱节点</strong>，才能将当前节点的next指针指向前驱节点，达到反转的目的。为了继续整个过程，遍历后继节点，还要预先将后继节点储存，使用cur指针指向。</li>
 </ul>
-<h2 id="scp"><a href="#scp" class="headerlink" title="scp"></a><code>scp</code></h2><ul>
-<li><strong>远程拷贝文件</strong> 的命令</li>
-<li>它的<strong>地址格式与 ssh 基本相同</strong>，指定端口时用的是大写的 <code>-P</code> 而不是小写的<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把本地当前目录下的 01.py 文件 复制到 远程 家目录下的 Desktop/01.py</span></span><br><span class="line"><span class="comment"># 注意：`:` 后面的路径如果不是绝对路径，则以用户的家目录作为参照路径</span></span><br><span class="line">scp -P port 01.py user@remote:Desktop/01.py</span><br><span class="line"><span class="comment"># 把远程 家目录下的 Desktop/01.py 文件 复制到 本地当前目录下的 01.py</span></span><br><span class="line">scp -P port user@remote:Desktop/01.py 01.py</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加上 -r 选项可以传送文件夹</span></span><br><span class="line"><span class="comment"># 把当前目录下的 demo 文件夹 复制到 远程 家目录下的 Desktop</span></span><br><span class="line">scp -r demo user@remote:Desktop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把远程 家目录下的 Desktop 复制到 当前目录下的 demo 文件夹</span></span><br><span class="line">scp -r user@remote:Desktop demo</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span>:</span></span><br><span class="line">    <span class="string">"""节点类"""</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.val = x</span><br><span class="line">        self.next = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseList</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        prev = <span class="literal">None</span></span><br><span class="line">        cur = head</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            cur_next_ = cur.next</span><br><span class="line">            cur.next = prev</span><br><span class="line">            prev = cur</span><br><span class="line">            cur = cur_next_</span><br><span class="line">        new_head = prev</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> new_head</span><br></pre></td></tr></table></figure>
+<!-- ## 题目：**两两交换链表中的结点**（leetcode 24） -->
+<h1 id="题目：判断链表中是否有环（leetcode-141）"><a href="#题目：判断链表中是否有环（leetcode-141）" class="headerlink" title="题目：判断链表中是否有环（leetcode 141）"></a>题目：<strong>判断链表中是否有环</strong>（leetcode 141）</h1><blockquote>
+<p>题目描述：给定一个链表，判断链表中是否有环。</p>
+<p>示例 1</p>
 <ul>
-<li><p>常见服务端口号列表：</p>
-<table>
-<thead>
-<tr>
-<th>序号</th>
-<th>服务</th>
-<th>端口号</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>01</td>
-<td>SSH 服务器</td>
-<td>22</td>
-</tr>
-<tr>
-<td>02</td>
-<td>Web 服务器</td>
-<td>80</td>
-</tr>
-<tr>
-<td>03</td>
-<td>HTTPS</td>
-<td>443</td>
-</tr>
-<tr>
-<td>04</td>
-<td>FTP 服务器</td>
-<td>21</td>
-</tr>
-</tbody>
-</table>
-
-</li>
+<li>输入：head = [3,2,0,-4], pos = 1</li>
+<li>输出：true</li>
+<li>解释：链表中有一个环，其尾部连接到第二个节点。<br><img data-src="../images/DS-链表有环.png" alt></li>
 </ul>
+</blockquote>
+<ul>
+<li><strong>思路1</strong>：设置一个set集合，每走过一个节点，判断这个节点的地址是否在set集合内（这步为O(1)）将节点的地址放入set集合。</li>
+<li><strong>思路2</strong>：快慢指针。一个指针走1步，一个指针走2步，两指针若能相遇，即链表中有环。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 思路2：快慢指针</span></span><br><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.val = x</span><br><span class="line">        self.next = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasCycle</span><span class="params">(self, head: ListNode)</span> -&gt; bool:</span></span><br><span class="line">        slow = fast = head</span><br><span class="line">        <span class="keyword">while</span> slow <span class="keyword">and</span> fast <span class="keyword">and</span> fast.next:</span><br><span class="line">            slow = slow.next</span><br><span class="line">            fast = fast.next.next</span><br><span class="line">            <span class="keyword">if</span> slow == fast:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/C%E8%AF%AD%E8%A8%80-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/M.jpeg">
+      <meta itemprop="name" content="Monte Yang">
+      <meta itemprop="description" content="❤MY">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Monte's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/C%E8%AF%AD%E8%A8%80-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html" class="post-title-link" itemprop="url">C语言-数据类型转换</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-24 08:40:02" itemprop="dateCreated datePublished" datetime="2019-03-24T08:40:02+08:00">2019-03-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-24 17:09:12" itemprop="dateModified" datetime="2020-03-24T17:09:12+08:00">2020-03-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>计算机进行算术运算时，要求各操作数的类型具有相同的大小（存储位数）及存储方式，<strong>通常不能将不同类型的数据直接参与运算。</strong></p>
+<p>然而，在 C 语言中，允许不同类型的数据混合运算。某些类型的转换编译器可隐式地自动进行，为<strong>自动类型转换</strong>；而有些类型转换需要程序员显式指定，称为<strong>强制类型转换</strong>。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/C%E8%AF%AD%E8%A8%80-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/C++-%E5%AD%97%E7%AC%A6%E4%B8%B2.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/M.jpeg">
+      <meta itemprop="name" content="Monte Yang">
+      <meta itemprop="description" content="❤MY">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Monte's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/C++-%E5%AD%97%E7%AC%A6%E4%B8%B2.html" class="post-title-link" itemprop="url">C++-字符串</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-24 06:54:26" itemprop="dateCreated datePublished" datetime="2019-03-24T06:54:26+08:00">2019-03-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-26 14:24:23" itemprop="dateModified" datetime="2020-03-26T14:24:23+08:00">2020-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、C语言风格的字符串"><a href="#一、C语言风格的字符串" class="headerlink" title="一、C语言风格的字符串"></a>一、C语言风格的字符串</h1><p>C++兼容C语言, 所以也可以用<strong>以<code>\0</code>结尾的字符数组</strong>来表示字符串, 例如：</p>
+<p><img data-src="../images/array.string.png" alt></p>
+<p>字符串末尾都有一个字符’\0’做结束符, 这里的\0是ASCII码为0的Null字符, 在C语言中这种字符串也称为以零结尾的字符串（Null-terminated String）. 数组元素可以通过数组名加下标的方式访问, 字符串字面值也可以加下标访问其中的字符：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c = <span class="string">"Hello, world.\n"</span>[<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
+<p>但要注意, <strong>字符串字面值是只读的, 不能修改</strong>. 即 <code>&quot;Hello, world.\n&quot;[0]</code>不能作为左值.</p>
+<p>字符串字面值作为右值使用时, 和数组类似, 自动转换成<strong>指向字符串首元素的指针</strong>.</p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[<span class="number">10</span>] = <span class="string">"Hello"</span>;</span><br><span class="line"><span class="keyword">char</span> str[<span class="number">10</span>] = &#123; <span class="string">'H'</span>, <span class="string">'e'</span>, <span class="string">'l'</span>, <span class="string">'l'</span>, <span class="string">'o'</span>, <span class="string">'\0'</span> &#125;;</span><br><span class="line"><span class="keyword">char</span> str[<span class="number">10</span>] = <span class="string">"Hello, world.\n"</span>;</span><br><span class="line"><span class="keyword">char</span> str[] = <span class="string">"Hello, world.\n"</span>;</span><br></pre></td></tr></table></figure>
+<p>str的后四个元素没有指定, 自动初始化为0, 即Null字符.</p>
+<p>如果用于初始化的字符串字面值比数组还长, 则数组str只包含字符串的前10个字符, 不包含Null字符, 这种情况编译器会给出警告.</p>
+<p>如果要用一个字符串字面值准确地初始化一个字符数组, 最好的办法是不指定数组的长度, 让编译器自己计算.</p>
+<h2 id="字符串相关的操作函数"><a href="#字符串相关的操作函数" class="headerlink" title="字符串相关的操作函数"></a>字符串相关的操作函数</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>strcpy(s1, s2);</code></td>
+<td>复制字符串 s2 到字符串 s1.</td>
+</tr>
+<tr>
+<td><code>strcat(s1, s2);</code></td>
+<td>连接字符串 s2 到字符串 s1 的末尾.</td>
+</tr>
+<tr>
+<td><code>strlen(s1);</code></td>
+<td>返回字符串 s1 的长度.</td>
+</tr>
+<tr>
+<td><code>strcmp(s1, s2);</code></td>
+<td>如果 s1 和 s2 是相同的, 则返回 0；如果 s1 &lt; s2 则返回值小于 0；如果 s1 &gt; s2 则返回值大于 0.</td>
+</tr>
+<tr>
+<td><code>strchr(s1, ch);</code></td>
+<td>返回一个指针, 指向字符串 s1 中字符 ch 的第一次出现的位置.</td>
+</tr>
+<tr>
+<td><code>strstr(s1, s2);</code></td>
+<td>返回一个指针, 指向字符串 s1 中字符串 s2 的第一次出现的位置.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="二、C-中的String类"><a href="#二、C-中的String类" class="headerlink" title="二、C++中的String类"></a>二、C++中的String类</h1><h2 id="创建String"><a href="#创建String" class="headerlink" title="创建String"></a>创建String</h2><p>String类不用担心内存溢出的问题, 还可以和C语言的字符串相互转换. 使用时必须包含头文件</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>string类是一个模板类, 位于std命名空间内, 为方便使用还需添加：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个String对象</span></span><br><span class="line"><span class="built_in">string</span> str;</span><br><span class="line"><span class="comment">// 1. 将C语言字符串赋值给String对象</span></span><br><span class="line"><span class="keyword">char</span> strname[<span class="number">30</span>];</span><br><span class="line"><span class="built_in">strcpy</span>(strname, <span class="string">"hello"</span>);</span><br><span class="line">str = strname;</span><br><span class="line"><span class="comment">// 2. 直接对String赋值</span></span><br><span class="line">str = <span class="string">"hello, world!"</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="重载的操作符"><a href="#重载的操作符" class="headerlink" title="重载的操作符"></a>重载的操作符</h2><ul>
+<li><code>=</code>: 可以用<code>=</code>直接对string对象赋值</li>
+<li><code>==, &gt;, &lt;, &gt;=, &lt;=, !=</code> : 比较大小</li>
+<li><code>+, +=</code> : 连接两个字符串</li>
+<li><code>[]</code> : 类似字符数组, 获取字符串中某个位置的字符</li>
+</ul>
+<h2 id="转为C语言的字符串"><a href="#转为C语言的字符串" class="headerlink" title="转为C语言的字符串"></a>转为C语言的字符串</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">char</span> *<span class="title">c_str</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+<p>返回一个以NULL结尾的C语言字符串, 即返回一个指向C字符串的指针, 字符串内容与String相同, 用于 string 转 const char*.</p>
+<h2 id="String特性描述的成员函数"><a href="#String特性描述的成员函数" class="headerlink" title="String特性描述的成员函数"></a>String特性描述的成员函数</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;     <span class="comment">// 返回字符串的大小</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">length</span><span class="params">()</span></span>;   <span class="comment">// 返回字符串的长度</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>;   <span class="comment">// 清空字符串</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用经验"><a href="#使用经验" class="headerlink" title="使用经验"></a>使用经验</h2><p>C++的string类是一个变长的字符串, 不需要担心内存溢出的问题, 还提供了很多字符串操作函数, 但是由于<strong>string中的字符串存储的内存空间没有固定的位置, 所以string无法用于需要字符串固定地址的情况</strong>.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/M.jpeg">
+      <meta itemprop="name" content="Monte Yang">
+      <meta itemprop="description" content="❤MY">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Monte's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3.html" class="post-title-link" itemprop="url">Python-axis的理解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-15 11:40:13" itemprop="dateCreated datePublished" datetime="2019-01-15T11:40:13+08:00">2019-01-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-21 15:48:20" itemprop="dateModified" datetime="2020-04-21T15:48:20+08:00">2020-04-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="axis的本质"><a href="#axis的本质" class="headerlink" title="axis的本质"></a>axis的本质</h1><p>axis(轴)是编程语言中常见的概念, 它的本质是<strong>数组的层级</strong>.</p>
+<p>例如, 在Python语言中, numpy的array是一个多维(或一维)的数组:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">arr = np.array(np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>,<span class="number">4</span>))</span><br><span class="line">print(arr)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">array([[ 0,  1,  2,  3],</span></span><br><span class="line"><span class="string">       [ 4,  5,  6,  7],</span></span><br><span class="line"><span class="string">       [ 8,  9, 10, 11]])</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">print(arr.shape)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">(3, 4)</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>axis=0, 表示最外层的<code>[]</code>, 相应的<code>arr.shape[0]</code>为 3, 最外层数组有3个元素；</li>
+<li>axis=1, 表示次外层的<code>[]</code>, 相应的<code>arr.shape[1]</code>为 4, 这就表示, 在最外层的3个数组元素中, 每个数组元素中又有4个元素。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </li></ul></div>
 
     
     
@@ -1091,7 +725,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1158,7 +792,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1171,7 +805,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

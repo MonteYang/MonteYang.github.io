@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://monteyang.cn/images/RL-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6-%E5%A4%9A%E7%A7%8D%E5%BD%A2%E5%BC%8F%E6%80%BB%E7%BB%93.png">
 <meta property="og:image" content="http://monteyang.cn/images/RL-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6-A2C.png">
 <meta property="article:published_time" content="2019-12-16T02:14:42.000Z">
-<meta property="article:modified_time" content="2020-04-24T07:36:06.064Z">
+<meta property="article:modified_time" content="2020-04-28T12:42:46.632Z">
 <meta property="article:author" content="Monte Yang">
 <meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary">
@@ -269,7 +269,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-24 15:36:06" itemprop="dateModified" datetime="2020-04-24T15:36:06+08:00">2020-04-24</time>
+                <time title="修改时间：2020-04-28 20:42:46" itemprop="dateModified" datetime="2020-04-28T20:42:46+08:00">2020-04-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -332,6 +332,7 @@
 </ul>
 <h2 id="策略模型的建模方式"><a href="#策略模型的建模方式" class="headerlink" title="策略模型的建模方式"></a>策略模型的建模方式</h2><p><img data-src="../images/RL-策略梯度算法-建模方式.png" alt></p>
 <p>左侧2个是值函数方法，右侧2个是基于策略的方法。</p>
+<hr>
 <h1 id="策略梯度算法"><a href="#策略梯度算法" class="headerlink" title="策略梯度算法"></a>策略梯度算法</h1><h2 id="策略梯度目标函数"><a href="#策略梯度目标函数" class="headerlink" title="策略梯度目标函数"></a>策略梯度目标函数</h2><p>在策略梯度算法中，我们用一个参数 θ 建模策略 $π_θ(s,a)$，如何寻找最优的参数 θ?</p>
 <p>值函数近似时，优化的目标是使值函数的输出接近目标值。那么，如何不利用值函数，直接评价一个策略 $π_θ$ 的好坏？</p>
 <h2 id="策略梯度的推导"><a href="#策略梯度的推导" class="headerlink" title="策略梯度的推导"></a>策略梯度的推导</h2><p>用 $τ$ 表示每次仿真的状态-行为序列 $S_0,A_0,… ,S_T,A_T$，每一个轨迹代表了强化学习的一个样本。轨迹的回报：</p>
@@ -408,7 +409,7 @@
 <p>由于<strong>将来的动作不依赖过去的奖励</strong>，因此我们可以修改回报值来降低方差。</p>
 <p><strong>只考虑t时刻以后的奖励值</strong>： 由 k = t 开始，降低了方差（减少了t时刻之前的随机性所导致的方差）</p>
 <p><img data-src="../images/RL-策略梯度-修改回报值函数2.png" alt></p>
-<p>上式中，每一次更新需要 m 条轨迹作为样本，从t=0时刻一直计算到T时刻。</p>
+<p>上式中，每一次更新需要 m 条轨迹作为样本，从 t=0 时刻一直计算到T时刻。</p>
 <p>实际更新算法：</p>
 <ul>
 <li><p>考虑单条轨迹</p>
@@ -420,6 +421,7 @@
 <p>表示在t时刻的更新，对每一步都进行更新。但还是利用到了t时刻到T时刻的奖励值，属于 MC 形式。</p>
 </li>
 </ul>
+<hr>
 <h1 id="Actor-Critic"><a href="#Actor-Critic" class="headerlink" title="Actor-Critic"></a>Actor-Critic</h1><h2 id="MC-策略梯度-REINFORCE"><a href="#MC-策略梯度-REINFORCE" class="headerlink" title="MC 策略梯度 (REINFORCE)"></a>MC 策略梯度 (REINFORCE)</h2><ul>
 <li>使用<strong>梯度上升算法</strong>更新参数 θ</li>
 <li>使用<strong>采样回报值</strong> $g_t$ 估计真实回报值</li>
@@ -469,6 +471,7 @@
 <p>使用 TD 误差来计算策略梯度：</p>
 <p><img data-src="../images/RL-策略梯度-TD误差3.png" alt></p>
 <p>通过这样的方法，我们只需要一个 critic 参数 v，通过v函数求 TD 误差即可。</p>
+<hr>
 <h1 id="策略梯度多种形式的总结"><a href="#策略梯度多种形式的总结" class="headerlink" title="策略梯度多种形式的总结"></a>策略梯度多种形式的总结</h1><p>核心在更换对回报值$g_t$的估计。</p>
 <p><img data-src="../images/RL-策略梯度-多种形式总结.png" alt></p>
 <blockquote>
@@ -479,7 +482,8 @@
 <li>求梯度的部分（∇）：控制着策略更新的<strong>方向</strong></li>
 <li>$g_t$ 及其变种：控制着策略更新的<strong>步长</strong>（重要）</li>
 </ul>
-<p>Critic 使用了策略评价 (MC 或 TD) 来估计 $Q_π(s, a); A_π(s, a)$ 或<br>$V_π(s)$</p>
+<p>Critic 使用了策略评价 (MC 或 TD) 来估计 $Q_π(s, a); A_π(s, a)$ 或 $V_π(s)$</p>
+<hr>
 <h1 id="A2C-算法"><a href="#A2C-算法" class="headerlink" title="A2C 算法"></a>A2C 算法</h1><p><img data-src="../images/RL-策略梯度-A2C.png" alt></p>
 <ol>
 <li>通过在当前状态s下，执行动作a，获得奖励r、并到达下一个状态s’，</li>
@@ -489,6 +493,7 @@
 <blockquote>
 <p>A2C 中为了充分探索到样本，且满足样本独立同分布，常常使用多进程的思路。</p>
 </blockquote>
+<hr>
 <h1 id="其他策略梯度算法"><a href="#其他策略梯度算法" class="headerlink" title="其他策略梯度算法"></a>其他策略梯度算法</h1><ul>
 <li>自然梯度算法：找到最快的更新方向</li>
 <li>信赖域策略优化算法（TRPO）：步长的选择</li>
@@ -633,7 +638,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -646,7 +651,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

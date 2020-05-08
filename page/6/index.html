@@ -210,7 +210,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-5.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%952-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86.html">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/Python-%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E3%80%81%E5%8D%8F%E7%A8%8B.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/M.jpeg">
@@ -224,7 +224,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-5.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%952-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86.html" class="post-title-link" itemprop="url">强化学习-5.无模型方法2-时间差分</a>
+            <a href="/Python-%E5%A4%9A%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%AE%9E%E7%8E%B0%EF%BC%9A%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E3%80%81%E5%8D%8F%E7%A8%8B.html" class="post-title-link" itemprop="url">Python-多任务的实现</a>
         </h2>
 
         <div class="post-meta">
@@ -234,14 +234,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-12-16 10:12:42" itemprop="dateCreated datePublished" datetime="2019-12-16T10:12:42+08:00">2019-12-16</time>
+              <time title="创建时间：2019-12-16 22:00:42" itemprop="dateCreated datePublished" datetime="2019-12-16T22:00:42+08:00">2019-12-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-22 11:22:09" itemprop="dateModified" datetime="2020-04-22T11:22:09+08:00">2020-04-22</time>
+                <time title="修改时间：2020-02-29 16:19:00" itemprop="dateModified" datetime="2020-02-29T16:19:00+08:00">2020-02-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,764 +249,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">强化学习</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="时间差分方法简介"><a href="#时间差分方法简介" class="headerlink" title="时间差分方法简介"></a>时间差分方法简介</h1><ul>
-<li>是强化学习中最为<strong>核心</strong>的想法，混合了DP和MC<ul>
-<li>和 MC 类似， TD 也从<strong>历史经验</strong>中学习</li>
-<li>和 DP 类似，使用后继状态的值函数更新当前状态的值函数</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>属于无模型方法<ul>
-<li>未知 P，R，需要智能体与环境进行交互，样本备份，需要充分的探索…</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>同时利用了采样和贝尔曼方程</li>
-</ul>
-<ul>
-<li>可以从不完整的片段中学习（通过<strong>自举法</strong>）<ul>
-<li>可同时应用于片段性任务和连续性任务</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><strong>通过估计来更新估计</strong></li>
-</ul>
-<blockquote>
-<p><strong>自举法</strong><br>(bootstrapping) 又名拔靴法、自助法。通过对样本进行<strong>重采样</strong>得到的估计总体的方法。<br>重采样：对样本里的数据再采样一次。<br>强化学习的 MC 中，一条轨迹是一个样本。TD 中，把一条轨迹采样成小片段，再对片段进行采样，所以属于自举法。</p>
-</blockquote>
-<h1 id="时间差分评价"><a href="#时间差分评价" class="headerlink" title="时间差分评价"></a>时间差分评价</h1><p><strong>目的</strong>：给定策略 $π$，求其对应的值函数 $v_π$</p>
-<blockquote>
-<p>对比之前的蒙特卡洛算法。</p>
-<ul>
-<li>增量蒙特卡洛算法<ul>
-<li>用实际回报值$G_t$去更新值函数 $V(S_t)$<br><img data-src="../images/RL-TD-MC更新值函数.png" alt></li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h2 id="时间差分评价算法"><a href="#时间差分评价算法" class="headerlink" title="时间差分评价算法"></a>时间差分评价算法</h2><p>时间差分算法 (Temporal-difference， TD)中，<strong>使用估计的回报值 $R_{t+1} + γV(S_{t+1})$ 去更新值函数 $V(S_t)$ (TD(0))</strong></p>
-<p><img data-src="../images/RL-TD更新值函数.png" alt></p>
-<p>其中：</p>
-<ul>
-<li>$R_{t+1} + \gamma V(S_{t+1})$ 称为 TD 目标</li>
-<li>$\delta_t = R_{t+1} + \gamma V(S_{t+1}) − V(S_t)$ 称为 TD 误差</li>
-<li>$\alpha$ 在0~1之间</li>
-</ul>
-<p>时间差分策略评价算法</p>
-<p><img data-src="../images/RL-时间差分-算法.png" alt></p>
-<h2 id="评价算法对比：-TD-和-DP"><a href="#评价算法对比：-TD-和-DP" class="headerlink" title="评价算法对比： TD 和 DP"></a>评价算法对比： TD 和 DP</h2><p>DP中， 利用了贝尔曼方程去解强化学习问题</p>
-<p><img data-src="../images/RL-时间差分-DP.png" alt></p>
-<p><img data-src="../images/RL-时间差分-DP图.png" alt></p>
-<p>而 TD 中，也利用了贝尔曼方程，但做了以下改动：</p>
-<ul>
-<li><p>全宽备份 $\rightarrow$ 样本备份： 并去掉了期望符号<br><img data-src="../images/RL-时间差分-对比DP.png" alt></p>
-</li>
-<li><p>增加了学习率<br><img data-src="../images/RL-时间差分-对比DP2.png" alt></p>
-<blockquote>
-<p>为什么增加学习率？<br>因为TD目标值$R+\gamma V(S^{‘})$ 是采样得到的，不是精确的。此处的学习率表示“大致往样本的方向更新一小步”</p>
-</blockquote>
-</li>
-</ul>
-<p>大量采样，收敛后，时间差分评价算法满足贝尔曼方程：</p>
-<p><img data-src="../images/RL-时间差分-对比DP3.png" alt></p>
-<p>整体看来，在时间差分评价算法中，是利用<strong>TD目标</strong>（估计出来的值函数）和<strong>当前值函数</strong>的差来指导学习，所以称作时间差分</p>
-<p><img data-src="../images/RL-时间差分-TD图.png" alt></p>
-<h2 id="评价算法对比：-TD-和-MC"><a href="#评价算法对比：-TD-和-MC" class="headerlink" title="评价算法对比： TD 和 MC"></a>评价算法对比： TD 和 MC</h2><p>在 MC 中，考虑的是整条轨迹，利用整条轨迹来估计值函数V(s)。</p>
-<p><img data-src="../images/RL-时间差分-MC图.png" alt></p>
-<ul>
-<li>TD 在每一步之后都能在线学习； MC 必须等待回报值得到之后才能学习</li>
-<li>TD 利用了马尔科夫性； MC 没有利用马尔科夫性</li>
-<li>MC 有高方差，零偏差； TD 有低方差，和一些偏差</li>
-</ul>
-<p><img data-src="../images/RL-时间差分-备份图.png" alt></p>
-<h3 id="ML-和-RL-中的偏差-方差权衡"><a href="#ML-和-RL-中的偏差-方差权衡" class="headerlink" title="ML 和 RL 中的偏差/方差权衡"></a>ML 和 RL 中的偏差/方差权衡</h3><h4 id="ML-中的偏差和方差的trade-off"><a href="#ML-中的偏差和方差的trade-off" class="headerlink" title="ML 中的偏差和方差的trade-off"></a>ML 中的偏差和方差的trade-off</h4><p>在监督学习中，偏差/方差有另外的理解——<strong>欠拟合</strong>和<strong>过拟合</strong></p>
-<ul>
-<li>偏差大 (欠拟合): 预测值和样本之间的差</li>
-<li>方差大 (过拟合): 样本值之间的方差, 学出的模型泛化能力差</li>
-</ul>
-<p>方差大意味着样本的置信度较差</p>
-<p>机器学习方法都会在偏差和方差之间做 trade-off</p>
-<p><img data-src="../images/RL-时间差分-偏差和方差.png" alt></p>
-<h4 id="RL-中的偏差和方差的trade-off"><a href="#RL-中的偏差和方差的trade-off" class="headerlink" title="RL 中的偏差和方差的trade-off"></a>RL 中的偏差和方差的trade-off</h4><ul>
-<li>回报值 $G_t = R_{t+1} + \gamma R_{t+2} + … + {\gamma}^{T-t-1}R_T$ 是值函数 $v_\pi(S_t)$ 的无偏估计</li>
-<li>真实的 TD 目标值 $R_{t+1} + γv_π(S_{t+1})$ 是值函数 $v_π(S_t)$ 的无偏估计</li>
-<li>使用的 TD 目标值 $R_{t+1} + γV_π(S_{t+1})$ 是值函数 $v_π(S_t)$ 的有偏估计</li>
-<li>TD 目标值的方差要远小于回报值（蒙特卡洛）<ul>
-<li>回报值依赖于很多随机变量 $A_{t},S_{t+1},R_{t+1},A_{t+1},S_{t+2},R_{t+2},· · ·$ ，每一步都会引入一定的方差，所以方差很大</li>
-<li>TD 目标值仅仅依赖于一个随机序列 $A_t,S_{t+1},R_{t+1}$，只有一步随机，所以方差很小</li>
-</ul>
-</li>
-</ul>
-<h3 id="TD-和-MC-的优缺点"><a href="#TD-和-MC-的优缺点" class="headerlink" title="TD 和 MC 的优缺点"></a>TD 和 MC 的优缺点</h3><ul>
-<li>MC 有高方差，零偏差<ul>
-<li>收敛性较好 (即使采用函数逼近)</li>
-<li>对初始值不太敏感</li>
-<li>简单, 容易理解和使用</li>
-<li>随着样本数量的增加，<strong>方差逐渐减少, 趋近于 0</strong></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>TD 有低方差，和一些偏差</p>
-<ul>
-<li>通常比 MC 效率更高</li>
-<li>表格法下 TD(0) 收敛到 $v_π(s)$ (函数逼近时不一定)</li>
-<li>对初始值更敏感（由于用了贝尔曼方程，初始值会影响之后的迭代）</li>
-<li>随着样本数量的增加，<strong>偏差逐渐减少，趋近于 0</strong></li>
-</ul>
-</li>
-<li><p>TD 利用了马尔可夫性</p>
-<ul>
-<li>一般来说 TD 在马尔可夫环境中更有效</li>
-</ul>
-</li>
-<li>MC 没有利用马尔可夫性<ul>
-<li>一般对非马尔可夫环境更有效</li>
-</ul>
-</li>
-</ul>
-<h2 id="其他对比维度"><a href="#其他对比维度" class="headerlink" title="其他对比维度"></a>其他对比维度</h2><ul>
-<li><strong>自举</strong>: 使用随机变量的估计去更新<ul>
-<li>MC 没有自举</li>
-<li>DP 和 TD 都有自举</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><strong>采样</strong>: 通过样本估计期望。这里是通过采样的样本来估计值函数。<ul>
-<li>MC 和 TD 用到了采样（环境模型未知，需要对环境交互进行采样，从而估计值函数）</li>
-<li>DP 不采样（状态转移概率、奖励已知，直接计算值函数）</li>
-</ul>
-</li>
-</ul>
-<h1 id="时间差分优化"><a href="#时间差分优化" class="headerlink" title="时间差分优化"></a>时间差分优化</h1><ul>
-<li>广义策略迭代<ul>
-<li>策略评价: <strong>TD 策略评价</strong>， $Q = q_π$</li>
-<li>策略提升: $\epsilon$-贪婪策略提升</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>TD 优化相比 MC 优化有几点好处<ul>
-<li><strong>低方差</strong></li>
-<li><strong>在线更新</strong> (online)。在线更新指的是，每进行一步就可以进行更新，而不需要整个episode做完才更新。</li>
-<li><strong>不完整序列</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="在策略-TD-优化——Sarsa"><a href="#在策略-TD-优化——Sarsa" class="headerlink" title="在策略 TD 优化——Sarsa"></a><strong>在策略</strong> TD 优化——Sarsa</h2><p><img data-src="../images/RL-时间差分-SARSA.png" alt></p>
-<p>在当前状态S，根据当前策略，选择动作A，收到奖励R，转移到状态S’。在状态S’下，再根据当前策略（同一个策略）选择动作A’。</p>
-<p><img data-src="../images/RL-时间差分-sarsa公式.png" alt></p>
-<p>注意： TD目标值中的动作 A’ 其实并没有做</p>
-<p><img data-src="../images/RL-TD算法-Sarsa.png" alt></p>
-<p>值迭代</p>
-<p>为什么是<strong>在策略</strong>？</p>
-<ul>
-<li>当前状态 S 下，执行的动作 A 是来自当前 Q 函数下的 $\epsilon$-贪婪策略</li>
-<li><strong>TD 目标值</strong>中，在下一个状态S’下，动作 A′ 也是来自当前 Q 函数下的 $\epsilon$-贪婪策略</li>
-<li>这两者是同一个策略。</li>
-</ul>
-<h3 id="期望Sarsa"><a href="#期望Sarsa" class="headerlink" title="期望Sarsa"></a>期望Sarsa</h3><h2 id="离策略-TD-优化——Q学习"><a href="#离策略-TD-优化——Q学习" class="headerlink" title="离策略 TD 优化——Q学习"></a><strong>离策略</strong> TD 优化——Q学习</h2><p><img data-src="../images/RL-时间差分-Q学习.png" alt></p>
-<p><img data-src="../images/RL-时间差分-Q学习流程.png" alt></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-4.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%951-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-4.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%951-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html" class="post-title-link" itemprop="url">强化学习-4.无模型方法1-蒙特卡洛</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-16 10:11:42" itemprop="dateCreated datePublished" datetime="2019-12-16T10:11:42+08:00">2019-12-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-20 16:04:01" itemprop="dateModified" datetime="2020-04-20T16:04:01+08:00">2020-04-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">强化学习</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="无模型方法简介"><a href="#无模型方法简介" class="headerlink" title="无模型方法简介"></a>无模型方法简介</h1><ul>
-<li>属于<strong>学习</strong>方法的一种，即智能体和环境需要进行<strong>交互</strong>，从经验中学习</li>
-<li>采用样本备份</li>
-<li>需要结合充分的探索，<strong>explore</strong></li>
-</ul>
-<p>由于未知环境模型，所以无法预知自己的后继状态和奖励值。智能体通过与环境进行交互，然后观察环境返回的值，本质上相当于从概率分布 $P_{ss^′}^a$, $R^a_s$ 中进行采样。需要实现完整的轨迹，还需要确定$A$，在策略中进行采样得到 $A$（可控制）。当采样足够充分时，可以使用样本分布良好地刻画环境模型总体分布。</p>
-<h2 id="无模型学习和动态规划的对比"><a href="#无模型学习和动态规划的对比" class="headerlink" title="无模型学习和动态规划的对比"></a>无模型学习和动态规划的对比</h2><ul>
-<li>无模型学习<ul>
-<li>未知环境模型</li>
-<li>需要与环境进行交互, 有交互成本（一般在仿真情况下进行）</li>
-<li>样本备份</li>
-<li>异步备份</li>
-<li>需要充分的探索</li>
-<li><strong>两个策略</strong><ul>
-<li>行为策略（智能体和环境进行交互时的策略）</li>
-<li>目标策略（是我们要学习的策略，求值函数时，$v_\pi$，$q_\pi$的下标）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>动态规划<ul>
-<li>已知环境模型</li>
-<li>不需要直接交互, 直接利用环境模型推导</li>
-<li>全宽备份</li>
-<li>同步和异步</li>
-<li>无探索</li>
-<li>一个策略</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h1 id="在策略和离策略"><a href="#在策略和离策略" class="headerlink" title="在策略和离策略"></a>在策略和离策略</h1><p>根据行为策略和目标策略是否相同，可以把无模型方法分为：</p>
-<ul>
-<li>在策略（on-policy）</li>
-<li>离策略（off-policy）</li>
-</ul>
-<h2 id="在策略"><a href="#在策略" class="headerlink" title="在策略"></a>在策略</h2><ul>
-<li>行为策略和目标策略是同一个策略</li>
-<li>样本来自于行为策略，直接使用样本统计属性去估计总体</li>
-<li>更简单，且收敛性更好</li>
-<li>数据利用性更差 (只有智能体<strong>当前</strong>交互的样本能够被利用)</li>
-<li>限定了学习过程中的策略是<strong>随机性策略</strong>（为了保证充分探索）</li>
-</ul>
-<h2 id="离策略"><a href="#离策略" class="headerlink" title="离策略"></a>离策略</h2><ul>
-<li>行为策略和目标策略不是同一个策略</li>
-<li>一般行为策略 $µ$ 选用随机性策略，目标策略 $π$ 选用确定性策略</li>
-<li>需要结合<strong>重要性采样</strong>才能使用样本估计总体</li>
-<li>方差更大，收敛性更差</li>
-<li>数据利用性更好 (可以使用其他智能体交互的样本)</li>
-<li>行为策略需要比目标策略更具备探索性。即，在每个状态下，目标策略的可行动作是行为策略可行动作的子集</li>
-</ul>
-<blockquote>
-<p>重要性采样：<br>重要性采样是一种估计概率分布期望值的技术，它使用了来自其他概率分布的样本。<br>主要用于无法直接采样原分布的情况<br>估计期望值时，需要加权概率分布的比值（称为重要性采样率）</p>
-</blockquote>
-<hr>
-<h1 id="蒙特卡洛方法"><a href="#蒙特卡洛方法" class="headerlink" title="蒙特卡洛方法"></a>蒙特卡洛方法</h1><blockquote>
-<p>用经验平均估计期望平均</p>
-</blockquote>
-<p>特点：</p>
-<ul>
-<li>MC 方法可以被用于<strong>任意涉及随机变量的估计</strong></li>
-<li>这里 MC 方法特指<strong>利用统计平均估计期望值</strong>的方法</li>
-<li>强化学习中存在很多估计期望值的计算 $v_π$, $v_∗$</li>
-<li>使用 MC 方法只需要<strong>利用经验数据</strong>，不需要 P, R</li>
-<li>MC 方法从<strong>完整的片段</strong>中学习。因此 MC 方法仅仅用于片段性任务 (必须有终止条件)</li>
-</ul>
-<p>最简单的思路，通过不断的采样，然后统计平均回报值来估计值函数，方差较大，不准确。只能做大量采样来减少方差。</p>
-<p><img data-src="../images/RL-蒙特卡洛-示意图.png" alt="蒙特卡洛中的样本"></p>
-<hr>
-<h1 id="蒙特卡洛评价"><a href="#蒙特卡洛评价" class="headerlink" title="蒙特卡洛评价"></a>蒙特卡洛评价</h1><p>评价：给定策略，求值函数。</p>
-<h2 id="表述说明"><a href="#表述说明" class="headerlink" title="表述说明"></a>表述说明</h2><ul>
-<li><p>轨迹：把状态-动作的序列称为一个智能体的轨迹(trajectory)</p>
-<script type="math/tex; mode=display">ρ = S_1, A_1, S_2, A_2, ·_ · · , S_T</script><blockquote>
-<p>状态动作序列构成了马尔可夫链图上的一条轨迹，有时也会加上奖励</p>
-</blockquote>
-</li>
-<li><p>从 $π, P_{ss’}^a$ 采样一条轨迹：我们把智能体从初始状态开始和环境进行交互的整个过程中得到的轨迹叫做采样一条轨迹。其中需要考虑两个分布$π, P_{ss’}^a$</p>
-</li>
-</ul>
-<ul>
-<li>从策略中采样一条轨迹 $ρ$。因为 $P_{ss’}^a$ 是稳定的，所以轨迹的分布随着策略的变化而变化。我们简述成从一个策略 π 中采样轨迹<script type="math/tex; mode=display">ρ ∼ π</script></li>
-</ul>
-<h2 id="蒙特卡洛评价-1"><a href="#蒙特卡洛评价-1" class="headerlink" title="蒙特卡洛评价"></a>蒙特卡洛评价</h2><p>目标：给定策略 π，求 vπ</p>
-<blockquote>
-<p>过去的方法（动态规划中）使用了贝尔曼期望方程<br> <img data-src="../images/RL-MC-贝尔曼期望方程.png" alt></p>
-<ul>
-<li>直接解</li>
-<li>迭代式动态规划</li>
-</ul>
-</blockquote>
-<p>MC 利用了值函数的定义</p>
-<p><img data-src="../images/RL-MC策略评价.png" alt></p>
-<p>MC 策略评价<strong>使用回报值的经验平均来估计实际期望值</strong></p>
-<p>MC策略评价包括：</p>
-<h3 id="首次拜访MC策略评价"><a href="#首次拜访MC策略评价" class="headerlink" title="首次拜访MC策略评价"></a>首次拜访MC策略评价</h3><ul>
-<li>为了评价状态 s，使用给定的策略 π 采样大量的轨迹<ul>
-<li>在每一条轨迹中，对于状态 s <strong>首次</strong>出现的时间 t</li>
-<li>增加状态数量 $N(s) \leftarrow N(s) + 1$</li>
-<li>增加总回报值 $G_{sum}(s) \leftarrow G_{sum}(s) + G_t$</li>
-</ul>
-</li>
-<li>计算平均值得到值函数的估计 $V(s) = \frac{G_{sum}(s)}{N(s)}$</li>
-<li><strong>每条轨迹都是独立同分布的</strong></li>
-<li>根据大数定律，随着 $N(s)\rightarrow \infty, V(s) \rightarrow v_π(s)$19950908</li>
-<li></li>
-<li>在 MC 方法下， $V(s)$ 是 $v_π(s)$ 的无偏估计</li>
-</ul>
-<h3 id="每次拜访MC策略评价"><a href="#每次拜访MC策略评价" class="headerlink" title="每次拜访MC策略评价"></a>每次拜访MC策略评价</h3><ul>
-<li>为了评价状态 s</li>
-<li>使用给定的策略 π 采样大量的轨迹<ul>
-<li>在每一条轨迹中，对于状态 s <strong>每次</strong>出现的时间 t</li>
-<li>增加状态数量 $N(s) \leftarrow N(s) + 1$</li>
-<li>增加总回报值 $G_{sum}(s) \leftarrow G_{sum}(s) + G_t$</li>
-</ul>
-</li>
-<li>计算平均值得到值函数的估计 $V(s) = \frac{G_{sum}(s)}{N(s)}$</li>
-<li>同样地，随着 $N(s)\rightarrow \infty, V(s) \rightarrow v_π(s)$</li>
-<li>收敛性的证明不如首次拜访 MC 策略评价直观。</li>
-<li>更容易拓展到函数逼近和资格迹（后述）</li>
-</ul>
-<h2 id="对Q函数的MC方法"><a href="#对Q函数的MC方法" class="headerlink" title="对Q函数的MC方法"></a>对Q函数的MC方法</h2><p>在没有模型的时候，一般我们选择估计<strong>Q 函数</strong>。</p>
-<p>因为我们可以通过 Q 函数直接得到贪婪的策略，最优的 Q 函数可以得到最优的策略。（直接取Max）</p>
-<h2 id="离策略-MC-策略评价"><a href="#离策略-MC-策略评价" class="headerlink" title="离策略 MC 策略评价"></a>离策略 MC 策略评价</h2><ul>
-<li>在采样轨迹时使用的策略是 µ</li>
-<li>而计算的值函数是策略 π 的</li>
-<li>使用重要性采样率去加权回报值</li>
-</ul>
-<p><img data-src="../images/RL-无模型方法1-离策略MC评价.png" alt></p>
-<p>将所有在策略的 MC 算法中的 $G_t$ 替换成 $G^{π/µ}_t$ 就得到离策略 MC 算法<br>使用重要性采样会显著增加方差, 可能到无限大。 (增加了 X2)</p>
-<script type="math/tex; mode=display">Var[X] = E[X^2] − \bar{X}^2</script><h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>偏差为 0，是无偏估计</li>
-<li>方差较大，需要大量数据去消除</li>
-<li>收敛性较好</li>
-<li>容易理解和使用</li>
-<li>没有利用马尔可夫性，有时可以用在非马尔可夫环境</li>
-</ul>
-<!-- ---
-# 增量式蒙特卡洛算法
-
-- 之前的蒙特卡洛算法需要采样大量轨迹之后再统一计算平均数
-- 能不能在每一条轨迹之后都得到值函数的估计值呢？
-- 平均值能够以增量形式进行计算 -->
-<hr>
-<h1 id="蒙特卡洛优化"><a href="#蒙特卡洛优化" class="headerlink" title="蒙特卡洛优化"></a>蒙特卡洛优化</h1><h2 id="值函数的使用"><a href="#值函数的使用" class="headerlink" title="值函数的使用"></a>值函数的使用</h2><ul>
-<li>在 V 函数上做贪婪策略提升要求环境模型</li>
-</ul>
-<p><img data-src="../images/RL-MC-V函数贪婪策略提升.png" alt></p>
-<ul>
-<li>在 Q 函数上做贪婪策略提升是<strong>无模型</strong>的</li>
-</ul>
-<p><img data-src="../images/RL-Q函数策略提升.png" alt></p>
-<h2 id="epsilon-贪婪策略提升"><a href="#epsilon-贪婪策略提升" class="headerlink" title="$\epsilon$ - 贪婪策略提升"></a>$\epsilon$ - 贪婪策略提升</h2><p>需要保证智能体一直在探索新的策略，保证所有的 m 个动作都有一定的概率被采样。</p>
-<ul>
-<li>用 $1 − \epsilon$ 的概率选择贪婪的动作</li>
-<li>用 $\epsilon$ 的概率随机从 m 个动作中选择</li>
-</ul>
-<p><img data-src="../images/RL-MCe贪婪.png" alt></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-3.%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-3.%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html" class="post-title-link" itemprop="url">强化学习-3.动态规划</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-16 10:10:42" itemprop="dateCreated datePublished" datetime="2019-12-16T10:10:42+08:00">2019-12-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-20 17:48:50" itemprop="dateModified" datetime="2020-04-20T17:48:50+08:00">2020-04-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">强化学习</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><blockquote>
-<p>马尔可夫决策过程的直接解法时间复杂度极高，因此强化学习方法的解法采用迭代式解法，迭代方法中<strong>最基础方法</strong>为动态规划方法。</p>
-<p>之前提到解决序列决策问题有两种手段——学习与规划。<br>当有一个<strong>精确的环境模型</strong>时，才可以用动态规划去解。<br>Q learning等方法均由动态规划所推导而来。<br>动态规划方法利用了<strong>贝尔曼期望方程</strong>和<strong>贝尔曼最优方程</strong>。</p>
-</blockquote>
-<ul>
-<li>动态：针对序列问题</li>
-<li>规划：优化，得到策略</li>
-</ul>
-<p>能使用动态规划去解决的问题，需具有以下性质：</p>
-<ul>
-<li><strong>最优子结构</strong>： 满足最优性原理，优的解可以被分解成子问题的最优解。</li>
-<li><strong>交叠式子问题</strong>： 子问题的解能够被多次利用</li>
-</ul>
-<p>恰好，MDP就满足这两个特性：</p>
-<ul>
-<li>回顾贝尔曼期望方程，满足递归形式。【当前状态的值函数 = E(当前的奖励+后继状态×衰减系数) 】，可以把问题分解成子问题</li>
-<li>值函数的解可以重复利用</li>
-</ul>
-<p>使用动态规划解决强化学习问题时，要求知道 MDPs 的所有元素。这是因为强化学习问题中最重要的两个过程，<strong>策略评价</strong>和<strong>策略优化</strong>，需要满足：</p>
-<ul>
-<li>对于<strong>评价</strong>的过程：<ul>
-<li>输入： MDP $⟨S; A; P; R; γ⟩$ 和策略 $π$</li>
-<li>输出: 值函数 $v_π$</li>
-</ul>
-</li>
-<li>对于<strong>优化</strong>的过程<ul>
-<li>输入: MDP $⟨S; A; P; R; γ⟩$</li>
-<li>输出：<ul>
-<li>最优值函数 $v_*$</li>
-<li>最优策略 $\pi_*$</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h1 id="策略评价"><a href="#策略评价" class="headerlink" title="策略评价"></a>策略评价</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>问题: 给定一个策略 π，求对应的值函数 $v_π(s)$ （或者 $q_π(s; a)$）。</p>
-<blockquote>
-<p><strong>对于动态规划问题</strong>，v函数和q函数是可以相互推导的。</p>
-</blockquote>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
-<li>直接解：<ul>
-<li>可以直接求得精确解（上一篇文章中）</li>
-<li>时间复杂度太高 $O(n^3)$</li>
-</ul>
-</li>
-</ol>
-<ol>
-<li>迭代解（√）： $v_1$ -&gt; $v_2$ -&gt; · · · -&gt; $v_π$<ul>
-<li>利用贝尔曼期望方程迭代求解</li>
-<li>可以收敛到 $v_π$</li>
-</ul>
-</li>
-</ol>
-<h2 id="利用贝尔曼方程进行迭代式策略评价"><a href="#利用贝尔曼方程进行迭代式策略评价" class="headerlink" title="利用贝尔曼方程进行迭代式策略评价"></a>利用贝尔曼方程进行迭代式策略评价</h2><p><img data-src="../images/RL-动态规划-备份图.png" alt></p>
-<p>贝尔曼方程告诉我们，通过后继状态 $s’$ 的值函数，更新当前状态$s$ 的值函数</p>
-<p><img data-src="../images/RL动态规划-策略评价P1.png" alt></p>
-<ul>
-<li>$\pi$ 表示策略</li>
-</ul>
-<p>因此可以得到，</p>
-<p><img data-src="../images/RL动态规划-策略评价P2.png" alt></p>
-<ul>
-<li><strong>注意： 这里的 k 表示第 k 次迭代</strong></li>
-</ul>
-<p>从$v_1$一直迭代求到最后（能够收敛），可以得到最终的$v_\pi$</p>
-<h2 id="同步备份下的迭代式策略评价算法"><a href="#同步备份下的迭代式策略评价算法" class="headerlink" title="同步备份下的迭代式策略评价算法"></a>同步备份下的迭代式策略评价算法</h2><p>关键词：</p>
-<ul>
-<li><strong>备份</strong>（backup）： $v_{k+1}(s)$ 需要用到 $v_k(s’)$。用$v_k(s’)$更新当前状态状态s的值函数，称为备份状态s。</li>
-<li><strong>同步</strong>（synchronous）： <strong>每一次更新，更新所有的状态</strong>。</li>
-<li>策略评价</li>
-<li>迭代式</li>
-</ul>
-<p><img data-src="../images/RL-动态规划-同步备份下的迭代式策略评价算法.png" alt="同步备份下的迭代式策略评价算法"></p>
-<!--TODO: 为加深理解，引入以下例子： -->
-<h2 id="策略评价例子"><a href="#策略评价例子" class="headerlink" title="策略评价例子"></a>策略评价例子</h2><p><img data-src="../images/RL-动态规划-评价图1.png" alt></p>
-<ul>
-<li>假设 $\gamma = 1$</li>
-<li>14个普通状态，2个终止状态</li>
-<li>走出边界的动作会导致状态不变</li>
-<li>在走到终止状态前，任何动作都会导致-1的奖励</li>
-<li>给定一个随机策略 $\pi(a|s)=0.25, \forall s, a$</li>
-</ul>
-<p><img data-src="../images/RL-动态规划-评价图2.png" alt></p>
-<p><img data-src="../images/RL-动态规划-评价图3.png" alt></p>
-<hr>
-<h1 id="策略提升"><a href="#策略提升" class="headerlink" title="策略提升"></a>策略提升</h1><h2 id="如何改进策略？"><a href="#如何改进策略？" class="headerlink" title="如何改进策略？"></a>如何改进策略？</h2><p>策略提升就是为了改进策略，<strong>强化学习的目的就是为了获得最优的策略</strong>。</p>
-<p>给定一个策略$\pi$</p>
-<ul>
-<li>评价策略：求策略对应的值函数</li>
-<li>改进策略（改进策略）：求得值函数 $v_{\pi}$ 后，根据贪婪的动作改进策略</li>
-</ul>
-<p><img data-src="../images/RL-动态规划-贪婪.png" alt></p>
-<p>在每个状态下，都选择能使q函数最大的动作。</p>
-<ul>
-<li>$v_{π′}(s) ≥ v_π(s), \forall{s}$，即<strong>新的策略优于之前的策略</strong></li>
-<li>使得更新后的策略不差于之前的策略的过程称为<strong>策略提升</strong></li>
-<li><strong>贪婪动作只是策略提升一种方式</strong></li>
-</ul>
-<h2 id="策略提升例子"><a href="#策略提升例子" class="headerlink" title="策略提升例子"></a>策略提升例子</h2><p>（接上策略评价例子）</p>
-<p><img data-src="../images/RL-动态规划-提升图1.png" alt></p>
-<ul>
-<li>通过策略评价和贪婪动作，策略从随机策略变成了最优策略 $π_∗$</li>
-<li>上述的策略比较幸运，策略提升一次就到达了最优</li>
-<li><strong>一般情况下，可能需要多次迭代（策略评价 + 策略提升）才能到达</strong></li>
-</ul>
-<h2 id="策略提升定理"><a href="#策略提升定理" class="headerlink" title="策略提升定理"></a>策略提升定理</h2><p>对于两个确定性策略 $π′$ 和 $π$，如果满足 $q_π(s, π′(s)) ≥ v_π(s)$，那么可以得到</p>
-<script type="math/tex; mode=display">v_{π'}(s) ≥ v_π(s)</script><blockquote>
-<p>其中，$q_π(s, π′(s))$ 表示在当前状态s下，通过策略$π′$选择第一个动作，之后通过策略$\pi$进行动作选择，得到的期望回报值。</p>
-</blockquote>
-<hr>
-<h1 id="策略迭代"><a href="#策略迭代" class="headerlink" title="策略迭代"></a>策略迭代</h1><h2 id="什么是策略迭代？"><a href="#什么是策略迭代？" class="headerlink" title="什么是策略迭代？"></a>什么是策略迭代？</h2><p>通过不断交替进行<em>策略评价</em>和<em>策略提升</em>，使策略收敛到最优的过程，称为<strong>策略迭代</strong>。</p>
-<ul>
-<li>策略评价: 求 $v_π$。使用方法：迭代式策略评价</li>
-<li>策略提升: 提升策略 $π′ ≥ π$。使用方法: 贪婪策略提升</li>
-</ul>
-<p><img data-src="../images/RL-动态规划-策略迭代.png" alt></p>
-<h2 id="收敛证明"><a href="#收敛证明" class="headerlink" title="收敛证明"></a>收敛证明</h2><p>策略提升停止时，当前策略$\pi’$达到最优策略$\pi$：</p>
-<p><img data-src="../images/RL-动态规划-策略提升收敛.png" alt></p>
-<p>此时，满足<strong>贝尔曼最优方程</strong>：</p>
-<p><img data-src="../images/RL-动态规划-贝尔曼最优方程.png" alt></p>
-<h2 id="策略迭代算法"><a href="#策略迭代算法" class="headerlink" title="策略迭代算法"></a>策略迭代算法</h2><blockquote>
-<p>策略迭代分为两部分：策略评价和策略提升。<br>当前的策略评价方法，选用的是迭代式策略评价方法，即通过不断进行迭代，计算出当前策略$\pi’$的v函数。</p>
-</blockquote>
-<p>利用迭代式策略评价的策略迭代算法为：</p>
-<p><img data-src="../images/RL-动态规划-迭代式策略评价的策略迭代算法.png" alt></p>
-<p>一般而言，策略评价需要一直进行迭代求解$v_\pi$。但是策略评价不一定要收敛到$v_\pi$，才能进行策略提升，可以引入提前停止的规则</p>
-<ul>
-<li>例如：值函数更新的 ∆ 足够小则停止</li>
-<li>例如：限定迭代式策略评价只迭代 k 次。（当$k=1$时，是值迭代）</li>
-</ul>
-<h2 id="策略迭代的进一步思考"><a href="#策略迭代的进一步思考" class="headerlink" title="策略迭代的进一步思考"></a>策略迭代的进一步思考</h2><ul>
-<li>策略迭代分为两个步骤——<strong>策略评价</strong>和<strong>策略提升</strong></li>
-<li>一般策略评价需要迭代式求解。因此这里存在<strong>两个循环</strong>（<strong>策略迭代</strong>和<strong>策略评价的迭代</strong>）</li>
-<li>策略评价一定要收敛到 $v_π$，才能进行策略提升吗？</li>
-<li>我们是不是可以引入提前停止的规则？<ul>
-<li>例如: 值函数更新的 ∆ 足够小则停止</li>
-<li>例如：限定迭代式策略评价只迭代 k 次</li>
-<li>策略评价只迭代一次，就策略提升？（k=1） 值迭代</li>
-</ul>
-</li>
-</ul>
-<h2 id="广义的策略迭代"><a href="#广义的策略迭代" class="headerlink" title="广义的策略迭代"></a>广义的策略迭代</h2><p>上述策略迭代方法中，指定了</p>
-<ul>
-<li>策略评价： 选用<strong>迭代式</strong>方法</li>
-<li>策略提升： 选用<strong>贪婪动作</strong>方法</li>
-</ul>
-<p>几乎所有的强化学习算法都可以用<strong>广义策略迭代</strong>（Generalised Policy Iteration, <strong>GPI</strong>）来描述，GPI不限定两者的方法</p>
-<ul>
-<li>策略评价： 任何策略评价方法</li>
-<li>策略提升： 任何策略提升方法（其他的还有：用一定的概率选择原策略，一定的概率选择贪婪策略）</li>
-</ul>
-<p>在策略评价中，值函数v只有符合当前策略的情况下才稳定（稳定即迭代后的值函数不变。如果值函数不符合当前策略，就一定能通过迭代进行改变）</p>
-<p>策略提升中，策略只有在当前的值函数下，是贪婪的，才稳定。</p>
-<p>因此，稳定状态下，分别收敛到最优的 $v_{*}(s)$, $\pi_{*}(s)$。</p>
-<hr>
-<h1 id="值迭代"><a href="#值迭代" class="headerlink" title="值迭代"></a>值迭代</h1><h2 id="强化学习的最优性原理"><a href="#强化学习的最优性原理" class="headerlink" title="强化学习的最优性原理"></a>强化学习的最优性原理</h2><p>任何最优的策略都能被分解成两部分</p>
-<ul>
-<li>最优的初始动作 $A_∗$</li>
-<li>从后继状态 ${S}^′$ 开始沿着最优策略继续进行</li>
-</ul>
-<p>一个策略 $π(a|s)$ 能够实现从 $s$ 开始的最优值函数，$v_\pi(s)=v_*(s)$，当且仅当 对于任何从状态 $s$ 开始的后继状态 ${s}^{‘}$，$π$ 能实现从状态 $s^′$ 开始的最优值函数 $v_π(s^′) = v_∗(s^′)$</p>
-<h2 id="值迭代-1"><a href="#值迭代-1" class="headerlink" title="值迭代"></a>值迭代</h2><p>根据最优性原理，只要知道 $v_∗(s^′)$（后继状态的最优值函数），即可以知道 $v_∗(s)$ （当前状态的最优值函数）<br>我们只需要选择一步动作即可，值迭代：</p>
-<p><img data-src="../images/RL-动态规划-值迭代.png" alt></p>
-<p>该式同时进行了策略评价和策略优化，max操作符表示进行了一次策略提升。</p>
-<p>相当于从终止状态的值函数（终止状态的值函数就是它的瞬时奖励）出发，递归地求解之前状态的值函数。</p>
-<p><img data-src="../images/RL-动态规划-同步备份下的迭代式策略评价算法.png" alt></p>
-<ul>
-<li><strong>同步</strong>：每次更新所有状态的值函数</li>
-</ul>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p><img data-src="../images/RL-动态规划-值迭代例子.png" alt></p>
-<ul>
-<li>g 为终止状态，瞬时奖励为 0</li>
-<li>其他所有状态的瞬时奖励都是 -1</li>
-<li>7次值迭代就导出最优值函数</li>
-</ul>
-<h2 id="值迭代和策略迭代的对比"><a href="#值迭代和策略迭代的对比" class="headerlink" title="值迭代和策略迭代的对比"></a>值迭代和策略迭代的对比</h2><ul>
-<li><p>值迭代</p>
-<ul>
-<li>$v_1$ -&gt; $v_2$ -&gt; $v_3$ -&gt; · · · -&gt; $v_∗$</li>
-<li>没有显式的策略</li>
-<li>迭代过程中的值函数可能不对应任何策略</li>
-<li>效率较高（从最后一个状态的最优值函数往前递推即可）</li>
-<li><p>贝尔曼最优方程</p>
-<blockquote>
-<p>贝尔曼最优方程<br><img data-src="../images/RL-动态规划-贝尔曼最优方程.png" alt></p>
-<p>Saras 和 Q 学习都是值迭代衍生出来的方法</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>策略迭代<ul>
-<li>$π_1$ -&gt; $v_1$ -&gt; $π_2$ -&gt; $v_2$ -&gt; · · · -&gt; $π_∗$ -&gt; $v_∗$</li>
-<li>有显式的策略</li>
-<li>迭代过程中的值函数对应了某个具体的策略</li>
-<li>效率较低（一般要两层循环）</li>
-<li>贝尔曼期望方程 + 贪婪策略提升</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h1 id="同步备份下的三种算法总结"><a href="#同步备份下的三种算法总结" class="headerlink" title="同步备份下的三种算法总结"></a>同步备份下的三种算法总结</h1><p><img data-src="../images/RL-动态规划-同步备份下三种算法总结.png" alt></p>
-<ul>
-<li>算法都是基于状态值函数（V 函数）</li>
-<li>如果一共有动作 $m$ 个，状态 $n$ 个, 每次迭代的复杂度为 $O(mn^2)$</li>
-<li>上述算法也可以拓展到状态动作值函数（Q 函数）</li>
-<li>运用到 Q 函数时，每次迭代的复杂度为 $O(m^2n^2)$</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-2.%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-2.%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html" class="post-title-link" itemprop="url">强化学习-2.马尔可夫决策过程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-16 10:09:42" itemprop="dateCreated datePublished" datetime="2019-12-16T10:09:42+08:00">2019-12-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 11:46:37" itemprop="dateModified" datetime="2020-04-19T11:46:37+08:00">2020-04-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">强化学习</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
             </span>
@@ -1023,16 +267,48 @@
 
       
           <blockquote>
-<p>马尔科夫性 - 马尔可夫过程 - 马尔可夫奖励过程 - 马尔可夫决策过程</p>
+<p>关于 Python 中多任务的实现方式：进程、线程、协程</p>
 </blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-2.%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<h1 id="多任务的实现方式"><a href="#多任务的实现方式" class="headerlink" title="多任务的实现方式"></a>多任务的实现方式</h1><ul>
+<li>多进程</li>
+<li>多线程</li>
+<li>多进程+多线程</li>
+<li>协程（Python中）</li>
+</ul>
+<hr>
+<h1 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h1><h2 id="Process"><a href="#Process" class="headerlink" title="Process"></a><code>Process</code></h2><p>Python中，使用<code>multiprocessing</code>模块实现多进程。<br>其中<code>Process</code>是一个进程类，可实例化一个进程对象。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment"># 子进程的代码</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_proc</span><span class="params">(name)</span>:</span></span><br><span class="line">    print(<span class="string">'Run child process %s (%s)...'</span> % (name, os.getpid()))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    print(<span class="string">'Parent process %s.'</span> % os.getpid())  <span class="comment"># 打印当前进程 pid</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 实例化一个进程，注意传入的参数为一个元组，当只有一个参数时，写成(arg,)</span></span><br><span class="line">    p = Process(target=run_proc, args=(<span class="string">'test'</span>,))</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'Child process will start.'</span>)</span><br><span class="line">    p.start()</span><br><span class="line">    p.join()  <span class="comment"># join()方法可以等待子进程结束后再继续往下运行，通常用于进程间的同步。</span></span><br><span class="line">    print(<span class="string">'Child process end.'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">执行结果如下：</span></span><br><span class="line"><span class="string">Parent process 928.</span></span><br><span class="line"><span class="string">Child process will start.</span></span><br><span class="line"><span class="string">Run child process test (929)...</span></span><br><span class="line"><span class="string">Process end.</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<h2 id="进程池"><a href="#进程池" class="headerlink" title="进程池"></a>进程池</h2><p>当启动大量子进程时，为了防止系统资源占用过高，需采用进程池的方式，循环利用进程实现多任务。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">import</span> os, time, random</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">long_time_task</span><span class="params">(name)</span>:</span></span><br><span class="line">    print(<span class="string">'Run task %s (%s)...'</span> % (name, os.getpid()))</span><br><span class="line">    start = time.time()</span><br><span class="line">    time.sleep(random.random() * <span class="number">3</span>)</span><br><span class="line">    end = time.time()</span><br><span class="line">    print(<span class="string">'Task %s runs %0.2f seconds.'</span> % (name, (end - start)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    print(<span class="string">'Parent process %s.'</span> % os.getpid())</span><br><span class="line"></span><br><span class="line">    p = Pool(<span class="number">4</span>)  <span class="comment"># 创建进程池，参数为进程池中允许存在进程的最多个数</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        p.apply_async(long_time_task, args=(i,))  <span class="comment"># 注意 apply_async：异步非阻塞</span></span><br><span class="line">    print(<span class="string">'Waiting for all subprocesses done...'</span>)</span><br><span class="line">    p.close()</span><br><span class="line">    p.join()</span><br><span class="line">    print(<span class="string">'All subprocesses done.'</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">执行结果如下：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Parent process 669.</span></span><br><span class="line"><span class="string">Waiting for all subprocesses done...</span></span><br><span class="line"><span class="string">Run task 0 (671)...</span></span><br><span class="line"><span class="string">Run task 1 (672)...</span></span><br><span class="line"><span class="string">Run task 2 (673)...</span></span><br><span class="line"><span class="string">Run task 3 (674)...</span></span><br><span class="line"><span class="string">Task 2 runs 0.14 seconds.</span></span><br><span class="line"><span class="string">Run task 4 (673)...</span></span><br><span class="line"><span class="string">Task 1 runs 0.27 seconds.</span></span><br><span class="line"><span class="string">Task 3 runs 0.86 seconds.</span></span><br><span class="line"><span class="string">Task 0 runs 1.41 seconds.</span></span><br><span class="line"><span class="string">Task 4 runs 1.91 seconds.</span></span><br><span class="line"><span class="string">All subprocesses done.</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p>join()方法会等待所有子进程执行完毕，再执行下面的代码。</p>
+<p>调用join()之前必须先调用close()。</p>
+<p>调用close()之后就不能继续在进程池中添加新的<code>Process</code>。</p>
+<p>由于创建进程池对象时传进的参数为4，因此task 0，1，2，3立刻执行，task 4等待前面某个task完成后才执行，最多同时执行4个进程。</p>
+<p>Pool的默认大小是CPU的核数。</p>
+<hr>
+<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><p>线程是操作系统直接支持的执行单元。</p>
+<p>Python中，由于存在GIL锁：Global Interpreter Lock，任何线程执行前，必须先获得GIL锁，然后，每执行100条字节码，解释器就自动释放GIL锁，让别的线程有机会执行。这个GIL全局锁实际上把所有线程的执行代码都给上了锁，因此<strong>多线程在Python中只能交替执行</strong>，并不能加快效率。</p>
+<h2 id="Threading"><a href="#Threading" class="headerlink" title="Threading"></a>Threading</h2><p>Threading模块可实现Python中的多线程。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time, threading</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新线程执行的代码:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loop</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'thread %s is running...'</span> % threading.current_thread().name)</span><br><span class="line">    n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> n &lt; <span class="number">5</span>:</span><br><span class="line">        n = n + <span class="number">1</span></span><br><span class="line">        print(<span class="string">'thread %s &gt;&gt;&gt; %s'</span> % (threading.current_thread().name, n))</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">    print(<span class="string">'thread %s ended.'</span> % threading.current_thread().name)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'thread %s is running...'</span> % threading.current_thread().name)</span><br><span class="line">t = threading.Thread(target=loop, name=<span class="string">'LoopThread'</span>)</span><br><span class="line">t.start()</span><br><span class="line">t.join()</span><br><span class="line">print(<span class="string">'thread %s ended.'</span> % threading.current_thread().name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">执行结果如下：</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">thread MainThread is running...</span></span><br><span class="line"><span class="string">thread LoopThread is running...</span></span><br><span class="line"><span class="string">thread LoopThread &gt;&gt;&gt; 1</span></span><br><span class="line"><span class="string">thread LoopThread &gt;&gt;&gt; 2</span></span><br><span class="line"><span class="string">thread LoopThread &gt;&gt;&gt; 3</span></span><br><span class="line"><span class="string">thread LoopThread &gt;&gt;&gt; 4</span></span><br><span class="line"><span class="string">thread LoopThread &gt;&gt;&gt; 5</span></span><br><span class="line"><span class="string">thread LoopThread ended.</span></span><br><span class="line"><span class="string">thread MainThread ended.</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<p>由于任何进程默认就会启动一个线程，我们把该线程称为主线程，主线程又可以启动新的线程。<br>名字仅仅用来显示，没有其他意义。</p>
+<h2 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h2><p>多线程中，所有变量都由所有线程共享，因此多个线程同时对一个变量进行修改，容易造成混乱。</p>
+<p>Python中threading模块的Lock类，可以给线程中的部分代码加锁，加锁部分运行时，其中的变量不会被其他线程更改。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line">lock = threading.Lock()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_thread</span><span class="params">(n)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100000</span>):</span><br><span class="line">        <span class="comment"># 先要获取锁:</span></span><br><span class="line">        lock.acquire()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="comment"># 放心地改吧:</span></span><br><span class="line">            change_it(n)</span><br><span class="line">        <span class="keyword">finally</span>:</span><br><span class="line">            <span class="comment"># 改完了一定要释放锁:</span></span><br><span class="line">            lock.release()</span><br></pre></td></tr></table></figure>
+<h1 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h1><p>利用了程序中的延时时间，实际上还是单线程，但是不断的切换所执行的代码块。`</p>
+<p>Python中可以使用 <code>gevent</code> 模块实现协程。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> gevent</span><br><span class="line"><span class="keyword">from</span> gevent <span class="keyword">import</span> monkey</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打个补丁：将程序中的延时代码，换为gevent中的</span></span><br><span class="line">monkey.patch_all()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">continue_work</span><span class="params">(name)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        print(name, i)</span><br><span class="line">        time.sleep(<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line">gevent.joinall([</span><br><span class="line">    gevent.spawn(continue_work, <span class="string">'work_1'</span>)  <span class="comment"># (函数名, 传入函数的参数)</span></span><br><span class="line">    gevent.spawn(continue_work, <span class="string">'work_2'</span>)</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+<h1 id="进程、线程、协程对比"><a href="#进程、线程、协程对比" class="headerlink" title="进程、线程、协程对比"></a>进程、线程、协程对比</h1><ul>
+<li>进程是资源分配的单位，线程是操作系统调度的单位</li>
+<li>进程切换时，需要创建一份资源，效率较低</li>
+<li>线程切换需要的资源少，但效率一般</li>
+<li>协程切换任务效率高，利用了线程延时等待的时间（因此，<strong>在实际处理时率先考虑使用协程</strong>实现多任务）</li>
+<li>多线程和多进程有可能是并行的，但协程一定是并发的</li>
+</ul>
+<hr>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li>廖雪峰的官方网站：<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017628290184064" target="_blank" rel="external nofollow noopener noreferrer">https://www.liaoxuefeng.com/wiki/1016959663602400/1017628290184064</a></li>
+</ul>
+
       
     </div>
 
@@ -1051,7 +327,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-1.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/Python--%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/M.jpeg">
@@ -1065,7 +341,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-1.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html" class="post-title-link" itemprop="url">强化学习-1.基本概念</a>
+            <a href="/Python--%E5%8F%AF%E8%BF%AD%E4%BB%A3%E5%AF%B9%E8%B1%A1%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8%E3%80%81%E7%94%9F%E6%88%90%E5%99%A8.html" class="post-title-link" itemprop="url">Python-可迭代对象、迭代器、生成器</a>
         </h2>
 
         <div class="post-meta">
@@ -1075,14 +351,209 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-12-16 10:08:42" itemprop="dateCreated datePublished" datetime="2019-12-16T10:08:42+08:00">2019-12-16</time>
+              <time title="创建时间：2019-12-16 21:43:51" itemprop="dateCreated datePublished" datetime="2019-12-16T21:43:51+08:00">2019-12-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-19 11:23:30" itemprop="dateModified" datetime="2020-04-19T11:23:30+08:00">2020-04-19</time>
+                <time title="修改时间：2020-03-14 21:36:14" itemprop="dateModified" datetime="2020-03-14T21:36:14+08:00">2020-03-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="可迭代-Iterable"><a href="#可迭代-Iterable" class="headerlink" title="可迭代(Iterable)"></a>可迭代(Iterable)</h1><p>我们知道，在Python中一切皆为对象。其中<strong>可以用<code>for</code>循环遍历的，即内部有<code>__iter__()</code>方法的对象，都是可迭代的对象</strong>。</p>
+<p><strong><code>for</code>循环的本质</strong>： 使用for循环实际上干了两件事，首先调用<code>__iter__()</code>返回一个对象，该对象需要有<code>__next__()</code>方法，然后再循环调用该对象的<code>__next__()</code>方法不断获取下一个值。</p>
+<p>常见的可迭代对象包括：</p>
+<ul>
+<li>集合数据类型：如 <code>list</code>、<code>tuple</code>、<code>dict</code>、<code>set</code>、<code>str</code>等</li>
+<li>迭代器 Iterator</li>
+</ul>
+<p>可以用<code>isinstance()</code>函数判断对象是否可迭代：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance([], Iterable)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="迭代器-Iterator"><a href="#迭代器-Iterator" class="headerlink" title="迭代器(Iterator)"></a>迭代器(Iterator)</h1><p><strong>可以被 <code>next()</code> 函数调用，并不断返回下一个值的对象</strong>都称为迭代器，也就意味着这种对象中需要有<code>__next__()</code>方法的实现。迭代器的特点是内存消耗少。其中：</p>
+<ul>
+<li>生成器 Generator 是一种迭代器。</li>
+<li>list、dict、str虽然是可迭代对象，却不是迭代器，可以使用<code>iter()</code>函数，把list、dict、str等可迭代对象变成迭代器。</li>
+</ul>
+<p><strong>可迭代对象和迭代器的关系</strong>：<br>可迭代对象中包含<code>__iter__()</code>方法的实现，经过<code>iter()</code>函数调用后，返回一个迭代器，而迭代器中有<code>__next__()</code>方法的实现。</p>
+<p>可以用<code>isinstance()</code>函数判断对象是否为迭代器：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterator</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance([], Iterator)</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(iter([]), Iterator)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(iter(<span class="string">'abc'</span>), Iterator)</span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="生成器-Generator"><a href="#生成器-Generator" class="headerlink" title="生成器(Generator)"></a>生成器(Generator)</h1><p>生成器属于迭代器的一种，因此也可以被<code>next()</code>函数调用。</p>
+<p>生成器可以分为两种：</p>
+<ol>
+<li>形如<code>( i for i in range(10))</code> 的生成器</li>
+<li>带<code>yield</code>关键字的生成器函数</li>
+</ol>
+<p>生成器函数的例子：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(num)</span>:</span></span><br><span class="line">    a, b = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    current = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> current &lt; num:</span><br><span class="line">        ret = <span class="keyword">yield</span> a</span><br><span class="line">        current += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">obj = fib(<span class="number">10</span>)</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/Python-Matplotlib%E7%AE%80%E5%8D%95%E5%B0%8F%E7%BB%93.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/M.jpeg">
+      <meta itemprop="name" content="Monte Yang">
+      <meta itemprop="description" content="❤MY">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Monte's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/Python-Matplotlib%E7%AE%80%E5%8D%95%E5%B0%8F%E7%BB%93.html" class="post-title-link" itemprop="url">Python-Matplotlib简单小结</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-16 17:28:00" itemprop="dateCreated datePublished" datetime="2019-12-16T17:28:00+08:00">2019-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-02 02:14:14" itemprop="dateModified" datetime="2020-03-02T02:14:14+08:00">2020-03-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>matplotlib 是最流行的Python绘图库之一，能将数据进行可视化，直观地呈现数据。</p>
+<h2 id="1-绘制图片"><a href="#1-绘制图片" class="headerlink" title="1. 绘制图片"></a>1. 绘制图片</h2><h3 id="1-1-设置图片大小、分辨率"><a href="#1-1-设置图片大小、分辨率" class="headerlink" title="1.1 设置图片大小、分辨率"></a>1.1 设置图片大小、分辨率</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 常用的导入方式</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="comment"># 设置图片大小, dpi是图片分辨率默认是100</span></span><br><span class="line">fig = plt.figure(figsize=(<span class="number">20</span>, <span class="number">8</span>), dpi=<span class="number">80</span>)</span><br><span class="line"></span><br><span class="line">x = np.arange(<span class="number">2</span>, <span class="number">26</span>, <span class="number">2</span>)</span><br><span class="line">y = np.random.randn(<span class="number">12</span>)</span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.xticks(x)</span><br><span class="line"><span class="comment"># 调整x轴上的刻度，当刻度太密集时使用列表的步长（列表间隔）来解决，matplotlib会自动帮我们对应</span></span><br><span class="line"><span class="comment"># plt.xticks(x[::2])</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-调整轴上的刻度"><a href="#1-2-调整轴上的刻度" class="headerlink" title="1.2 调整轴上的刻度"></a>1.2 调整轴上的刻度</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x_ticks = [<span class="string">"第&#123;&#125;个"</span>.format(i) <span class="keyword">for</span> i <span class="keyword">in</span> x]</span><br><span class="line">plt.xticks(x, x_ticks, rotation=<span class="number">90</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>plt.xticks() 中的两组数据长度务必相同</p>
+<h3 id="1-3-设置中文显示"><a href="#1-3-设置中文显示" class="headerlink" title="1.3 设置中文显示"></a>1.3 设置中文显示</h3><p>matplotlib默认不支持中文，通过matplotlib.rc可以修改<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> font_manager</span><br><span class="line">front = &#123;<span class="string">"family"</span>: <span class="string">"Microsoft Yahei"</span>,</span><br><span class="line">		<span class="string">"size"</span>: <span class="string">"10"</span>&#125;</span><br><span class="line">matplotlib.rc(<span class="string">"front"</span>, **font)</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-4-添加描述信息"><a href="#1-4-添加描述信息" class="headerlink" title="1.4 添加描述信息"></a>1.4 添加描述信息</h3><p>可添加坐标轴含义，图像标题等。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plt.xlabel(<span class="string">"x轴含义"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"y轴含义"</span>)</span><br><span class="line">plt.title(<span class="string">"标题"</span>)</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-5-保存图片"><a href="#1-5-保存图片" class="headerlink" title="1.5 保存图片"></a>1.5 保存图片</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.savefig(<span class="string">"./fig.png"</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="2-常用统计图"><a href="#2-常用统计图" class="headerlink" title="2. 常用统计图"></a>2. 常用统计图</h2><h3 id="2-1-折线图"><a href="#2-1-折线图" class="headerlink" title="2.1 折线图"></a>2.1 <strong>折线图</strong></h3><blockquote>
+<p>以折线表示统计量的增减变化。<br>特点：反映事物的变化情况。<br><img data-src="https://img-blog.csdnimg.cn/2019010513092169.png" alt="折线图"></p>
+</blockquote>
+<h3 id="2-2-直方图"><a href="#2-2-直方图" class="headerlink" title="2.2 直方图"></a>2.2 <strong>直方图</strong></h3><blockquote>
+<p>由一系列高度不等的纵向条纹或线段表示<strong>数据分布的情况</strong>。  一般用横轴表示数据范围，纵轴表示分布情况。<br>特点：绘制 <strong>连续</strong> 的数据，展示一组或者多组数据的分布状况。<br><img data-src="https://img-blog.csdnimg.cn/20190105131003368.png" alt="在这里插入图片描述"></p>
+</blockquote>
+<h3 id="2-3-条形图"><a href="#2-3-条形图" class="headerlink" title="2.3 条形图"></a>2.3 <strong>条形图</strong></h3><blockquote>
+<p>排列<strong>在工作表的列或行中的数据可以绘制到条形图中</strong>。<br>特点：绘制 <strong>离散</strong> 的数据，能够看出各个标签对应的数据大小，比较数据之间的差别。<br><img data-src="https://img-blog.csdnimg.cn/20190105131158885.png" alt="在这里插入图片描述"></p>
+</blockquote>
+<h3 id="2-4-散点图"><a href="#2-4-散点图" class="headerlink" title="2.4 散点图"></a>2.4 <strong>散点图</strong></h3><blockquote>
+<p>用两组数据构成多个坐标点，考察坐标点的分布,判断两变量 之间是否存在某种关联或总结坐标点的分布模式。<br>特点：判断变量之间是否存在数量关联趋势，显示数据的分布规律。<br><img data-src="https://img-blog.csdnimg.cn/20190105131546443.png" alt="在这里插入图片描述"><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制折线图，x为横坐标，y为纵坐标。</span></span><br><span class="line">plt.plot(x, y)</span><br><span class="line"><span class="comment"># 绘制直方图，x为需要被分组的量，bins为组数。</span></span><br><span class="line">plt.hist(x, bins)</span><br><span class="line"><span class="comment"># 绘制条形图，x为序列，height为序列的“高度”。</span></span><br><span class="line">plt.bar(x, height)</span><br><span class="line"><span class="comment"># 绘制散点图，(x,y)为点的坐标。</span></span><br><span class="line">plt.scatter(x, y)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-7.%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E7%AE%97%E6%B3%95.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/M.jpeg">
+      <meta itemprop="name" content="Monte Yang">
+      <meta itemprop="description" content="❤MY">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Monte's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-7.%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E7%AE%97%E6%B3%95.html" class="post-title-link" itemprop="url">强化学习-7.策略梯度算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-16 10:14:42" itemprop="dateCreated datePublished" datetime="2019-12-16T10:14:42+08:00">2019-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-28 20:42:46" itemprop="dateModified" datetime="2020-04-28T20:42:46+08:00">2020-04-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1107,234 +578,340 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h1><p>强化学习是智能体（Agent）与环境（Environment）不断交互, 不断提高自己的决策能力的过程.</p>
+          <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><h2 id="强化学习方法的分类"><a href="#强化学习方法的分类" class="headerlink" title="强化学习方法的分类"></a>强化学习方法的分类</h2><p>强化学习方法可以分为：基于值函数的方法、基于策略的方法和Actor-Critic。</p>
 <ul>
-<li>面向智能体的学习——通过与环境进行交互<ul>
-<li>所学习的<strong>样本</strong>来自于<strong>与环境的交互</strong>。而非像传统机器学习的样本是现有的。</li>
+<li>基于值函数的方法： 用<strong>值函数</strong>进行策略评价+策略优化，用值函数导出策略</li>
+<li>基于策略的方法： 直接学习<strong>策略</strong></li>
+<li>Actor-Critic： 学习<strong>值函数 + 策略</strong></li>
+</ul>
+<p>之前的强化学习方法都是基于值函数的方法，在值函数近似中，我们使用带参数w的函数去近似值函数，如下：</p>
+<p><img data-src="../images/RL-策略梯度-值函数近似.png" alt></p>
+<p>在基于值函数的方法中，策略是从值函数中导出的</p>
+<ul>
+<li>使用贪婪的方法导出<strong>最优策略</strong>（最终收敛得到的策略）</li>
+<li>使用 $\epsilon$-贪婪方法导出<strong>行为策略</strong>（智能体真正做的策略）</li>
+</ul>
+<p>而基于策略的方法，直接将策略进行参数化。</p>
+<h2 id="基于值函数的方法的局限性"><a href="#基于值函数的方法的局限性" class="headerlink" title="基于值函数的方法的局限性"></a>基于值函数的方法的局限性</h2><ul>
+<li>针对确定性策略</li>
+<li>存在策略退化： 收敛后，若存在误差，则很容易因为微小的值函数差，发生策略退化现象</li>
+<li>难以处理高维度的状态/动作空间<ul>
+<li><strong>不能处理连续的状态/动作空间</strong></li>
 </ul>
 </li>
-<li>通过<strong>试错和优化</strong>进行学习——用试错后的<strong>奖励（或惩罚）</strong>来学习</li>
+<li>收敛速度慢： 反复进行策略迭代（策略评价+策略提升），速度较慢</li>
 </ul>
+<h2 id="策略梯度算法的优缺点"><a href="#策略梯度算法的优缺点" class="headerlink" title="策略梯度算法的优缺点"></a>策略梯度算法的优缺点</h2><p>策略梯度算法，也就是基于策略的方法，具有的优缺点：</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>更好的收敛性</li>
+<li>能够有效地处理高维和连续的动作空间</li>
+<li>能够学到随机策略</li>
+<li>不会导致策略退化</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>更容易收敛到局部最优值</li>
+<li>难以评价一个策略，而且评价的<strong>方差较大</strong></li>
+</ul>
+<h2 id="策略模型的建模方式"><a href="#策略模型的建模方式" class="headerlink" title="策略模型的建模方式"></a>策略模型的建模方式</h2><p><img data-src="../images/RL-策略梯度算法-建模方式.png" alt></p>
+<p>左侧2个是值函数方法，右侧2个是基于策略的方法。</p>
+<hr>
+<h1 id="策略梯度算法"><a href="#策略梯度算法" class="headerlink" title="策略梯度算法"></a>策略梯度算法</h1><h2 id="策略梯度目标函数"><a href="#策略梯度目标函数" class="headerlink" title="策略梯度目标函数"></a>策略梯度目标函数</h2><p>在策略梯度算法中，我们用一个参数 θ 建模策略 $π_θ(s,a)$，如何寻找最优的参数 θ?</p>
+<p>值函数近似时，优化的目标是使值函数的输出接近目标值。那么，如何不利用值函数，直接评价一个策略 $π_θ$ 的好坏？</p>
+<h2 id="策略梯度的推导"><a href="#策略梯度的推导" class="headerlink" title="策略梯度的推导"></a>策略梯度的推导</h2><p>用 $τ$ 表示每次仿真的状态-行为序列 $S_0,A_0,… ,S_T,A_T$，每一个轨迹代表了强化学习的一个样本。轨迹的回报：</p>
+<p><img data-src="../images/RL-策略梯度-轨迹回报值.png" alt></p>
+<p>用 $P(τ; θ)$ 表示轨迹 $τ$ 出现的概率, 强化学习的<strong>目标函数</strong>可表示为</p>
+<p><img data-src="../images/RL-策略梯度-目标函数.png" alt></p>
 <blockquote>
-<p><strong>总体过程</strong>：环境（Environment）会给智能体（Agent）一个观测值（Observation）（<em>全观测时,状态state和observation等价）</em>, 智能体接收到环境给的观测值之后会做出一个动作（Action）, 这个动作给予一个奖励（Reward）, 以及给出一个新的观测值. 智能体根据环境给予的奖励值去更新自己的策略（Policy）.</p>
+<p>对所有条轨迹进行累加: 轨迹的回报值 * 该轨迹出现的概率</p>
 </blockquote>
-<p>强化学习的<strong>目的</strong> <em>就是为了得到最优的策略</em>。</p>
-<hr>
-<h1 id="2-强化学习的组成"><a href="#2-强化学习的组成" class="headerlink" title="2. 强化学习的组成"></a>2. 强化学习的组成</h1><h2 id="整体结构：环境和智能体"><a href="#整体结构：环境和智能体" class="headerlink" title="整体结构：环境和智能体"></a>整体结构：环境和智能体</h2><p><img data-src="../images/RL-整体示意图.png" alt="环境和智能体"></p>
-<p>每个时刻 $t$:</p>
+<p>强化学习的目标是最大化整个过程的奖励，也就是最大化$U(\theta)$</p>
+<p><img data-src="../images/RL-策略梯度-目标.png" alt></p>
+<p>在上式中，不同的策略只是影响了不同轨迹出现的概率。</p>
+<p>如何求解 $∇_θU(θ)$?</p>
 <ul>
-<li>智能体（Agent）<ul>
-<li>智能体执行动作$A_t$，并在环境中得到观测 $O_t$和奖励 $R_t$</li>
+<li>$P(τ; θ)$ 未知</li>
+<li>无法用一个可微分的数学模型直接表达 $U(θ)$</li>
+</ul>
+<p>策略梯度解决的问题是，即使未知 $U(θ)$ 的具体形式，也能求其梯度。</p>
+<p>从似然率的角度：</p>
+<p><img data-src="../images/RL-策略梯度-似然率.png" alt></p>
+<p>为什么要推导成这样的形式？</p>
+<ul>
+<li>$P(τ|θ)$ 可以通过 $π(a|s)$ 的模型表达 (后面会证明)</li>
+<li>$R(τ)$ 可以通过采样的方式估计</li>
+<li>期望符号 E 可以通过经验平均去估算</li>
+</ul>
+<p>利用当前策略 $π_θ$ <strong>采样 m 条轨迹，使用经验平均来估计梯度</strong>（MC形式）：</p>
+<script type="math/tex; mode=display">\bigtriangledown_\theta U(\theta) \approx \frac{1}{m} \sum_{i=1}^{m} \bigtriangledown_\theta \log \mathbb{P}(\tau_i ; \theta) R(\tau_i)</script><p><img data-src="../images/RL-策略梯度-理解.png" alt></p>
+<ul>
+<li>$∇_θ \log \mathbb{P} (τ; θ)$ 是轨迹 $τ$ 的概率随参数 $θ$ 变化最陡的方向<ul>
+<li>沿正方向，轨迹出现的概率会变大</li>
+<li>沿负方向，轨迹出现的概率会变小</li>
 </ul>
 </li>
-<li>环境（Environment）<ul>
-<li>环境会对智能体的动作 $A_t$的做出反应，然后发送新的观测 $O_{t+1}$ 和奖励 $R_{t+1}$</li>
+<li>$R(τ)$ 控制了参数更新的方向（正负）和步长，正负决定了方向，大小决定了增大 (减小) 的幅度</li>
 </ul>
-</li>
-</ul>
-<blockquote>
-<p>智能体是我们能控制的部分，环境是我们无法控制的部分。<br>在不同的问题中，智能体和环境所指代的对象不同。</p>
-</blockquote>
-<hr>
-<h2 id="2-1-奖励-Reward"><a href="#2-1-奖励-Reward" class="headerlink" title="2.1 奖励 Reward"></a>2.1 奖励 Reward</h2><p>奖励$R_t$是强化学习的<strong>核心</strong>，强化学习的目标就是<strong>最大化期望累积奖励</strong></p>
+<p>在策略梯度算法中，</p>
 <ul>
-<li><strong>特点</strong><ul>
-<li>是<strong>标量</strong>，能够比较大小</li>
-<li>表明这个智能体在时刻 $t$ 做得有多好</li>
-<li>奖励不一定需要正负都有，全正或全负都可以，只要满足<strong>相对大小</strong>即可</li>
+<li>增大了高回报轨迹出现的概率，回报值越大增加越多</li>
+<li>减少了低回报轨迹出现的概率，回报值越小减少越多</li>
 </ul>
-</li>
+<p>注意到似然率梯度只是改变轨迹出现的概率，而没有尝试去改变轨迹</p>
+<p>轨迹 $\tau$ 出现的概率 $\mathbb{P} (τ; θ)$ 是未知的，根据马尔科夫链：</p>
+<p><img data-src="../images/RL-策略梯度-马尔可夫链.png" alt></p>
+<p>由于状态转移概率 $P(s_{t+1}^{(i)} |s_t^{(i)}, a_t^{(i)})$ 中不包含参数 θ，因此求导的过程可以消掉，所以：</p>
+<p><img data-src="../images/RL-策略梯度-求导.png" alt></p>
+<p>因此，综上可得，我们可以在仅有可微分的策略模型 πθ 的情况下，求得 $∇_θU(θ)$</p>
+<script type="math/tex; mode=display">\hat{\eta} =∇_\theta U(\theta) \approx \frac{1}{m} \sum_{i=1}^{m} ∇_\theta \log \mathbb{P}(\tau_i ; \theta) R(\tau_i)</script><p>其中，</p>
+<p><img data-src="../images/RL-策略梯度-求导2.png" alt></p>
+<p>$\hat{\eta}$ 是 $∇_θU(θ)$ 的无偏估计</p>
+<script type="math/tex; mode=display">E[\hat{\eta}]=∇_θU(\theta)</script><h2 id="弥补策略梯度的缺陷"><a href="#弥补策略梯度的缺陷" class="headerlink" title="弥补策略梯度的缺陷"></a>弥补策略梯度的缺陷</h2><ul>
+<li>方差大</li>
+<li>如果所有的 R(τ) 都是正的，那么所有轨迹出现的概率都会增加</li>
 </ul>
-<blockquote>
-<p>如果一个问题不满足奖励假设，就不能用强化学习解决！</p>
-</blockquote>
+<p>我们可以通过以下方法减小方差：</p>
 <ul>
-<li><p><strong>奖励值</strong> 和 <strong>回报值（Return）</strong> 的比较</p>
-<p>  回报值 $G_t$ 又称<strong>累积折扣奖励</strong>（cumulative discounted reward）。step $t$ 时的 return 为</p>
-<script type="math/tex; mode=display">G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ...</script><p>  其中$\gamma$表示折扣因子，公式中重视每一步reward的程度随着时间衰减，是一个可调的超参数。</p>
-<ul>
-<li>$\gamma$ 越大，表示我们越关注长期奖励</li>
-<li><p>$\gamma$ 越小，表示我们越关注短期奖励</p>
-<p>智能体的任务就是去最大化累积奖励，即最大化整个过程的奖励.</p>
-<p>因此，智能体的任务可以转化成<strong>最大化累积奖励的期望</strong>。</p>
-</li>
+<li>引入基线 (baseline)</li>
+<li>修改回报函数</li>
+<li>Actor-Critic 方法</li>
+<li>优势函数</li>
 </ul>
-</li>
-</ul>
-<hr>
-<h2 id="2-2-状态-State"><a href="#2-2-状态-State" class="headerlink" title="2.2 状态 State"></a>2.2 状态 State</h2><h3 id="历史（history）"><a href="#历史（history）" class="headerlink" title="历史（history）"></a>历史（history）</h3><ul>
-<li><strong>历史</strong> 是一个观测、动作和奖励的序列。是智能体在时间 $t$ 以前的所有的交互变量。</li>
-</ul>
-<script type="math/tex; mode=display">H_t = (O_1, A_1, R_2, ..., O_{T-1}, A_{T-1}, R_T, O_T)</script><p>根据历史：</p>
-<ul>
-<li>智能体选择动作 $A_t$</li>
-<li>环境产生新的观测 $O_{t+1}$和奖励$R_{t+1}$</li>
-</ul>
-<p>本质上，状态是历史的一个函数：</p>
-<script type="math/tex; mode=display">S_t = f(H_t)</script><blockquote>
-<p>状态可以是<strong>全部历史</strong>或者<strong>部分历史</strong></p>
-<ul>
-<li>下棋时，棋盘当前的布局可以看做状态 $S_t = O_t$</li>
-<li>打砖块游戏中，前几帧的观测可以看做状态 $S_{t} = O_{t-3}, O_{t-2}, O_{t-1}, O_t$</li>
-</ul>
-</blockquote>
-<h3 id="环境状态-S-e-t"><a href="#环境状态-S-e-t" class="headerlink" title="环境状态 $S^e_t$"></a>环境状态 $S^e_t$</h3><p><img data-src="../images/RL-环境状态.png" alt="环境状态"></p>
-<ul>
-<li>所有能够影响环境产生观测/奖励的数据都被认为是环境状态的一部分</li>
-<li>环境状态一般是智能体观察不到的</li>
-<li>即使环境状态 $S^e_t$ 可见的，一般也包含了不相关的信息</li>
-</ul>
-<h3 id="智能体状态-S-a-t"><a href="#智能体状态-S-a-t" class="headerlink" title="智能体状态 $S^a_t$"></a><strong>智能体状态</strong> $S^a_t$</h3><p><img data-src="../images/RL-智能体状态.png" alt="智能体状态"></p>
-<ul>
-<li>所有能够影响智能体做出下一个动作的数据都被认为是智能体状态的一部分</li>
-<li><strong>强化学习中使用的状态</strong></li>
-<li>可能是历史的任何函数 $S_t = f(H_t)$</li>
-</ul>
-<blockquote>
-<p>对于智能体来说，<strong>环境状态是未知的，智能体状态是已知的</strong><br>智能体通过智能体的状态来做出相应的动作<br>没有特殊说明的情况下，我们所说的状态均指智能体状态 $S_t = S^a_t$</p>
-</blockquote>
-<h3 id="全观测和部分观测"><a href="#全观测和部分观测" class="headerlink" title="全观测和部分观测"></a>全观测和部分观测</h3><ul>
-<li>全观测：<ul>
-<li>智能体能够<strong>观测到整个环境</strong>，即<strong>智能体状态等价于环境状态</strong></li>
-<li>强化学习主要研究问题——马尔科夫决策过程</li>
-</ul>
-</li>
-<li>部分观测：<ul>
-<li>智能体<strong>不能完全观测</strong>到整个环境</li>
-<li>建模为部分观测下的马尔科夫决策过程</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="2-3-动作-Action"><a href="#2-3-动作-Action" class="headerlink" title="2.3 动作 Action"></a>2.3 动作 Action</h2><ul>
-<li>动作是智能体与环境交互的媒介</li>
-<li>动作必须对环境起到<strong>一定的控制作用</strong></li>
-<li><strong>动作必须和奖励匹配</strong></li>
-</ul>
-<hr>
-<h1 id="3-智能体的组成"><a href="#3-智能体的组成" class="headerlink" title="3. 智能体的组成"></a>3. 智能体的组成</h1><p>智能体的组成主要包括：</p>
-<ul>
-<li>策略</li>
-<li>值函数</li>
-<li>模型</li>
-</ul>
-<h2 id="3-1-策略-Policy-pi"><a href="#3-1-策略-Policy-pi" class="headerlink" title="3.1 策略 Policy($\pi$)"></a>3.1 策略 Policy($\pi$)</h2><p>Policy是从状态到动作的映射, 用$\pi$表示, 它告诉智能体如何挑选下一步的action.</p>
-<p>强化学习中有两类policy:</p>
+<h3 id="引入基线"><a href="#引入基线" class="headerlink" title="引入基线"></a>引入基线</h3><p>引入基线 b ，不影响策略梯度</p>
+<script type="math/tex; mode=display">∇_\theta U(\theta) \approx \frac{1}{m} \sum_{i=1}^{m} ∇_\theta \log \mathbb{P}(\tau_i ; \theta) R(\tau_i)=\frac{1}{m} \sum_{i=1}^{m} ∇_\theta \log \mathbb{P}(\tau_i ; \theta) (R(\tau_i)-b)</script><p><img data-src="../images/RL-策略梯度-基线.png" alt></p>
+<p>由上式可知，这是因为对基线求期望值，结果会抵消为0。</p>
+<p>选择基线的方法：</p>
 <ol>
-<li>Deterministic policy(确定性策略)</li>
+<li>选择回报值函数的期望值<br><img data-src="../images/RL-策略梯度-基线1.png" alt></li>
 </ol>
-<p>在确定性策略中，输入一个状态，输出的是某一个<strong>确定的action</strong>.</p>
 <ol>
-<li>Stochastic policy(随机性策略)</li>
+<li>最小方差<br><img data-src="../images/RL-策略梯度-基线2.png" alt></li>
 </ol>
-<p>在随机性策略中，输入一个状态，输出的是<strong>每个action的概率分布</strong>.</p>
-<hr>
-<h2 id="3-2-值函数"><a href="#3-2-值函数" class="headerlink" title="3.2 值函数"></a>3.2 值函数</h2><ul>
-<li>值函数是回报值的期望</li>
-<li>值函数主要用于评价不同状态的好坏，指导动作的选择</li>
-</ul>
-<hr>
-<h2 id="3-3-模型"><a href="#3-3-模型" class="headerlink" title="3.3 模型"></a>3.3 模型</h2><p>指智能体对环境的预测模型，分为两部分</p>
+<h3 id="修改回报值函数"><a href="#修改回报值函数" class="headerlink" title="修改回报值函数"></a>修改回报值函数</h3><p>在当前的估计值，对回报值 $R(\tau)$ 进行修改。</p>
+<p><img data-src="../images/RL-策略梯度-修改回报值函数1.png" alt></p>
+<p>由于<strong>将来的动作不依赖过去的奖励</strong>，因此我们可以修改回报值来降低方差。</p>
+<p><strong>只考虑t时刻以后的奖励值</strong>： 由 k = t 开始，降低了方差（减少了t时刻之前的随机性所导致的方差）</p>
+<p><img data-src="../images/RL-策略梯度-修改回报值函数2.png" alt></p>
+<p>上式中，每一次更新需要 m 条轨迹作为样本，从 t=0 时刻一直计算到T时刻。</p>
+<p>实际更新算法：</p>
 <ul>
-<li>$\mathcal{P}$ 预测下一个状态是什么</li>
-<li>$\mathcal{R}$ 预测下一个奖励是什么</li>
-</ul>
-<hr>
-<h1 id="4-强化学习的分类"><a href="#4-强化学习的分类" class="headerlink" title="4. 强化学习的分类"></a>4. 强化学习的分类</h1><ul>
-<li>按环境：<ul>
-<li>全观测环境下的</li>
-<li>部分观测环境下的</li>
-</ul>
+<li><p>考虑单条轨迹</p>
+<p><img data-src="../images/RL-策略梯度-单条轨迹更新.png" alt></p>
 </li>
-</ul>
-<ul>
-<li>按智能体成分：<ul>
-<li>基于值函数：学习值函数</li>
-<li>基于策略：学习策略</li>
-<li>Actor Critic：同时学习值函数和策略</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>按有无模型：<ul>
-<li>无模型强化学习</li>
-<li>基于模型的强化学习</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>按使用的手段：<ul>
-<li>传统强化学习</li>
-<li>深度强化学习</li>
-</ul>
+<li><p>考虑单步更新</p>
+<p>实际操作中，通常使用<strong>单步更新</strong>的形式：</p>
+<p><img data-src="../images/RL-策略梯度-单步更新.png" alt></p>
+<p>表示在t时刻的更新，对每一步都进行更新。但还是利用到了t时刻到T时刻的奖励值，属于 MC 形式。</p>
 </li>
 </ul>
 <hr>
-<h1 id="5-学习（learning）和规划（planning）"><a href="#5-学习（learning）和规划（planning）" class="headerlink" title="5. 学习（learning）和规划（planning）"></a>5. 学习（learning）和规划（planning）</h1><p>解决<strong>序列决策问题</strong>有两个基本方法：</p>
-<ul>
-<li>强化学习<ul>
-<li><strong>环境未知</strong></li>
-<li>智能体与环境进行交互，不断改善策略</li>
+<h1 id="Actor-Critic"><a href="#Actor-Critic" class="headerlink" title="Actor-Critic"></a>Actor-Critic</h1><h2 id="MC-策略梯度-REINFORCE"><a href="#MC-策略梯度-REINFORCE" class="headerlink" title="MC 策略梯度 (REINFORCE)"></a>MC 策略梯度 (REINFORCE)</h2><ul>
+<li>使用<strong>梯度上升算法</strong>更新参数 θ</li>
+<li>使用<strong>采样回报值</strong> $g_t$ 估计真实回报值</li>
 </ul>
-</li>
-</ul>
-<ul>
-<li>规划<ul>
-<li><strong>环境已知</strong></li>
-<li>可以根据模型直接计算，不用交互</li>
-</ul>
-</li>
-</ul>
+<p><img data-src="../images/RL-策略梯度-REINFORCE.png" alt></p>
 <blockquote>
-<p>环境模型不精确时，既利用环境进行规划，又与环境交互进行强化学习 —&gt; <strong>基于模型的强化学习</strong><br>当环境模型很精确时，可以直接用规划的方式求解</p>
+<p><strong>梯度上升</strong>：采用梯度上升是因为在策略梯度算法中，要最大化目标函数。</p>
+<p>由于 $g_t$ 的估计采用的是<strong>MC方法</strong>，通过<strong>整个片段的回报值</strong>估计真实的回报值，所以<strong>采样回报值的方差很大</strong></p>
+</blockquote>
+<p><img data-src="../images/RL-策略梯度-REINFORCE2.png" alt="MC策略梯度（REINFORCE）"></p>
+<p>之前的课程中，已经介绍了很多种估计 $g_t$ 的方法，MC方法、时间差分（TD）方法、TD($\gamma$)等，其中 TD 方法能够降低估计值的方差。</p>
+<h2 id="使用-Critic-函数减小方差"><a href="#使用-Critic-函数减小方差" class="headerlink" title="使用 Critic 函数减小方差"></a>使用 Critic 函数减小方差</h2><p>使用TD等方法来估计回报值，就构成了 Actor-Critic 算法中。虽然Actor-Critic算法中，同时利用了<strong>策略梯度算法</strong>和<strong>基于值函数的方法</strong>，但本质上还是基于策略的方法，<strong>值函数只是为了减小方差，本质上仅仅提供了一个估计回报值的标量</strong>，用于策略梯度算法中表示<strong>更新的方向和步长</strong>。</p>
+<p>最简单的 critic 函数， 我们可以使用 Q 函数来表示：</p>
+<p><img data-src="../images/RL-策略梯度-Q函数.png" alt></p>
+<blockquote>
+<p>要注意的是：Actor-Critic 中的 <strong>真正做决策的是 Actor</strong>（策略梯度算法）。</p>
+</blockquote>
+<p>Actor-Critic 算法维持两个参数：</p>
+<ul>
+<li>Critic 更新 Q 函数的参数 w</li>
+<li>Actor 使用 Critic 的方向更新策略参数 θ</li>
+</ul>
+<p>将回报值替换为Q函数，近似策略梯度：</p>
+<p><img data-src="../images/RL-策略梯度-回报值Q.png" alt></p>
+<h2 id="使用优势函数减小方差"><a href="#使用优势函数减小方差" class="headerlink" title="使用优势函数减小方差"></a>使用优势函数减小方差</h2><p>还可以进一步引入优势函数来减小方差</p>
+<p>优势函数：<br><img data-src="../images/RL-策略梯度-优势函数.png" alt></p>
+<blockquote>
+<p>优势函数利用了引入<strong>基线</strong>的思想，此处的基线就是 V 函数。</p>
+<p>优势函数表示在当前状态下，每个动作相对于平均情况，能创造多少优势。<br>优势函数为正时，表示当前状态下，采取该动作能够创造优势。</p>
+</blockquote>
+<p>即通过 <strong>V 函数</strong>估计基线，用 <strong>Q 函数</strong>估计回报函数，相减求得优势函数。</p>
+<p><img data-src="../images/RL-策略梯度-优势函数2.png" alt></p>
+<p>那么就有了3个模型：</p>
+<ul>
+<li>V 函数模型</li>
+<li>Q 函数模型</li>
+<li>策略模型</li>
+</ul>
+<p>近似策略梯度</p>
+<p><img data-src="../images/RL-策略梯度-优势函数3.png" alt></p>
+<h2 id="使用-TD-误差替代优势函数"><a href="#使用-TD-误差替代优势函数" class="headerlink" title="使用 TD 误差替代优势函数"></a>使用 TD 误差替代优势函数</h2><p>优势函数需要同时估计V函数和Q函数，计算相对麻烦，我们考虑<strong>用 TD 误差来替代优势函数</strong>。</p>
+<p>对于真实的值函数 $V^{π_θ}(s)$， TD 误差为：</p>
+<p><img data-src="../images/RL-策略梯度-TD误差.png" alt></p>
+<p>而 <strong>TD 误差是优势函数的无偏估计</strong>：</p>
+<p><img data-src="../images/RL-策略梯度-TD误差2.png" alt></p>
+<p>所以，我们可以利用 TD 误差近似优势函数。</p>
+<p>使用 TD 误差来计算策略梯度：</p>
+<p><img data-src="../images/RL-策略梯度-TD误差3.png" alt></p>
+<p>通过这样的方法，我们只需要一个 critic 参数 v，通过v函数求 TD 误差即可。</p>
+<hr>
+<h1 id="策略梯度多种形式的总结"><a href="#策略梯度多种形式的总结" class="headerlink" title="策略梯度多种形式的总结"></a>策略梯度多种形式的总结</h1><p>核心在更换对回报值$g_t$的估计。</p>
+<p><img data-src="../images/RL-策略梯度-多种形式总结.png" alt></p>
+<blockquote>
+<p>其中 Advantage Actor-Critic 为 A2C 算法。<br>又由于TD误差是 优势函数 A的无偏估计，所以 TD Actor-Critic 也是 A2C，实际中的 A2C 也是用 TD Actor-Critic。</p>
+</blockquote>
+<p>该式中有两部分：</p>
+<ul>
+<li>求梯度的部分（∇）：控制着策略更新的<strong>方向</strong></li>
+<li>$g_t$ 及其变种：控制着策略更新的<strong>步长</strong>（重要）</li>
+</ul>
+<p>Critic 使用了策略评价 (MC 或 TD) 来估计 $Q_π(s, a); A_π(s, a)$ 或 $V_π(s)$</p>
+<hr>
+<h1 id="A2C-算法"><a href="#A2C-算法" class="headerlink" title="A2C 算法"></a>A2C 算法</h1><p><img data-src="../images/RL-策略梯度-A2C.png" alt></p>
+<ol>
+<li>通过在当前状态s下，执行动作a，获得奖励r、并到达下一个状态s’，</li>
+<li>计算 TD 误差，</li>
+<li>再根据 TD 误差 更新 Critic ， 同时也用 TD 误差来更新 Actor。</li>
+</ol>
+<blockquote>
+<p>A2C 中为了充分探索到样本，且满足样本独立同分布，常常使用多进程的思路。</p>
 </blockquote>
 <hr>
-<h1 id="6-探索（Exploration）和利用（Exploitation）"><a href="#6-探索（Exploration）和利用（Exploitation）" class="headerlink" title="6. 探索（Exploration）和利用（Exploitation）"></a>6. 探索（Exploration）和利用（Exploitation）</h1><ul>
-<li>探索：<strong>发现环境中更多的信息</strong>；</li>
-<li>利用：<strong>充分挖掘当前已知信息</strong>，来最大化回报值；</li>
+<h1 id="其他策略梯度算法"><a href="#其他策略梯度算法" class="headerlink" title="其他策略梯度算法"></a>其他策略梯度算法</h1><ul>
+<li>自然梯度算法：找到最快的更新方向</li>
+<li>信赖域策略优化算法（TRPO）：步长的选择</li>
+<li>近端策略优化（PPO）：在TRPO基础上的改进，使TRPO的实现变得简单</li>
+<li>确定性策略梯度算法（DPG）：处理连续动作的情况</li>
 </ul>
-<p>两者trade-off，同等重要。</p>
-<hr>
-<h1 id="7-评价和优化"><a href="#7-评价和优化" class="headerlink" title="7. 评价和优化"></a>7. 评价和优化</h1><ul>
-<li>评价：给定一个策略，评价该策略的好坏 —&gt; 求值函数</li>
-<li>优化：改善策略 —&gt; 找到最优策略</li>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-6.%E5%80%BC%E5%87%BD%E6%95%B0%E8%BF%91%E4%BC%BC.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/M.jpeg">
+      <meta itemprop="name" content="Monte Yang">
+      <meta itemprop="description" content="❤MY">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Monte's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-6.%E5%80%BC%E5%87%BD%E6%95%B0%E8%BF%91%E4%BC%BC.html" class="post-title-link" itemprop="url">强化学习-6.值函数近似</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-16 10:13:42" itemprop="dateCreated datePublished" datetime="2019-12-16T10:13:42+08:00">2019-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-11 21:19:49" itemprop="dateModified" datetime="2020-03-11T21:19:49+08:00">2020-03-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">强化学习</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="值函数近似的引出"><a href="#值函数近似的引出" class="headerlink" title="值函数近似的引出"></a>值函数近似的引出</h1><p>之前的方法都是基于值函数的方法，通过求解最优值函数，来求解出最优的策略。而且之前的方法都是<strong>基于表格</strong>的。</p>
+<p><img data-src="../images/RL-值函数近似-表格法.png" alt></p>
+<p>以上表格中，有3个动作和3种状态，表格大小为3×3。表格中某一项的更新不会影响其他项的更新。</p>
+<p>然而，当状态和动作数量增多时，表格会迅速变大。</p>
+<p>比如，我们常见的大规模状态的问题有：</p>
+<ul>
+<li>围棋：$10^{170}$种状态</li>
+<li>机器人控制及无人机控制：连续状态</li>
+<li>图像状态：$256^{像素点数}$种状态</li>
 </ul>
-<!-- ### 2.2. Episode
-一个Episode由一系列的observation, reward, action组成.
-
-$$(O_1, A_1, R_2, ..., O_{T-1}, A_{T-1}, R_T, O_T)$$
-
-从 initial observation 到 terminal observation.  -->
-<!--
-
-
-### 2.5. 值函数Value Function
-
-1. 状态值函数(V函数)
-一个状态 state s 对应的状态值函数只关于状态:
-
-$$V_\pi(s)=E_\pi(G_t|S_t=s)$$
-
-对给定的s, V(s)是一个确定的值. 它表示, 从state s开始, 遵循策略$\pi$时的return的期望值.
-
-2. 状态动作值函数(Q函数)
-状态动作值函数关于状态和动作:
-
-$$Q_\pi(s,a)=E_\pi(G_t|S_t=s,A_t=a)$$
-
-它表示, 从state s开始, 遵循策略$\pi$采取动作a时的return的期望值.
-
-
-## 3. 强化学习与其他机器学习
-
-- 监督学习：**有即时标签**的学习（分类、回归问题）
-
-- 非监督学习：**无标签**的学习（聚类问题）
-
-
-- 强化学习：没有标签，只有奖励信号，**有延迟奖励**的学习问题。介于监督和非监督之间。
-  - 强化学习的数据是**有时间相关性**的，**不满足独立同分布（iid）**。而传统机器学习的数据是iid的。因此传统机器学习的分布式系统对于强化学习不可用。
-  - 智能体的动作可以影响之后的数据。 -->
+<p>当表格遇到大规模状态的强化学习问题时，会导致：</p>
+<ul>
+<li>表格变得极大，需要很大的内存空间</li>
+<li>每次只更新表格中的一个值，学习太缓慢</li>
+</ul>
+<p>因此，为解决大规模MDPs，引入函数近似的概念。我们可以利用含参数w（也就是神经网络中的参数w）的函数，来近似v函数和q函数：</p>
+<p><img data-src="../images/RL-函数近似.png" alt></p>
+<p>利用函数近似的方法：</p>
+<ul>
+<li>可以从已经经历过的状态推广到未见的状态</li>
+<li>可以使用 MC 或者 TD 更新参数 w</li>
+</ul>
+<h1 id="值函数近似的类型"><a href="#值函数近似的类型" class="headerlink" title="值函数近似的类型"></a>值函数近似的类型</h1><p><img data-src="../images/RL-值函数近似的类型.png" alt></p>
+<p>第三种只适用于离散的动作，输出的是动作的概率分布。</p>
+<p>目标：寻找参数向量 $w$，以最小化近似值函数 $\hat{v}(s, w)$ 和真实的值<br>函数 $v_π(s)$ 之间的均方误差 (mean-squared error, MSE)</p>
+<p><img data-src="../images/RL-值函数近似-MSE.png" alt></p>
+<p>梯度下降算法会寻找局部最小值，w的变化量为：</p>
+<p><img data-src="../images/RL-值函数近似-参数w.png" alt></p>
+<p>随机梯度下降算法会对梯度进行采样</p>
+<p><img data-src="../images/RL-值函数近似-随机梯度w.png" alt></p>
+<h1 id="值函数近似下的增量式评价算法"><a href="#值函数近似下的增量式评价算法" class="headerlink" title="值函数近似下的增量式评价算法"></a>值函数近似下的增量式评价算法</h1><p>在 RL 环境中，并不知道真实的值函数 $v_π(s)$，只有奖励值。<br>可以用<strong>目标值</strong>代替真实的值函数。</p>
+<p>关于目标值，有以下几种讨论：</p>
+<h2 id="值函数近似下的-MC"><a href="#值函数近似下的-MC" class="headerlink" title="值函数近似下的 $MC$"></a>值函数近似下的 $MC$</h2><p>对于 $MC$，目标值是回报值 $G_t$，回报值 $G_t$ 是真实值函数 $v_π(S_t)$ 的无偏估计，构建训练数据：</p>
+<script type="math/tex; mode=display">⟨S_1,G_1⟩,⟨S_2,G_2⟩,· · · ,⟨S_T,G_T⟩</script><p>参数w更新：</p>
+<p><img data-src="../images/RL-值函数近似-MC.png" alt></p>
+<h2 id="值函数近似下的-TD"><a href="#值函数近似下的-TD" class="headerlink" title="值函数近似下的 $TD$"></a>值函数近似下的 $TD$</h2><p>对于 $TD(0)$，目标值是 TD 目标值 $R_{t+1} + γv(S_{t+1}, w)$，TD目标值是真实值函数 $v_π(S_t)$ 的有偏估计，构建训练数据：</p>
+<script type="math/tex; mode=display">⟨S_{1}, R_2 + γ\hat{v}(S_2, w)⟩, ⟨S_{2}, R_3 + γ\hat{v}(S_3, w)⟩, · · · , ⟨S_{T−1}, R_T⟩</script><p>参数w更新：</p>
+<p><img data-src="../images/RL-值函数近似-TD0.png" alt></p>
+<h2 id="值函数近似下的-TD-lambda"><a href="#值函数近似下的-TD-lambda" class="headerlink" title="值函数近似下的 $TD(\lambda)$"></a>值函数近似下的 $TD(\lambda)$</h2><p>对于 $TD(λ)$，目标值是 $λ$ 回报值 $G^λ_t$，$λ$ 回报值 $G^λ_t$ 也是真实值函数 $v_π(s)$ 的有偏估计</p>
+<p><img data-src="../images/RL-值函数近似-TDlambda.png" alt></p>
+<h1 id="值函数近似下的增量式优化算法"><a href="#值函数近似下的增量式优化算法" class="headerlink" title="值函数近似下的增量式优化算法"></a>值函数近似下的增量式优化算法</h1><p>优化算法中选用的是Q函数，和v函数类似。</p>
+<ul>
+<li>对于 MC，目标值即回报值 $G_t$</li>
+</ul>
+<p><img data-src="../images/RL-值函数近似-策略优化MC.png" alt></p>
+<ul>
+<li>对于 TD(0)，目标值是 TD 目标值 $R_{t+1} + γQ(S_{t+1}, A_{t+1})$</li>
+</ul>
+<p><img data-src="../images/RL-值函数近似-策略优化TD.png" alt></p>
+<ul>
+<li>对于TD(λ)，目标值是针对 Q 的 λ 回报值</li>
+</ul>
+<p><img data-src="../images/RL-值函数近似-策略优化TDlambda.png" alt></p>
 
       
     </div>
@@ -1354,7 +931,7 @@ $$Q_\pi(s,a)=E_\pi(G_t|S_t=s,A_t=a)$$
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1421,7 +998,7 @@ $$Q_\pi(s,a)=E_\pi(G_t|S_t=s,A_t=a)$$
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1434,7 +1011,7 @@ $$Q_\pi(s,a)=E_\pi(G_t|S_t=s,A_t=a)$$
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
