@@ -74,7 +74,7 @@
 <meta property="og:image" content="http://monteyang.cn/images/RL-%E5%80%BC%E5%87%BD%E6%95%B0%E8%BF%91%E4%BC%BC-%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96TD.png">
 <meta property="og:image" content="http://monteyang.cn/images/RL-%E5%80%BC%E5%87%BD%E6%95%B0%E8%BF%91%E4%BC%BC-%E7%AD%96%E7%95%A5%E4%BC%98%E5%8C%96TDlambda.png">
 <meta property="article:published_time" content="2019-12-16T02:13:42.000Z">
-<meta property="article:modified_time" content="2020-03-11T13:19:49.543Z">
+<meta property="article:modified_time" content="2020-05-12T01:14:04.955Z">
 <meta property="article:author" content="Monte Yang">
 <meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary">
@@ -252,7 +252,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-11 21:19:49" itemprop="dateModified" datetime="2020-03-11T21:19:49+08:00">2020-03-11</time>
+                <time title="修改时间：2020-05-12 09:14:04" itemprop="dateModified" datetime="2020-05-12T09:14:04+08:00">2020-05-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -299,6 +299,7 @@
 <li>可以从已经经历过的状态推广到未见的状态</li>
 <li>可以使用 MC 或者 TD 更新参数 w</li>
 </ul>
+<hr>
 <h1 id="值函数近似的类型"><a href="#值函数近似的类型" class="headerlink" title="值函数近似的类型"></a>值函数近似的类型</h1><p><img data-src="../images/RL-值函数近似的类型.png" alt></p>
 <p>第三种只适用于离散的动作，输出的是动作的概率分布。</p>
 <p>目标：寻找参数向量 $w$，以最小化近似值函数 $\hat{v}(s, w)$ 和真实的值<br>函数 $v_π(s)$ 之间的均方误差 (mean-squared error, MSE)</p>
@@ -307,6 +308,7 @@
 <p><img data-src="../images/RL-值函数近似-参数w.png" alt></p>
 <p>随机梯度下降算法会对梯度进行采样</p>
 <p><img data-src="../images/RL-值函数近似-随机梯度w.png" alt></p>
+<hr>
 <h1 id="值函数近似下的增量式评价算法"><a href="#值函数近似下的增量式评价算法" class="headerlink" title="值函数近似下的增量式评价算法"></a>值函数近似下的增量式评价算法</h1><p>在 RL 环境中，并不知道真实的值函数 $v_π(s)$，只有奖励值。<br>可以用<strong>目标值</strong>代替真实的值函数。</p>
 <p>关于目标值，有以下几种讨论：</p>
 <h2 id="值函数近似下的-MC"><a href="#值函数近似下的-MC" class="headerlink" title="值函数近似下的 $MC$"></a>值函数近似下的 $MC$</h2><p>对于 $MC$，目标值是回报值 $G_t$，回报值 $G_t$ 是真实值函数 $v_π(S_t)$ 的无偏估计，构建训练数据：</p>
@@ -317,6 +319,7 @@
 <p><img data-src="../images/RL-值函数近似-TD0.png" alt></p>
 <h2 id="值函数近似下的-TD-lambda"><a href="#值函数近似下的-TD-lambda" class="headerlink" title="值函数近似下的 $TD(\lambda)$"></a>值函数近似下的 $TD(\lambda)$</h2><p>对于 $TD(λ)$，目标值是 $λ$ 回报值 $G^λ_t$，$λ$ 回报值 $G^λ_t$ 也是真实值函数 $v_π(s)$ 的有偏估计</p>
 <p><img data-src="../images/RL-值函数近似-TDlambda.png" alt></p>
+<hr>
 <h1 id="值函数近似下的增量式优化算法"><a href="#值函数近似下的增量式优化算法" class="headerlink" title="值函数近似下的增量式优化算法"></a>值函数近似下的增量式优化算法</h1><p>优化算法中选用的是Q函数，和v函数类似。</p>
 <ul>
 <li>对于 MC，目标值即回报值 $G_t$</li>
