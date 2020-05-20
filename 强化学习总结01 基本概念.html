@@ -54,26 +54,24 @@
   };
 </script>
 
-  <meta name="description" content="马尔科夫性 - 马尔可夫过程 - 马尔可夫奖励过程 - 马尔可夫决策过程">
+  <meta name="description" content="1. 概述强化学习是智能体（Agent）与环境（Environment）不断交互, 不断提高自己的决策能力的过程.  面向智能体的学习——通过与环境进行交互  所学习的样本来自于与环境的交互。而非像传统机器学习的样本是现有的。   通过试错和优化进行学习——用试错后的奖励（或惩罚）来学习    总体过程：环境（Environment）会给智能体（Agent）一个观测值（Observation）（全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="强化学习-2.马尔可夫决策过程">
-<meta property="og:url" content="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-2.%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html">
+<meta property="og:title" content="强化学习总结01 基本概念">
+<meta property="og:url" content="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9301%20%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html">
 <meta property="og:site_name" content="Monte&#39;s Blog">
-<meta property="og:description" content="马尔科夫性 - 马尔可夫过程 - 马尔可夫奖励过程 - 马尔可夫决策过程">
+<meta property="og:description" content="1. 概述强化学习是智能体（Agent）与环境（Environment）不断交互, 不断提高自己的决策能力的过程.  面向智能体的学习——通过与环境进行交互  所学习的样本来自于与环境的交互。而非像传统机器学习的样本是现有的。   通过试错和优化进行学习——用试错后的奖励（或惩罚）来学习    总体过程：环境（Environment）会给智能体（Agent）一个观测值（Observation）（全">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://monteyang.cn/images/RL-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E4%BE%8B%E5%AD%90.png">
-<meta property="og:image" content="http://monteyang.cn/images/RL-MRPs%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B.png">
-<meta property="og:image" content="http://monteyang.cn/images/RL-MRP%E8%A7%A3%E8%B4%9D%E5%B0%94%E6%9B%BC.png">
-<meta property="og:image" content="http://monteyang.cn/images/RL-MDP%E7%AD%96%E7%95%A5%E5%88%86%E5%B8%83.png">
-<meta property="og:image" content="http://monteyang.cn/images/RL-%E7%A1%AE%E5%AE%9A%E6%80%A7%E7%AD%96%E7%95%A5.png">
-<meta property="article:published_time" content="2019-12-16T02:09:42.000Z">
-<meta property="article:modified_time" content="2020-05-16T02:28:38.958Z">
+<meta property="og:image" content="http://monteyang.cn/images/RL-%E6%95%B4%E4%BD%93%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:image" content="http://monteyang.cn/images/RL-%E7%8E%AF%E5%A2%83%E7%8A%B6%E6%80%81.png">
+<meta property="og:image" content="http://monteyang.cn/images/RL-%E6%99%BA%E8%83%BD%E4%BD%93%E7%8A%B6%E6%80%81.png">
+<meta property="article:published_time" content="2019-12-16T02:08:42.000Z">
+<meta property="article:modified_time" content="2020-05-20T15:28:14.591Z">
 <meta property="article:author" content="Monte Yang">
 <meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://monteyang.cn/images/RL-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E4%BE%8B%E5%AD%90.png">
+<meta name="twitter:image" content="http://monteyang.cn/images/RL-%E6%95%B4%E4%BD%93%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 
-<link rel="canonical" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-2.%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html">
+<link rel="canonical" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9301%20%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html">
 
 
 <script id="page-configurations">
@@ -85,7 +83,7 @@
   };
 </script>
 
-  <title>强化学习-2.马尔可夫决策过程 | Monte's Blog</title>
+  <title>强化学习总结01 基本概念 | Monte's Blog</title>
   
 
 
@@ -215,7 +213,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-2.%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9301%20%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/M.jpeg">
@@ -228,7 +226,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          强化学习-2.马尔可夫决策过程
+          强化学习总结01 基本概念
         </h2>
 
         <div class="post-meta">
@@ -238,14 +236,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-12-16 10:09:42" itemprop="dateCreated datePublished" datetime="2019-12-16T10:09:42+08:00">2019-12-16</time>
+              <time title="创建时间：2019-12-16 10:08:42" itemprop="dateCreated datePublished" datetime="2019-12-16T10:08:42+08:00">2019-12-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-16 10:28:38" itemprop="dateModified" datetime="2020-05-16T10:28:38+08:00">2020-05-16</time>
+                <time title="修改时间：2020-05-20 23:28:14" itemprop="dateModified" datetime="2020-05-20T23:28:14+08:00">2020-05-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,151 +268,220 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <blockquote>
-<p>马尔科夫性 - 马尔可夫过程 - 马尔可夫奖励过程 - 马尔可夫决策过程</p>
-</blockquote>
-<a id="more"></a>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>马尔可夫决策过程（Markov Decision Processes, MDPs）是对强化学习问题的数学描述。</p>
+        <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h1><p>强化学习是智能体（Agent）与环境（Environment）不断交互, 不断提高自己的决策能力的过程.</p>
 <ul>
-<li>要求环境是<strong>全观测</strong>的。</li>
+<li><p>面向智能体的学习——通过与环境进行交互</p>
+<ul>
+<li>所学习的<strong>样本</strong>来自于<strong>与环境的交互</strong>。而非像传统机器学习的样本是现有的。</li>
 </ul>
-<hr>
-<h1 id="马尔可夫性"><a href="#马尔可夫性" class="headerlink" title="马尔可夫性"></a>马尔可夫性</h1><blockquote>
-<p>“ <strong>只要知道现在，将来和过去是条件独立的</strong>，可以抛去过去所有的信息。”</p>
-</blockquote>
-<p>定义：如果在t时刻的状态$S_t$满足下式，则这个状态被称为<strong>马尔科夫状态</strong>，即该状态满足马尔科夫性</p>
-<script type="math/tex; mode=display">P[S_{t+1}|S_{t}] = P[S_{t+1}|S_1, ..., S_t]</script><p>注：</p>
-<ul>
-<li>状态$S_t$包含了所有历史相关信息，即<strong>之前的信息都可以在该状态上体现出来</strong>（<strong>$S_t$可以代替所有之前的状态</strong>）</li>
-<li>所以要求环境是全观测的，(如果是部分观测的话，状态信息有缺失)。</li>
-<li><strong>是否满足马尔可夫性与状态的定义息息相关</strong></li>
-</ul>
-<p>例子：</p>
-<ul>
-<li>下棋</li>
-<li>俄罗斯方块</li>
-</ul>
-<p>有了马尔可夫状态之后：</p>
-<ul>
-<li>可以定义状态转移矩阵</li>
-<li>忽略时间的影响，只关心当前时刻</li>
+</li>
+<li><p>通过<strong>试错和优化</strong>进行学习——用试错后的<strong>奖励（或惩罚）</strong>来学习</p>
+</li>
 </ul>
 <blockquote>
-<p>注： 状态是否满足马尔可夫性，与状态的定义息息相关。</p>
+<p><strong>总体过程</strong>：环境（Environment）会给智能体（Agent）一个观测值（Observation）（<em>全观测时,状态 state 和 observation 等价</em>）, 智能体接收到环境给的观测值之后会做出一个动作（Action）, 这个动作给予一个奖励（Reward）, 以及给出一个新的观测值. 智能体根据环境给予的奖励值去更新自己的策略（Policy）。</p>
 </blockquote>
+<p>强化学习的<strong>目的</strong> <em>就是为了得到最优的策略</em>。</p>
 <hr>
-<h1 id="状态转移矩阵"><a href="#状态转移矩阵" class="headerlink" title="状态转移矩阵"></a>状态转移矩阵</h1><h2 id="状态转移概率"><a href="#状态转移概率" class="headerlink" title="状态转移概率"></a>状态转移概率</h2><p><strong>状态转移概率</strong>指从一个马尔可夫状态 s 跳转到后继状态 (successor state) s′ 的概率。是关于当前状态的条件概率分布。</p>
-<script type="math/tex; mode=display">\mathcal{P} _ {ss^{'}} = \mathbb{P} [S_{t+1} = s^{'} | S_t = s]</script><h2 id="状态转移矩阵-1"><a href="#状态转移矩阵-1" class="headerlink" title="状态转移矩阵"></a>状态转移矩阵</h2><p>若状态是<strong>离散</strong>的（有限个）： </p>
+<h1 id="2-强化学习的组成"><a href="#2-强化学习的组成" class="headerlink" title="2. 强化学习的组成"></a>2. 强化学习的组成</h1><h2 id="整体结构：环境和智能体"><a href="#整体结构：环境和智能体" class="headerlink" title="整体结构：环境和智能体"></a>整体结构：环境和智能体</h2><p><img data-src="../images/RL-整体示意图.png" alt="环境和智能体"></p>
+<p>每个时刻 $t$:</p>
 <ul>
-<li>所有的状态组成行</li>
-<li>所有后继状态组成列，</li>
-</ul>
-<p>得到状态转移矩阵</p>
-<script type="math/tex; mode=display">\mathcal{P} =
-\begin{bmatrix}
-\mathcal{P} _ {11} & ... & \mathcal{P} _ {1n} \\
-... & ... & ... \\
-\mathcal{P} _ {n1} & ... & \mathcal{P} _ {nn}  \\
-\end{bmatrix}</script><ul>
-<li>$n$为状态个数</li>
-<li>每行元素相加为1</li>
-</ul>
-<h2 id="状态转移函数"><a href="#状态转移函数" class="headerlink" title="状态转移函数"></a>状态转移函数</h2><p>若<strong>状态数量过多，或者无穷大（连续状态）</strong>的，适合用本节最上式的函数形式表示。</p>
-<script type="math/tex; mode=display">\mathcal{P} _ {ss^{'}} = \mathbb{P} [S_{t+1} = s^{'} | S_t = s]</script><ul>
-<li>此时，$\int_{s’}\mathcal{P}(s’|s)=1$</li>
-</ul>
-<hr>
-<h1 id="马尔可夫过程"><a href="#马尔可夫过程" class="headerlink" title="马尔可夫过程"></a>马尔可夫过程</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>一个马尔可夫过程 (Markov process, MP) 是一个无记忆的随机过程，即一些马尔可夫状态的序列。</p>
-<p>马尔可夫过程可由一个二元组来定义 $&lt; S,\mathcal{P} &gt;$</p>
-<ul>
-<li>$S$：代表状态集合</li>
-<li>$\mathcal{P}$：代表状态转移矩阵</li>
-</ul>
-<blockquote>
-<p>通常假设$\mathcal{P}$是存在且稳定的<br>当$\mathcal{P}$不稳定时，采用在线学习、快速学习等方法</p>
-</blockquote>
-<h2 id="马尔可夫过程的例子"><a href="#马尔可夫过程的例子" class="headerlink" title="马尔可夫过程的例子"></a>马尔可夫过程的例子</h2><p><img data-src="../images/RL-马尔可夫例子.png" alt="马尔可夫链"></p>
-<ul>
-<li>马尔可夫过程中的终止状态有2种：<ul>
-<li>时间终止</li>
-<li>状态终止</li>
+<li>智能体（Agent）<ul>
+<li>智能体执行动作 $A_t$，并在环境中得到观测 $O_t$ 和奖励 $R_t$</li>
 </ul>
 </li>
 </ul>
-<h2 id="片段（Episode）"><a href="#片段（Episode）" class="headerlink" title="片段（Episode）"></a>片段（Episode）</h2><p>定义： 强化学习中，从初始状态 $S_1$ 到终止状态 $S_T$ 的序列过程。</p>
-<script type="math/tex; mode=display">S_1, S_2, ..., S_T</script><hr>
-<h1 id="马尔可夫奖励过程"><a href="#马尔可夫奖励过程" class="headerlink" title="马尔可夫奖励过程"></a>马尔可夫奖励过程</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>在马尔可夫过程的基础上，<strong>在转移关系中赋予不同的奖励值</strong>，即得到马尔可夫奖励过程。</p>
-<p>马尔可夫奖励 (Markov Reward Process, MRP) 过程由一个四元组组成 $⟨S, \mathcal{P}, \mathcal{R}, γ⟩$</p>
 <ul>
-<li>S：状态集合</li>
-<li>$\mathcal{P}$：状态转移矩阵</li>
-<li>$\mathcal{R}$：奖励函数， $\mathcal{R}(s)$ 描述了在状态 s 的奖励，$\mathcal{R}(s) = E [\mathcal{R}_{t+1}|S_t = s]$</li>
-<li>$γ$：衰减因子</li>
+<li>环境（Environment）<ul>
+<li>环境会对智能体的动作 $A_t$ 的做出反应，然后发送新的观测 $O_{t+1}$ 和奖励 $R_{t+1}$</li>
 </ul>
-<h2 id="回报值"><a href="#回报值" class="headerlink" title="回报值"></a>回报值</h2><ul>
-<li>奖励值：对一个<strong>状态</strong>的评价</li>
-<li>回报值：对一个<strong>片段</strong>的评价</li>
+</li>
 </ul>
-<p>回报值（return $G_t$）是从时间t处开始的累积衰减奖励</p>
-<script type="math/tex; mode=display">G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ...</script><h2 id="MRPs中的值函数"><a href="#MRPs中的值函数" class="headerlink" title="MRPs中的值函数"></a>MRPs中的值函数</h2><blockquote>
-<p>为什么要值函数？<br>回报值是一个片段的结果，存在很大的样本偏差<br>回报值的角标是 t，值函数关注的是状态 s</p>
+<blockquote>
+<p>智能体是我们能控制的部分，环境是我们无法控制的部分。<br>在不同的问题中，智能体和环境所指代的对象不同。</p>
 </blockquote>
-<p>一个 MRP 的值函数如下定义</p>
-<script type="math/tex; mode=display">v(s) = \mathbb{E}[G_t|S_t = s]</script><p>这里的值函数针对的是状态 s，所以称为<strong>状态值函数</strong>，又称 V 函数</p>
-<h2 id="MRPs中的贝尔曼方程（重点）"><a href="#MRPs中的贝尔曼方程（重点）" class="headerlink" title="MRPs中的贝尔曼方程（重点）"></a>MRPs中的贝尔曼方程（重点）</h2><script type="math/tex; mode=display">\begin{aligned}v(s)&=\mathbb{E}[G_t|S_t=s] \\ &=\mathbb{E}[ R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... | S_t=s] \\ &=\mathbb{E}[ R_{t+1} + \gamma G_{t+1} | S_t=s ] \\ &=\mathbb{E}[ R_{t+1} + \gamma v(S_{t+1}) | S_t=s ]\end{aligned}</script><p>当前状态的值函数包括两部分：</p>
+<h2 id="2-1-奖励-Reward"><a href="#2-1-奖励-Reward" class="headerlink" title="2.1 奖励 Reward"></a>2.1 奖励 Reward</h2><p>奖励 $R_t$ 是强化学习的<strong>核心</strong>，强化学习的目标就是<strong>最大化期望累积奖励</strong></p>
 <ul>
-<li>第一项：<strong>瞬时奖励 $R_{t+1}$</strong></li>
-<li>第二项：<strong>后继状态的值函数乘衰减系数 $\gamma v(S_{t+1})$</strong></li>
+<li><strong>特点</strong><ul>
+<li>是<strong>标量</strong>，能够比较大小</li>
+<li>表明这个智能体在时刻 $t$ 做得有多好</li>
+<li>奖励不一定需要正负都有，全正或全负都可以，只要满足<strong>相对大小</strong>即可</li>
 </ul>
-<p>由于后继状态可能有多个，因此如果已知转移矩阵 $P$，那么</p>
-<script type="math/tex; mode=display">\begin{aligned} v(s) &= \mathbb{E} [R_{t+1} + γv(S_{t+1}) | S_t = s] \\    &= \mathbb{E} [R_{t+1} | S_t = s] + γ \mathbb{E}[v(S_{t+1})|S_t = s] \\ &= \mathcal{R}(s) + γ ∑\mathcal{P}_{ss^′}v(s^′)\end{aligned}</script><p>矩阵-向量形式为：</p>
-<script type="math/tex; mode=display">v = \mathcal{R} + \gamma \mathcal{P} v</script><p><img data-src="../images/RL-MRPs贝尔曼方程.png" alt></p>
-<p>本质上是一个线性方程，可以直接解：</p>
-<p><img data-src="../images/RL-MRP解贝尔曼.png" alt></p>
-<p>直接求解只适用于小型MRPs：</p>
+</li>
+</ul>
+<blockquote>
+<p>如果一个问题不满足奖励假设，就不能用强化学习解决！</p>
+</blockquote>
 <ul>
-<li>计算复杂度$O(n^3)$</li>
-<li>要求已知 $\mathcal{P}$</li>
+<li><p><strong>奖励值</strong> 和 <strong>回报值（Return）</strong> 的比较</p>
+<p>  回报值 $G_t$ 又称<strong>累积折扣奖励</strong>（cumulative discounted reward）。step $t$ 时的 return 为</p>
+<script type="math/tex; mode=display">G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ...</script><p>  其中$\gamma$表示折扣因子，公式中重视每一步 reward 的程度随着时间衰减，是一个可调的超参数。</p>
+<ul>
+<li>$\gamma$ 越大，表示我们越关注长期奖励</li>
+<li><p>$\gamma$ 越小，表示我们越关注短期奖励</p>
+<p>智能体的任务就是去最大化累积奖励，即最大化整个过程的奖励.</p>
+<p>因此，智能体的任务可以转化成<strong>最大化累积奖励的期望</strong>。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-2-状态-State"><a href="#2-2-状态-State" class="headerlink" title="2.2 状态 State"></a>2.2 状态 State</h2><h3 id="历史（history）"><a href="#历史（history）" class="headerlink" title="历史（history）"></a>历史（history）</h3><ul>
+<li><strong>历史</strong> 是一个观测、动作和奖励的序列。是智能体在时间 $t$ 以前的所有的交互变量。</li>
+</ul>
+<script type="math/tex; mode=display">H_t = (O_1, A_1, R_2, ..., O_{T-1}, A_{T-1}, R_T, O_T)</script><p>根据历史：</p>
+<ul>
+<li>智能体选择动作 $A_t$</li>
+<li>环境产生新的观测 $O_{t+1}$ 和奖励 $R_{t+1}$</li>
+</ul>
+<p>本质上，状态是历史的一个函数：</p>
+<script type="math/tex; mode=display">S_t = f(H_t)</script><blockquote>
+<p>状态可以是<strong>全部历史</strong>或者<strong>部分历史</strong></p>
+<ul>
+<li>下棋时，棋盘当前的布局可以看做状态 $S_t = O_t$</li>
+<li>打砖块游戏中，前几帧的观测可以看做状态 $S_{t} = O_{t-3}, O_{t-2}, O_{t-1}, O_t$</li>
+</ul>
+</blockquote>
+<h3 id="环境状态-S-e-t"><a href="#环境状态-S-e-t" class="headerlink" title="环境状态 $S^e_t$"></a>环境状态 $S^e_t$</h3><p><img data-src="../images/RL-环境状态.png" alt="环境状态"></p>
+<ul>
+<li>所有能够影响环境产生观测/奖励的数据都被认为是环境状态的一部分</li>
+<li>环境状态一般是智能体观察不到的</li>
+<li>即使环境状态 $S^e_t$ 可见的，一般也包含了不相关的信息</li>
+</ul>
+<h3 id="智能体状态-S-a-t"><a href="#智能体状态-S-a-t" class="headerlink" title="智能体状态 $S^a_t$"></a><strong>智能体状态</strong> $S^a_t$</h3><p><img data-src="../images/RL-智能体状态.png" alt="智能体状态"></p>
+<ul>
+<li>所有能够影响智能体做出下一个动作的数据都被认为是智能体状态的一部分</li>
+<li><strong>强化学习中使用的状态</strong></li>
+<li>可能是历史的任何函数 $S_t = f(H_t)$</li>
+</ul>
+<blockquote>
+<p>对于智能体来说，<strong>环境状态是未知的，智能体状态是已知的</strong><br>智能体通过智能体的状态来做出相应的动作<br>没有特殊说明的情况下，我们所说的状态均指智能体状态 $S_t = S^a_t$</p>
+</blockquote>
+<h3 id="全观测和部分观测"><a href="#全观测和部分观测" class="headerlink" title="全观测和部分观测"></a>全观测和部分观测</h3><p>全观测：</p>
+<ul>
+<li>智能体能够<strong>观测到整个环境</strong>，即<strong>智能体状态等价于环境状态</strong></li>
+<li>强化学习主要研究问题——马尔科夫决策过程</li>
+</ul>
+<p>部分观测：</p>
+<ul>
+<li>智能体<strong>不能完全观测</strong>到整个环境</li>
+<li>建模为部分观测下的马尔科夫决策过程</li>
+</ul>
+<h2 id="2-3-动作-Action"><a href="#2-3-动作-Action" class="headerlink" title="2.3 动作 Action"></a>2.3 动作 Action</h2><ul>
+<li>动作是智能体与环境交互的媒介</li>
+<li>动作必须对环境起到<strong>一定的控制作用</strong></li>
+<li><strong>动作必须和奖励匹配</strong></li>
 </ul>
 <hr>
-<h1 id="马尔可夫决策过程"><a href="#马尔可夫决策过程" class="headerlink" title="马尔可夫决策过程"></a>马尔可夫决策过程</h1><p>MP 和 MRP 中，我们都是作为观察者，去观察其中的状态转移现象，去计算回报值。对于一个 RL 问题，我们更希望去<strong>改变状态转移的流程</strong>，去<strong>最大化回报值</strong>。因此，在 MRP 中引入决策，得到<strong>马尔可夫决策过程（Markov Decision Processes, MDPs）</strong></p>
-<h2 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h2><p>一个马尔可夫决策过程 (MDPs) 由一个五元组构成 $⟨S, \mathcal{A}, \mathcal{P}, \mathcal{R}, γ⟩$</p>
+<h1 id="3-智能体的组成"><a href="#3-智能体的组成" class="headerlink" title="3. 智能体的组成"></a>3. 智能体的组成</h1><p>智能体的组成主要包括：</p>
 <ul>
-<li>$\mathcal{A}$ ： 动作的集合</li>
-<li>$\mathcal{P}$ ： 状态转移矩阵</li>
+<li>策略</li>
+<li>值函数</li>
+<li>模型</li>
 </ul>
-<script type="math/tex; mode=display">\mathcal{P}_{ss^{'}}^{a} = \mathbb{P}[ S_{t+1}=s' | S_t=s, A_{t}=a]</script><ul>
-<li>$\mathcal{R}(s,a)$：奖励函数， 表示在状态s做动作a的奖励。$\mathcal{R}(s, a) = E [\mathcal{R}_{t+1}|S_t = s, A_{t}=a]$</li>
-</ul>
-<h2 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h2><p>在 MDPs 中，一个策略 (Policy)π 是在给定状态下的动作的概率分布</p>
-<script type="math/tex; mode=display">\pi(a | s) = \mathbb{P}[ A_t = a | S_t = s ]</script><p><img data-src="../images/RL-MDP策略分布.png" alt></p>
-<ul>
-<li>策略是时间稳定的，只与s有关，与时间t无关</li>
-<li>是RL问题的终极目标</li>
-<li>如果分布是 one-hot 的，那么为确定性策略，否则为随机策略</li>
-</ul>
-<p><img data-src="../images/RL-确定性策略.png" alt></p>
-<h2 id="MDPs与MRPs之间的关系"><a href="#MDPs与MRPs之间的关系" class="headerlink" title="MDPs与MRPs之间的关系"></a>MDPs与MRPs之间的关系</h2><p>如果MDP问题给定策略$\pi$，则会退化成MRP问题。</p>
-<h2 id="MDPs中的值函数"><a href="#MDPs中的值函数" class="headerlink" title="MDPs中的值函数"></a>MDPs中的值函数</h2><ol>
-<li><p>状态值函数（V函数）</p>
-<ul>
-<li>定义：从状态s开始，使用策略$\pi$得到的期望回报值</li>
-</ul>
-<script type="math/tex; mode=display">v_{\pi}(s) = \mathbb{E}_\pi[G_t|S_t = s]</script></li>
-</ol>
+<h2 id="3-1-策略-Policy-pi"><a href="#3-1-策略-Policy-pi" class="headerlink" title="3.1 策略 Policy($\pi$)"></a>3.1 策略 Policy($\pi$)</h2><p>Policy 是从状态到动作的映射, 用$\pi$表示, 它告诉智能体如何挑选下一步的 action.</p>
+<p>强化学习中有两类 policy:</p>
 <ol>
-<li><p>状态动作值函数（Q函数）</p>
-<ul>
-<li><p>定义：MDPs 中的状态动作值函数是从状态 s 开始，执行动作 a， <strong>然后</strong>使用策略 π 得到的期望回报值</p>
-<blockquote>
-<p>动作a不一定来自于策略 $\pi$，实际上是做完动作 a之后，才遵循策略 $\pi$ 进行动作选择</p>
-</blockquote>
-<script type="math/tex; mode=display">q_{\pi}(s, a) = \mathbb{E}_\pi[ G_t | S_t = s, A_t = a ]</script></li>
-</ul>
-</li>
+<li>Deterministic policy (确定性策略)</li>
 </ol>
-<h2 id="贝尔曼期望方程"><a href="#贝尔曼期望方程" class="headerlink" title="贝尔曼期望方程"></a>贝尔曼期望方程</h2><p>和 MRP 相似， MDPs 中的值函数也能分解成<strong>瞬时奖励</strong>和<strong>后继状态的值函数</strong>两部分</p>
-<script type="math/tex; mode=display">v_ \pi(s)=\mathbb{E}_ \pi [ R_{t+1} + \gamma v_ \pi(S_{t+1}) | S_t=s ]</script><script type="math/tex; mode=display">q_ \pi(s,a)=\mathbb{E}_ \pi [ R_{t+1} + \gamma q_ \pi(S_{t+1}, A_{t+1}) | S_t=s, A_t=a]</script>
+<p>在确定性策略中，输入一个状态，输出的是某一个<strong>确定的 action</strong>.</p>
+<ol>
+<li>Stochastic policy (随机性策略)</li>
+</ol>
+<p>在随机性策略中，输入一个状态，输出的是<strong>每个 action 的概率分布</strong>.</p>
+<h2 id="3-2-值函数"><a href="#3-2-值函数" class="headerlink" title="3.2 值函数"></a>3.2 值函数</h2><ul>
+<li>值函数是<strong>回报值的期望</strong></li>
+<li>值函数主要用于评价不同状态的好坏，指导动作的选择</li>
+</ul>
+<h2 id="3-3-模型"><a href="#3-3-模型" class="headerlink" title="3.3 模型"></a>3.3 模型</h2><p>指智能体对环境的预测模型，分为两部分</p>
+<ul>
+<li>$\mathcal{P}$ - 预测下一个状态是什么</li>
+<li>$\mathcal{R}$ - 预测下一个奖励是什么</li>
+</ul>
+<hr>
+<h1 id="4-强化学习的分类"><a href="#4-强化学习的分类" class="headerlink" title="4. 强化学习的分类"></a>4. 强化学习的分类</h1><p>按环境：</p>
+<ul>
+<li>全观测环境下的</li>
+<li>部分观测环境下的</li>
+</ul>
+<p>按智能体成分：</p>
+<ul>
+<li>基于值函数：学习值函数</li>
+<li>基于策略：学习策略</li>
+<li>Actor Critic：同时学习值函数和策略</li>
+</ul>
+<p>按有无模型：</p>
+<ul>
+<li>无模型强化学习</li>
+<li>基于模型的强化学习</li>
+</ul>
+<p>按使用的手段：</p>
+<ul>
+<li>传统强化学习</li>
+<li>深度强化学习</li>
+</ul>
+<hr>
+<h1 id="5-学习（learning）和规划（planning）"><a href="#5-学习（learning）和规划（planning）" class="headerlink" title="5. 学习（learning）和规划（planning）"></a>5. 学习（learning）和规划（planning）</h1><p>解决<strong>序列决策问题</strong>有两个基本方法：</p>
+<p>强化学习：</p>
+<ul>
+<li><strong>环境未知</strong></li>
+<li>智能体与环境进行交互，不断改善策略</li>
+</ul>
+<p>规划：</p>
+<ul>
+<li><strong>环境已知</strong></li>
+<li>可以根据模型直接计算，不用交互</li>
+</ul>
+<blockquote>
+<p>环境模型不精确时，既利用环境进行规划，又与环境交互进行强化学习 —&gt; <strong>基于模型的强化学习</strong><br>当环境模型很精确时，可以直接用规划的方式求解</p>
+</blockquote>
+<hr>
+<h1 id="6-探索（Exploration）和利用（Exploitation）"><a href="#6-探索（Exploration）和利用（Exploitation）" class="headerlink" title="6. 探索（Exploration）和利用（Exploitation）"></a>6. 探索（Exploration）和利用（Exploitation）</h1><ul>
+<li>探索：<strong>发现环境中更多的信息</strong>；</li>
+<li>利用：<strong>充分挖掘当前已知信息</strong>，来最大化回报值；</li>
+</ul>
+<p>两者 trade-off，同等重要。</p>
+<hr>
+<h1 id="7-评价和优化"><a href="#7-评价和优化" class="headerlink" title="7. 评价和优化"></a>7. 评价和优化</h1><ul>
+<li>评价：给定一个策略，评价该策略的好坏 $\rightarrow$ 求值函数</li>
+<li>优化：改善策略 $\rightarrow$ 找到最优策略</li>
+</ul>
+<!-- ### 2.2. Episode
+一个Episode由一系列的observation, reward, action组成.
+
+$$(O_1, A_1, R_2, ..., O_{T-1}, A_{T-1}, R_T, O_T)$$
+
+从 initial observation 到 terminal observation.  -->
+<!--
+
+
+### 2.5. 值函数Value Function
+
+1. 状态值函数(V函数)
+一个状态 state s 对应的状态值函数只关于状态:
+
+$$V_\pi(s)=E_\pi(G_t|S_t=s)$$
+
+对给定的s, V(s)是一个确定的值. 它表示, 从state s开始, 遵循策略$\pi$时的return的期望值.
+
+2. 状态动作值函数(Q函数)
+状态动作值函数关于状态和动作:
+
+$$Q_\pi(s,a)=E_\pi(G_t|S_t=s,A_t=a)$$
+
+它表示, 从state s开始, 遵循策略$\pi$采取动作a时的return的期望值.
+
+
+## 3. 强化学习与其他机器学习
+
+- 监督学习：**有即时标签**的学习（分类、回归问题）
+
+- 非监督学习：**无标签**的学习（聚类问题）
+
+
+- 强化学习：没有标签，只有奖励信号，**有延迟奖励**的学习问题。介于监督和非监督之间。
+  - 强化学习的数据是**有时间相关性**的，**不满足独立同分布（iid）**。而传统机器学习的数据是iid的。因此传统机器学习的分布式系统对于强化学习不可用。
+  - 智能体的动作可以影响之后的数据。 -->
+
     </div>
 
     
@@ -449,7 +516,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-2.%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html" title="强化学习-2.马尔可夫决策过程">http://monteyang.cn/强化学习-2.马尔科夫决策过程.html</a>
+    <a href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9301%20%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html" title="强化学习总结01 基本概念">http://monteyang.cn/强化学习总结01 基本概念.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -470,12 +537,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-1.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html" rel="prev" title="强化学习-1.基本概念">
-      <i class="fa fa-chevron-left"></i> 强化学习-1.基本概念
+    <a href="/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB-Bag%20of%20Tricks%20for%20Image%20Classification%20with%20Convolutional%20Neural%20Networks.html" rel="prev" title="论文阅读-Bag of Tricks for Image Classification with Convolutional Neural Networks">
+      <i class="fa fa-chevron-left"></i> 论文阅读-Bag of Tricks for Image Classification with Convolutional Neural Networks
     </a></div>
       <div class="post-nav-item">
-    <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-3.%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html" rel="next" title="强化学习-3.动态规划">
-      强化学习-3.动态规划 <i class="fa fa-chevron-right"></i>
+    <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9302%20%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html" rel="next" title="强化学习总结02 马尔科夫决策过程">
+      强化学习总结02 马尔科夫决策过程 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -537,7 +604,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#马尔可夫性"><span class="nav-text">马尔可夫性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态转移矩阵"><span class="nav-text">状态转移矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#状态转移概率"><span class="nav-text">状态转移概率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态转移矩阵-1"><span class="nav-text">状态转移矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态转移函数"><span class="nav-text">状态转移函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#马尔可夫过程"><span class="nav-text">马尔可夫过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#马尔可夫过程的例子"><span class="nav-text">马尔可夫过程的例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#片段（Episode）"><span class="nav-text">片段（Episode）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#马尔可夫奖励过程"><span class="nav-text">马尔可夫奖励过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-1"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回报值"><span class="nav-text">回报值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MRPs中的值函数"><span class="nav-text">MRPs中的值函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MRPs中的贝尔曼方程（重点）"><span class="nav-text">MRPs中的贝尔曼方程（重点）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#马尔可夫决策过程"><span class="nav-text">马尔可夫决策过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-2"><span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#策略"><span class="nav-text">策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDPs与MRPs之间的关系"><span class="nav-text">MDPs与MRPs之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDPs中的值函数"><span class="nav-text">MDPs中的值函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贝尔曼期望方程"><span class="nav-text">贝尔曼期望方程</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-概述"><span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-强化学习的组成"><span class="nav-text">2. 强化学习的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#整体结构：环境和智能体"><span class="nav-text">整体结构：环境和智能体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-奖励-Reward"><span class="nav-text">2.1 奖励 Reward</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-状态-State"><span class="nav-text">2.2 状态 State</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#历史（history）"><span class="nav-text">历史（history）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境状态-S-e-t"><span class="nav-text">环境状态 $S^e_t$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#智能体状态-S-a-t"><span class="nav-text">智能体状态 $S^a_t$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全观测和部分观测"><span class="nav-text">全观测和部分观测</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-动作-Action"><span class="nav-text">2.3 动作 Action</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-智能体的组成"><span class="nav-text">3. 智能体的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-策略-Policy-pi"><span class="nav-text">3.1 策略 Policy($\pi$)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-值函数"><span class="nav-text">3.2 值函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-模型"><span class="nav-text">3.3 模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-强化学习的分类"><span class="nav-text">4. 强化学习的分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-学习（learning）和规划（planning）"><span class="nav-text">5. 学习（learning）和规划（planning）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-探索（Exploration）和利用（Exploitation）"><span class="nav-text">6. 探索（Exploration）和利用（Exploitation）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-评价和优化"><span class="nav-text">7. 评价和优化</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -753,7 +820,7 @@
       quicklink({
         timeout: 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-2.%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html',]
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9301%20%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.html',]
       });
       });
   </script>
@@ -769,7 +836,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo: 'MonteYang.github.io',
       owner: 'MonteYang',
       admin: ['MonteYang'],
-      id: 'c04e611f4b4ac295b59398719558f405',
+      id: '74d253485d171ada3d78163075b2cb30',
         language: 'zh-CN',
       distractionFreeMode: true
     });

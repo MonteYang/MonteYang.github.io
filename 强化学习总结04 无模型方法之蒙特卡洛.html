@@ -54,13 +54,14 @@
   };
 </script>
 
-  <meta name="description" content="无模型方法简介 属于学习方法的一种，即智能体和环境需要进行交互，从经验中学习 采用样本备份 需要结合充分的探索 (explore)  由于未知环境模型，所以无法预知自己的后继状态和奖励值。智能体通过与环境进行交互，然后观察环境返回的值，本质上相当于从概率分布 $P_{ss^′}^a$, $R^a_s$ 中进行采样。需要实现完整的轨迹，还需要确定$A$，在策略中进行采样得到 $A$（可控制）。当采样">
+  <meta name="description" content="无模型方法简介所谓“无模型”，表示环境模型是未知的，即马尔可夫决策过程中的 $\mathcal{P}$ 和 $\mathcal{R}$ 是未知的。  什么是马尔可夫决策过程？ $\rightarrow$ 详见强化学习总结02  回顾之前，用动态规划解决马尔可夫决策过程问题时（详见强化学习总结03 动态规划），值函数的计算方法如下：  上式中用到了 $\mathcal{P}$，因此，无模型的情况无法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="强化学习-4.无模型方法1-蒙特卡洛">
-<meta property="og:url" content="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-4.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%951-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html">
+<meta property="og:title" content="强化学习总结04 无模型方法之蒙特卡洛">
+<meta property="og:url" content="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9304%20%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%95%E4%B9%8B%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html">
 <meta property="og:site_name" content="Monte&#39;s Blog">
-<meta property="og:description" content="无模型方法简介 属于学习方法的一种，即智能体和环境需要进行交互，从经验中学习 采用样本备份 需要结合充分的探索 (explore)  由于未知环境模型，所以无法预知自己的后继状态和奖励值。智能体通过与环境进行交互，然后观察环境返回的值，本质上相当于从概率分布 $P_{ss^′}^a$, $R^a_s$ 中进行采样。需要实现完整的轨迹，还需要确定$A$，在策略中进行采样得到 $A$（可控制）。当采样">
+<meta property="og:description" content="无模型方法简介所谓“无模型”，表示环境模型是未知的，即马尔可夫决策过程中的 $\mathcal{P}$ 和 $\mathcal{R}$ 是未知的。  什么是马尔可夫决策过程？ $\rightarrow$ 详见强化学习总结02  回顾之前，用动态规划解决马尔可夫决策过程问题时（详见强化学习总结03 动态规划），值函数的计算方法如下：  上式中用到了 $\mathcal{P}$，因此，无模型的情况无法">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://monteyang.cn/images/RL%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E7%AD%96%E7%95%A5%E8%AF%84%E4%BB%B7P1.png">
 <meta property="og:image" content="http://monteyang.cn/images/RL-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B-%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 <meta property="og:image" content="http://monteyang.cn/images/RL-MC-%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%9F%E6%9C%9B%E6%96%B9%E7%A8%8B.png">
 <meta property="og:image" content="http://monteyang.cn/images/RL-MC%E7%AD%96%E7%95%A5%E8%AF%84%E4%BB%B7.png">
@@ -69,13 +70,13 @@
 <meta property="og:image" content="http://monteyang.cn/images/RL-Q%E5%87%BD%E6%95%B0%E7%AD%96%E7%95%A5%E6%8F%90%E5%8D%87.png">
 <meta property="og:image" content="http://monteyang.cn/images/RL-MCe%E8%B4%AA%E5%A9%AA.png">
 <meta property="article:published_time" content="2019-12-16T02:11:42.000Z">
-<meta property="article:modified_time" content="2020-05-10T07:32:20.098Z">
+<meta property="article:modified_time" content="2020-05-20T17:39:57.061Z">
 <meta property="article:author" content="Monte Yang">
 <meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://monteyang.cn/images/RL-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B-%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta name="twitter:image" content="http://monteyang.cn/images/RL%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E7%AD%96%E7%95%A5%E8%AF%84%E4%BB%B7P1.png">
 
-<link rel="canonical" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-4.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%951-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html">
+<link rel="canonical" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9304%20%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%95%E4%B9%8B%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html">
 
 
 <script id="page-configurations">
@@ -87,7 +88,7 @@
   };
 </script>
 
-  <title>强化学习-4.无模型方法1-蒙特卡洛 | Monte's Blog</title>
+  <title>强化学习总结04 无模型方法之蒙特卡洛 | Monte's Blog</title>
   
 
 
@@ -217,7 +218,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-4.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%951-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9304%20%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%95%E4%B9%8B%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/M.jpeg">
@@ -230,7 +231,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          强化学习-4.无模型方法1-蒙特卡洛
+          强化学习总结04 无模型方法之蒙特卡洛
         </h2>
 
         <div class="post-meta">
@@ -247,7 +248,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-10 15:32:20" itemprop="dateModified" datetime="2020-05-10T15:32:20+08:00">2020-05-10</time>
+                <time title="修改时间：2020-05-21 01:39:57" itemprop="dateModified" datetime="2020-05-21T01:39:57+08:00">2020-05-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -272,18 +273,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="无模型方法简介"><a href="#无模型方法简介" class="headerlink" title="无模型方法简介"></a>无模型方法简介</h1><ul>
+        <h1 id="无模型方法简介"><a href="#无模型方法简介" class="headerlink" title="无模型方法简介"></a>无模型方法简介</h1><p>所谓“无模型”，表示环境模型是未知的，即<strong>马尔可夫决策过程中的 $\mathcal{P}$ 和 $\mathcal{R}$ 是未知的</strong>。</p>
+<blockquote>
+<p>什么是马尔可夫决策过程？ $\rightarrow$ 详见强化学习总结02</p>
+</blockquote>
+<p>回顾之前，用动态规划解决马尔可夫决策过程问题时（详见强化学习总结03 动态规划），值函数的计算方法如下：</p>
+<p><img data-src="../images/RL动态规划-策略评价P1.png" alt></p>
+<p>上式中用到了 $\mathcal{P}$，因此，无模型的情况无法通过动态规划的方法解决，只能<strong>通过采样经验来估计值函数</strong>。</p>
+<p>综上，无模型的方法：</p>
+<ul>
 <li>属于<strong>学习</strong>方法的一种，即智能体和环境需要进行<strong>交互</strong>，从经验中学习</li>
-<li>采用样本备份</li>
-<li>需要结合充分的探索 (<strong>explore</strong>)</li>
+<li>需要结合充分的探索，才能保证估计的准确性 (<strong>explore</strong>)</li>
 </ul>
-<p>由于未知环境模型，所以无法预知自己的后继状态和奖励值。智能体通过与环境进行交互，然后观察环境返回的值，本质上相当于从概率分布 $P_{ss^′}^a$, $R^a_s$ 中进行采样。需要实现完整的轨迹，还需要确定$A$，在策略中进行采样得到 $A$（可控制）。当采样足够充分时，可以使用样本分布良好地刻画环境模型总体分布。</p>
-<h2 id="无模型学习和动态规划的对比"><a href="#无模型学习和动态规划的对比" class="headerlink" title="无模型学习和动态规划的对比"></a>无模型学习和动态规划的对比</h2><ul>
-<li>无模型学习<ul>
+<h2 id="无模型学习和动态规划的对比"><a href="#无模型学习和动态规划的对比" class="headerlink" title="无模型学习和动态规划的对比"></a>无模型学习和动态规划的对比</h2><p>无模型学习：</p>
+<ul>
 <li>未知环境模型</li>
-<li>需要与环境进行交互, 有交互成本（一般在仿真情况下进行）</li>
-<li>样本备份</li>
-<li>异步备份</li>
+<li>需要与环境进行交互, 有交互成本（因此一般在仿真情况下进行）</li>
 <li>需要充分的探索</li>
 <li><strong>两个策略</strong><ul>
 <li>行为策略（智能体和环境进行交互时的策略）</li>
@@ -291,70 +296,60 @@
 </ul>
 </li>
 </ul>
-</li>
-</ul>
+<p>动态规划：</p>
 <ul>
-<li>动态规划<ul>
 <li>已知环境模型</li>
 <li>不需要直接交互, 直接利用环境模型推导</li>
-<li>全宽备份</li>
-<li>同步和异步</li>
 <li>无探索</li>
-<li>一个策略</li>
-</ul>
-</li>
+<li>只有一个策略</li>
 </ul>
 <hr>
-<h1 id="在策略和离策略"><a href="#在策略和离策略" class="headerlink" title="在策略和离策略"></a>在策略和离策略</h1><p>根据行为策略和目标策略是否相同，可以把无模型方法分为：</p>
+<h1 id="关于在策略和离策略"><a href="#关于在策略和离策略" class="headerlink" title="关于在策略和离策略"></a>关于在策略和离策略</h1><p>根据行为策略和目标策略是否相同，可以把无模型方法分为：</p>
 <ul>
-<li>在策略（on-policy）</li>
-<li>离策略（off-policy）</li>
+<li>在策略方法（on-policy）</li>
+<li>离策略方法（off-policy）</li>
 </ul>
 <h2 id="在策略"><a href="#在策略" class="headerlink" title="在策略"></a>在策略</h2><ul>
 <li>行为策略和目标策略是同一个策略</li>
 <li>样本来自于行为策略，直接使用样本统计属性去估计总体</li>
-<li>更简单，且收敛性更好</li>
 <li>数据利用性更差 (只有智能体<strong>当前</strong>交互的样本能够被利用)</li>
-<li>限定了学习过程中的策略是<strong>随机性策略</strong>（为了保证充分探索）</li>
+<li>为了保证充分的探索性（explore），学习过程中的行为策略必须是<strong>随机性策略</strong></li>
 </ul>
 <h2 id="离策略"><a href="#离策略" class="headerlink" title="离策略"></a>离策略</h2><ul>
 <li>行为策略和目标策略不是同一个策略</li>
-<li>一般行为策略 $µ$ 选用随机性策略，目标策略 $π$ 选用确定性策略</li>
-<li>需要结合<strong>重要性采样</strong>才能使用样本估计总体</li>
-<li>方差更大，收敛性更差</li>
+<li>一般行为策略 $\mu$ 选用随机性策略，目标策略 $\pi$ 选用确定性策略</li>
+<li>需要利用<strong>重要性采样</strong>才能使用样本估计总体</li>
 <li>数据利用性更好 (可以使用其他智能体交互的样本)</li>
 <li>行为策略需要比目标策略更具备探索性。即，在每个状态下，目标策略的可行动作是行为策略可行动作的子集</li>
 </ul>
 <blockquote>
-<p>重要性采样：<br>重要性采样是一种估计概率分布期望值的技术，它使用了来自其他概率分布的样本。<br>主要用于无法直接采样原分布的情况<br>估计期望值时，需要加权概率分布的比值（称为重要性采样率）</p>
+<p>什么是重要性采样？</p>
 </blockquote>
-<hr>
-<h1 id="蒙特卡洛方法"><a href="#蒙特卡洛方法" class="headerlink" title="蒙特卡洛方法"></a>蒙特卡洛方法</h1><blockquote>
-<p>用经验平均估计期望平均</p>
-</blockquote>
-<p>特点：</p>
+<h2 id="重要性采样"><a href="#重要性采样" class="headerlink" title="重要性采样"></a>重要性采样</h2><p>重要性采样用于<strong>估计概率分布期望值</strong>，它使用了来自其他概率分布的样本。<br>主要用于无法直接采样原分布的情况<br>估计期望值时，需要加权概率分布的比值（称为重要性采样率）</p>
+<p>$f(X)$ 满足 $P$ 分布，使用分布 $Q(X)$，估计 $f(X)$ 的期望值：</p>
+<script type="math/tex; mode=display">E_{X∼P} [f(X)]=\sum P(X)f(X)\\=\sum Q(X)    \frac{P(X)}{Q(X)}f(X)\\=E_{X∼Q} [\frac{P(X)}{Q(X)}f(X)]</script><hr>
+<h1 id="蒙特卡洛方法"><a href="#蒙特卡洛方法" class="headerlink" title="蒙特卡洛方法"></a>蒙特卡洛方法</h1><p>简而言之，蒙特卡洛（Monte-Carlo, MC）就是<strong>用统计平均估计期望值</strong>的方法。可以被用于<strong>任意随机变量的估计</strong>。</p>
+<p>而值函数 $v_\pi(s)$ 的计算，为期望值的估计：</p>
+<script type="math/tex; mode=display">v_{\pi}(s) = {E}_\pi[G_t|S_t = s]</script><p>因此，MC 方法可用于估计值函数。</p>
+<p>用 MC 方法估计值函数，具有的特点：</p>
 <ul>
-<li>MC 方法可以被用于<strong>任意涉及随机变量的估计</strong></li>
-<li>这里 MC 方法特指<strong>利用统计平均估计期望值</strong>的方法</li>
-<li>强化学习中存在很多估计期望值的计算 $v_π$, $v_∗$</li>
-<li>使用 MC 方法只需要<strong>利用经验数据</strong>，不需要 P, R</li>
+<li>使用 MC 方法只需要<strong>利用经验数据</strong>，不需要 $\mathcal{P}, \mathcal{R}$</li>
 <li>MC 方法从<strong>完整的片段</strong>中学习。因此 MC 方法仅仅用于片段性任务 (必须有终止条件)</li>
 </ul>
-<p>最简单的思路，通过不断的采样，然后统计平均回报值来估计值函数，方差较大，不准确。只能做大量采样来减少方差。</p>
-<p><img data-src="../images/RL-蒙特卡洛-示意图.png" alt="蒙特卡洛中的样本"></p>
+<p>通过不断的采样，统计平均回报值来估计值函数，而且要做大量采样来减少估计的方差。</p>
 <hr>
-<h1 id="蒙特卡洛评价"><a href="#蒙特卡洛评价" class="headerlink" title="蒙特卡洛评价"></a>蒙特卡洛评价</h1><p>评价：给定策略，求值函数。</p>
+<h1 id="蒙特卡洛评价"><a href="#蒙特卡洛评价" class="headerlink" title="蒙特卡洛评价"></a>蒙特卡洛评价</h1><p>之前已经提到，策略评价就是给定策略，求其值函数。</p>
 <h2 id="表述说明"><a href="#表述说明" class="headerlink" title="表述说明"></a>表述说明</h2><ul>
-<li><p>轨迹：把状态-动作的序列称为一个智能体的轨迹(trajectory)</p>
-<script type="math/tex; mode=display">ρ = S_1, A_1, S_2, A_2, ·_ · · , S_T</script><blockquote>
-<p>状态动作序列构成了马尔可夫链图上的一条轨迹，有时也会加上奖励</p>
+<li><strong>轨迹</strong>： 把整个片段（episode）的状态-动作的序列称为一个智能体的轨迹（trajectory）<script type="math/tex; mode=display">ρ = S_1, A_1, S_2, A_2, ·_ · · , S_T</script></li>
+</ul>
+<blockquote>
+<p>也是马尔可夫链图上的一条轨迹，轨迹也可以加上奖励 $R$<br><img data-src="../images/RL-蒙特卡洛-示意图.png" alt="蒙特卡洛中的样本"></p>
 </blockquote>
-</li>
-<li><p>从 $π, P_{ss’}^a$ 采样一条轨迹：我们把智能体从初始状态开始和环境进行交互的整个过程中得到的轨迹叫做采样一条轨迹。其中需要考虑两个分布$π, P_{ss’}^a$</p>
-</li>
+<ul>
+<li><strong>从 $π, \mathcal{P}_{ss’}^a$ 中采样一条轨迹 $ρ$</strong>： 我们把智能体从初始状态开始和环境进行交互的整个过程中得到的轨迹叫做采样一条轨迹。因为智能体每走一步，都要在 $π, \mathcal{P}_{ss’}^a$ 这两个分布中进行采样。</li>
 </ul>
 <ul>
-<li>从策略中采样一条轨迹 $ρ$。因为 $P_{ss’}^a$ 是稳定的，所以轨迹的分布随着策略的变化而变化。我们简述成从一个策略 π 中采样轨迹<script type="math/tex; mode=display">ρ ∼ π</script></li>
+<li><strong>从 $π$ 中采样一条轨迹 $ρ$</strong>： 又由于在学习过程中，策略是不断变化的，$P_{ss’}^a$ 是稳定的，所以轨迹的分布随着策略的变化而变化。所以可以简述成从一个策略 $π$ 中采样轨迹。<script type="math/tex; mode=display">ρ ∼ π</script></li>
 </ul>
 <h2 id="蒙特卡洛评价-1"><a href="#蒙特卡洛评价-1" class="headerlink" title="蒙特卡洛评价"></a>蒙特卡洛评价</h2><p>目标：给定策略 $π$，求 $v_π$</p>
 <blockquote>
@@ -367,31 +362,30 @@
 <p>MC 利用了值函数的定义</p>
 <p><img data-src="../images/RL-MC策略评价.png" alt></p>
 <p>MC 策略评价<strong>使用回报值的经验平均来估计实际期望值</strong></p>
-<p>MC策略评价包括：</p>
-<h3 id="首次拜访MC策略评价"><a href="#首次拜访MC策略评价" class="headerlink" title="首次拜访MC策略评价"></a>首次拜访MC策略评价</h3><ul>
-<li>为了评价状态 s，使用给定的策略 π 采样大量的轨迹<ul>
-<li>在每一条轨迹中，对于状态 s <strong>首次</strong>出现的时间 t</li>
+<p>MC 策略评价方法包括：</p>
+<h3 id="首次拜访-MC-策略评价"><a href="#首次拜访-MC-策略评价" class="headerlink" title="首次拜访 MC 策略评价"></a>首次拜访 MC 策略评价</h3><p>评价状态 $s$：</p>
+<ul>
+<li>为了评价状态 $s$，使用给定的策略 $π$ 采样大量的轨迹<ul>
+<li>在每一条轨迹中，对于状态 $s$ <strong>首次</strong>出现的时间 $t$</li>
 <li>增加状态数量 $N(s) \leftarrow N(s) + 1$</li>
 <li>增加总回报值 $G_{sum}(s) \leftarrow G_{sum}(s) + G_t$</li>
 </ul>
 </li>
 <li>计算平均值得到值函数的估计 $V(s) = \frac{G_{sum}(s)}{N(s)}$</li>
-<li><strong>每条轨迹都是独立同分布的</strong></li>
-<li>根据大数定律，随着 $N(s)\rightarrow \infty, V(s) \rightarrow v_π(s)$</li>
+<li><strong>每条轨迹都是独立同分布的</strong>，根据大数定律，随着 $N(s)\rightarrow \infty, V(s) \rightarrow v_π(s)$</li>
 <li>在 MC 方法下， $V(s)$ 是 $v_π(s)$ 的无偏估计</li>
 </ul>
-<h3 id="每次拜访MC策略评价"><a href="#每次拜访MC策略评价" class="headerlink" title="每次拜访MC策略评价"></a>每次拜访MC策略评价</h3><ul>
-<li>为了评价状态 s</li>
-<li>使用给定的策略 π 采样大量的轨迹<ul>
-<li>在每一条轨迹中，对于状态 s <strong>每次</strong>出现的时间 t</li>
+<h3 id="每次拜访-MC-策略评价"><a href="#每次拜访-MC-策略评价" class="headerlink" title="每次拜访 MC 策略评价"></a>每次拜访 MC 策略评价</h3><p>评价状态 $s$：</p>
+<ul>
+<li>使用给定的策略 $π$ 采样大量的轨迹<ul>
+<li>在每一条轨迹中，对于状态 $s$ <strong>每次</strong>出现的时间 $t$</li>
 <li>增加状态数量 $N(s) \leftarrow N(s) + 1$</li>
 <li>增加总回报值 $G_{sum}(s) \leftarrow G_{sum}(s) + G_t$</li>
 </ul>
 </li>
 <li>计算平均值得到值函数的估计 $V(s) = \frac{G_{sum}(s)}{N(s)}$</li>
-<li>同样地，随着 $N(s)\rightarrow \infty, V(s) \rightarrow v_π(s)$</li>
+<li>同样地，根据大数定律，随着 $N(s)\rightarrow \infty, V(s) \rightarrow v_π(s)$</li>
 <li>收敛性的证明不如首次拜访 MC 策略评价直观。</li>
-<li>更容易拓展到函数逼近和资格迹（后述）</li>
 </ul>
 <h2 id="对Q函数的MC方法"><a href="#对Q函数的MC方法" class="headerlink" title="对Q函数的MC方法"></a>对Q函数的MC方法</h2><p>在没有模型的时候，一般我们选择估计<strong>Q 函数</strong>。</p>
 <p>因为我们可以通过 Q 函数直接得到贪婪的策略，最优的 Q 函数可以得到最优的策略。（直接取Max）</p>
@@ -430,6 +424,11 @@
 <li>用 $\epsilon$ 的概率随机从 m 个动作中选择</li>
 </ul>
 <p><img data-src="../images/RL-MCe贪婪.png" alt></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li>《reinforcement learning: an introduction》</li>
+<li><a href="https://zhuanlan.zhihu.com/p/25743759" target="_blank" rel="external nofollow noopener noreferrer">https://zhuanlan.zhihu.com/p/25743759</a></li>
+<li><a href="https://blog.csdn.net/hiwallace/article/details/81284799" target="_blank" rel="external nofollow noopener noreferrer">https://blog.csdn.net/hiwallace/article/details/81284799</a></li>
+</ol>
 
     </div>
 
@@ -465,7 +464,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-4.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%951-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html" title="强化学习-4.无模型方法1-蒙特卡洛">http://monteyang.cn/强化学习-4.无模型方法1-蒙特卡洛.html</a>
+    <a href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9304%20%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%95%E4%B9%8B%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html" title="强化学习总结04 无模型方法之蒙特卡洛">http://monteyang.cn/强化学习总结04 无模型方法之蒙特卡洛.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -486,8 +485,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-3.%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html" rel="prev" title="强化学习-3.动态规划">
-      <i class="fa fa-chevron-left"></i> 强化学习-3.动态规划
+    <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9303%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html" rel="prev" title="强化学习总结03 动态规划">
+      <i class="fa fa-chevron-left"></i> 强化学习总结03 动态规划
     </a></div>
       <div class="post-nav-item">
     <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-5.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%952-%E6%97%B6%E9%97%B4%E5%B7%AE%E5%88%86.html" rel="next" title="强化学习-5.无模型方法2-时间差分">
@@ -553,7 +552,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#无模型方法简介"><span class="nav-text">无模型方法简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#无模型学习和动态规划的对比"><span class="nav-text">无模型学习和动态规划的对比</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在策略和离策略"><span class="nav-text">在策略和离策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在策略"><span class="nav-text">在策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离策略"><span class="nav-text">离策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蒙特卡洛方法"><span class="nav-text">蒙特卡洛方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蒙特卡洛评价"><span class="nav-text">蒙特卡洛评价</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#表述说明"><span class="nav-text">表述说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡洛评价-1"><span class="nav-text">蒙特卡洛评价</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#首次拜访MC策略评价"><span class="nav-text">首次拜访MC策略评价</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#每次拜访MC策略评价"><span class="nav-text">每次拜访MC策略评价</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对Q函数的MC方法"><span class="nav-text">对Q函数的MC方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离策略-MC-策略评价"><span class="nav-text">离策略 MC 策略评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蒙特卡洛优化"><span class="nav-text">蒙特卡洛优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#值函数的使用"><span class="nav-text">值函数的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#epsilon-贪婪策略提升"><span class="nav-text">$\epsilon$ - 贪婪策略提升</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#无模型方法简介"><span class="nav-text">无模型方法简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#无模型学习和动态规划的对比"><span class="nav-text">无模型学习和动态规划的对比</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于在策略和离策略"><span class="nav-text">关于在策略和离策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在策略"><span class="nav-text">在策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离策略"><span class="nav-text">离策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重要性采样"><span class="nav-text">重要性采样</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蒙特卡洛方法"><span class="nav-text">蒙特卡洛方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蒙特卡洛评价"><span class="nav-text">蒙特卡洛评价</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#表述说明"><span class="nav-text">表述说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蒙特卡洛评价-1"><span class="nav-text">蒙特卡洛评价</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#首次拜访-MC-策略评价"><span class="nav-text">首次拜访 MC 策略评价</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#每次拜访-MC-策略评价"><span class="nav-text">每次拜访 MC 策略评价</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对Q函数的MC方法"><span class="nav-text">对Q函数的MC方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离策略-MC-策略评价"><span class="nav-text">离策略 MC 策略评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蒙特卡洛优化"><span class="nav-text">蒙特卡洛优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#值函数的使用"><span class="nav-text">值函数的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#epsilon-贪婪策略提升"><span class="nav-text">$\epsilon$ - 贪婪策略提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -769,7 +768,7 @@
       quicklink({
         timeout: 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-4.%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%951-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html',]
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9304%20%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%95%E4%B9%8B%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html',]
       });
       });
   </script>
@@ -785,7 +784,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo: 'MonteYang.github.io',
       owner: 'MonteYang',
       admin: ['MonteYang'],
-      id: '8541768b72fdde3919dc59d2ba056ed0',
+      id: 'd39daaf63677385fc71077bf262b97fb',
         language: 'zh-CN',
       distractionFreeMode: true
     });
