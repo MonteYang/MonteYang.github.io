@@ -109,9 +109,9 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -206,6 +206,287 @@
             
 
   <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-7.%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E7%AE%97%E6%B3%95.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/M.jpeg">
+      <meta itemprop="name" content="Monte Yang">
+      <meta itemprop="description" content="❤MY">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Monte's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-7.%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E7%AE%97%E6%B3%95.html" class="post-title-link" itemprop="url">强化学习-7.策略梯度算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-16 10:14:42" itemprop="dateCreated datePublished" datetime="2019-12-16T10:14:42+08:00">2019-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-18 16:14:32" itemprop="dateModified" datetime="2020-05-18T16:14:32+08:00">2020-05-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">强化学习</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><h2 id="强化学习方法的分类"><a href="#强化学习方法的分类" class="headerlink" title="强化学习方法的分类"></a>强化学习方法的分类</h2><p>强化学习方法可以分为：基于值函数的方法、基于策略的方法和Actor-Critic。</p>
+<ul>
+<li>基于值函数的方法： 用<strong>值函数</strong>进行策略评价+策略优化，用值函数导出策略</li>
+<li>基于策略的方法： 直接学习<strong>策略</strong></li>
+<li>Actor-Critic： 学习<strong>值函数 + 策略</strong></li>
+</ul>
+<p>之前的强化学习方法都是基于值函数的方法，在值函数近似中，我们使用带参数w的函数去近似值函数，如下：</p>
+<p><img data-src="../images/RL-策略梯度-值函数近似.png" alt></p>
+<p>在基于值函数的方法中，策略是从值函数中导出的</p>
+<ul>
+<li>使用贪婪的方法导出<strong>最优策略</strong>（最终收敛得到的策略）</li>
+<li>使用 $\epsilon$-贪婪方法导出<strong>行为策略</strong>（智能体真正做的策略）</li>
+</ul>
+<p>而基于策略的方法，直接将策略进行参数化。</p>
+<h2 id="基于值函数的方法的局限性"><a href="#基于值函数的方法的局限性" class="headerlink" title="基于值函数的方法的局限性"></a>基于值函数的方法的局限性</h2><ul>
+<li>针对确定性策略</li>
+<li>存在策略退化： 收敛后，若存在误差，则很容易因为微小的值函数差，发生策略退化现象</li>
+<li>难以处理高维度的状态/动作空间<ul>
+<li><strong>不能处理连续的状态/动作空间</strong></li>
+</ul>
+</li>
+<li>收敛速度慢： 反复进行策略迭代（策略评价+策略提升），速度较慢</li>
+</ul>
+<h2 id="策略梯度算法的优缺点"><a href="#策略梯度算法的优缺点" class="headerlink" title="策略梯度算法的优缺点"></a>策略梯度算法的优缺点</h2><p>策略梯度算法，也就是基于策略的方法，具有的优缺点：</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>更好的收敛性</li>
+<li>能够有效地处理高维和连续的动作空间</li>
+<li>能够学到随机策略</li>
+<li>不会导致策略退化</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>更容易收敛到局部最优值</li>
+<li>难以评价一个策略，而且评价的<strong>方差较大</strong></li>
+</ul>
+<h2 id="策略模型的建模方式"><a href="#策略模型的建模方式" class="headerlink" title="策略模型的建模方式"></a>策略模型的建模方式</h2><p><img data-src="../images/RL-策略梯度算法-建模方式.png" alt></p>
+<p>左侧2个是值函数方法，右侧2个是基于策略的方法。</p>
+<hr>
+<h1 id="策略梯度算法"><a href="#策略梯度算法" class="headerlink" title="策略梯度算法"></a>策略梯度算法</h1><h2 id="策略梯度目标函数"><a href="#策略梯度目标函数" class="headerlink" title="策略梯度目标函数"></a>策略梯度目标函数</h2><p>在策略梯度算法中，我们用一个参数 θ 建模策略 $π_θ(s,a)$，如何寻找最优的参数 θ?</p>
+<p>值函数近似时，优化的目标是使值函数的输出接近目标值。那么，如何不利用值函数，直接评价一个策略 $π_θ$ 的好坏？</p>
+<h2 id="策略梯度的推导"><a href="#策略梯度的推导" class="headerlink" title="策略梯度的推导"></a>策略梯度的推导</h2><p>用 $τ$ 表示每次仿真的状态-行为序列 $S_0,A_0,… ,S_T,A_T$，每一个轨迹代表了强化学习的一个样本。轨迹的回报：</p>
+<p><img data-src="../images/RL-策略梯度-轨迹回报值.png" alt></p>
+<p>用 $P(τ; θ)$ 表示轨迹 $τ$ 出现的概率, 强化学习的<strong>目标函数</strong>可表示为</p>
+<p><img data-src="../images/RL-策略梯度-目标函数.png" alt></p>
+<blockquote>
+<p>对所有条轨迹进行累加: 轨迹的回报值 * 该轨迹出现的概率</p>
+</blockquote>
+<p>强化学习的目标是最大化整个过程的奖励，也就是最大化$U(\theta)$</p>
+<p><img data-src="../images/RL-策略梯度-目标.png" alt></p>
+<p>在上式中，不同的策略只是影响了不同轨迹出现的概率。</p>
+<p>如何求解 $∇_θU(θ)$?</p>
+<ul>
+<li>$P(τ; θ)$ 未知</li>
+<li>无法用一个可微分的数学模型直接表达 $U(θ)$</li>
+</ul>
+<p>策略梯度解决的问题是，即使未知 $U(θ)$ 的具体形式，也能求其梯度。</p>
+<p>从似然率的角度：</p>
+<p><img data-src="../images/RL-策略梯度-似然率.png" alt></p>
+<p>为什么要推导成这样的形式？</p>
+<ul>
+<li>$P(τ|θ)$ 可以通过 $π(a|s)$ 的模型表达 (后面会证明)</li>
+<li>$R(τ)$ 可以通过采样的方式估计</li>
+<li>期望符号 E 可以通过经验平均去估算</li>
+</ul>
+<p>利用当前策略 $π_θ$ <strong>采样 m 条轨迹，使用经验平均来估计梯度</strong>（MC形式）：</p>
+<script type="math/tex; mode=display">∇_\theta U(\theta) \approx \frac{1}{m} \sum_{i=1}^{m} ∇_\theta \log \mathbb{P}(\tau_i ; \theta) R(\tau_i)</script><p><img data-src="../images/RL-策略梯度-理解.png" alt></p>
+<ul>
+<li>$∇_θ \log \mathbb{P} (τ; θ)$ 是轨迹 $τ$ 的概率随参数 $θ$ 变化最陡的方向<ul>
+<li>沿正方向，轨迹出现的概率会变大</li>
+<li>沿负方向，轨迹出现的概率会变小</li>
+</ul>
+</li>
+<li>$R(τ)$ 控制了参数更新的<strong>方向</strong>和<strong>步长</strong>，正负决定了方向，大小决定了增大 (减小) 的幅度</li>
+</ul>
+<p>在策略梯度算法中，</p>
+<ul>
+<li>增大了高回报轨迹出现的概率，回报值越大增加越多</li>
+<li>减少了低回报轨迹出现的概率，回报值越小减少越多</li>
+</ul>
+<p>注意到似然率梯度<strong>只是改变轨迹出现的概率，而没有尝试去改变轨迹</strong></p>
+<p>轨迹 $\tau$ 出现的概率 $\mathbb{P} (τ; θ)$ 是未知的，根据马尔科夫链：</p>
+<p><img data-src="../images/RL-策略梯度-马尔可夫链.png" alt></p>
+<p>由于状态转移概率 $P(s_{t+1}^{(i)} |s_t^{(i)}, a_t^{(i)})$ 中不包含参数 θ，因此求导的过程可以消掉，所以：</p>
+<p><img data-src="../images/RL-策略梯度-求导.png" alt></p>
+<p>因此，综上可得，我们可以在仅有可微分的策略模型 $π_θ$ 的情况下，求得 $∇_θU(θ)$</p>
+<script type="math/tex; mode=display">\hat{\eta} =∇_\theta U(\theta) \approx \frac{1}{m} \sum_{i=1}^{m} ∇_\theta \log \mathbb{P}(\tau_i ; \theta) R(\tau_i)</script><p>其中，</p>
+<p><img data-src="../images/RL-策略梯度-求导2.png" alt></p>
+<p>$\hat{\eta}$ 是 $∇_θU(θ)$ 的无偏估计</p>
+<script type="math/tex; mode=display">E[\hat{\eta}]=∇_θU(\theta)</script><h2 id="弥补策略梯度的缺陷"><a href="#弥补策略梯度的缺陷" class="headerlink" title="弥补策略梯度的缺陷"></a>弥补策略梯度的缺陷</h2><ul>
+<li>梯度的方差大</li>
+<li>如果所有的 $R(τ)$ 都是正的，那么所有轨迹出现的概率都会增加</li>
+</ul>
+<p>我们可以通过以下方法减小方差：</p>
+<ul>
+<li>引入基线 (baseline)</li>
+<li>修改回报函数</li>
+<li>Actor-Critic 方法</li>
+<li>优势函数</li>
+</ul>
+<h3 id="1-引入基线"><a href="#1-引入基线" class="headerlink" title="(1) 引入基线"></a>(1) 引入基线</h3><p>引入基线 b ，不影响策略梯度</p>
+<script type="math/tex; mode=display">∇_\theta U(\theta) \approx \frac{1}{m} \sum_{i=1}^{m} ∇_\theta \log \mathbb{P}(\tau_i ; \theta) R(\tau_i)=\frac{1}{m} \sum_{i=1}^{m} ∇_\theta \log \mathbb{P}(\tau_i ; \theta) (R(\tau_i)-b)</script><p><img data-src="../images/RL-策略梯度-基线.png" alt></p>
+<p>由上式可知，这是因为对基线求期望值，结果会抵消为0。</p>
+<p>选择基线的方法：</p>
+<ol>
+<li>选择回报值函数的期望值<br><img data-src="../images/RL-策略梯度-基线1.png" alt></li>
+</ol>
+<ol>
+<li>最小方差<br><img data-src="../images/RL-策略梯度-基线2.png" alt></li>
+</ol>
+<h3 id="2-修改回报值函数"><a href="#2-修改回报值函数" class="headerlink" title="(2) 修改回报值函数"></a>(2) 修改回报值函数</h3><p>在当前的估计值，对回报值 $R(\tau)$ 进行修改。</p>
+<p><img data-src="../images/RL-策略梯度-修改回报值函数1.png" alt></p>
+<p>由于<strong>将来的动作不依赖过去的奖励</strong>，因此我们可以修改回报值来降低方差。</p>
+<p><strong>只考虑t时刻以后的奖励值</strong>： 由 k = t 开始，降低了方差（减少了t时刻之前的随机性所导致的方差）</p>
+<p><img data-src="../images/RL-策略梯度-修改回报值函数2.png" alt></p>
+<p>上式中，每一次更新需要 $m$ 条轨迹作为样本，从 $t=0$ 时刻一直计算到T时刻。</p>
+<p>实际更新算法：</p>
+<ul>
+<li><p>考虑单条轨迹</p>
+<p><img data-src="../images/RL-策略梯度-单条轨迹更新.png" alt></p>
+</li>
+<li><p>考虑单步更新</p>
+<p>实际操作中，通常使用<strong>单步更新</strong>的形式：</p>
+<p><img data-src="../images/RL-策略梯度-单步更新.png" alt></p>
+<p>表示在t时刻的更新，对每一步都进行更新。但还是利用到了t时刻到T时刻的奖励值，属于 MC 形式。</p>
+</li>
+</ul>
+<hr>
+<h1 id="Actor-Critic"><a href="#Actor-Critic" class="headerlink" title="Actor-Critic"></a>Actor-Critic</h1><h2 id="MC-策略梯度-REINFORCE"><a href="#MC-策略梯度-REINFORCE" class="headerlink" title="MC 策略梯度 (REINFORCE)"></a>MC 策略梯度 (REINFORCE)</h2><ul>
+<li>使用<strong>梯度上升算法</strong>更新参数 $θ$</li>
+<li>使用<strong>采样回报值</strong> $g_t$ 估计真实回报值</li>
+</ul>
+<p><img data-src="../images/RL-策略梯度-REINFORCE.png" alt></p>
+<blockquote>
+<p><strong>梯度上升</strong>：采用梯度上升是因为在策略梯度算法中，要最大化目标函数。</p>
+<p>由于 $g_t$ 的估计采用的是<strong>MC方法</strong>，通过<strong>整个片段的回报值</strong>估计真实的回报值，所以<strong>采样回报值的方差很大</strong></p>
+</blockquote>
+<p><img data-src="../images/RL-策略梯度-REINFORCE2.png" alt="MC策略梯度（REINFORCE）"></p>
+<p>之前的课程中，已经介绍了很多种估计 $g_t$ 的方法，MC方法、时间差分（TD）方法、TD($\gamma$)等，其中 TD 方法能够降低估计值的方差。</p>
+<h2 id="使用-Critic-函数减小方差"><a href="#使用-Critic-函数减小方差" class="headerlink" title="使用 Critic 函数减小方差"></a>使用 Critic 函数减小方差</h2><p>使用TD等方法来估计回报值，就构成了 Actor-Critic 算法中。虽然Actor-Critic算法中，同时利用了<strong>策略梯度算法</strong>和<strong>基于值函数的方法</strong>，但本质上还是基于策略的方法，<strong>值函数只是为了减小方差，本质上仅仅提供了一个估计回报值的标量</strong>，用于策略梯度算法中表示<strong>更新的方向和步长</strong>。</p>
+<p>最简单的 critic 函数， 我们可以使用 Q 函数来表示：</p>
+<p><img data-src="../images/RL-策略梯度-Q函数.png" alt></p>
+<blockquote>
+<p>要注意的是：Actor-Critic 中的 <strong>真正做决策的是 Actor</strong>（策略梯度算法）。</p>
+</blockquote>
+<p>Actor-Critic 算法维持两个参数：</p>
+<ul>
+<li>Critic 更新 Q 函数的参数 w</li>
+<li>Actor 使用 Critic 的方向更新策略参数 θ</li>
+</ul>
+<p>将回报值替换为Q函数，近似策略梯度：</p>
+<p><img data-src="../images/RL-策略梯度-回报值Q.png" alt></p>
+<h2 id="使用优势函数减小方差"><a href="#使用优势函数减小方差" class="headerlink" title="使用优势函数减小方差"></a>使用优势函数减小方差</h2><p>还可以进一步引入优势函数来减小方差</p>
+<p>优势函数：<br><img data-src="../images/RL-策略梯度-优势函数.png" alt></p>
+<blockquote>
+<p>优势函数利用了引入<strong>基线</strong>的思想，此处的基线就是 V 函数。</p>
+<p>优势函数表示在当前状态下，每个动作相对于平均情况，能创造多少优势。<br>优势函数为正时，表示当前状态下，采取该动作能够创造优势。</p>
+</blockquote>
+<p>即通过 <strong>V 函数</strong>估计基线，用 <strong>Q 函数</strong>估计回报函数，相减求得优势函数。</p>
+<p><img data-src="../images/RL-策略梯度-优势函数2.png" alt></p>
+<p>那么就有了3个模型：</p>
+<ul>
+<li>V 函数模型</li>
+<li>Q 函数模型</li>
+<li>策略模型</li>
+</ul>
+<p>近似策略梯度</p>
+<p><img data-src="../images/RL-策略梯度-优势函数3.png" alt></p>
+<h2 id="使用-TD-误差替代优势函数"><a href="#使用-TD-误差替代优势函数" class="headerlink" title="使用 TD 误差替代优势函数"></a>使用 TD 误差替代优势函数</h2><p>优势函数需要同时估计V函数和Q函数，计算相对麻烦，我们考虑<strong>用 TD 误差来替代优势函数</strong>。</p>
+<p>对于真实的值函数 $V^{π_θ}(s)$， TD 误差为：</p>
+<p><img data-src="../images/RL-策略梯度-TD误差.png" alt></p>
+<p>而 <strong>TD 误差是优势函数的无偏估计</strong>：</p>
+<p><img data-src="../images/RL-策略梯度-TD误差2.png" alt></p>
+<p>所以，我们可以利用 TD 误差近似优势函数。</p>
+<p>使用 TD 误差来计算策略梯度：</p>
+<p><img data-src="../images/RL-策略梯度-TD误差3.png" alt></p>
+<p>通过这样的方法，我们只需要一个 critic 参数 v，通过v函数求 TD 误差即可。</p>
+<hr>
+<h1 id="策略梯度多种形式的总结"><a href="#策略梯度多种形式的总结" class="headerlink" title="策略梯度多种形式的总结"></a>策略梯度多种形式的总结</h1><p>核心在更换对回报值$g_t$的估计。</p>
+<p><img data-src="../images/RL-策略梯度-多种形式总结.png" alt></p>
+<blockquote>
+<p>其中 Advantage Actor-Critic 为 A2C 算法。<br>又由于TD误差是 优势函数 A的无偏估计，所以 TD Actor-Critic 也是 A2C，实际中的 A2C 也是用 TD Actor-Critic。</p>
+</blockquote>
+<p>该式中有两部分：</p>
+<ul>
+<li>求梯度的部分（∇）：控制着策略更新的<strong>方向</strong></li>
+<li>$g_t$ 及其变种：控制着策略更新的<strong>步长</strong>（重要）</li>
+</ul>
+<p>Critic 使用了策略评价 (MC 或 TD) 来估计 $Q_π(s, a); A_π(s, a)$ 或 $V_π(s)$</p>
+<hr>
+<h1 id="A2C-算法"><a href="#A2C-算法" class="headerlink" title="A2C 算法"></a>A2C 算法</h1><p><img data-src="../images/RL-策略梯度-A2C.png" alt></p>
+<ol>
+<li>通过在当前状态s下，执行动作a，获得奖励r、并到达下一个状态s’，</li>
+<li>计算 TD 误差，</li>
+<li>再根据 TD 误差 更新 Critic ， 同时也用 TD 误差来更新 Actor。</li>
+</ol>
+<blockquote>
+<p>A2C 中为了充分探索到样本，且满足样本独立同分布，常常使用多进程的思路。</p>
+</blockquote>
+<hr>
+<h1 id="其他策略梯度算法"><a href="#其他策略梯度算法" class="headerlink" title="其他策略梯度算法"></a>其他策略梯度算法</h1><ul>
+<li>自然梯度算法：找到最快的更新方向</li>
+<li>信赖域策略优化算法（TRPO）：步长的选择</li>
+<li>近端策略优化（PPO）：在TRPO基础上的改进，使TRPO的实现变得简单</li>
+<li>确定性策略梯度算法（DPG）：处理连续动作的情况</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
         
   
   
@@ -1099,91 +1380,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9302%20%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9302%20%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html" class="post-title-link" itemprop="url">强化学习总结02 马尔科夫决策过程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-16 10:09:42" itemprop="dateCreated datePublished" datetime="2019-12-16T10:09:42+08:00">2019-12-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-20 23:26:15" itemprop="dateModified" datetime="2020-05-20T23:26:15+08:00">2020-05-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">强化学习</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>马尔科夫性 - 马尔可夫过程 - 马尔可夫奖励过程 - 马尔可夫决策过程</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9302%20%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1255,7 +1451,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1268,7 +1464,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">21</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
