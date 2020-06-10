@@ -54,12 +54,12 @@
   };
 </script>
 
-  <meta name="description" content="无模型方法简介所谓“无模型”，表示环境模型是未知的，即马尔可夫决策过程中的 $\mathcal{P}$ 和 $\mathcal{R}$ 是未知的。  什么是马尔可夫决策过程？ $\rightarrow$ 详见强化学习总结02  回顾之前，用动态规划解决马尔可夫决策过程问题时（详见强化学习总结03 动态规划），值函数的计算方法如下：  上式中用到了 $\mathcal{P}$，因此，无模型的情况无法">
+  <meta name="description" content="1. 无模型方法简介所谓“无模型”，表示环境模型是未知的，即马尔可夫决策过程中的 $\mathcal{P}$ 和 $\mathcal{R}$ 是未知的。  什么是马尔可夫决策过程？ $\rightarrow$ 详见强化学习总结02  回顾之前，用动态规划解决马尔可夫决策过程问题时（详见强化学习总结03 动态规划），值函数的计算方法如下：  上式中用到了 $\mathcal{P}$，因此，无模型的情">
 <meta property="og:type" content="article">
 <meta property="og:title" content="强化学习总结04 无模型方法之蒙特卡洛">
 <meta property="og:url" content="http://monteyang.cn/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%9304%20%E6%97%A0%E6%A8%A1%E5%9E%8B%E6%96%B9%E6%B3%95%E4%B9%8B%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B.html">
 <meta property="og:site_name" content="Monte&#39;s Blog">
-<meta property="og:description" content="无模型方法简介所谓“无模型”，表示环境模型是未知的，即马尔可夫决策过程中的 $\mathcal{P}$ 和 $\mathcal{R}$ 是未知的。  什么是马尔可夫决策过程？ $\rightarrow$ 详见强化学习总结02  回顾之前，用动态规划解决马尔可夫决策过程问题时（详见强化学习总结03 动态规划），值函数的计算方法如下：  上式中用到了 $\mathcal{P}$，因此，无模型的情况无法">
+<meta property="og:description" content="1. 无模型方法简介所谓“无模型”，表示环境模型是未知的，即马尔可夫决策过程中的 $\mathcal{P}$ 和 $\mathcal{R}$ 是未知的。  什么是马尔可夫决策过程？ $\rightarrow$ 详见强化学习总结02  回顾之前，用动态规划解决马尔可夫决策过程问题时（详见强化学习总结03 动态规划），值函数的计算方法如下：  上式中用到了 $\mathcal{P}$，因此，无模型的情">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://monteyang.cn/images/RL%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E7%AD%96%E7%95%A5%E8%AF%84%E4%BB%B7P1.png">
 <meta property="og:image" content="http://monteyang.cn/images/RL-%E7%A6%BB%E7%AD%96%E7%95%A5%E9%87%8D%E8%A6%81%E6%80%A7%E9%87%87%E6%A0%B7%E7%8E%87.png">
@@ -73,7 +73,7 @@
 <meta property="og:image" content="http://monteyang.cn/images/RL-MCe%E8%B4%AA%E5%A9%AA.png">
 <meta property="og:image" content="http://monteyang.cn/images/RL-MC%E4%BC%98%E5%8C%96.png">
 <meta property="article:published_time" content="2019-12-16T02:11:42.000Z">
-<meta property="article:modified_time" content="2020-06-07T09:06:22.905Z">
+<meta property="article:modified_time" content="2020-06-10T02:29:37.191Z">
 <meta property="article:author" content="Monte Yang">
 <meta property="article:tag" content="强化学习">
 <meta name="twitter:card" content="summary">
@@ -120,9 +120,9 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<link rel="alternate" href="/atom.xml" title="Monte's Blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -251,7 +251,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-06-07 17:06:22" itemprop="dateModified" datetime="2020-06-07T17:06:22+08:00">2020-06-07</time>
+                <time title="修改时间：2020-06-10 10:29:37" itemprop="dateModified" datetime="2020-06-10T10:29:37+08:00">2020-06-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -276,7 +276,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="无模型方法简介"><a href="#无模型方法简介" class="headerlink" title="无模型方法简介"></a>无模型方法简介</h1><p>所谓“无模型”，表示环境模型是未知的，即<strong>马尔可夫决策过程中的 $\mathcal{P}$ 和 $\mathcal{R}$ 是未知的</strong>。</p>
+        <h1 id="1-无模型方法简介"><a href="#1-无模型方法简介" class="headerlink" title="1. 无模型方法简介"></a>1. 无模型方法简介</h1><p>所谓“无模型”，表示环境模型是未知的，即<strong>马尔可夫决策过程中的 $\mathcal{P}$ 和 $\mathcal{R}$ 是未知的</strong>。</p>
 <blockquote>
 <p>什么是马尔可夫决策过程？ $\rightarrow$ 详见强化学习总结02</p>
 </blockquote>
@@ -307,18 +307,18 @@
 <li>只有一个策略</li>
 </ul>
 <hr>
-<h1 id="在策略和离策略"><a href="#在策略和离策略" class="headerlink" title="在策略和离策略"></a>在策略和离策略</h1><p>根据行为策略和目标策略是否相同，可以把无模型方法分为：</p>
+<h1 id="2-在策略和离策略"><a href="#2-在策略和离策略" class="headerlink" title="2. 在策略和离策略"></a>2. 在策略和离策略</h1><p>根据行为策略和目标策略是否相同，可以把无模型方法分为：</p>
 <ul>
 <li>在策略方法（on-policy）</li>
 <li>离策略方法（off-policy）</li>
 </ul>
-<h2 id="在策略"><a href="#在策略" class="headerlink" title="在策略"></a>在策略</h2><ul>
+<h2 id="2-1-在策略"><a href="#2-1-在策略" class="headerlink" title="2.1 在策略"></a>2.1 在策略</h2><ul>
 <li>行为策略和目标策略是同一个策略</li>
 <li>样本来自于行为策略，直接使用样本统计属性去估计总体</li>
 <li>数据利用性更差 (只有智能体<strong>当前</strong>交互的样本能够被利用)</li>
 <li>为了保证充分的探索性（explore），学习过程中的行为策略必须是<strong>随机性策略</strong></li>
 </ul>
-<h2 id="离策略"><a href="#离策略" class="headerlink" title="离策略"></a>离策略</h2><ul>
+<h2 id="2-2-离策略"><a href="#2-2-离策略" class="headerlink" title="2.2 离策略"></a>2.2 离策略</h2><ul>
 <li>行为策略和目标策略不是同一个策略</li>
 <li>一般行为策略 $\mu$ 选用随机性策略，目标策略 $\pi$ 选用确定性策略</li>
 <li>需要利用<strong>重要性采样</strong>才能使用样本估计总体</li>
@@ -328,15 +328,15 @@
 <blockquote>
 <p>什么是重要性采样？</p>
 </blockquote>
-<h2 id="重要性采样"><a href="#重要性采样" class="headerlink" title="重要性采样"></a>重要性采样</h2><p>重要性采样用于<strong>估计概率分布期望值</strong>，它使用了来自其他概率分布的样本。<br>主要用于无法直接采样原分布的情况<br>估计期望值时，需要加权概率分布的比值（称为重要性采样率）</p>
+<h2 id="2-3-重要性采样"><a href="#2-3-重要性采样" class="headerlink" title="2.3 重要性采样"></a>2.3 重要性采样</h2><p>重要性采样用于<strong>估计概率分布期望值</strong>，它使用了来自其他概率分布的样本。<br>主要用于无法直接采样原分布的情况<br>估计期望值时，需要加权概率分布的比值（称为重要性采样率）</p>
 <p>$f(X)$ 满足 $P$ 分布，使用分布 $Q(X)$，估计 $f(X)$ 的期望值：</p>
-<script type="math/tex; mode=display">E_{X∼P} [f(X)]=\sum P(X)f(X)\\=\sum Q(X)    \frac{P(X)}{Q(X)}f(X)\\=E_{X∼Q} [\frac{P(X)}{Q(X)}f(X)]</script><h2 id="离策略中的重要性采样"><a href="#离策略中的重要性采样" class="headerlink" title="离策略中的重要性采样"></a>离策略中的重要性采样</h2><p>考虑 t 时刻之后的动作状态轨迹 $\rho_t=A_t,S_{t+1},A_{t+1},…,S_T$</p>
+<script type="math/tex; mode=display">E_{X∼P} [f(X)]=\sum P(X)f(X)\\=\sum Q(X)    \frac{P(X)}{Q(X)}f(X)\\=E_{X∼Q} [\frac{P(X)}{Q(X)}f(X)]</script><h2 id="2-4-离策略中的重要性采样"><a href="#2-4-离策略中的重要性采样" class="headerlink" title="2.4 离策略中的重要性采样"></a>2.4 离策略中的重要性采样</h2><p>考虑 t 时刻之后的动作状态轨迹 $\rho_t=A_t,S_{t+1},A_{t+1},…,S_T$</p>
 <p>可以计算出该条轨迹出现的概率：</p>
 <script type="math/tex; mode=display">P(\rho_t)=\prod^{T-1}_{k=t}\pi(A_k|S_k) P(S_{k+1}| S_k, A_k)</script><p>因此，可以得到重要性采样率为：</p>
 <p><img data-src="../images/RL-离策略重要性采样率.png" alt></p>
 <p>所以即使是无环境模型的情况下，也可以得到重要性采样率。</p>
 <hr>
-<h1 id="蒙特卡洛方法"><a href="#蒙特卡洛方法" class="headerlink" title="蒙特卡洛方法"></a>蒙特卡洛方法</h1><p>简而言之，蒙特卡洛（Monte-Carlo, MC）就是<strong>用统计平均估计期望值</strong>的方法（重点）。可以被用于<strong>任意随机变量的估计</strong>。</p>
+<h1 id="3-蒙特卡洛方法"><a href="#3-蒙特卡洛方法" class="headerlink" title="3. 蒙特卡洛方法"></a>3. 蒙特卡洛方法</h1><p>简而言之，蒙特卡洛（Monte-Carlo, MC）就是<strong>用统计平均估计期望值</strong>的方法（重点）。可以被用于<strong>任意随机变量的估计</strong>。</p>
 <p>而值函数 $v_\pi(s)$ 的计算，为期望值的估计：</p>
 <script type="math/tex; mode=display">v_{\pi}(s) = {E}_\pi[G_t|S_t = s]</script><p>因此，MC 方法可用于估计值函数。</p>
 <p>用 MC 方法估计值函数，具有的特点：</p>
@@ -346,7 +346,7 @@
 </ul>
 <p>通过不断的采样，统计平均回报值来估计值函数，而且要做大量采样来减少估计的方差。</p>
 <hr>
-<h1 id="蒙特卡洛评价"><a href="#蒙特卡洛评价" class="headerlink" title="蒙特卡洛评价"></a>蒙特卡洛评价</h1><p>之前提到，策略评价就是给定策略 $\pi$，求其值函数（V 函数或 Q 函数）。</p>
+<h1 id="4-蒙特卡洛评价"><a href="#4-蒙特卡洛评价" class="headerlink" title="4. 蒙特卡洛评价"></a>4. 蒙特卡洛评价</h1><p>之前提到，策略评价就是给定策略 $\pi$，求其值函数（V 函数或 Q 函数）。</p>
 <blockquote>
 <p>关于一些表述的说明</p>
 <ul>
@@ -365,7 +365,7 @@
 <p>而 MC 方法直接利用值函数的定义。</p>
 <script type="math/tex; mode=display">v_{\pi}(s)=E_{\pi}[G_t|S_t=s]</script><p>MC 策略评价<strong>使用回报值的经验平均来估计实际期望值</strong></p>
 <p>MC 策略评价方法包括：</p>
-<h2 id="首次拜访-MC-策略评价"><a href="#首次拜访-MC-策略评价" class="headerlink" title="首次拜访 MC 策略评价"></a>首次拜访 MC 策略评价</h2><p>评价状态 $s$：</p>
+<h2 id="4-1-首次拜访-MC-策略评价"><a href="#4-1-首次拜访-MC-策略评价" class="headerlink" title="4.1 首次拜访 MC 策略评价"></a>4.1 首次拜访 MC 策略评价</h2><p>评价状态 $s$：</p>
 <ul>
 <li>为了评价状态 $s$，使用给定的策略 $π$ 采样大量的轨迹<ul>
 <li>在每一条轨迹中，对于状态 $s$ <strong>首次</strong>出现的时间 $t$</li>
@@ -376,7 +376,7 @@
 <li>计算平均值得到值函数的估计 $V(s) = \frac{G_{sum}(s)}{N(s)}$</li>
 <li><strong>每条轨迹都是独立同分布的</strong>，根据大数定律，随着 $N(s)\rightarrow \infty, V(s) \rightarrow v_π(s)$</li>
 </ul>
-<h2 id="每次拜访-MC-策略评价"><a href="#每次拜访-MC-策略评价" class="headerlink" title="每次拜访 MC 策略评价"></a>每次拜访 MC 策略评价</h2><p>评价状态 $s$：</p>
+<h2 id="4-2-每次拜访-MC-策略评价"><a href="#4-2-每次拜访-MC-策略评价" class="headerlink" title="4.2 每次拜访 MC 策略评价"></a>4.2 每次拜访 MC 策略评价</h2><p>评价状态 $s$：</p>
 <ul>
 <li>使用给定的策略 $π$ 采样大量的轨迹<ul>
 <li>在每一条轨迹中，对于状态 $s$ <strong>每次</strong>出现的时间 $t$</li>
@@ -387,12 +387,12 @@
 <li>计算平均值得到值函数的估计 $V(s) = \frac{G_{sum}(s)}{N(s)}$</li>
 <li>同样地，根据大数定律，随着 $N(s)\rightarrow \infty, V(s) \rightarrow v_π(s)$</li>
 </ul>
-<h2 id="对-Q-函数的-MC-方法"><a href="#对-Q-函数的-MC-方法" class="headerlink" title="对 Q 函数的 MC 方法"></a>对 Q 函数的 MC 方法</h2><p>在无模型的时候，一般估计<strong>Q 函数</strong>。</p>
+<h2 id="4-3-对-Q-函数的-MC-方法"><a href="#4-3-对-Q-函数的-MC-方法" class="headerlink" title="4.3 对 Q 函数的 MC 方法"></a>4.3 对 Q 函数的 MC 方法</h2><p>在无模型的时候，一般估计<strong>Q 函数</strong>。</p>
 <p>因为我们可以通过 Q 函数直接得到贪婪的策略，从而进行策略优化。而且最优的 Q 函数可以直接导出最优的策略。（直接取Max）</p>
 <p>和之前估计 V 函数类似，但是 Q 函数的拜访从状态 s 变成了在状态 s 下做动作 a。</p>
-<h2 id="离策略-MC-策略评价"><a href="#离策略-MC-策略评价" class="headerlink" title="离策略 MC 策略评价"></a>离策略 MC 策略评价</h2><p>在采样轨迹时使用的策略是 $µ$，而计算的值函数是策略 $π$ 的。使用重要性采样率去加权回报值</p>
+<h2 id="4-4-离策略-MC-策略评价"><a href="#4-4-离策略-MC-策略评价" class="headerlink" title="4.4 离策略 MC 策略评价"></a>4.4 离策略 MC 策略评价</h2><p>在采样轨迹时使用的策略是 $µ$，而计算的值函数是策略 $π$ 的。使用重要性采样率去加权回报值</p>
 <script type="math/tex; mode=display">G_t^{\frac{\pi}{\mu}}=\prod_{k=t}^{T-1}\frac{\pi(A_k|S_k)}{\mu(A_k|S_k)}G_t</script><p>将所有在策略的 MC 算法中的 $G_t$ 替换成 $G^{π/µ}_t$ 就得到离策略 MC 算法。</p>
-<h2 id="MC-小结"><a href="#MC-小结" class="headerlink" title="MC 小结"></a>MC 小结</h2><ul>
+<h2 id="4-5-MC-小结"><a href="#4-5-MC-小结" class="headerlink" title="4.5 MC 小结"></a>4.5 MC 小结</h2><ul>
 <li>偏差为 0，是无偏估计</li>
 <li>方差较大，需要大量数据去消除</li>
 <li>收敛性较好</li>
@@ -400,7 +400,7 @@
 <li>没有利用马尔可夫性，有时可以用在非马尔可夫环境</li>
 </ul>
 <hr>
-<h1 id="增量式蒙特卡洛算法"><a href="#增量式蒙特卡洛算法" class="headerlink" title="增量式蒙特卡洛算法"></a>增量式蒙特卡洛算法</h1><p>之前的蒙特卡洛算法需要采样大量轨迹，之后再统一计算平均数。<br>使用增量式算法，在每一条轨迹之后都得到值函数的估计值</p>
+<h1 id="5-增量式蒙特卡洛算法"><a href="#5-增量式蒙特卡洛算法" class="headerlink" title="5. 增量式蒙特卡洛算法"></a>5. 增量式蒙特卡洛算法</h1><p>之前的蒙特卡洛算法需要采样大量轨迹，之后再统一计算平均数。<br>使用增量式算法，在每一条轨迹之后都得到值函数的估计值</p>
 <p>以增量形式进行计算平均值：</p>
 <p><img data-src="../images/增量式平均值.png" alt></p>
 <h2 id="增量式-MC-更新"><a href="#增量式-MC-更新" class="headerlink" title="增量式 MC 更新"></a>增量式 MC 更新</h2><p>采样轨迹： $S_1, A_1, S_2, A_2, …, S_T$</p>
@@ -410,13 +410,13 @@
 <li>此处 $1/N(S_t)$ 是更新的步长</li>
 </ul>
 <hr>
-<h1 id="蒙特卡洛优化"><a href="#蒙特卡洛优化" class="headerlink" title="蒙特卡洛优化"></a>蒙特卡洛优化</h1><h2 id="广义策略迭代"><a href="#广义策略迭代" class="headerlink" title="广义策略迭代"></a>广义策略迭代</h2><p>广义策略迭代包括2部分：</p>
+<h1 id="6-蒙特卡洛优化"><a href="#6-蒙特卡洛优化" class="headerlink" title="6. 蒙特卡洛优化"></a>6. 蒙特卡洛优化</h1><h2 id="6-1-广义策略迭代"><a href="#6-1-广义策略迭代" class="headerlink" title="6.1 广义策略迭代"></a>6.1 广义策略迭代</h2><p>广义策略迭代包括2部分：</p>
 <ul>
 <li>策略评价：估计值函数 $v_\pi$ 或 $q_\pi$。例如迭代式策略评价。</li>
 <li>策略提升：利用值函数 $v_\pi$ 或 $q_\pi$ 提升策略。例如贪婪策略提升。</li>
 </ul>
 <p><img data-src="../images/RL-MC-广义策略迭代.png" alt></p>
-<h2 id="选择-V-函数还是-Q-函数"><a href="#选择-V-函数还是-Q-函数" class="headerlink" title="选择 V 函数还是 Q 函数"></a>选择 V 函数还是 Q 函数</h2><ul>
+<h2 id="6-2-选择-V-函数还是-Q-函数"><a href="#6-2-选择-V-函数还是-Q-函数" class="headerlink" title="6.2 选择 V 函数还是 Q 函数"></a>6.2 选择 V 函数还是 Q 函数</h2><ul>
 <li>在 V 函数上做贪婪策略提升要求<strong>已知环境模型</strong></li>
 </ul>
 <p><img data-src="../images/RL-MC-V函数贪婪策略提升.png" alt></p>
@@ -424,13 +424,13 @@
 <li>在 Q 函数上做贪婪策略提升是<strong>无模型</strong>的</li>
 </ul>
 <p><img data-src="../images/RL-Q函数策略提升.png" alt></p>
-<h2 id="epsilon-贪婪策略提升"><a href="#epsilon-贪婪策略提升" class="headerlink" title="$\epsilon$ - 贪婪策略提升"></a>$\epsilon$ - 贪婪策略提升</h2><p>需要保证智能体一直在探索新的策略，保证所有的 m 个动作都有一定的概率被采样。</p>
+<h2 id="6-3-epsilon-贪婪策略提升"><a href="#6-3-epsilon-贪婪策略提升" class="headerlink" title="6.3 $\epsilon$ - 贪婪策略提升"></a>6.3 $\epsilon$ - 贪婪策略提升</h2><p>需要保证智能体一直在探索新的策略，保证所有的 m 个动作都有一定的概率被采样。</p>
 <ul>
 <li>用 $1 − \epsilon$ 的概率选择贪婪的动作</li>
 <li>用 $\epsilon$ 的概率随机从 m 个动作中选择</li>
 </ul>
 <p><img data-src="../images/RL-MCe贪婪.png" alt></p>
-<h2 id="MC-的策略迭代"><a href="#MC-的策略迭代" class="headerlink" title="MC 的策略迭代"></a>MC 的策略迭代</h2><p>因此，MC 策略迭代中，使用：</p>
+<h2 id="6-4-MC-的策略迭代"><a href="#6-4-MC-的策略迭代" class="headerlink" title="6.4 MC 的策略迭代"></a>6.4 MC 的策略迭代</h2><p>因此，MC 策略迭代中，使用：</p>
 <ul>
 <li>策略评价方法为：Q 函数的蒙特卡洛策略评价</li>
 <li>策略提升方法为： $\epsilon$-贪婪策略提升</li>
@@ -566,7 +566,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#无模型方法简介"><span class="nav-text">无模型方法简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#无模型学习和动态规划的对比"><span class="nav-text">无模型学习和动态规划的对比</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在策略和离策略"><span class="nav-text">在策略和离策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在策略"><span class="nav-text">在策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离策略"><span class="nav-text">离策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重要性采样"><span class="nav-text">重要性采样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离策略中的重要性采样"><span class="nav-text">离策略中的重要性采样</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蒙特卡洛方法"><span class="nav-text">蒙特卡洛方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蒙特卡洛评价"><span class="nav-text">蒙特卡洛评价</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#首次拜访-MC-策略评价"><span class="nav-text">首次拜访 MC 策略评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#每次拜访-MC-策略评价"><span class="nav-text">每次拜访 MC 策略评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对-Q-函数的-MC-方法"><span class="nav-text">对 Q 函数的 MC 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离策略-MC-策略评价"><span class="nav-text">离策略 MC 策略评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MC-小结"><span class="nav-text">MC 小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#增量式蒙特卡洛算法"><span class="nav-text">增量式蒙特卡洛算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#增量式-MC-更新"><span class="nav-text">增量式 MC 更新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#蒙特卡洛优化"><span class="nav-text">蒙特卡洛优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#广义策略迭代"><span class="nav-text">广义策略迭代</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择-V-函数还是-Q-函数"><span class="nav-text">选择 V 函数还是 Q 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#epsilon-贪婪策略提升"><span class="nav-text">$\epsilon$ - 贪婪策略提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MC-的策略迭代"><span class="nav-text">MC 的策略迭代</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-无模型方法简介"><span class="nav-text">1. 无模型方法简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#无模型学习和动态规划的对比"><span class="nav-text">无模型学习和动态规划的对比</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-在策略和离策略"><span class="nav-text">2. 在策略和离策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-在策略"><span class="nav-text">2.1 在策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-离策略"><span class="nav-text">2.2 离策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-重要性采样"><span class="nav-text">2.3 重要性采样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-离策略中的重要性采样"><span class="nav-text">2.4 离策略中的重要性采样</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-蒙特卡洛方法"><span class="nav-text">3. 蒙特卡洛方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-蒙特卡洛评价"><span class="nav-text">4. 蒙特卡洛评价</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-首次拜访-MC-策略评价"><span class="nav-text">4.1 首次拜访 MC 策略评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-每次拜访-MC-策略评价"><span class="nav-text">4.2 每次拜访 MC 策略评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-对-Q-函数的-MC-方法"><span class="nav-text">4.3 对 Q 函数的 MC 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-离策略-MC-策略评价"><span class="nav-text">4.4 离策略 MC 策略评价</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-MC-小结"><span class="nav-text">4.5 MC 小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-增量式蒙特卡洛算法"><span class="nav-text">5. 增量式蒙特卡洛算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#增量式-MC-更新"><span class="nav-text">增量式 MC 更新</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-蒙特卡洛优化"><span class="nav-text">6. 蒙特卡洛优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-广义策略迭代"><span class="nav-text">6.1 广义策略迭代</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-选择-V-函数还是-Q-函数"><span class="nav-text">6.2 选择 V 函数还是 Q 函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-3-epsilon-贪婪策略提升"><span class="nav-text">6.3 $\epsilon$ - 贪婪策略提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-4-MC-的策略迭代"><span class="nav-text">6.4 MC 的策略迭代</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -581,7 +581,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -594,7 +594,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

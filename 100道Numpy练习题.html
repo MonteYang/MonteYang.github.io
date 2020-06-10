@@ -54,33 +54,33 @@
   };
 </script>
 
-  <meta name="description" content="❤MY">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Monte&#39;s Blog">
-<meta property="og:url" content="http://monteyang.cn/index.html">
+  <meta name="description" content="原项目： https:&#x2F;&#x2F;github.com&#x2F;rougier&#x2F;numpy-100 1. Import the numpy package under the name np (★☆☆) 导入numpy模块命名为nphint: import … as1import numpy as np 2. Print the numpy version and the configuration (★☆☆)查">
+<meta property="og:type" content="article">
+<meta property="og:title" content="100道Numpy练习题">
+<meta property="og:url" content="http://monteyang.cn/100%E9%81%93Numpy%E7%BB%83%E4%B9%A0%E9%A2%98.html">
 <meta property="og:site_name" content="Monte&#39;s Blog">
-<meta property="og:description" content="❤MY">
+<meta property="og:description" content="原项目： https:&#x2F;&#x2F;github.com&#x2F;rougier&#x2F;numpy-100 1. Import the numpy package under the name np (★☆☆) 导入numpy模块命名为nphint: import … as1import numpy as np 2. Print the numpy version and the configuration (★☆☆)查">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-09T20:11:14.000Z">
+<meta property="article:modified_time" content="2020-06-10T06:27:48.521Z">
 <meta property="article:author" content="Monte Yang">
-<meta property="article:tag" content="3D Deep learning">
-<meta property="article:tag" content=" Monte Yang">
-<meta property="article:tag" content=" 深度学习">
-<meta property="article:tag" content=" 算法">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Numpy">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://monteyang.cn/">
+<link rel="canonical" href="http://monteyang.cn/100%E9%81%93Numpy%E7%BB%83%E4%B9%A0%E9%A2%98.html">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false
+    isHome: false,
+    isPost: true
   };
 </script>
 
-  <title>Monte's Blog</title>
+  <title>100道Numpy练习题 | Monte's Blog</title>
   
 
 
@@ -206,10 +206,10 @@
             
 
   <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://monteyang.cn/100%E9%81%93Numpy%E7%BB%83%E4%B9%A0%E9%A2%98.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -223,8 +223,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/100%E9%81%93Numpy%E7%BB%83%E4%B9%A0%E9%A2%98.html" class="post-title-link" itemprop="url">100道Numpy练习题</a>
+          100道Numpy练习题
         </h2>
 
         <div class="post-meta">
@@ -260,7 +259,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>原项目： <a href="https://github.com/rougier/numpy-100" target="_blank" rel="external nofollow noopener noreferrer">https://github.com/rougier/numpy-100</a></p>
+        <p>原项目： <a href="https://github.com/rougier/numpy-100" target="_blank" rel="external nofollow noopener noreferrer">https://github.com/rougier/numpy-100</a></p>
 <h4 id="1-Import-the-numpy-package-under-the-name-np-★☆☆"><a href="#1-Import-the-numpy-package-under-the-name-np-★☆☆" class="headerlink" title="1. Import the numpy package under the name np (★☆☆)"></a>1. Import the numpy package under the name <code>np</code> (★☆☆)</h4><blockquote>
 <p>导入numpy模块命名为np<br><code>hint: import … as</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure></p>
 <h4 id="2-Print-the-numpy-version-and-the-configuration-★☆☆"><a href="#2-Print-the-numpy-version-and-the-configuration-★☆☆" class="headerlink" title="2. Print the numpy version and the configuration (★☆☆)"></a>2. Print the numpy version and the configuration (★☆☆)</h4><p>查看numpy版本和配置<br><code>hint: np.__version__, np.show_config)</code></p>
@@ -496,342 +495,69 @@
 <h4 id="100-Compute-bootstrapped-95-confidence-intervals-for-the-mean-of-a-1D-array-X-i-e-resample-the-elements-of-an-array-with-replacement-N-times-compute-the-mean-of-each-sample-and-then-compute-percentiles-over-the-means-★★★"><a href="#100-Compute-bootstrapped-95-confidence-intervals-for-the-mean-of-a-1D-array-X-i-e-resample-the-elements-of-an-array-with-replacement-N-times-compute-the-mean-of-each-sample-and-then-compute-percentiles-over-the-means-★★★" class="headerlink" title="100. Compute bootstrapped 95% confidence intervals for the mean of a 1D array X (i.e., resample the elements of an array with replacement N times, compute the mean of each sample, and then compute percentiles over the means). (★★★)"></a>100. Compute bootstrapped 95% confidence intervals for the mean of a 1D array X (i.e., resample the elements of an array with replacement N times, compute the mean of each sample, and then compute percentiles over the means). (★★★)</h4><p><code>hint: np.percentile</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Author: Jessica B. Hamrick</span></span><br><span class="line"></span><br><span class="line">X = np.random.randn(<span class="number">100</span>) <span class="comment"># random 1D array</span></span><br><span class="line">N = <span class="number">1000</span> <span class="comment"># number of bootstrap samples</span></span><br><span class="line">idx = np.random.randint(<span class="number">0</span>, X.size, (N, X.size))</span><br><span class="line">means = X[idx].mean(axis=<span class="number">1</span>)</span><br><span class="line">confint = np.percentile(means, [<span class="number">2.5</span>, <span class="number">97.5</span>])</span><br><span class="line">print(confint)</span><br></pre></td></tr></table></figure>
 
-      
     </div>
 
     
     
     
+        <div class="reward-container">
+  <div>如果觉得有些帮助～</div>
+  <button disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Monte Yang 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Monte Yang 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Monte Yang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://monteyang.cn/100%E9%81%93Numpy%E7%BB%83%E4%B9%A0%E9%A2%98.html" title="100道Numpy练习题">http://monteyang.cn/100道Numpy练习题.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+              <a href="/tags/Numpy/" rel="tag"><i class="fa fa-tag"></i> Numpy</a>
+          </div>
 
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/matplotlib%E9%A2%9C%E8%89%B2%E5%AF%B9%E7%85%A7%E8%A1%A8.html">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/matplotlib%E9%A2%9C%E8%89%B2%E5%AF%B9%E7%85%A7%E8%A1%A8.html" class="post-title-link" itemprop="url">matplotlib颜色对照表</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-05-08 09:26:36 / 修改时间：17:31:43" itemprop="dateCreated datePublished" datetime="2020-05-08T09:26:36+08:00">2020-05-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>matplotlib 颜色对照</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/matplotlib%E9%A2%9C%E8%89%B2%E5%AF%B9%E7%85%A7%E8%A1%A8.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/matplotlib%E9%A2%9C%E8%89%B2%E5%AF%B9%E7%85%A7%E8%A1%A8.html" rel="prev" title="matplotlib颜色对照表">
+      <i class="fa fa-chevron-left"></i> matplotlib颜色对照表
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-rainbow.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-rainbow.html" class="post-title-link" itemprop="url">深度强化学习-rainbow</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-30 06:51:47" itemprop="dateCreated datePublished" datetime="2020-04-30T06:51:47+08:00">2020-04-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-08 17:32:01" itemprop="dateModified" datetime="2020-05-08T17:32:01+08:00">2020-05-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">强化学习</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>集合了多种 DQN 的变体<br>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-rainbow.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-Prioritized%20Experience%20Replay.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-Prioritized%20Experience%20Replay.html" class="post-title-link" itemprop="url">深度强化学习-Prioritized Experience Replay</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-30 02:27:16" itemprop="dateCreated datePublished" datetime="2020-04-30T02:27:16+08:00">2020-04-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-08 17:30:46" itemprop="dateModified" datetime="2020-05-08T17:30:46+08:00">2020-05-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">强化学习</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="1-Problem"><a href="#1-Problem" class="headerlink" title="1. Problem"></a>1. Problem</h1><p>在之前的 DQN 算法中，一个重要思想是经验回放（Experience Replay），在训练过程中，从经验回放池对样本进行<strong>均匀采样</strong>。</p>
-<p>在实际的问题中，样本往往有它们的优先级，因为有一些样本是相对“珍贵”的。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-Prioritized%20Experience%20Replay.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-Dueling%20DQN.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/M.jpeg">
-      <meta itemprop="name" content="Monte Yang">
-      <meta itemprop="description" content="❤MY">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Monte's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-Dueling%20DQN.html" class="post-title-link" itemprop="url">深度强化学习-Dueling DQN</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-28 11:50:06" itemprop="dateCreated datePublished" datetime="2020-04-28T11:50:06+08:00">2020-04-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-30 10:28:13" itemprop="dateModified" datetime="2020-04-30T10:28:13+08:00">2020-04-30</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">强化学习</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>将 Q 函数分解成 V 函数和 A 函数（优势函数）</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-Dueling%20DQN.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
   </article>
   
   
@@ -839,15 +565,10 @@
 
   </div>
 
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -894,6 +615,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Import-the-numpy-package-under-the-name-np-★☆☆"><span class="nav-text">1. Import the numpy package under the name np (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Print-the-numpy-version-and-the-configuration-★☆☆"><span class="nav-text">2. Print the numpy version and the configuration (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Create-a-null-vector-of-size-10-★☆☆"><span class="nav-text">3. Create a null vector of size 10 (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-How-to-find-the-memory-size-of-any-array-★☆☆"><span class="nav-text">4. How to find the memory size of any array (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-How-to-get-the-documentation-of-the-numpy-add-function-from-the-command-line-★☆☆"><span class="nav-text">5. How to get the documentation of the numpy add function from the command line? (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Create-a-null-vector-of-size-10-but-the-fifth-value-which-is-1-★☆☆"><span class="nav-text">6. Create a null vector of size 10 but the fifth value which is 1 (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-Create-a-vector-with-values-ranging-from-10-to-49-★☆☆"><span class="nav-text">7. Create a vector with values ranging from 10 to 49 (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-Reverse-a-vector-first-element-becomes-last-★☆☆"><span class="nav-text">8. Reverse a vector (first element becomes last) (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-Create-a-3x3-matrix-with-values-ranging-from-0-to-8-★☆☆"><span class="nav-text">9. Create a 3x3 matrix with values ranging from 0 to 8 (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-Find-indices-of-non-zero-elements-from-1-2-0-0-4-0-★☆☆"><span class="nav-text">10. Find indices of non-zero elements from [1,2,0,0,4,0] (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-Create-a-3x3-identity-matrix-★☆☆"><span class="nav-text">11. Create a 3x3 identity matrix (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-Create-a-3x3x3-array-with-random-values-★☆☆"><span class="nav-text">12. Create a 3x3x3 array with random values (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-Create-a-10x10-array-with-random-values-and-find-the-minimum-and-maximum-values-★☆☆"><span class="nav-text">13. Create a 10x10 array with random values and find the minimum and maximum values (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-Create-a-random-vector-of-size-30-and-find-the-mean-value-★☆☆"><span class="nav-text">14. Create a random vector of size 30 and find the mean value (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-Create-a-2d-array-with-1-on-the-border-and-0-inside-★☆☆"><span class="nav-text">15. Create a 2d array with 1 on the border and 0 inside (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-How-to-add-a-border-filled-with-0’s-around-an-existing-array-★☆☆"><span class="nav-text">16. How to add a border (filled with 0’s) around an existing array? (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17-What-is-the-result-of-the-following-expression-★☆☆"><span class="nav-text">17. What is the result of the following expression? (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18-Create-a-5x5-matrix-with-values-1-2-3-4-just-below-the-diagonal-★☆☆"><span class="nav-text">18. Create a 5x5 matrix with values 1,2,3,4 just below the diagonal (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#19-Create-a-8x8-matrix-and-fill-it-with-a-checkerboard-pattern-★☆☆"><span class="nav-text">19. Create a 8x8 matrix and fill it with a checkerboard pattern (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20-Consider-a-6-7-8-shape-array-what-is-the-index-x-y-z-of-the-100th-element"><span class="nav-text">20. Consider a (6,7,8) shape array, what is the index (x,y,z) of the 100th element?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#21-Create-a-checkerboard-8x8-matrix-using-the-tile-function-★☆☆"><span class="nav-text">21. Create a checkerboard 8x8 matrix using the tile function (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#22-Normalize-a-5x5-random-matrix-★☆☆"><span class="nav-text">22. Normalize a 5x5 random matrix (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#23-Create-a-custom-dtype-that-describes-a-color-as-four-unsigned-bytes-RGBA-★☆☆"><span class="nav-text">23. Create a custom dtype that describes a color as four unsigned bytes (RGBA) (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#24-Multiply-a-5x3-matrix-by-a-3x2-matrix-real-matrix-product-★☆☆"><span class="nav-text">24. Multiply a 5x3 matrix by a 3x2 matrix (real matrix product) (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#25-Given-a-1D-array-negate-all-elements-which-are-between-3-and-8-in-place-★☆☆"><span class="nav-text">25. Given a 1D array, negate all elements which are between 3 and 8, in place. (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#26-What-is-the-output-of-the-following-script-★☆☆"><span class="nav-text">26. What is the output of the following script? (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#27-Consider-an-integer-vector-Z-which-of-these-expressions-are-legal-★☆☆"><span class="nav-text">27. Consider an integer vector Z, which of these expressions are legal? (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#28-What-are-the-result-of-the-following-expressions"><span class="nav-text">28. What are the result of the following expressions?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#29-How-to-round-away-from-zero-a-float-array-★☆☆"><span class="nav-text">29. How to round away from zero a float array ? (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#30-How-to-find-common-values-between-two-arrays-★☆☆"><span class="nav-text">30. How to find common values between two arrays? (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#31-How-to-ignore-all-numpy-warnings-not-recommended-★☆☆"><span class="nav-text">31. How to ignore all numpy warnings (not recommended)? (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#32-Is-the-following-expressions-true-★☆☆"><span class="nav-text">32. Is the following expressions true? (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#33-How-to-get-the-dates-of-yesterday-today-and-tomorrow-★☆☆"><span class="nav-text">33. How to get the dates of yesterday, today and tomorrow? (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#34-How-to-get-all-the-dates-corresponding-to-the-month-of-July-2016-★★☆"><span class="nav-text">34. How to get all the dates corresponding to the month of July 2016? (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#35-How-to-compute-A-B-A-2-in-place-without-copy-★★☆"><span class="nav-text">35. How to compute ((A+B)*(-A&#x2F;2)) in place (without copy)? (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#36-Extract-the-integer-part-of-a-random-array-of-positive-numbers-using-4-different-methods-★★☆"><span class="nav-text">36. Extract the integer part of a random array of positive numbers using 4 different methods (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#37-Create-a-5x5-matrix-with-row-values-ranging-from-0-to-4-★★☆"><span class="nav-text">37. Create a 5x5 matrix with row values ranging from 0 to 4 (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#38-Consider-a-generator-function-that-generates-10-integers-and-use-it-to-build-an-array-★☆☆"><span class="nav-text">38. Consider a generator function that generates 10 integers and use it to build an array (★☆☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#39-Create-a-vector-of-size-10-with-values-ranging-from-0-to-1-both-excluded-★★☆"><span class="nav-text">39. Create a vector of size 10 with values ranging from 0 to 1, both excluded (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#40-Create-a-random-vector-of-size-10-and-sort-it-★★☆"><span class="nav-text">40. Create a random vector of size 10 and sort it (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#41-How-to-sum-a-small-array-faster-than-np-sum-★★☆"><span class="nav-text">41. How to sum a small array faster than np.sum? (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#42-Consider-two-random-array-A-and-B-check-if-they-are-equal-★★☆"><span class="nav-text">42. Consider two random array A and B, check if they are equal (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#43-Make-an-array-immutable-read-only-★★☆"><span class="nav-text">43. Make an array immutable (read-only) (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#44-Consider-a-random-10x2-matrix-representing-cartesian-coordinates-convert-them-to-polar-coordinates-★★☆"><span class="nav-text">44. Consider a random 10x2 matrix representing cartesian coordinates, convert them to polar coordinates (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#45-Create-random-vector-of-size-10-and-replace-the-maximum-value-by-0-★★☆"><span class="nav-text">45. Create random vector of size 10 and replace the maximum value by 0 (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#46-Create-a-structured-array-with-x-and-y-coordinates-covering-the-0-1-x-0-1-area-★★☆"><span class="nav-text">46. Create a structured array with x and y coordinates covering the [0,1]x[0,1] area (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#47-Given-two-arrays-X-and-Y-construct-the-Cauchy-matrix-C-Cij-1-xi-yj"><span class="nav-text">47. Given two arrays, X and Y, construct the Cauchy matrix C (Cij &#x3D;1&#x2F;(xi - yj))</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#48-Print-the-minimum-and-maximum-representable-value-for-each-numpy-scalar-type-★★☆"><span class="nav-text">48. Print the minimum and maximum representable value for each numpy scalar type (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#49-How-to-print-all-the-values-of-an-array-★★☆"><span class="nav-text">49. How to print all the values of an array? (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#50-How-to-find-the-closest-value-to-a-given-scalar-in-a-vector-★★☆"><span class="nav-text">50. How to find the closest value (to a given scalar) in a vector? (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#51-Create-a-structured-array-representing-a-position-x-y-and-a-color-r-g-b-★★☆"><span class="nav-text">51. Create a structured array representing a position (x,y) and a color (r,g,b) (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#52-Consider-a-random-vector-with-shape-100-2-representing-coordinates-find-point-by-point-distances-★★☆"><span class="nav-text">52. Consider a random vector with shape (100,2) representing coordinates, find point by point distances (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#53-How-to-convert-a-float-32-bits-array-into-an-integer-32-bits-in-place"><span class="nav-text">53. How to convert a float (32 bits) array into an integer (32 bits) in place?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#54-How-to-read-the-following-file-★★☆"><span class="nav-text">54. How to read the following file? (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#55-What-is-the-equivalent-of-enumerate-for-numpy-arrays-★★☆"><span class="nav-text">55. What is the equivalent of enumerate for numpy arrays? (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#56-Generate-a-generic-2D-Gaussian-like-array-★★☆"><span class="nav-text">56. Generate a generic 2D Gaussian-like array (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#57-How-to-randomly-place-p-elements-in-a-2D-array-★★☆"><span class="nav-text">57. How to randomly place p elements in a 2D array? (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#58-Subtract-the-mean-of-each-row-of-a-matrix-★★☆"><span class="nav-text">58. Subtract the mean of each row of a matrix (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#59-How-to-sort-an-array-by-the-nth-column-★★☆"><span class="nav-text">59. How to sort an array by the nth column? (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#60-How-to-tell-if-a-given-2D-array-has-null-columns-★★☆"><span class="nav-text">60. How to tell if a given 2D array has null columns? (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#61-Find-the-nearest-value-from-a-given-value-in-an-array-★★☆"><span class="nav-text">61. Find the nearest value from a given value in an array (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#62-Considering-two-arrays-with-shape-1-3-and-3-1-how-to-compute-their-sum-using-an-iterator-★★☆"><span class="nav-text">62. Considering two arrays with shape (1,3) and (3,1), how to compute their sum using an iterator? (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#63-Create-an-array-class-that-has-a-name-attribute-★★☆"><span class="nav-text">63. Create an array class that has a name attribute (★★☆)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#64-Consider-a-given-vector-how-to-add-1-to-each-element-indexed-by-a-second-vector-be-careful-with-repeated-indices-★★★"><span class="nav-text">64. Consider a given vector, how to add 1 to each element indexed by a second vector (be careful with repeated indices)? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#65-How-to-accumulate-elements-of-a-vector-X-to-an-array-F-based-on-an-index-list-I-★★★"><span class="nav-text">65. How to accumulate elements of a vector (X) to an array (F) based on an index list (I)? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#66-Considering-a-w-h-3-image-of-dtype-ubyte-compute-the-number-of-unique-colors-★★★"><span class="nav-text">66. Considering a (w,h,3) image of (dtype&#x3D;ubyte), compute the number of unique colors (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#67-Considering-a-four-dimensions-array-how-to-get-sum-over-the-last-two-axis-at-once-★★★"><span class="nav-text">67. Considering a four dimensions array, how to get sum over the last two axis at once? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#68-Considering-a-one-dimensional-vector-D-how-to-compute-means-of-subsets-of-D-using-a-vector-S-of-same-size-describing-subset-indices-★★★"><span class="nav-text">68. Considering a one-dimensional vector D, how to compute means of subsets of D using a vector S of same size describing subset  indices? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#69-How-to-get-the-diagonal-of-a-dot-product-★★★"><span class="nav-text">69. How to get the diagonal of a dot product? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#70-Consider-the-vector-1-2-3-4-5-how-to-build-a-new-vector-with-3-consecutive-zeros-interleaved-between-each-value-★★★"><span class="nav-text">70. Consider the vector [1, 2, 3, 4, 5], how to build a new vector with 3 consecutive zeros interleaved between each value? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#71-Consider-an-array-of-dimension-5-5-3-how-to-mulitply-it-by-an-array-with-dimensions-5-5-★★★"><span class="nav-text">71. Consider an array of dimension (5,5,3), how to mulitply it by an array with dimensions (5,5)? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#72-How-to-swap-two-rows-of-an-array-★★★"><span class="nav-text">72. How to swap two rows of an array? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#73-Consider-a-set-of-10-triplets-describing-10-triangles-with-shared-vertices-find-the-set-of-unique-line-segments-composing-all-the-triangles-★★★"><span class="nav-text">73. Consider a set of 10 triplets describing 10 triangles (with shared vertices), find the set of unique line segments composing all the  triangles (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#74-Given-an-array-C-that-is-a-bincount-how-to-produce-an-array-A-such-that-np-bincount-A-C-★★★"><span class="nav-text">74. Given an array C that is a bincount, how to produce an array A such that np.bincount(A) &#x3D;&#x3D; C? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#75-How-to-compute-averages-using-a-sliding-window-over-an-array-★★★"><span class="nav-text">75. How to compute averages using a sliding window over an array? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#76-Consider-a-one-dimensional-array-Z-build-a-two-dimensional-array-whose-first-row-is-Z-0-Z-1-Z-2-and-each-subsequent-row-is-shifted-by-1-last-row-should-be-Z-3-Z-2-Z-1-★★★"><span class="nav-text">76. Consider a one-dimensional array Z, build a two-dimensional array whose first row is (Z[0],Z[1],Z[2]) and each subsequent row is  shifted by 1 (last row should be (Z[-3],Z[-2],Z[-1]) (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#77-How-to-negate-a-boolean-or-to-change-the-sign-of-a-float-inplace-★★★"><span class="nav-text">77. How to negate a boolean, or to change the sign of a float inplace? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#78-Consider-2-sets-of-points-P0-P1-describing-lines-2d-and-a-point-p-how-to-compute-distance-from-p-to-each-line-i-P0-i-P1-i-★★★"><span class="nav-text">78. Consider 2 sets of points P0,P1 describing lines (2d) and a point p, how to compute distance from p to each line i (P0[i],P1[i])? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#79-Consider-2-sets-of-points-P0-P1-describing-lines-2d-and-a-set-of-points-P-how-to-compute-distance-from-each-point-j-P-j-to-each-line-i-P0-i-P1-i-★★★"><span class="nav-text">79. Consider 2 sets of points P0,P1 describing lines (2d) and a set of points P, how to compute distance from each point j (P[j]) to each line i (P0[i],P1[i])? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#80-Consider-an-arbitrary-array-write-a-function-that-extract-a-subpart-with-a-fixed-shape-and-centered-on-a-given-element-pad-with-a-fill-value-when-necessary-★★★"><span class="nav-text">80. Consider an arbitrary array, write a function that extract a subpart with a fixed shape and centered on a given element (pad with a fill value when necessary) (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#81-Consider-an-array-Z-1-2-3-4-5-6-7-8-9-10-11-12-13-14-how-to-generate-an-array-R-1-2-3-4-2-3-4-5-3-4-5-6-…-11-12-13-14-★★★"><span class="nav-text">81. Consider an array Z &#x3D; [1,2,3,4,5,6,7,8,9,10,11,12,13,14], how to generate an array R &#x3D; [[1,2,3,4], [2,3,4,5], [3,4,5,6], …, [11,12,13,14]]? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#82-Compute-a-matrix-rank-★★★"><span class="nav-text">82. Compute a matrix rank (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#83-How-to-find-the-most-frequent-value-in-an-array"><span class="nav-text">83. How to find the most frequent value in an array?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#84-Extract-all-the-contiguous-3x3-blocks-from-a-random-10x10-matrix-★★★"><span class="nav-text">84. Extract all the contiguous 3x3 blocks from a random 10x10 matrix (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#85-Create-a-2D-array-subclass-such-that-Z-i-j-Z-j-i-★★★"><span class="nav-text">85. Create a 2D array subclass such that Z[i,j] &#x3D;&#x3D; Z[j,i] (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#86-Consider-a-set-of-p-matrices-wich-shape-n-n-and-a-set-of-p-vectors-with-shape-n-1-How-to-compute-the-sum-of-of-the-p-matrix-products-at-once-result-has-shape-n-1-★★★"><span class="nav-text">86. Consider a set of p matrices wich shape (n,n) and a set of p vectors with shape (n,1). How to compute the sum of of the p matrix products at once? (result has shape (n,1)) (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#87-Consider-a-16x16-array-how-to-get-the-block-sum-block-size-is-4x4-★★★"><span class="nav-text">87. Consider a 16x16 array, how to get the block-sum (block size is 4x4)? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#88-How-to-implement-the-Game-of-Life-using-numpy-arrays-★★★"><span class="nav-text">88. How to implement the Game of Life using numpy arrays? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#89-How-to-get-the-n-largest-values-of-an-array-★★★"><span class="nav-text">89. How to get the n largest values of an array (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#90-Given-an-arbitrary-number-of-vectors-build-the-cartesian-product-every-combinations-of-every-item-★★★"><span class="nav-text">90. Given an arbitrary number of vectors, build the cartesian product (every combinations of every item) (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#91-How-to-create-a-record-array-from-a-regular-array-★★★"><span class="nav-text">91. How to create a record array from a regular array? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#92-Consider-a-large-vector-Z-compute-Z-to-the-power-of-3-using-3-different-methods-★★★"><span class="nav-text">92. Consider a large vector Z, compute Z to the power of 3 using 3 different methods (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#93-Consider-two-arrays-A-and-B-of-shape-8-3-and-2-2-How-to-find-rows-of-A-that-contain-elements-of-each-row-of-B-regardless-of-the-order-of-the-elements-in-B-★★★"><span class="nav-text">93. Consider two arrays A and B of shape (8,3) and (2,2). How to find rows of A that contain elements of each row of B regardless of the order of the elements in B? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#94-Considering-a-10x3-matrix-extract-rows-with-unequal-values-e-g-2-2-3-★★★"><span class="nav-text">94. Considering a 10x3 matrix, extract rows with unequal values (e.g. [2,2,3]) (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#95-Convert-a-vector-of-ints-into-a-matrix-binary-representation-★★★"><span class="nav-text">95. Convert a vector of ints into a matrix binary representation (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#96-Given-a-two-dimensional-array-how-to-extract-unique-rows-★★★"><span class="nav-text">96. Given a two dimensional array, how to extract unique rows? (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#97-Considering-2-vectors-A-amp-B-write-the-einsum-equivalent-of-inner-outer-sum-and-mul-function-★★★"><span class="nav-text">97. Considering 2 vectors A &amp; B, write the einsum equivalent of inner, outer, sum, and mul function (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#98-Considering-a-path-described-by-two-vectors-X-Y-how-to-sample-it-using-equidistant-samples-★★★"><span class="nav-text">98. Considering a path described by two vectors (X,Y), how to sample it using equidistant samples (★★★)?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#99-Given-an-integer-n-and-a-2D-array-X-select-from-X-the-rows-which-can-be-interpreted-as-draws-from-a-multinomial-distribution-with-n-degrees-i-e-the-rows-which-only-contain-integers-and-which-sum-to-n-★★★"><span class="nav-text">99. Given an integer n and a 2D array X, select from X the rows which can be interpreted as draws from a multinomial distribution with n degrees, i.e., the rows which only contain integers and which sum to n. (★★★)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#100-Compute-bootstrapped-95-confidence-intervals-for-the-mean-of-a-1D-array-X-i-e-resample-the-elements-of-an-array-with-replacement-N-times-compute-the-mean-of-each-sample-and-then-compute-percentiles-over-the-means-★★★"><span class="nav-text">100. Compute bootstrapped 95% confidence intervals for the mean of a 1D array X (i.e., resample the elements of an array with replacement N times, compute the mean of each sample, and then compute percentiles over the means). (★★★)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1053,54 +775,6 @@
   
 
   
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
 
   
   <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
@@ -1109,11 +783,30 @@
       quicklink({
         timeout: 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/',]
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/100%E9%81%93Numpy%E7%BB%83%E4%B9%A0%E9%A2%98.html',]
       });
       });
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </script>
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'c3f96e8fb86bf653ad6c',
+      clientSecret: '67954d29616c8cd146127aa2147f7e637aceb151',
+      repo: 'MonteYang.github.io',
+      owner: 'MonteYang',
+      admin: ['MonteYang'],
+      id: '2d470f0726c981144d86c596717210e1',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 </html>

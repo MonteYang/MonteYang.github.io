@@ -1,3 +1,4 @@
+http://monteyang.cn/100%E9%81%93Numpy%E7%BB%83%E4%B9%A0%E9%A2%98.html
 http://monteyang.cn/matplotlib%E9%A2%9C%E8%89%B2%E5%AF%B9%E7%85%A7%E8%A1%A8.html
 http://monteyang.cn/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-rainbow.html
 http://monteyang.cn/%E6%B7%B1%E5%BA%A6%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-Prioritized%20Experience%20Replay.html
