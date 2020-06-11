@@ -54,22 +54,25 @@
   };
 </script>
 
-  <meta name="description" content="一、C语言风格的字符串C++兼容C语言, 所以也可以用以\0结尾的字符数组来表示字符串, 例如：  字符串末尾都有一个字符’\0’做结束符, 这里的\0是ASCII码为0的Null字符, 在C语言中这种字符串也称为以零结尾的字符串（Null-terminated String）. 数组元素可以通过数组名加下标的方式访问, 字符串字面值也可以加下标访问其中的字符： 1char c &#x3D; &quot;Hello,">
+  <meta name="description" content="Numpy文档中的说明: “Return a contiguous array (ndim &gt;&#x3D; 1) in memory (C order).">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++-字符串">
-<meta property="og:url" content="http://monteyang.cn/C++-%E5%AD%97%E7%AC%A6%E4%B8%B2.html">
+<meta property="og:title" content="numpy中的np.ascontiguousarray()函数">
+<meta property="og:url" content="http://monteyang.cn/numpy%E4%B8%AD%E7%9A%84np.ascontiguousarray()%E5%87%BD%E6%95%B0.html">
 <meta property="og:site_name" content="Monte&#39;s Blog">
-<meta property="og:description" content="一、C语言风格的字符串C++兼容C语言, 所以也可以用以\0结尾的字符数组来表示字符串, 例如：  字符串末尾都有一个字符’\0’做结束符, 这里的\0是ASCII码为0的Null字符, 在C语言中这种字符串也称为以零结尾的字符串（Null-terminated String）. 数组元素可以通过数组名加下标的方式访问, 字符串字面值也可以加下标访问其中的字符： 1char c &#x3D; &quot;Hello,">
+<meta property="og:description" content="Numpy文档中的说明: “Return a contiguous array (ndim &gt;&#x3D; 1) in memory (C order).">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://monteyang.cn/images/array.string.png">
-<meta property="article:published_time" content="2019-03-23T22:54:26.000Z">
-<meta property="article:modified_time" content="2020-03-26T06:24:23.188Z">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-9b0851b0ccac01e3429c226157cdf496_720w.png">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-cf83ca95eeec64af57351bbe308f0ca3_720w.png">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-20d84e8244340e02cc1a6591bd7d3ba3_720w.png">
+<meta property="article:published_time" content="2020-06-10T19:00:48.000Z">
+<meta property="article:modified_time" content="2020-06-11T03:31:38.077Z">
 <meta property="article:author" content="Monte Yang">
-<meta property="article:tag" content="C&#x2F;C++">
+<meta property="article:tag" content="Numpy">
+<meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://monteyang.cn/images/array.string.png">
+<meta name="twitter:image" content="https://pic3.zhimg.com/80/v2-9b0851b0ccac01e3429c226157cdf496_720w.png">
 
-<link rel="canonical" href="http://monteyang.cn/C++-%E5%AD%97%E7%AC%A6%E4%B8%B2.html">
+<link rel="canonical" href="http://monteyang.cn/numpy%E4%B8%AD%E7%9A%84np.ascontiguousarray()%E5%87%BD%E6%95%B0.html">
 
 
 <script id="page-configurations">
@@ -81,7 +84,7 @@
   };
 </script>
 
-  <title>C++-字符串 | Monte's Blog</title>
+  <title>numpy中的np.ascontiguousarray()函数 | Monte's Blog</title>
   
 
 
@@ -211,7 +214,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/C++-%E5%AD%97%E7%AC%A6%E4%B8%B2.html">
+    <link itemprop="mainEntityOfPage" href="http://monteyang.cn/numpy%E4%B8%AD%E7%9A%84np.ascontiguousarray()%E5%87%BD%E6%95%B0.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/M.jpeg">
@@ -224,7 +227,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          C++-字符串
+          numpy中的np.ascontiguousarray()函数
         </h2>
 
         <div class="post-meta">
@@ -233,24 +236,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-03-24 06:54:26" itemprop="dateCreated datePublished" datetime="2019-03-24T06:54:26+08:00">2019-03-24</time>
+              <time title="创建时间：2020-06-11 03:00:48 / 修改时间：11:31:38" itemprop="dateCreated datePublished" datetime="2020-06-11T03:00:48+08:00">2020-06-11</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-26 14:24:23" itemprop="dateModified" datetime="2020-03-26T14:24:23+08:00">2020-03-26</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index">
-                    <span itemprop="name">C/C++</span>
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
                   </a>
                 </span>
             </span>
@@ -266,67 +263,50 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="一、C语言风格的字符串"><a href="#一、C语言风格的字符串" class="headerlink" title="一、C语言风格的字符串"></a>一、C语言风格的字符串</h1><p>C++兼容C语言, 所以也可以用<strong>以<code>\0</code>结尾的字符数组</strong>来表示字符串, 例如：</p>
-<p><img data-src="../images/array.string.png" alt></p>
-<p>字符串末尾都有一个字符’\0’做结束符, 这里的\0是ASCII码为0的Null字符, 在C语言中这种字符串也称为以零结尾的字符串（Null-terminated String）. 数组元素可以通过数组名加下标的方式访问, 字符串字面值也可以加下标访问其中的字符：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c = <span class="string">"Hello, world.\n"</span>[<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
-<p>但要注意, <strong>字符串字面值是只读的, 不能修改</strong>. 即 <code>&quot;Hello, world.\n&quot;[0]</code>不能作为左值.</p>
-<p>字符串字面值作为右值使用时, 和数组类似, 自动转换成<strong>指向字符串首元素的指针</strong>.</p>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[<span class="number">10</span>] = <span class="string">"Hello"</span>;</span><br><span class="line"><span class="keyword">char</span> str[<span class="number">10</span>] = &#123; <span class="string">'H'</span>, <span class="string">'e'</span>, <span class="string">'l'</span>, <span class="string">'l'</span>, <span class="string">'o'</span>, <span class="string">'\0'</span> &#125;;</span><br><span class="line"><span class="keyword">char</span> str[<span class="number">10</span>] = <span class="string">"Hello, world.\n"</span>;</span><br><span class="line"><span class="keyword">char</span> str[] = <span class="string">"Hello, world.\n"</span>;</span><br></pre></td></tr></table></figure>
-<p>str的后四个元素没有指定, 自动初始化为0, 即Null字符.</p>
-<p>如果用于初始化的字符串字面值比数组还长, 则数组str只包含字符串的前10个字符, 不包含Null字符, 这种情况编译器会给出警告.</p>
-<p>如果要用一个字符串字面值准确地初始化一个字符数组, 最好的办法是不指定数组的长度, 让编译器自己计算.</p>
-<h2 id="字符串相关的操作函数"><a href="#字符串相关的操作函数" class="headerlink" title="字符串相关的操作函数"></a>字符串相关的操作函数</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>strcpy(s1, s2);</code></td>
-<td>复制字符串 s2 到字符串 s1.</td>
-</tr>
-<tr>
-<td><code>strcat(s1, s2);</code></td>
-<td>连接字符串 s2 到字符串 s1 的末尾.</td>
-</tr>
-<tr>
-<td><code>strlen(s1);</code></td>
-<td>返回字符串 s1 的长度.</td>
-</tr>
-<tr>
-<td><code>strcmp(s1, s2);</code></td>
-<td>如果 s1 和 s2 是相同的, 则返回 0；如果 s1 &lt; s2 则返回值小于 0；如果 s1 &gt; s2 则返回值大于 0.</td>
-</tr>
-<tr>
-<td><code>strchr(s1, ch);</code></td>
-<td>返回一个指针, 指向字符串 s1 中字符 ch 的第一次出现的位置.</td>
-</tr>
-<tr>
-<td><code>strstr(s1, s2);</code></td>
-<td>返回一个指针, 指向字符串 s1 中字符串 s2 的第一次出现的位置.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h1 id="二、C-中的String类"><a href="#二、C-中的String类" class="headerlink" title="二、C++中的String类"></a>二、C++中的String类</h1><h2 id="创建String"><a href="#创建String" class="headerlink" title="创建String"></a>创建String</h2><p>String类不用担心内存溢出的问题, 还可以和C语言的字符串相互转换. 使用时必须包含头文件</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br></pre></td></tr></table></figure>
-<p>string类是一个模板类, 位于std命名空间内, 为方便使用还需添加：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个String对象</span></span><br><span class="line"><span class="built_in">string</span> str;</span><br><span class="line"><span class="comment">// 1. 将C语言字符串赋值给String对象</span></span><br><span class="line"><span class="keyword">char</span> strname[<span class="number">30</span>];</span><br><span class="line"><span class="built_in">strcpy</span>(strname, <span class="string">"hello"</span>);</span><br><span class="line">str = strname;</span><br><span class="line"><span class="comment">// 2. 直接对String赋值</span></span><br><span class="line">str = <span class="string">"hello, world!"</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="重载的操作符"><a href="#重载的操作符" class="headerlink" title="重载的操作符"></a>重载的操作符</h2><ul>
-<li><code>=</code>: 可以用<code>=</code>直接对string对象赋值</li>
-<li><code>==, &gt;, &lt;, &gt;=, &lt;=, !=</code> : 比较大小</li>
-<li><code>+, +=</code> : 连接两个字符串</li>
-<li><code>[]</code> : 类似字符数组, 获取字符串中某个位置的字符</li>
+        <p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ascontiguousarray.html" target="_blank" rel="external nofollow noopener noreferrer">Numpy文档中的说明</a>:</p>
+<p>“Return a contiguous array (ndim &gt;= 1) in memory (C order).</p>
+<a id="more"></a>
+<h1 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h1><p><strong><code>ascontiguousarray</code>函数将一个内存不连续存储的数组转换为内存连续存储的数组，使得运行速度更快。</strong></p>
+<hr>
+<h1 id="C-order-vs-Fortran-order"><a href="#C-order-vs-Fortran-order" class="headerlink" title="C order vs Fortran order"></a>C order vs Fortran order</h1><ul>
+<li><code>C order</code> 指的是<strong>行优先的顺序（Row-major Order)</strong>，即内存中同行的元素存在一起，</li>
+<li><code>Fortran Order</code>则指的是<strong>列优先的顺序（Column-major Order)</strong>，即内存中同列的元素存在一起。</li>
 </ul>
-<h2 id="转为C语言的字符串"><a href="#转为C语言的字符串" class="headerlink" title="转为C语言的字符串"></a>转为C语言的字符串</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">char</span> *<span class="title">c_str</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
-<p>返回一个以NULL结尾的C语言字符串, 即返回一个指向C字符串的指针, 字符串内容与String相同, 用于 string 转 const char*.</p>
-<h2 id="String特性描述的成员函数"><a href="#String特性描述的成员函数" class="headerlink" title="String特性描述的成员函数"></a>String特性描述的成员函数</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;     <span class="comment">// 返回字符串的大小</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">length</span><span class="params">()</span></span>;   <span class="comment">// 返回字符串的长度</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>;   <span class="comment">// 清空字符串</span></span><br></pre></td></tr></table></figure>
-<h2 id="使用经验"><a href="#使用经验" class="headerlink" title="使用经验"></a>使用经验</h2><p>C++的string类是一个变长的字符串, 不需要担心内存溢出的问题, 还提供了很多字符串操作函数, 但是由于<strong>string中的字符串存储的内存空间没有固定的位置, 所以string无法用于需要字符串固定地址的情况</strong>.</p>
+<p>Pascal, C，C++，Python都是行优先存储的，而Fortran，MatLab是列优先存储的。</p>
+<hr>
+<h1 id="Contiguous-array"><a href="#Contiguous-array" class="headerlink" title="Contiguous array"></a>Contiguous array</h1><p><code>contiguous array</code>指的是数组在内存中存放的地址也是连续的（注意内存地址实际是一维的）。</p>
+<p>2维数组<code>arr = np.arange(12).reshape(3,4)</code>。数组结构如下</p>
+<p><img data-src="https://pic3.zhimg.com/80/v2-9b0851b0ccac01e3429c226157cdf496_720w.png" alt></p>
+<p>在<strong>内存里中实际存储</strong>如下：</p>
+<p><img data-src="https://pic4.zhimg.com/80/v2-cf83ca95eeec64af57351bbe308f0ca3_720w.png" alt></p>
+<p><code>arr</code>是 <strong>C order</strong> 的，在内存是行优先的。如果想要向下移动一列，则需要跳过3个块（例如，从0到4只需要跳过1,2和3）。</p>
+<p>如果经过转置，<code>arr.T</code>没有了C连续特性，因为内存中元素的地址不变，同一行中的相邻元素在内存中不是连续的:</p>
+<p><img data-src="https://pic4.zhimg.com/80/v2-20d84e8244340e02cc1a6591bd7d3ba3_720w.png" alt></p>
+<p>这时，<code>arr.T</code>变成了<code>Fortran order</code>，因为相邻列中的元素在内存中是相邻存储的。</p>
+<p>从性能上来说，获取内存中相邻的地址比不相邻的地址速度要快很多（从RAM读取一个数值的时候可以连着一起读一块地址中的数值，并且可以保存在Cache中），这意味着对连续数组的操作会快很多。</p>
+<p>由于<code>arr</code>是C连续的，因此对其进行行操作比进行列操作速度要快。通常来说</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.sum(arr, axis=<span class="number">1</span>) <span class="comment"># 按行求和</span></span><br></pre></td></tr></table></figure>
+<p>会比<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.sum(arr, axis=<span class="number">0</span>) <span class="comment"># 按列求和</span></span><br></pre></td></tr></table></figure></p>
+<p>稍微快些。<br>同理，在<code>arr.T</code>上，列操作比行操作会快些。</p>
+<hr>
+<h1 id="使用-np-ascontiguousarray"><a href="#使用-np-ascontiguousarray" class="headerlink" title="使用 np.ascontiguousarray()"></a>使用 <code>np.ascontiguousarray()</code></h1><ul>
+<li>Numpy中，随机初始化的数组默认都是C连续的。</li>
+<li><p>经过不规则的<code>slice</code>操作，则会改变连续性，可能会变成既不是C连续，也不是Fortran连续的。</p>
+</li>
+<li><p>可以通过数组的<code>.flags</code>属性，查看一个数组是C连续还是Fortran连续的</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr = np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr.flags</span><br><span class="line">    C_CONTIGUOUS : <span class="literal">True</span></span><br><span class="line">    F_CONTIGUOUS : <span class="literal">False</span></span><br><span class="line">    OWNDATA : <span class="literal">False</span></span><br><span class="line">    WRITEABLE : <span class="literal">True</span></span><br><span class="line">    ALIGNED : <span class="literal">True</span></span><br><span class="line">    WRITEBACKIFCOPY : <span class="literal">False</span></span><br><span class="line">    UPDATEIFCOPY : <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>从输出可以看到数组<code>arr</code>是C连续的。<br>对<code>arr</code>进行按列的<code>slice</code>操作，不改变每行的值，则还是C连续的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr</span><br><span class="line">array([[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>],</span><br><span class="line">        [ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>],</span><br><span class="line">        [ <span class="number">8</span>,  <span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1 = arr[:<span class="number">2</span>, :]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1</span><br><span class="line">array([[ <span class="number">0</span>,  <span class="number">1</span>,  <span class="number">2</span>,  <span class="number">3</span>],</span><br><span class="line">        [ <span class="number">4</span>,  <span class="number">5</span>,  <span class="number">6</span>,  <span class="number">7</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1.flags</span><br><span class="line">    C_CONTIGUOUS : <span class="literal">True</span></span><br><span class="line">    F_CONTIGUOUS : <span class="literal">False</span></span><br><span class="line">    OWNDATA : <span class="literal">False</span></span><br><span class="line">    WRITEABLE : <span class="literal">True</span></span><br><span class="line">    ALIGNED : <span class="literal">True</span></span><br><span class="line">    WRITEBACKIFCOPY : <span class="literal">False</span></span><br><span class="line">    UPDATEIFCOPY : <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>如果进行在行上的<code>slice</code>，则会改变连续性，成为既不C连续，也不Fortran连续的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1 = arr[:, <span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr1.flags</span><br><span class="line">    C_CONTIGUOUS : <span class="literal">False</span></span><br><span class="line">    F_CONTIGUOUS : <span class="literal">False</span></span><br><span class="line">    OWNDATA : <span class="literal">False</span></span><br><span class="line">    WRITEABLE : <span class="literal">True</span></span><br><span class="line">    ALIGNED : <span class="literal">True</span></span><br><span class="line">    WRITEBACKIFCOPY : <span class="literal">False</span></span><br><span class="line">    UPDATEIFCOPY : <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>此时利用<code>ascontiguousarray</code>函数，可以将其变为连续的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr2 = np.ascontiguousarray(arr1)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>arr2.flags</span><br><span class="line">    C_CONTIGUOUS : <span class="literal">True</span></span><br><span class="line">    F_CONTIGUOUS : <span class="literal">False</span></span><br><span class="line">    OWNDATA : <span class="literal">True</span></span><br><span class="line">    WRITEABLE : <span class="literal">True</span></span><br><span class="line">    ALIGNED : <span class="literal">True</span></span><br><span class="line">    WRITEBACKIFCOPY : <span class="literal">False</span></span><br><span class="line">    UPDATEIFCOPY : <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/59767914" target="_blank" rel="external nofollow noopener noreferrer">从Numpy中的ascontiguousarray说起 - 知乎</a></li>
+<li>Numpy文档</li>
+</ul>
 
     </div>
 
@@ -362,7 +342,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://monteyang.cn/C++-%E5%AD%97%E7%AC%A6%E4%B8%B2.html" title="C++-字符串">http://monteyang.cn/C++-字符串.html</a>
+    <a href="http://monteyang.cn/numpy%E4%B8%AD%E7%9A%84np.ascontiguousarray()%E5%87%BD%E6%95%B0.html" title="numpy中的np.ascontiguousarray()函数">http://monteyang.cn/numpy中的np.ascontiguousarray()函数.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="external nofollow noopener noreferrer" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -374,7 +354,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/C-C/" rel="tag"><i class="fa fa-tag"></i> C/C++</a>
+              <a href="/tags/Numpy/" rel="tag"><i class="fa fa-tag"></i> Numpy</a>
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
           </div>
 
         
@@ -383,13 +364,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/Python-axis%E7%9A%84%E7%90%86%E8%A7%A3.html" rel="prev" title="Python-axis的理解">
-      <i class="fa fa-chevron-left"></i> Python-axis的理解
+    <a href="/Numpy%E3%80%81Pandas%E3%80%81Matplotlib%E3%80%81Keras%E9%80%9F%E6%9F%A5%E8%A1%A8.html" rel="prev" title="Numpy、Pandas、Matplotlib、Keras、scikit-learn速查表">
+      <i class="fa fa-chevron-left"></i> Numpy、Pandas、Matplotlib、Keras、scikit-learn速查表
     </a></div>
-      <div class="post-nav-item">
-    <a href="/C%E8%AF%AD%E8%A8%80-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.html" rel="next" title="C语言-数据类型转换">
-      C语言-数据类型转换 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -450,7 +428,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、C语言风格的字符串"><span class="nav-text">一、C语言风格的字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串相关的操作函数"><span class="nav-text">字符串相关的操作函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、C-中的String类"><span class="nav-text">二、C++中的String类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建String"><span class="nav-text">创建String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重载的操作符"><span class="nav-text">重载的操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转为C语言的字符串"><span class="nav-text">转为C语言的字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String特性描述的成员函数"><span class="nav-text">String特性描述的成员函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用经验"><span class="nav-text">使用经验</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#用途"><span class="nav-text">用途</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-order-vs-Fortran-order"><span class="nav-text">C order vs Fortran order</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Contiguous-array"><span class="nav-text">Contiguous array</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-np-ascontiguousarray"><span class="nav-text">使用 np.ascontiguousarray()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -618,7 +596,7 @@
       quicklink({
         timeout: 3000,
         priority: true,
-        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/C++-%E5%AD%97%E7%AC%A6%E4%B8%B2.html',]
+        ignores: [uri => uri.includes('#'),uri => uri == 'http://monteyang.cn/numpy%E4%B8%AD%E7%9A%84np.ascontiguousarray()%E5%87%BD%E6%95%B0.html',]
       });
       });
   </script>
@@ -634,7 +612,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo: 'MonteYang.github.io',
       owner: 'MonteYang',
       admin: ['MonteYang'],
-      id: '0814f281c393344f2eda455284ee4129',
+      id: '7b71ed201a5ceaae1baa7f9a0cfbab7d',
         language: 'zh-CN',
       distractionFreeMode: true
     });
